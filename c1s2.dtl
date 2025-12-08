@@ -1,0 +1,13 @@
+[background arg="res://Bg/classroom.png" fade="3.0"]
+The time is now 5\:30, today's classes are now over. Instead of going out of the school and going home Conrad and Mark stay in the classroom to talk
+join Conrad (half) left
+join Mark (Mark_half) right
+Conrad: Finally classes are over, dude let's go find that Janitor!
+Mark: I can't man, mom told me to go home as soon as possible. My mom and I got invited to celebrate my cousin's birthday. You know how my mom is.
+Conrad: Alright fine. We can just talk through messages just in case I need you for something. You better respond as soon as you can.
+Mark: Alright.
+leave Mark
+A Janitor enters the classroom
+join "Janitor Fred" rightmost
+Conrad: Excuse me sir, Are you in a rush?
+"Janitor Fred": No young man, what do you need from me?

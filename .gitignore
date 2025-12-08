@@ -1,0 +1,22 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Common Godot-generated files and folders
+.import/
+export/
+export_presets.cfg
+*.pck
+*.exe
+*.zip
+*.bin
+*.apk
+*.x86_64
+*.x86
+*.gltf.escn
+
+# Ignore Dialogic-specific generated files to avoid merge conflicts
+/addons/dialogic/dialogic.cfg
+
+# Ignore macOS trash
+.DS_Store
