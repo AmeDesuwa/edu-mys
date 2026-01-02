@@ -1,0 +1,13 @@
+[background arg="res://Bg/hallway.png" fade="1.0"]
+join Conrad (half) left
+join Mark (Mark_half) right
+Mark: Did you hear it during third period? The whispering?
+Conrad: I heard static. And numbers. "Five... Seven... One..."
+Mark: Everyone is freaking out. They say the Broadcasting Room is haunted.
+Conrad: Haunted?
+Mark: Yeah. The room has been locked all day. The Principal has the only key.
+Mark: But the speakers keep playing that creepy voice. Even when the power is cut to the amp.
+Conrad: Audio playing without power? That defies physics.
+Mark: Or it's a ghost. Diwata Laya would know, right?
+Conrad: Let's go check the room. If it's not a ghost, it's a trick.
+[end_timeline]
