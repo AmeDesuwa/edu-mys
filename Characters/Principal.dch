@@ -17,6 +17,15 @@
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
+"Principa_half_mirror": {
+"export_overrides": {
+"image": "\"res://Sprites/Principal_half.png\""
+},
+"mirror": true,
+"offset": Vector2(0, 0),
+"scale": 0.8,
+"scene": "res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
+},
 "Principal_full": {
 "export_overrides": {
 "image": "\"res://Sprites/Principal_full.png\""

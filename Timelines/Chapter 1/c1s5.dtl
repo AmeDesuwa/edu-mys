@@ -1,52 +1,118 @@
-[background arg="res://Bg/hallway.png" fade="1.0"]
-Conrad and Mark track down the students from the logbook.
+[background arg="res://Bg/faculty_empty.png" fade="1.0"]
+Before confronting the suspects, Conrad returns to the faculty room one more time to examine the scene.
 join Conrad (half) left
-join Ben (Ben_half) center
-Conrad: Ben, we need to ask you something. Were you near the faculty room yesterday evening?
-Ben: No, I was in the library studying until 6 PM. The librarian can vouch for me.
+join "Diwata Laya" (Half_mirror) right
+Conrad: Laya, help me look around. There has to be something we missed.
+"Diwata Laya": I will try, but remember - my ability to interact with the physical world is limited.
+Conrad walks around the room, carefully examining the area near the AC unit.
+Conrad: The WiFi logs put Greg here at 9\:00 PM, but that's still circumstantial. I need something more concrete.
+Conrad crouches near the desk below the AC unit, looking under it.
+Conrad: Wait, what's this?
+leave --All--
+[background arg="res://Pics/Charm.png" fade="0.0"]
+Conrad reaches under the desk and pulls out a small, worn charm bracelet with distinctive blue, red, and white beads, and a tiny silver cross.
+"Diwata Laya": (Suddenly alert) Conrad, wait! That object...
+"Diwata Laya": I sense something powerful emanating from it. Deep grief... profound love... and loss. Whoever owns this treasures it more than anything.
+Conrad: (Examining the bracelet) This must have fallen off during the sabotage. It's pretty distinctive.
+[background arg="res://Bg/faculty_empty.png" fade="0.0"]
+join "Diwata Laya" right [animation="Instant In"]
+join Conrad left
+"Diwata Laya": This is no ordinary keepsake. It carries the weight of memory - a connection to someone who has passed. The owner's emotional attachment is... overwhelming.
+Conrad: So if we find who this belongs to, they'd be desperate to get it back.
+"Diwata Laya": More than desperate. They would confess to anything to reclaim it.
+Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
+Conrad: Then we have our leverage. Let's go talk to our suspects.
+leave --All--
+[background arg="res://Bg/hallway.png" fade="1.0"]
+Conrad and Mark track down the students from the WiFi logs.
+join Ben (Ben_half) right
+join Conrad (half) left
+Conrad: Ben, we need to ask you something. Your phone connected to the Faculty WiFi at 8\:00 PM yesterday evening. Can you explain why?
+Ben: Oh, that? I went back after the library closed. I'd left my lucky pen in the faculty room earlier when I was asking Ms. Cruz about the homework.
+Ben: Mr. Santos was still working late. He let me in to grab it, then I left right after.
 join "Diwata Laya" (Half_mirror) rightmost
 "Diwata Laya": (Whispering) He speaks the truth. His flow is calm.
-Conrad: Thanks, Ben. You can go.
+Conrad: Thanks for clearing that up, Ben. You can go.
 leave Ben
 join Mark (Mark_half) right
-Mark: Okay, that leaves Greg.
+Mark: Okay, that leaves Greg. And 9\:00 PM is way more suspicious.
+Conrad: Let's find him. And I have something that might help us get the truth.
 leave --All--
+[background arg="res://Bg/hallway.png" fade="1.0"]
+join Greg (Greg_half) right
 join Conrad (half) left
-join "Greg" (Greg_half) center
-Conrad: Greg, we need to ask you something. Were you inside the faculty room yesterday?
-"Greg": What? No! I went straight home after class. I wasn't anywhere near there!
+Conrad: Greg, we need to ask you something. Were you inside the faculty room yesterday evening?
+Greg: What? No! I went straight home after class. I wasn't anywhere near there!
 join "Diwata Laya" (Half_mirror) rightmost
 "Diwata Laya": (Whispering) Deceit clouds his words. He is lying.
-Conrad: You're lying, Greg.
-"Greg": I'm not! You have no proof.
-Conrad: Actually, I do. I found this INSIDE the locked faculty room.
-[background arg="res://Pics/Exam_ruined.png" fade="0.0"]
-label Logic_Challenge
-"Diwata Laya": The pattern is 10111. That translates to the number 23.
-Conrad: Student number 23... That's you, Greg. These are your binary practice notes.
-Conrad: If you weren't there, how did your notes end up inside a locked room?
-"Greg": I... I...
-"Greg": (Breaks down) I didn't steal the key! I swear!
-Conrad: Then how did you get in?
-"Greg": Someone gave it to me!
-"Greg": I was panicking about the exam... and then I found an envelope in my locker. It had a key and a note saying "For your problem."
-"Greg": I didn't see who it was. I just wanted to delay the exam!
+join Mark (Mark_half) right
+Conrad: Greg, your phone connected to the Faculty WiFi at exactly 9\:00 PM last night. The faculty room was supposed to be empty by then.
+Greg: That doesn't mean anything! Maybe my phone just auto-connected while I was passing by!
+Mark: The Faculty WiFi signal doesn't reach the hallway. Your phone would only connect if you were right outside the door... or inside.
+label Choice_3
+Greg: You still can't prove I did anything wrong!
+- Threaten Ben to report him to the Principal
+	He doesn't care.
+	jump Choice_3
+- Show the picture of the charm
+	jump Correct_3
+- Tell Ben that you will tell Alice what he did
+	This will do nothing. He isn't close with Alice.
+	jump Choice_3
+label Correct_3
+Conrad: You're right. The WiFi log alone isn't definitive proof. But I found something else.
+Conrad: When I was examining the faculty room earlier, I found this near the AC unit.
+leave --All--
+[background arg="res://Pics/Charm.png" fade="0.0"]
+Conrad shows a photo on his phone - a small, worn charm bracelet with distinctive beads.
+join Conrad left
+join Greg right
+join "Diwata Laya" rightmost
+Conrad: It was on the floor, partially hidden under the desk. It must have fallen off during the sabotage.
+Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
+Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
+"Diwata Laya": (Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
+Conrad: I'm planning to show it around and ask if anyone recognizes it. Someone must be missing something this special.
+Greg: (Visibly shaken) I...
+Conrad: Unless... you know who it belongs to?
+Greg: Wait! Don't... don't show that to anyone else.
+Conrad: Why not? If it's not yours—
+Greg: It's mine! Okay? It's mine!
+Greg: My grandmother gave it to me before she passed away. It's the only thing I have left from her.
+Greg: Please, I'll tell you everything. Just... just give it back to me. Please.
+[background arg="res://Bg/hallway.png" fade="1.0"]
+Mark whispers to Conrad
+Mark: How did you know?
+Conrad looks at Diwata Laya
+Conrad: I had a hunch.
+Mark notices that Conrad suddenly looking at a part of the room that has nothing near it.
+Conrad: Now, Greg. Tell us the truth. How did you get into the faculty room?
+Greg: I didn't steal the key. I swear I didn't.
+Greg: I was panicking about the exam. I studied the wrong chapters and I knew I was going to fail.
+Greg: Then yesterday, I found an envelope in my locker. It had a key inside and a note that just said "For your problem."
+Mark: Someone just gave you a key? And you didn't question it?
+Greg: I know it sounds crazy! But I was desperate. I thought... I thought if I could just delay the exam, I'd have time to study properly.
+Greg: I went to the faculty room at 9\:00 PM. I used the key, got inside, and... I cut the AC tube to make it leak.
+Greg: The bracelet must have fallen off when I was reaching up to the unit. I didn't even notice it was gone until now.
 Conrad: Do you still have the envelope?
-"Greg": Yes, here.
-Conrad: (Conrad inspects it. There is no name, but a small symbol is stamped on the inside flap: a pixelated spider.)
-join "Principal Alan" (Principal_half) rightmost
+Greg: Yes, here.
+Conrad examines the envelope. There is no name, but a small symbol is stamped on the inside flap\: a pixelated spider.
+join Principal (Principal_half) leftmost
 "Principal Alan": I believe I've heard enough.
-"Greg": Principal Alan!
-"Principal Alan": I am disappointed, Greg. But we need to discuss this "mysterious person" who gave you the key. Come to my office.
-"Principal Alan": Conrad, Mark. You have shown great responsibility and intellect. The school thanks you.
-leave "Principal Alan"
-leave "Greg"
-leave "Diwata Laya"
+Greg: Principal Alan! I'm so sorry, I—
+"Principal Alan": I am deeply disappointed, Greg. But we need to discuss this "mysterious person" who gave you the key. This is clearly more complex than simple academic pressure.
+"Principal Alan": Come to my office. We'll need to contact your parents and discuss consequences.
+Greg: (To Conrad, pleading) My bracelet... please...
+Conrad hands the bracelet back to Greg gently.
+Conrad: Here. I understand what it means to you.
+Greg: (Clutching it tightly) Thank you... I'm sorry for everything.
+"Principal Alan": Conrad, Mark. You have shown great responsibility and intellect. The school thanks you both.
+leave Principal
+leave Greg
 Conrad: (Sighs) Well, that's case closed.
-Mark: Dude, that was intense! But what was that spider symbol on the envelope?
-Conrad: I don't know yet. But I have a feeling this isn't the last time we'll see it.
-[background arg="res://Bg/classroom.png" fade="2.0"]
-The bell rings for the first period.
-Conrad: Come on, let's get to class. I have a feeling this isn't the last mystery we'll solve.
-Mark: As long as it doesn't involve math next time, I'm in.
-[end_timeline]
+Mark: Dude, that was intense. How did you know the bracelet was so important to him?
+Conrad: When I first found it in the faculty room, i just felt that it had to be important
+That was thanks to Laya though.
+Conrad: That's when I knew it could be the key to getting a confession.
+Mark: So you knew before we even confronted him?
+Conrad: I knew it was important. I just didn't know it was Greg's. Haha

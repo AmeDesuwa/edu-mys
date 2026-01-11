@@ -65,7 +65,8 @@ func _on_file_selected(path: String):
 func _process_audio_file(file_path: String):
 	var pcm_data: PackedByteArray
 	
-	# Universal audio loading
+	# WAV files: direct conversion (already PCM data)
+	# MP3/OGG files: decode through AudioStreamPlayer
 	if file_path.ends_with(".wav"):
 		pcm_data = await _load_and_convert_wav(file_path)
 	elif file_path.ends_with(".mp3"):
@@ -95,9 +96,18 @@ func _load_and_convert_wav(file_path: String) -> PackedByteArray:
 	status_label.text = "Loading WAV file..."
 	var stream = _load_wav_manual(file_path)
 	if not stream:
+		push_error("Failed to load WAV file")
 		return PackedByteArray()
 	
-	return await _convert_audio_to_pcm(stream)
+	print("Converting WAV directly (PCM data)...")
+	var pcm = await _convert_audio_to_pcm(stream)
+	
+	if pcm.is_empty():
+		push_error("WAV to PCM conversion returned empty data")
+	else:
+		print("WAV conversion successful, PCM size: ", pcm.size())
+	
+	return pcm
 
 func _load_and_convert_mp3(file_path: String) -> PackedByteArray:
 	status_label.text = "Loading MP3 file..."
@@ -252,11 +262,17 @@ func _load_wav_manual(file_path: String) -> AudioStream:
 	return stream
 
 func _convert_audio_to_pcm(audio_stream: AudioStream) -> PackedByteArray:
+	print("Converting audio to PCM, stream type: ", audio_stream.get_class())
+	
 	if not audio_stream is AudioStreamWAV:
+		push_error("Audio stream is not WAV type!")
 		return PackedByteArray()
 	
 	var wav: AudioStreamWAV = audio_stream
 	var raw_data = wav.data
+	
+	print("WAV format: ", wav.format, ", Stereo: ", wav.stereo, ", Rate: ", wav.mix_rate, ", Data size: ", raw_data.size())
+	
 	var mono_data = PackedByteArray()
 	
 	# Convert to mono 16-bit
@@ -284,6 +300,18 @@ func _convert_audio_to_pcm(audio_stream: AudioStream) -> PackedByteArray:
 			var sample_16 = (sample_8 - 128) * 256
 			mono_data.append(sample_16 & 0xFF)
 			mono_data.append((sample_16 >> 8) & 0xFF)
+	else:
+		push_error("Unsupported WAV format: ", wav.format)
+		return PackedByteArray()
+	
+	print("Mono conversion complete, size: ", mono_data.size())
+	
+	# Verify data has content
+	if mono_data.size() > 0:
+		var sample_check = mono_data[0] | (mono_data[1] << 8)
+		if sample_check > 32767:
+			sample_check -= 65536
+		print("First audio sample value: ", sample_check)
 	
 	# Resample if needed
 	if wav.mix_rate != 16000:
@@ -291,6 +319,7 @@ func _convert_audio_to_pcm(audio_stream: AudioStream) -> PackedByteArray:
 		status_label.text = "Resampling audio..."
 		mono_data = await _resample_audio(mono_data, wav.mix_rate, 16000)
 	
+	print("Final PCM data size: ", mono_data.size())
 	return mono_data
 
 func _resample_audio(audio_data: PackedByteArray, from_rate: int, to_rate: int) -> PackedByteArray:
@@ -350,14 +379,22 @@ func _recognize_speech(pcm_data: PackedByteArray):
 	status_label.text = "Recognizing speech..."
 	vosk.reset()
 	
+	print("Starting recognition with ", pcm_data.size(), " bytes of PCM data")
+	
 	var chunk_size = 4096
 	var chunks_sent = 0
+	var got_intermediate_result = false
 	
 	for i in range(0, pcm_data.size(), chunk_size):
 		var end = min(i + chunk_size, pcm_data.size())
 		var chunk = pcm_data.slice(i, end)
-		vosk.accept_waveform(chunk)
+		var intermediate = vosk.accept_waveform(chunk)
 		chunks_sent += 1
+		
+		# Check for intermediate results
+		if intermediate != "{}":
+			print("Got intermediate result: ", intermediate)
+			got_intermediate_result = true
 		
 		# Update progress
 		if chunks_sent % 10 == 0:
@@ -366,11 +403,18 @@ func _recognize_speech(pcm_data: PackedByteArray):
 			await Engine.get_main_loop().process_frame
 	
 	print("Sent ", chunks_sent, " chunks to Vosk")
+	print("Got intermediate results: ", got_intermediate_result)
 	
 	# Get final result with word confidence
 	var result_json = vosk.get_final_result()
 	print("Final result JSON: ", result_json)
 	var result = JSON.parse_string(result_json)
+	
+	if result:
+		print("Parsed result has text: ", result.has("text"))
+		if result.has("text"):
+			print("Text content: '", result["text"], "'")
+			print("Text length: ", result["text"].length())
 	
 	if result and result.has("text") and result["text"] != "":
 		_display_result(result)

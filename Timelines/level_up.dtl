@@ -1,0 +1,77 @@
+[background arg="res://Bg/spirit_realm.png" fade="1.5"]
+join "Diwata Laya" (Half_mirror) center
+"Diwata Laya": Conrad, I sense your growth. Your mind expands with each truth uncovered.
+[wait time="0.5"]
+[center][b][glow]★ DETECTIVE LEVEL UP ★[/glow][/b][/center]
+[wait time="1.0"]
+
+if var="conrad_level" op="eq" value="2":
+	set {retry_count} = "retry_count" value="1"
+	[center][b]New Ability\: Second Chance[/b][/center]
+	[center]You can now retry failed deductions once![/center]
+	"Diwata Laya": Even the sharpest mind stumbles. Learn from each misstep.
+end
+
+if var="conrad_level" op="eq" value="3":
+	set {can_redo_for_score} = "can_redo_for_score" value="true"
+	[center][b]New Ability\: Score Improvement[/b][/center]
+	[center]Retry completed minigames to perfect your score![/center]
+	"Diwata Laya": Excellence is a journey, not a destination.
+end
+
+if var="conrad_level" op="eq" value="4":
+	set {hint_count} = "hint_count" value="1"
+	[center][b]New Ability\: Deductive Hint[/b][/center]
+	[center]Receive 1 hint per minigame when you need guidance![/center]
+	"Diwata Laya": I shall guide you when the path grows dark.
+end
+
+if var="conrad_level" op="eq" value="5":
+	set {time_bonus} = "time_bonus" value="30"
+	[center][b]New Ability\: Extended Analysis[/b][/center]
+	[center]Gain +30 seconds on timed challenges![/center]
+	"Diwata Laya": Time flows differently for those who observe deeply.
+end
+
+if var="conrad_level" op="eq" value="6":
+	set {retry_count} = "retry_count" value="2"
+	[center][b]Ability Upgraded\: Double Attempt[/b][/center]
+	[center]You can now retry failed minigames TWICE![/center]
+	"Diwata Laya": Your resilience grows stronger.
+end
+
+if var="conrad_level" op="eq" value="7":
+	set {hint_count} = "hint_count" value="2"
+	[center][b]Ability Upgraded\: Enhanced Insight[/b][/center]
+	[center]Receive 2 hints per minigame![/center]
+	"Diwata Laya": My connection to you deepens. I can offer more guidance.
+end
+
+if var="conrad_level" op="eq" value="8":
+	set {time_bonus} = "time_bonus" value="60"
+	[center][b]Ability Upgraded\: Master's Focus[/b][/center]
+	[center]Gain +60 seconds on timed challenges![/center]
+	"Diwata Laya": Your concentration rivals the ancient scholars.
+end
+
+if var="conrad_level" op="eq" value="9":
+	set {can_skip_hard} = "can_skip_hard" value="true"
+	[center][b]New Ability\: Strategic Skip[/b][/center]
+	[center]Skip minigames with 70% score after 3 failed attempts![/center]
+	"Diwata Laya": Wisdom knows when to advance and when to move forward.
+end
+
+if var="conrad_level" op="eq" value="10":
+	set {retry_count} = "retry_count" value="999"
+	set {hint_count} = "hint_count" value="999"
+	[center][b][glow][wave]★★★ MAXIMUM LEVEL ACHIEVED ★★★[/wave][/glow][/b][/center]
+	[center][b]LEVEL 10 - PERFECT DETECTIVE[/b][/center]
+	"Diwata Laya": You now possess mastery over all challenges. No obstacle can stop you.
+end
+
+[wait time="1.0"]
+"Diwata Laya": Use these gifts wisely, Conrad. The Spider's web grows more complex.
+Conrad: Thank you, Laya. Every advantage helps.
+"Diwata Laya": Go forth with clarity of mind.
+leave "Diwata Laya"
+[background fade="1.5"]

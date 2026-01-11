@@ -1,0 +1,225 @@
+# ============================================
+# EXAMPLE 1: Romantic Confession
+# ============================================
+
+# Setup positions (do this once at start of scene)
+[signal arg="set_character_position:alice:400:200"]
+[signal arg="set_character_position:bob:850:200"]
+
+Alice: "Bob, there's something I need to tell you..."
+[signal arg="emotion:alice:nervous:2.0"]
+[wait time="1.5"]
+
+Bob: "What is it, Alice?"
+[signal arg="emotion:bob:question:1.5"]
+
+Alice: "I... I think I'm falling for you."
+[signal arg="emotion:alice:love:3.0"]
+[signal arg="tint:pink:0.2:1.5"]
+[signal arg="particles:hearts:3.0"]
+[wait time="1.0"]
+
+Bob: "Really? Because... I feel the same way!"
+[signal arg="emotion:bob:heart:3.0"]
+[signal arg="zoom:1.3:2.0"]
+
+Alice: "You do?!"
+[signal arg="emotion:alice:excited:2.0"]
+[signal arg="emotion:alice:sparkles:2.5"]
+
+Bob: "Of course! I've been wanting to tell you for so long!"
+[signal arg="emotion:bob:happy:2.5"]
+
+[signal arg="particles:sparkles:5.0"]
+[signal arg="tint_clear:2.0"]
+[signal arg="zoom_reset:1.5"]
+
+# ============================================
+# EXAMPLE 2: Comedy Scene
+# ============================================
+
+[signal arg="set_character_position:player:640:200"]
+[signal arg="set_character_position:friend:900:200"]
+
+Player: "I think I can jump across this gap, no problem!"
+[signal arg="emotion:player:cool:2.0"]
+
+Friend: "Are you sure about that?"
+[signal arg="emotion:friend:question:1.5"]
+
+Player: "Watch me!"
+[signal arg="emotion:player:fire:1.5"]
+[wait time="0.5"]
+
+[Player jumps and falls]
+[signal arg="shake:1.0:0.5"]
+
+Player: "Ow..."
+[signal arg="emotion:player:dizzy:3.0"]
+[signal arg="emotion:player:sweat:2.5"]
+
+Friend: "HAHAHA! I tried to warn you!"
+[signal arg="emotion:friend:laugh:3.0"]
+
+Player: "Not. Funny."
+[signal arg="emotion:player:angry:2.0"]
+
+# ============================================
+# EXAMPLE 3: Mystery Discovery
+# ============================================
+
+[signal arg="set_character_position:detective:640:200"]
+
+Detective: "Hmm, what do we have here?"
+[signal arg="emotion:detective:thinking:2.0"]
+[wait time="1.0"]
+
+Detective: "Wait... this doesn't make sense!"
+[signal arg="emotion:detective:question:2.0"]
+[wait time="1.5"]
+
+Detective: "Unless... OF COURSE! That's it!"
+[signal arg="emotion:detective:idea:3.0"]
+[signal arg="flash:yellow:0.3"]
+[signal arg="particles:sparkles:2.0"]
+
+Detective: "I know who the culprit is!"
+[signal arg="emotion:detective:excited:2.5"]
+
+# ============================================
+# EXAMPLE 4: Boss Battle
+# ============================================
+
+[signal arg="set_character_position:hero:400:200"]
+[signal arg="set_character_position:boss:900:200"]
+
+Boss: "You dare challenge me?!"
+[signal arg="emotion:boss:angry:2.0"]
+[signal arg="shake:0.5:0.5"]
+
+Hero: "I won't back down!"
+[signal arg="emotion:hero:fire:2.0"]
+
+[They clash]
+[signal arg="shake:2.0:1.0"]
+[signal arg="flash:red:0.3"]
+[signal arg="emotion:hero:exclamation:1.5"]
+[signal arg="emotion:boss:veins:1.5"]
+
+Hero: "Take this!"
+[signal arg="emotion:hero:fire:2.0"]
+[signal arg="particles:sparkles:2.0"]
+
+Boss: "Impossible!"
+[signal arg="emotion:boss:shocked:2.5"]
+[signal arg="shake:1.5:0.8"]
+
+[Victory!]
+[signal arg="emotion:hero:star:3.0"]
+[signal arg="particles:stars:3.0"]
+[signal arg="flash:yellow:0.4"]
+
+# ============================================
+# EXAMPLE 5: Horror Scene
+# ============================================
+
+[signal arg="set_character_position:player:640:200"]
+
+[signal arg="tint:red:0.3:2.0"]
+[signal arg="vignette:0.6:2.0"]
+
+Player: "What... what is that sound?"
+[signal arg="emotion:player:nervous:2.0"]
+[wait time="1.5"]
+
+[A shadow moves]
+[signal arg="shake:0.3:0.5"]
+
+Player: "Who's there?!"
+[signal arg="emotion:player:sweat:2.0"]
+[wait time="1.0"]
+
+[Something jumps out!]
+[signal arg="shake:2.0:0.5"]
+[signal arg="flash:red:0.2"]
+[signal arg="emotion:player:shocked:3.0"]
+
+Player: "AHHH!"
+[signal arg="emotion:player:skull:2.0"]
+
+# ============================================
+# EXAMPLE 6: Character Meeting
+# ============================================
+
+[signal arg="set_character_position:stranger:640:200"]
+
+A mysterious stranger approaches...
+[signal arg="emotion:stranger:question:2.0"]
+
+Stranger: "Hello there."
+
+- Greet them warmly
+	Player: "Hi! Nice to meet you!"
+	[signal arg="emotion:player:happy:2.0"]
+	Stranger: "What a pleasant person!"
+	[signal arg="emotion:stranger:heart:2.5"]
+	[jump="friends"]
+
+- Be suspicious
+	Player: "Who are you? What do you want?"
+	[signal arg="emotion:player:question:2.0"]
+	Stranger: "So hostile..."
+	[signal arg="emotion:stranger:sweat:2.0"]
+	[jump="tense"]
+
+label friends
+[signal arg="particles:sparkles:3.0"]
+You made a new friend!
+
+label tense
+The tension is palpable...
+[signal arg="tint:blue:0.2:1.0"]
+
+# ============================================
+# EXAMPLE 7: Training Montage
+# ============================================
+
+[signal arg="set_character_position:student:640:200"]
+
+Master: "Let's begin your training!"
+
+Student: "I'm ready!"
+[signal arg="emotion:student:fire:2.0"]
+
+[Training begins]
+[signal arg="shake:0.5:3.0"]
+[signal arg="particles:sparkles:3.0"]
+
+Student: "This is harder than I thought..."
+[signal arg="emotion:student:sweat:2.5"]
+[wait time="1.0"]
+
+Student: "I can't give up!"
+[signal arg="emotion:student:exclamation:2.0"]
+[wait time="1.0"]
+
+[After intense training]
+Student: "I did it!"
+[signal arg="emotion:student:star:3.0"]
+[signal arg="particles:stars:3.0"]
+[signal arg="flash:yellow:0.3"]
+
+Master: "Well done, my student."
+[signal arg="emotion:master:happy:2.5"]
+
+# ============================================
+# Tips for Using Emotions Effectively
+# ============================================
+
+# 1. Setup positions once per scene
+# 2. Time emotions with dialogue for natural feel
+# 3. Combine multiple emotion types for emphasis
+# 4. Mix emotions with screen effects for bigger impact
+# 5. Duration usually 2-3 seconds works best
+# 6. Don't overuse - save for important moments
+# 7. Test different emotions to find what fits your characters
