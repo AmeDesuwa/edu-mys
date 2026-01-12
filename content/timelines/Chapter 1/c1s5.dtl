@@ -21,6 +21,9 @@ join Conrad left
 Conrad: So if we find who this belongs to, they'd be desperate to get it back.
 "Diwata Laya": More than desperate. They would confess to anything to reclaim it.
 Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
+Conrad: Let me piece together what this evidence tells us...
+[signal arg="start_minigame evidence_analysis"]
+Conrad: Someone definitely sabotaged the AC deliberately. This bracelet is our key.
 Conrad: Then we have our leverage. Let's go talk to our suspects.
 leave --All--
 [background arg="res://Bg/hallway.png" fade="1.0"]
@@ -34,7 +37,7 @@ join "Diwata Laya" (Half_mirror) rightmost
 "Diwata Laya": (Whispering) He speaks the truth. His flow is calm.
 Conrad: Thanks for clearing that up, Ben. You can go.
 leave Ben
-join Mark (Mark_half) right
+join Mark (Mark_half) leftmost
 Mark: Okay, that leaves Greg. And 9\:00 PM is way more suspicious.
 Conrad: Let's find him. And I have something that might help us get the truth.
 leave --All--
@@ -58,6 +61,7 @@ Conrad: When I was examining the faculty room earlier, I found this near the AC 
 leave --All--
 [background arg="res://Pics/Charm.png" fade="0.0"]
 Conrad shows a photo on his phone - a small, worn charm bracelet with distinctive beads.
+[background arg="res://Bg/hallway.png" fade="1.0"]
 join Conrad left
 join Greg right
 join "Diwata Laya" rightmost
@@ -65,6 +69,9 @@ Conrad: It was on the floor, partially hidden under the desk. It must have falle
 Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
 Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
 "Diwata Laya": (Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
+Conrad: Let me analyze what we know about Greg's statements...
+[signal arg="start_minigame statement_analysis"]
+Conrad: The WiFi logs don't lie. Greg was inside that room.
 Conrad: I'm planning to show it around and ask if anyone recognizes it. Someone must be missing something this special.
 Greg: (Visibly shaken) I...
 Conrad: Unless... you know who it belongs to?
@@ -73,7 +80,6 @@ Conrad: Why not? If it's not yours—
 Greg: It's mine! Okay? It's mine!
 Greg: My grandmother gave it to me before she passed away. It's the only thing I have left from her.
 Greg: Please, I'll tell you everything. Just... just give it back to me. Please.
-[background arg="res://Bg/hallway.png" fade="1.0"]
 Mark whispers to Conrad
 Mark: How did you know?
 Conrad looks at Diwata Laya
@@ -109,3 +115,4 @@ That was thanks to Laya though.
 Conrad: That's when I knew it could be the key to getting a confession.
 Mark: So you knew before we even confronted him?
 Conrad: I knew it was important. I just didn't know it was Greg's. Haha
+[signal arg="check_level_up"]

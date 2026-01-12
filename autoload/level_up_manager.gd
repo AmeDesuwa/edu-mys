@@ -6,7 +6,7 @@
 
 extends Node
 
-var level_up_scene = preload("res://scenes/ui/level_up_scene.tscn")
+var level_up_scene = preload("res://scenes/ui/level_up_scene_flashy.tscn")
 var current_level_up_instance = null
 
 # Ability data for each level

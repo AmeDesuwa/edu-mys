@@ -29,19 +29,20 @@ MinigameManager="*res://autoload/minigame_manager.gd"
 directories/dch_directory={
 "Alice": "res://assets/backgrounds/Alice.dch",
 "Ben": "res://content/characters/Ben.dch",
+"Bg/Alice": "res://Bg/Alice.dch",
 "Conrad": "res://content/characters/Conrad.dch",
 "Diwata Laya": "res://content/characters/Diwata Laya.dch",
 "Greg": "res://content/characters/Greg.dch",
 "Janitor Fred": "res://content/characters/Janitor Fred.dch",
 "Mark": "res://content/characters/Mark.dch",
 "Principal": "res://content/characters/Principal.dch",
-"Sprites/character": "res://content/characters/character.dch",
 "character": "res://content/characters/character.dch",
 "example character": "res://content/characters/example character.dch"
 }
 directories/dtl_directory={
 "c1s1": "res://content/timelines/Chapter 1/c1s1.dtl",
 "c1s2": "res://content/timelines/Chapter 1/c1s2.dtl",
+"c1s2b": "res://content/timelines/Chapter 1/c1s2b.dtl",
 "c1s3": "res://content/timelines/Chapter 1/c1s3.dtl",
 "c1s4": "res://content/timelines/Chapter 1/c1s4.dtl",
 "c1s5": "res://content/timelines/Chapter 1/c1s5.dtl",
@@ -67,6 +68,7 @@ variables={
 "conrad_level": 1,
 "detective_rank": "",
 "hint_count": 0,
+"minigames_completed": 0,
 "retry_count": 0,
 "time_bonus": 0
 }

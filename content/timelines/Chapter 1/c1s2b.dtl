@@ -1,0 +1,10 @@
+[background arg="res://Bg/classroom.png" fade="1.0"]
+join Conrad (half) left
+Conrad: Before I go to the faculty room, let me think about what the janitor told me.
+Conrad: The leak happened yesterday, but was only found this morning...
+Conrad: Let me piece this together.
+[signal arg="start_minigame timeline_deduction"]
+Conrad: I see now. There's a gap in the timeline - something happened overnight that we don't know about.
+Conrad: Time to visit the faculty room.
+leave --All--
+jump c1s3/
