@@ -89,7 +89,7 @@ func _on_minigame_finished(success: bool):
 	# Auto-advance Dialogic to continue the story
 	await get_tree().create_timer(0.1).timeout
 	if Dialogic.current_timeline:
-		Dialogic.Inputs.auto_advance()
+		Dialogic.Inputs.auto_advance.autoadvance.emit()
 
 func is_minigame_active() -> bool:
 	return minigame_active
