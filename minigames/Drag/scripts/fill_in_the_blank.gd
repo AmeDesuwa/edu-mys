@@ -30,8 +30,8 @@ const PUZZLE_DATA = {
 
 var correct_drops = 0
 const TOTAL_DROPS = 2
-const TILE_SCRIPT = preload("res://Tile.gd")
-const DROP_SCRIPT = preload("res://DropZone.gd")
+const TILE_SCRIPT = preload("res://minigames/Drag/scripts/Tile.gd")
+const DROP_SCRIPT = preload("res://minigames/Drag/scripts/DropZone.gd")
 
 func _ready():
 	_initialize_puzzle()

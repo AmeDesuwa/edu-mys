@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyiavy28mbxm3"
-path="res://.godot/imported/Mark_full.png-773bfc227cf570a5e3a97f6b133b4b7a.ctex"
+path="res://.godot/imported/Mark_full.png-1020f1ecc985fed15ebddb9a4dcec787.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Mark_full.png"
-dest_files=["res://.godot/imported/Mark_full.png-773bfc227cf570a5e3a97f6b133b4b7a.ctex"]
+source_file="res://assets/sprites/Mark_full.png"
+dest_files=["res://.godot/imported/Mark_full.png-1020f1ecc985fed15ebddb9a4dcec787.ctex"]
 
 [params]
 

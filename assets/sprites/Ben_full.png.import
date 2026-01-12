@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqtvx68mxyq05"
-path="res://.godot/imported/Ben_full.png-82157af33c2de7cd8869386cad7bfffb.ctex"
+path="res://.godot/imported/Ben_full.png-808cd9d01a346e47458a1dec205291d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ben_full.png"
-dest_files=["res://.godot/imported/Ben_full.png-82157af33c2de7cd8869386cad7bfffb.ctex"]
+source_file="res://assets/sprites/Ben_full.png"
+dest_files=["res://.godot/imported/Ben_full.png-808cd9d01a346e47458a1dec205291d0.ctex"]
 
 [params]
 

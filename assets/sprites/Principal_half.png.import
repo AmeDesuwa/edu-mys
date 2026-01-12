@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqe2mny3aymur"
-path="res://.godot/imported/Principal_half.png-c74c9d5d71b286e3725026b29c5a1686.ctex"
+path="res://.godot/imported/Principal_half.png-ddab1770884ef06ba30ef7b9dfb30a4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Principal_half.png"
-dest_files=["res://.godot/imported/Principal_half.png-c74c9d5d71b286e3725026b29c5a1686.ctex"]
+source_file="res://assets/sprites/Principal_half.png"
+dest_files=["res://.godot/imported/Principal_half.png-ddab1770884ef06ba30ef7b9dfb30a4c.ctex"]
 
 [params]
 

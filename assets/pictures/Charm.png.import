@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://corndkkydk44q"
-path="res://.godot/imported/Charm.png-c6230498dc619fa4a3fd50d8bfd1b08f.ctex"
+path="res://.godot/imported/Charm.png-ee23b8a6ab0b3c35021b2f06789e9ddb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pics/Charm.png"
-dest_files=["res://.godot/imported/Charm.png-c6230498dc619fa4a3fd50d8bfd1b08f.ctex"]
+source_file="res://assets/pictures/Charm.png"
+dest_files=["res://.godot/imported/Charm.png-ee23b8a6ab0b3c35021b2f06789e9ddb.ctex"]
 
 [params]
 

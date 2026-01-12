@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b42i01tmlkltq"
-path="res://.godot/imported/obi-wan-hello-there.mp3-653ce7f2fe8db52bf1a1ae3fd3f4a75f.mp3str"
+path="res://.godot/imported/obi-wan-hello-there.mp3-deb1b45a4448853078337faa1a51563d.mp3str"
 
 [deps]
 
-source_file="res://models/obi-wan-hello-there.mp3"
-dest_files=["res://.godot/imported/obi-wan-hello-there.mp3-653ce7f2fe8db52bf1a1ae3fd3f4a75f.mp3str"]
+source_file="res://assets/audio/test_samples/obi-wan-hello-there.mp3"
+dest_files=["res://.godot/imported/obi-wan-hello-there.mp3-deb1b45a4448853078337faa1a51563d.mp3str"]
 
 [params]
 

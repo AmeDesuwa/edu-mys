@@ -110,14 +110,14 @@ func _setup_ui():
 	record_button.pressed.connect(_on_record_button_pressed)
 
 func set_target_word(word: String):
-    """Set the word the player should pronounce"""
+	"""Set the word the player should pronounce"""
 	target_word = word.to_lower().strip_edges()
 	target_label.text = "Say: " + word
 	result_label.text = ""
 	partial_label.text = ""
 
 func start_recording():
-    """Start recording audio for recognition"""
+	"""Start recording audio for recognition"""
 	if is_recording:
 		return
 	
@@ -137,7 +137,7 @@ func start_recording():
 	recording_started.emit()
 
 func stop_recording():
-    """Stop recording and process the audio"""
+	"""Stop recording and process the audio"""
 	if not is_recording:
 		return
 	
@@ -163,7 +163,7 @@ func stop_recording():
 	recording_stopped.emit()
 
 func _process_result(recognized_text: String):
-    """Process the recognized text and check against target"""
+	"""Process the recognized text and check against target"""
 	recognized_text = recognized_text.to_lower().strip_edges()
 	
 	if target_word.is_empty():
@@ -193,7 +193,7 @@ func _process_result(recognized_text: String):
 	word_recognized.emit(recognized_text, similarity)
 
 func calculate_similarity(text1: String, text2: String) -> float:
-    """Calculate Levenshtein distance-based similarity"""
+	"""Calculate Levenshtein distance-based similarity"""
 	if text1 == text2:
 		return 1.0
 	

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkgygq58sc682"
-path="res://.godot/imported/Wifi_Faculty.png-3f055e92970b52117d5003b2f92842ec.ctex"
+path="res://.godot/imported/Wifi_Faculty.png-b82720655d62a0627bdc4593770397ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pics/Wifi_Faculty.png"
-dest_files=["res://.godot/imported/Wifi_Faculty.png-3f055e92970b52117d5003b2f92842ec.ctex"]
+source_file="res://assets/pictures/Wifi_Faculty.png"
+dest_files=["res://.godot/imported/Wifi_Faculty.png-b82720655d62a0627bdc4593770397ce.ctex"]
 
 [params]
 

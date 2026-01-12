@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4c4putlhj6xw"
-path="res://.godot/imported/Laya_chibi.png-3b5d45ce7c56e6e7b272470256a8a2dd.ctex"
+path="res://.godot/imported/Laya_chibi.png-4c063279339113e929e5dcddc43d570b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Laya_chibi.png"
-dest_files=["res://.godot/imported/Laya_chibi.png-3b5d45ce7c56e6e7b272470256a8a2dd.ctex"]
+source_file="res://assets/sprites/Laya_chibi.png"
+dest_files=["res://.godot/imported/Laya_chibi.png-4c063279339113e929e5dcddc43d570b.ctex"]
 
 [params]
 

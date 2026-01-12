@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck324plyebda3"
-path="res://.godot/imported/Janitor_half.png-ab45d0f832ef6164267790c387e94370.ctex"
+path="res://.godot/imported/Janitor_half.png-93cda85d1154b1185e5ec7ed077ad438.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Janitor_half.png"
-dest_files=["res://.godot/imported/Janitor_half.png-ab45d0f832ef6164267790c387e94370.ctex"]
+source_file="res://assets/sprites/Janitor_half.png"
+dest_files=["res://.godot/imported/Janitor_half.png-93cda85d1154b1185e5ec7ed077ad438.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctoasque6xrht"
-path="res://.godot/imported/Greg_half.svg-1a5304574040cb1fe67e77f6cbb347a8.ctex"
+path="res://.godot/imported/Greg_half.svg-1716ba13f3f35ee0309ad3c726c9d2a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Greg_half.svg"
-dest_files=["res://.godot/imported/Greg_half.svg-1a5304574040cb1fe67e77f6cbb347a8.ctex"]
+source_file="res://assets/sprites/Greg_half.svg"
+dest_files=["res://.godot/imported/Greg_half.svg-1716ba13f3f35ee0309ad3c726c9d2a0.ctex"]
 
 [params]
 

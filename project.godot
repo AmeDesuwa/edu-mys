@@ -52,12 +52,9 @@ directories/dtl_directory={
 "level_test": "res://content/timelines/level_test.dtl",
 "level_up": "res://content/timelines/level_up.dtl"
 }
-layout/style_directory={
-"": "res://New_File.tres",
-"New_File": "res://New_File.tres"
-}
-layout/style_list=["res://New_File.tres"]
-layout/default_style="res://New_File.tres"
+layout/style_directory={}
+layout/style_list=[]
+layout/default_style=""
 variables={
 "can_redo_for_score": false,
 "can_skip_hard": false,
