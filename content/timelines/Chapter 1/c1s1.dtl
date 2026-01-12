@@ -22,18 +22,12 @@ Mark: Good idea, but it would take a lot of time to track and question all of th
 label fork 1
 Conrad: Hmmmm. Who among the school employees would be most likely to have useful information?
 [signal arg="minigame_witness_choice"]
-[wait time="1.0"]
-- Janitor | [wit="Janitor"]
-	Conrad: Oh, a Janitor!
-	Mark: Good thinking bro. Since their job description doesn't really include security, they don't need to make a report.
-	Conrad: Let's ask the Janitor after classes. Last time I checked there are 3 janitors, and they have their own areas. We just need to find the one assigned to the faculty room.
-	leave Conrad
-	leave Mark
-	jump c1s2/
-- Security Guard | [wit="Security Guard"]
-	Conrad: Oh, Security Guard!
-	Mark: A security guard would be the common sense choice, but since it's their job they would've already written a report. We can read that later if we ask the principal.
-	jump fork 1
+Conrad: Oh, a Janitor!
+Mark: Good thinking bro. Since their job description doesn't really include security, they don't need to make a report.
+Conrad: Let's ask the Janitor after classes. Last time I checked there are 3 janitors, and they have their own areas. We just need to find the one assigned to the faculty room.
+leave Conrad
+leave Mark
+jump c1s2/
 - Principal
 	Conrad: Maybe we ask the Principal?
 	Conrad: I'm sure if the principal had additional information that would be useful, he would've already announced it.

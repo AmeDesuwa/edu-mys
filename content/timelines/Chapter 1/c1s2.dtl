@@ -28,16 +28,7 @@ Janitor leaves the room after checking how dirty it is, but does not clean the r
 Conrad: Hmmm, nothing is really suspicious from what I have gathered so far.
 Conrad: What's the most logical next step based on what the Janitor said?
 [signal arg="minigame_timeline_deduction"]
-[wait time="1.0"]
-- The repair guy is the main suspect.
-	set {_variable name} = "chapter1_score" op="sub" value="5"
-	Conrad: No, that doesn't feel right. The leak was discovered this morning, but happened yesterday. The repair guy was only called today. He's not a suspect.
-- The English teacher is suspicious.
-	set {_variable name} = "chapter1_score" op="sub" value="5"
-	Conrad: The English teacher found the leak, but the Janitor said it started yesterday. I shouldn't jump to conclusions about who found it. The timeline is more important.
-- The timeline of the leak is the key.
-	set {_variable name} = "chapter1_score" op="add" value="10"
-	Conrad: That's it. The leak happened yesterday, but was only found this morning. What happened in between? That feels like the real mystery.
+Conrad: That's it. The leak happened yesterday, but was only found this morning. What happened in between? That feels like the real mystery.
 Conrad: But I am getting this particular feeling from the current circumstances. Considering the source of it is a supernatural being, I should keep digging for more information. I'll ask Diwata Laya later when she wakes up.
 leave --All-- [animation="Slide To Right"]
 Conrad goes out of the room and heads for the faculty room.

@@ -52,15 +52,6 @@ Mark: The Faculty WiFi signal doesn't reach the hallway. Your phone would only c
 label Choice_3
 Greg: You still can't prove I did anything wrong!
 [signal arg="minigame_evidence_choice"]
-[wait time="1.0"]
-- Threaten Ben to report him to the Principal
-	He doesn't care.
-	jump Choice_3
-- Show the picture of the charm
-	jump Correct_3
-- Tell Ben that you will tell Alice what he did
-	This will do nothing. He isn't close with Alice.
-	jump Choice_3
 label Correct_3
 Conrad: You're right. The WiFi log alone isn't definitive proof. But I found something else.
 Conrad: When I was examining the faculty room earlier, I found this near the AC unit.
