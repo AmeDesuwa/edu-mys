@@ -35,7 +35,7 @@ const TILE_SCRIPT = preload("res://minigames/Drag/scripts/Tile.gd")
 const DROP_SCRIPT = preload("res://minigames/Drag/scripts/DropZone.gd")
 
 func set_custom_data(data: Dictionary):
-	"""Set custom puzzle data before _ready() is called"""
+	# Set custom puzzle data before _ready() is called
 	if data.has("sentence_parts"):
 		puzzle_data.sentence_parts = data.sentence_parts
 	if data.has("answers"):

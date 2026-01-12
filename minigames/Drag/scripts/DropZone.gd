@@ -56,7 +56,7 @@ func _reset_success_color():
 func find_tile_by_word(word):
 	var grid = minigame_scene.choices_grid
 	for tile in grid.get_children():
-		if tile.get_script() == load("res://Tile.gd"): 
+		if tile.get_script() == load("res://minigames/Drag/scripts/Tile.gd"):
 			if tile.word_data == word:
 				return tile
 	return null

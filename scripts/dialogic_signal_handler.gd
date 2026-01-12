@@ -26,7 +26,7 @@ func _on_dialogic_signal(argument: String):
 		_handle_minigame_signal(argument)
 
 func _handle_minigame_signal(argument: String):
-	"""Handle different minigame triggers"""
+	# Handle different minigame triggers
 	match argument:
 		"minigame_witness_choice":
 			# Chapter 1, Scene 1: Choosing the right witness
@@ -80,7 +80,7 @@ func _handle_minigame_signal(argument: String):
 			push_warning("Unknown minigame signal: ", argument)
 
 func _on_minigame_completed(success: bool, score: int):
-	"""Handle minigame completion"""
+	# Handle minigame completion
 	print("DialogicSignalHandler: Minigame completed - Success: ", success, ", Score: ", score)
 
 	# Award score to chapter score if successful

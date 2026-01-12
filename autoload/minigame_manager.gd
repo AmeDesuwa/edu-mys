@@ -16,22 +16,18 @@ func _ready():
 	print("MinigameManager initialized")
 
 func start_fill_in_blank(question_data: Dictionary = {}):
-	"""
-	Start the Fill-in-the-Blank minigame
-	question_data format:
-	{
-		"sentence_parts": ["Part 1 ", " Part 2 ", " Part 3"],
-		"answers": ["correct1", "correct2"],
-		"choices": ["word1", "word2", "correct1", "correct2", ...]
-	}
-	"""
+	# Start the Fill-in-the-Blank minigame
+	# question_data format:
+	# {
+	#     "sentence_parts": ["Part 1 ", " Part 2 ", " Part 3"],
+	#     "answers": ["correct1", "correct2"],
+	#     "choices": ["word1", "word2", "correct1", "correct2", ...]
+	# }
 	_start_minigame(FILL_IN_BLANK_SCENE, question_data)
 
 func start_pacman(questions: Array = []):
-	"""
-	Start the Pacman quiz minigame
-	questions format: Array of question dictionaries
-	"""
+	# Start the Pacman quiz minigame
+	# questions format: Array of question dictionaries
 	_start_minigame(PACMAN_SCENE, {"questions": questions})
 
 func _start_minigame(scene_path: String, data: Dictionary = {}):
@@ -93,7 +89,7 @@ func _on_minigame_finished(success: bool):
 	# Auto-advance Dialogic to continue the story
 	await get_tree().create_timer(0.1).timeout
 	if Dialogic.current_timeline:
-		Dialogic.Inputs.auto_advance.emit()
+		Dialogic.Inputs.auto_advance()
 
 func is_minigame_active() -> bool:
 	return minigame_active
