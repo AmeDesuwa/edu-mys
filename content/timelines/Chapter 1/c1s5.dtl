@@ -51,6 +51,8 @@ Greg: That doesn't mean anything! Maybe my phone just auto-connected while I was
 Mark: The Faculty WiFi signal doesn't reach the hallway. Your phone would only connect if you were right outside the door... or inside.
 label Choice_3
 Greg: You still can't prove I did anything wrong!
+[signal arg="minigame_evidence_choice"]
+[wait time="1.0"]
 - Threaten Ben to report him to the Principal
 	He doesn't care.
 	jump Choice_3

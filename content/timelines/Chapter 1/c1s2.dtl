@@ -27,6 +27,8 @@ leave "Janitor Fred" [animation="Slide To Right"]
 Janitor leaves the room after checking how dirty it is, but does not clean the room yet.
 Conrad: Hmmm, nothing is really suspicious from what I have gathered so far.
 Conrad: What's the most logical next step based on what the Janitor said?
+[signal arg="minigame_timeline_deduction"]
+[wait time="1.0"]
 - The repair guy is the main suspect.
 	set {_variable name} = "chapter1_score" op="sub" value="5"
 	Conrad: No, that doesn't feel right. The leak was discovered this morning, but happened yesterday. The repair guy was only called today. He's not a suspect.
