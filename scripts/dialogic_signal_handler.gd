@@ -1,4 +1,9 @@
-# dialogic_signal_handler.gd
+# ============================================
+# FILE 3: dialogic_signal_handler.gd
+# Save as: res://scripts/dialogic_signal_handler.gd
+# Attach this to your main game scene or make it an autoload
+# ============================================
+
 extends Node
 
 func _ready():

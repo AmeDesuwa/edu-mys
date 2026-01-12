@@ -1,184 +1,79 @@
-# level_up_scene.gd
+# ============================================
+# FILE 2: level_up_scene.gd
 # Save as: res://scenes/ui/level_up_scene.gd
+# Attach this to the root CanvasLayer of level_up_scene.tscn
+# ============================================
 
 extends CanvasLayer
 
 signal level_up_finished
 
-# Node references
-@onready var animated_bg = $AnimatedBackground
-@onready var level_container = $CenterContainer/LevelContainer
-@onready var star_burst = $CenterContainer/LevelContainer/StarBurst
-@onready var level_badge = $CenterContainer/LevelContainer/LevelBadge
-@onready var level_number = $CenterContainer/LevelContainer/LevelBadge/LevelNumber
-@onready var ability_panel = $CenterContainer/LevelContainer/AbilityPanel
-@onready var ability_icon = $CenterContainer/LevelContainer/AbilityPanel/VBoxContainer/AbilityIcon
-@onready var ability_title = $CenterContainer/LevelContainer/AbilityPanel/VBoxContainer/AbilityTitle
-@onready var ability_desc = $CenterContainer/LevelContainer/AbilityPanel/VBoxContainer/AbilityDesc
-@onready var new_ability_label = $CenterContainer/LevelContainer/AbilityPanel/VBoxContainer/NewAbilityLabel
-@onready var tap_to_continue = $CenterContainer/LevelContainer/TapToContinue
-@onready var level_up_sound = $LevelUpSound
-@onready var max_level_sound = $MaxLevelSound
+# Node references (adjust paths based on your scene structure)
+@onready var background = $Background
+@onready var container = $CenterContainer/VBoxContainer
+@onready var star_label = $CenterContainer/VBoxContainer/StarLabel
+@onready var level_label = $CenterContainer/VBoxContainer/LevelLabel
+@onready var ability_name_label = $CenterContainer/VBoxContainer/AbilityName
+@onready var ability_desc_label = $CenterContainer/VBoxContainer/AbilityDesc
+@onready var continue_label = $CenterContainer/VBoxContainer/ContinueLabel
+@onready var animation_player = $AnimationPlayer
 
 var can_close = false
-var is_max_level = false
 
 func _ready():
-	hide()
+	# Don't use hide() on CanvasLayer, control visibility through children
+	if background:
+		background.modulate.a = 0
+	if container:
+		container.modulate.a = 0
+	# Make sure input isn't processed until ready
 	set_process_input(false)
-	self.modulate = Color(1, 1, 1, 0)
 
 func show_level_up(old_level: int, new_level: int, ability: Dictionary):
-	is_max_level = (new_level == 10)
-	
-	# Set up content
-	level_number.text = str(new_level)
+	# Set text content
+	level_label.text = "Level %d → %d" % [old_level, new_level]
 	
 	if ability.is_empty():
-		ability_title.text = "LEVEL UP!"
-		ability_desc.text = "You've grown stronger"
-		ability_icon.text = "⭐"
+		ability_name_label.text = "Level Up!"
+		ability_desc_label.text = "You've grown stronger!"
 	else:
-		ability_icon.text = ability.get("icon", "✨")
-		ability_title.text = ability.get("name", "New Ability").to_upper()
-		ability_desc.text = ability.get("desc", "")
-		
-		# Set ability color theme
-		var ability_color = ability.get("color", Color.WHITE)
-		ability_panel.self_modulate = ability_color
+		var icon = ability.get("icon", "")
+		ability_name_label.text = "%s %s" % [icon, ability.get("name", "New Ability")]
+		ability_desc_label.text = ability.get("desc", "")
 	
-	# Special max level styling
-	if is_max_level:
-		star_burst.text = "★★★ MAXIMUM LEVEL ACHIEVED ★★★"
-		level_badge.modulate = Color.GOLD
-		new_ability_label.text = "🏆 MASTERY UNLOCKED 🏆"
-		if max_level_sound and max_level_sound.stream:
-			max_level_sound.play()
-		start_max_level_animation()
+	# Special styling for max level
+	if new_level == 10:
+		star_label.text = "★★★ MAXIMUM LEVEL ★★★"
+		ability_name_label.add_theme_color_override("font_color", Color.GOLD)
 	else:
-		star_burst.text = "★ LEVEL UP ★"
-		new_ability_label.text = "✨ NEW ABILITY UNLOCKED ✨"
-		if level_up_sound and level_up_sound.stream:
-			level_up_sound.play()
-		start_normal_animation()
+		star_label.text = "★ LEVEL UP ★"
 	
-	show()
-
-func start_normal_animation():
-	# Fade in entire scene
-	var fade_tween = create_tween()
-	fade_tween.tween_property(self, "modulate:a", 1.0, 0.3)
+	# Fade in animation
+	if background and container:
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(background, "modulate:a", 1.0, 0.3)
+		tween.tween_property(container, "modulate:a", 1.0, 0.5).set_ease(Tween.EASE_OUT)
+		await tween.finished
 	
-	# Animate background rotation
-	animate_background()
+	# Play animation if available
+	if animation_player and animation_player.has_animation("level_up"):
+		animation_player.play("level_up")
 	
-	# Star burst scale bounce
-	star_burst.scale = Vector2.ZERO
-	var star_tween = create_tween()
-	star_tween.set_ease(Tween.EASE_OUT)
-	star_tween.set_trans(Tween.TRANS_BACK)
-	star_tween.tween_property(star_burst, "scale", Vector2.ONE, 0.6)
-	
-	await get_tree().create_timer(0.3).timeout
-	
-	# Level badge pop in
-	level_badge.scale = Vector2.ZERO
-	level_badge.rotation = -PI
-	var badge_tween = create_tween().set_parallel()
-	badge_tween.set_ease(Tween.EASE_OUT)
-	badge_tween.set_trans(Tween.TRANS_BACK)
-	badge_tween.tween_property(level_badge, "scale", Vector2.ONE * 1.2, 0.5)
-	badge_tween.tween_property(level_badge, "rotation", 0.0, 0.5)
-	
-	await badge_tween.finished
-	
-	# Badge settle to normal size
-	var settle_tween = create_tween()
-	settle_tween.tween_property(level_badge, "scale", Vector2.ONE, 0.2)
-	
-	await get_tree().create_timer(0.2).timeout
-	
-	# Ability panel slide up
-	ability_panel.position.y = 200
-	ability_panel.modulate = Color(1, 1, 1, 0)
-	var panel_tween = create_tween().set_parallel()
-	panel_tween.set_ease(Tween.EASE_OUT)
-	panel_tween.set_trans(Tween.TRANS_CUBIC)
-	panel_tween.tween_property(ability_panel, "position:y", 0.0, 0.5)
-	panel_tween.tween_property(ability_panel, "modulate:a", 1.0, 0.5)
-	
-	await panel_tween.finished
-	
-	# Tap to continue blink
-	start_tap_blink()
-	
-	# Enable input
+	# Wait a moment before allowing close
+	await get_tree().create_timer(0.5).timeout
 	can_close = true
 	set_process_input(true)
+	
+	# Make continue label blink
+	if continue_label:
+		blink_continue_label()
 
-func start_max_level_animation():
-	# Even more dramatic for max level
-	var fade_tween = create_tween()
-	fade_tween.tween_property(self, "modulate:a", 1.0, 0.5)
-	
-	animate_background(true)
-	
-	# Star burst with elastic effect
-	star_burst.scale = Vector2.ZERO
-	var star_tween = create_tween()
-	star_tween.set_ease(Tween.EASE_OUT)
-	star_tween.set_trans(Tween.TRANS_ELASTIC)
-	star_tween.tween_property(star_burst, "scale", Vector2.ONE * 1.2, 1.0)
-	
-	await get_tree().create_timer(0.4).timeout
-	
-	# Level badge dramatic entrance
-	level_badge.scale = Vector2.ZERO
-	level_badge.rotation = PI * 2
-	var badge_tween = create_tween().set_parallel()
-	badge_tween.set_ease(Tween.EASE_OUT)
-	badge_tween.set_trans(Tween.TRANS_ELASTIC)
-	badge_tween.tween_property(level_badge, "scale", Vector2.ONE * 1.3, 0.8)
-	badge_tween.tween_property(level_badge, "rotation", 0.0, 0.8)
-	
-	# Add continuous rotation to badge
-	var rotate_tween = create_tween()
-	rotate_tween.set_loops()
-	rotate_tween.tween_property(level_badge, "rotation", PI * 2, 3.0)
-	
-	await badge_tween.finished
-	
-	await get_tree().create_timer(0.3).timeout
-	
-	# Ability panel explosive entrance
-	ability_panel.position.y = 300
-	ability_panel.scale = Vector2(0.5, 0.5)
-	ability_panel.modulate = Color(1, 1, 1, 0)
-	var panel_tween = create_tween().set_parallel()
-	panel_tween.set_ease(Tween.EASE_OUT)
-	panel_tween.set_trans(Tween.TRANS_BACK)
-	panel_tween.tween_property(ability_panel, "position:y", 0.0, 0.6)
-	panel_tween.tween_property(ability_panel, "scale", Vector2.ONE, 0.6)
-	panel_tween.tween_property(ability_panel, "modulate:a", 1.0, 0.6)
-	
-	await panel_tween.finished
-	
-	start_tap_blink()
-	can_close = true
-	set_process_input(true)
-
-func animate_background(intense: bool = false):
-	# Animated gradient shift via rotation
-	var duration = 3.0 if intense else 5.0
+func blink_continue_label():
 	var tween = create_tween()
 	tween.set_loops()
-	tween.tween_property(animated_bg, "rotation", PI * 2, duration)
-
-func start_tap_blink():
-	var tween = create_tween()
-	tween.set_loops()
-	tween.tween_property(tap_to_continue, "modulate:a", 0.3, 0.8)
-	tween.tween_property(tap_to_continue, "modulate:a", 1.0, 0.8)
+	tween.tween_property(continue_label, "modulate:a", 0.3, 0.8)
+	tween.tween_property(continue_label, "modulate:a", 1.0, 0.8)
 
 func _input(event):
 	if can_close and event.is_pressed():
@@ -189,10 +84,12 @@ func close_level_up():
 	can_close = false
 	set_process_input(false)
 	
-	# Fade out
-	var tween = create_tween().set_parallel()
-	tween.tween_property(self, "modulate:a", 0.0, 0.4)
-	tween.tween_property(level_container, "scale", Vector2(1.2, 1.2), 0.4)
+	# Fade out animation - fade the children, not the CanvasLayer
+	if background and container:
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(background, "modulate:a", 0.0, 0.3)
+		tween.tween_property(container, "modulate:a", 0.0, 0.3)
+		await tween.finished
 	
-	await tween.finished
 	level_up_finished.emit()
