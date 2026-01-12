@@ -18,39 +18,39 @@ config/icon="res://icon.svg"
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-PlayerStats="*res://PlayerStats.gd"
-DialogicEffectsManager="*res://Effects/DialogicEffectsManager.gd"
+PlayerStats="*res://src/core/PlayerStats.gd"
+DialogicEffectsManager="*res://scenes/effects/DialogicEffectsManager.gd"
 LevelUpManager="*res://autoload/level_up_manager.gd"
 DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"Alice": "res://Bg/Alice.dch",
-"Ben": "res://Characters/Ben.dch",
-"Conrad": "res://Characters/Conrad.dch",
-"Diwata Laya": "res://Characters/Diwata Laya.dch",
-"Greg": "res://Characters/Greg.dch",
-"Janitor Fred": "res://Characters/Janitor Fred.dch",
-"Mark": "res://Characters/Mark.dch",
-"Principal": "res://Characters/Principal.dch",
-"Sprites/character": "res://Characters/character.dch",
-"character": "res://Characters/character.dch",
-"example character": "res://Characters/example character.dch"
+"Alice": "res://assets/backgrounds/Alice.dch",
+"Ben": "res://content/characters/Ben.dch",
+"Conrad": "res://content/characters/Conrad.dch",
+"Diwata Laya": "res://content/characters/Diwata Laya.dch",
+"Greg": "res://content/characters/Greg.dch",
+"Janitor Fred": "res://content/characters/Janitor Fred.dch",
+"Mark": "res://content/characters/Mark.dch",
+"Principal": "res://content/characters/Principal.dch",
+"Sprites/character": "res://content/characters/character.dch",
+"character": "res://content/characters/character.dch",
+"example character": "res://content/characters/example character.dch"
 }
 directories/dtl_directory={
-"c1s1": "res://Timelines/Chapter 1/c1s1.dtl",
-"c1s2": "res://Timelines/Chapter 1/c1s2.dtl",
-"c1s3": "res://Timelines/Chapter 1/c1s3.dtl",
-"c1s4": "res://Timelines/Chapter 1/c1s4.dtl",
-"c1s5": "res://Timelines/Chapter 1/c1s5.dtl",
-"c2s1": "res://Timelines/Chapter 2/c2s1.dtl",
-"c2s2": "res://Timelines/Chapter 2/c2s2.dtl",
-"c2s3": "res://Timelines/Chapter 2/c2s3.dtl",
-"c2s4": "res://Timelines/Chapter 2/c2s4.dtl",
-"d": "res://Timelines/d.dtl",
-"level_test": "res://Timelines/level_test.dtl",
-"level_up": "res://Timelines/level_up.dtl"
+"c1s1": "res://content/timelines/Chapter 1/c1s1.dtl",
+"c1s2": "res://content/timelines/Chapter 1/c1s2.dtl",
+"c1s3": "res://content/timelines/Chapter 1/c1s3.dtl",
+"c1s4": "res://content/timelines/Chapter 1/c1s4.dtl",
+"c1s5": "res://content/timelines/Chapter 1/c1s5.dtl",
+"c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
+"c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
+"c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
+"c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
+"d": "res://content/timelines/d.dtl",
+"level_test": "res://content/timelines/level_test.dtl",
+"level_up": "res://content/timelines/level_up.dtl"
 }
 layout/style_directory={
 "": "res://New_File.tres",
