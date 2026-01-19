@@ -4,6 +4,8 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func _on_dialogic_signal(argument: String):
+	print("DEBUG: Signal received: ", argument)
+
 	# Handle level up signal
 	if argument == "show_level_up":
 		_handle_level_up_signal()
@@ -12,6 +14,7 @@ func _on_dialogic_signal(argument: String):
 	# Handle minigame signals: "start_minigame <puzzle_id>"
 	if argument.begins_with("start_minigame "):
 		var puzzle_id = argument.trim_prefix("start_minigame ").strip_edges()
+		print("DEBUG: Starting minigame: ", puzzle_id)
 		_handle_minigame_signal(puzzle_id)
 		return
 

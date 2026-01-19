@@ -21,9 +21,9 @@ join Conrad left
 Conrad: So if we find who this belongs to, they'd be desperate to get it back.
 "Diwata Laya": More than desperate. They would confess to anything to reclaim it.
 Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
-Conrad: Let me piece together what this evidence tells us...
+Conrad: Before confronting anyone, let me sharpen my analytical thinking...
 [signal arg="start_minigame evidence_analysis"]
-Conrad: Someone definitely sabotaged the AC deliberately. This bracelet is our key.
+Conrad: Good. Now I'm ready. This bracelet is our key to solving this case.
 Conrad: Then we have our leverage. Let's go talk to our suspects.
 leave --All--
 [background arg="res://Bg/hallway.png" fade="1.0"]
@@ -69,9 +69,9 @@ Conrad: It was on the floor, partially hidden under the desk. It must have falle
 Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
 Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
 "Diwata Laya": (Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
-Conrad: Let me analyze what we know about Greg's statements...
+Conrad: I need to think clearly before pressing further...
 [signal arg="start_minigame statement_analysis"]
-Conrad: The WiFi logs don't lie. Greg was inside that room.
+Conrad: The evidence is clear. It's time to get the truth.
 Conrad: I'm planning to show it around and ask if anyone recognizes it. Someone must be missing something this special.
 Greg: (Visibly shaken) I...
 Conrad: Unless... you know who it belongs to?
@@ -110,8 +110,8 @@ leave Principal
 leave Greg
 Conrad: (Sighs) Well, that's case closed.
 Mark: Dude, that was intense. How did you know the bracelet was so important to him?
-Conrad: When I first found it in the faculty room, i just felt that it had to be important
-That was thanks to Laya though.
+Conrad: When I first found it in the faculty room, I just felt that it had to be important.
+Conrad: (That was thanks to Laya though.)
 Conrad: That's when I knew it could be the key to getting a confession.
 Mark: So you knew before we even confronted him?
 Conrad: I knew it was important. I just didn't know it was Greg's. Haha

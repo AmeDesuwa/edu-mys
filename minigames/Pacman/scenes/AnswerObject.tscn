@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://drseb2moy4x55"]
+[gd_scene load_steps=5 format=3 uid="uid://drseb2moy4x55"]
 
 [ext_resource type="Script" uid="uid://c76tkg88ydlih" path="res://minigames/Pacman/scripts/AnswerObject.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
-size = Vector2(50, 50)
+size = Vector2(80, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
-size = Vector2(50, 50)
+size = Vector2(80, 40)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.95, 0.85, 0.2, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.7, 0.1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 0.9, 0.3, 0.4)
+shadow_size = 8
 
 [node name="AnswerObject" type="CharacterBody2D"]
 script = ExtResource("1")
@@ -19,20 +33,17 @@ shape = SubResource("RectangleShape2D_1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_2")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
-color = Color(0.9, 0.8, 0.2, 1)
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 16
 text = "Answer"
 horizontal_alignment = 1
 vertical_alignment = 1

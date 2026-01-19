@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://dplatformer_enemy"]
+
+[ext_resource type="Script" path="res://minigames/Platformer/scripts/Enemy.gd" id="1_enemy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy"]
+size = Vector2(28, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(24, 20)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_enemy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_enemy")
+
+[node name="Visual" type="Node2D" parent="."]
+position = Vector2(0, -12)
+
+[node name="Body" type="Polygon2D" parent="Visual"]
+color = Color(0.7, 0.25, 0.25, 1)
+polygon = PackedVector2Array(-14, -8, -12, -12, 12, -12, 14, -8, 14, 8, 10, 12, -10, 12, -14, 8)
+
+[node name="EyeLeft" type="Polygon2D" parent="Visual"]
+position = Vector2(-5, -4)
+color = Color(1, 1, 1, 1)
+polygon = PackedVector2Array(-4, -4, -4, 2, 2, 2, 2, -4)
+
+[node name="EyeRight" type="Polygon2D" parent="Visual"]
+position = Vector2(5, -4)
+color = Color(1, 1, 1, 1)
+polygon = PackedVector2Array(-2, -4, -2, 2, 4, 2, 4, -4)
+
+[node name="PupilLeft" type="Polygon2D" parent="Visual"]
+position = Vector2(-4, -2)
+color = Color(0.1, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-2, -2, -2, 2, 2, 2, 2, -2)
+
+[node name="PupilRight" type="Polygon2D" parent="Visual"]
+position = Vector2(6, -2)
+color = Color(0.1, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-2, -2, -2, 2, 2, 2, 2, -2)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

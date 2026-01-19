@@ -1,0 +1,161 @@
+[gd_scene load_steps=4 format=3 uid="uid://dplatformer_main"]
+
+[ext_resource type="Script" path="res://minigames/Platformer/scripts/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://dplatformer_player" path="res://minigames/Platformer/scenes/Player.tscn" id="2_player"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_question"]
+font_size = 20
+font_color = Color(1, 1, 1, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ui"]
+font_size = 16
+font_color = Color(1, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_result"]
+font_size = 28
+font_color = Color(1, 1, 1, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(3000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goal"]
+size = Vector2(40, 80)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sky" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.4, 0.6, 0.9, 1)
+
+[node name="GameLayer" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="GameLayer"]
+position = Vector2(1000, 800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameLayer/Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Visual" type="Polygon2D" parent="GameLayer/Ground"]
+color = Color(0.35, 0.25, 0.2, 1)
+polygon = PackedVector2Array(-1500, -20, -1500, 200, 1500, 200, 1500, -20)
+
+[node name="Grass" type="Polygon2D" parent="GameLayer/Ground"]
+color = Color(0.3, 0.55, 0.3, 1)
+polygon = PackedVector2Array(-1500, -20, -1500, -10, 1500, -10, 1500, -20)
+
+[node name="Platforms" type="Node2D" parent="GameLayer"]
+
+[node name="Collectibles" type="Node2D" parent="GameLayer"]
+
+[node name="Enemies" type="Node2D" parent="GameLayer"]
+
+[node name="Player" parent="GameLayer" instance=ExtResource("2_player")]
+position = Vector2(100, 500)
+
+[node name="Goal" type="Area2D" parent="GameLayer"]
+position = Vector2(1900, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameLayer/Goal"]
+shape = SubResource("RectangleShape2D_goal")
+
+[node name="Flag" type="Polygon2D" parent="GameLayer/Goal"]
+color = Color(0.9, 0.8, 0.2, 1)
+polygon = PackedVector2Array(-5, -80, -5, -40, 30, -60)
+
+[node name="Pole" type="Polygon2D" parent="GameLayer/Goal"]
+color = Color(0.6, 0.5, 0.4, 1)
+polygon = PackedVector2Array(-3, -80, -3, 0, 3, 0, 3, -80)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="QuestionPanel" type="Panel" parent="UILayer"]
+offset_left = 20
+offset_top = 20
+offset_right = 600
+offset_bottom = 70
+
+[node name="QuestionLabel" type="Label" parent="UILayer"]
+offset_left = 30
+offset_top = 28
+offset_right = 590
+offset_bottom = 62
+text = "Question goes here?"
+label_settings = SubResource("LabelSettings_question")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="UILayer"]
+offset_left = 20
+offset_top = 80
+offset_right = 150
+offset_bottom = 105
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="HealthLabel" type="Label" parent="UILayer"]
+offset_left = 170
+offset_top = 80
+offset_right = 350
+offset_bottom = 105
+text = "Health: ❤️❤️❤️"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="ProgressLabel" type="Label" parent="UILayer"]
+offset_left = 370
+offset_top = 80
+offset_right = 450
+offset_bottom = 105
+text = "0/3"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="ControlsHint" type="Label" parent="UILayer"]
+offset_left = 20
+offset_top = 650
+offset_right = 400
+offset_bottom = 680
+text = "← → Move | Space Jump"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="FlashRect" type="ColorRect" parent="UILayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 1, 1, 0.3)
+
+[node name="ResultPanel" type="Panel" parent="UILayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140
+offset_top = -70
+offset_right = 140
+offset_bottom = 70
+
+[node name="ResultLabel" type="Label" parent="UILayer/ResultPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Result"
+label_settings = SubResource("LabelSettings_result")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="GameLayer/Goal" to="." method="_on_goal_reached"]

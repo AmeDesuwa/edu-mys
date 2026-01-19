@@ -1,0 +1,165 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmaze_main"]
+
+[ext_resource type="Script" path="res://minigames/Maze/scripts/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://dmaze_player" path="res://minigames/Maze/scenes/Player.tscn" id="2_player"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_queue"]
+font_size = 20
+font_color = Color(1, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ui"]
+font_size = 24
+font_color = Color(1, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_feedback"]
+font_size = 48
+font_color = Color(1, 1, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_result"]
+font_size = 56
+font_color = Color(1, 1, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="CanvasLayer"]
+layer = 100
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="Game"]
+offset_right = 1920
+offset_bottom = 1080
+color = Color(0.15, 0.12, 0.2, 1)
+
+[node name="MazeLayer" type="Node2D" parent="Game"]
+position = Vector2(40, 80)
+
+[node name="CollectibleLayer" type="Node2D" parent="Game"]
+position = Vector2(40, 80)
+
+[node name="Player" parent="Game/MazeLayer" instance=ExtResource("2_player")]
+position = Vector2(60, 60)
+
+[node name="UILayer" type="CanvasLayer" parent="Game"]
+layer = 101
+
+[node name="Title" type="Label" parent="Game/UILayer"]
+offset_left = 40
+offset_top = 15
+offset_right = 400
+offset_bottom = 50
+text = "Maze Quest"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="HealthLabel" type="Label" parent="Game/UILayer"]
+offset_left = 40
+offset_top = 50
+offset_right = 140
+offset_bottom = 80
+text = "♥♥♥"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="ScoreLabel" type="Label" parent="Game/UILayer"]
+offset_left = 150
+offset_top = 50
+offset_right = 310
+offset_bottom = 80
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="QuestionQueuePanel" type="Panel" parent="Game/UILayer"]
+offset_left = 1240
+offset_top = 80
+offset_right = 1880
+offset_bottom = 990
+
+[node name="QueueTitle" type="Label" parent="Game/UILayer"]
+offset_left = 1260
+offset_top = 100
+offset_right = 1860
+offset_bottom = 140
+text = "Questions (in order):"
+label_settings = SubResource("LabelSettings_ui")
+
+[node name="QuestionQueue" type="Label" parent="Game/UILayer"]
+offset_left = 1260
+offset_top = 150
+offset_right = 1860
+offset_bottom = 780
+text = "1. Question 1?
+2. Question 2?
+3. Question 3?
+4. Question 4?
+5. Question 5?"
+label_settings = SubResource("LabelSettings_queue")
+autowrap_mode = 2
+
+[node name="Legend" type="Label" parent="Game/UILayer"]
+offset_left = 1260
+offset_top = 800
+offset_right = 1860
+offset_bottom = 960
+text = "Legend:
+→ Current question
+[✓] Completed"
+label_settings = SubResource("LabelSettings_queue")
+
+[node name="ControlsHint" type="Label" parent="Game/UILayer"]
+offset_left = 40
+offset_top = 1010
+offset_right = 400
+offset_bottom = 1060
+text = "Arrow keys or WASD to move"
+label_settings = SubResource("LabelSettings_queue")
+
+[node name="FlashRect" type="ColorRect" parent="Game/UILayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 1, 1, 0.3)
+
+[node name="FeedbackLabel" type="Label" parent="Game/UILayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100
+offset_top = -50
+offset_right = 100
+offset_bottom = 0
+text = "Correct!"
+label_settings = SubResource("LabelSettings_feedback")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultPanel" type="Panel" parent="Game/UILayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150
+offset_top = -75
+offset_right = 150
+offset_bottom = 75
+
+[node name="ResultLabel" type="Label" parent="Game/UILayer/ResultPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Victory!"
+label_settings = SubResource("LabelSettings_result")
+horizontal_alignment = 1
+vertical_alignment = 1

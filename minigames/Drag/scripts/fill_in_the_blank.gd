@@ -1,7 +1,7 @@
 extends Control
 
 # Signal to notify the main game when the puzzle is done
-signal game_finished(success)
+signal game_finished(success: bool, score: int)
 
 # --- Puzzle Data (now dynamic) ---
 # Default puzzle data - can be overridden via configure_puzzle()
@@ -91,7 +91,7 @@ func check_win_condition(correctly_dropped):
 
 	if correct_drops == TOTAL_DROPS:
 		# Win condition achieved!
-		emit_signal("game_finished", true)
+		emit_signal("game_finished", true, 100)
 		print("Puzzle Solved!")
 		get_tree().create_timer(1.5).timeout.connect(queue_free)
 	else:
