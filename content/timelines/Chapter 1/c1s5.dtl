@@ -21,11 +21,15 @@ join Conrad left
 Conrad: So if we find who this belongs to, they'd be desperate to get it back.
 "Diwata Laya": More than desperate. They would confess to anything to reclaim it.
 Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
-Conrad: This bracelet... where exactly did I find it? And what does that tell us?
-Conrad: If I can connect this physical evidence to the WiFi logs, I'll know who was here.
+Conrad: I found this bracelet, but how do I use it? I can't just ask everyone if it's theirs...
+"Diwata Laya": Conrad, I sense your frustration. This object... it speaks to me.
+Conrad: You can read something from it?
+"Diwata Laya": I can feel the emotions bound to it. But to share what I sense, you must first prove your mind is focused.
+Conrad: Fine. Test me.
 [signal arg="start_minigame evidence_analysis"]
-Conrad: The bracelet was right below where the AC tube was cut. Whoever did this dropped it while reaching up.
-Conrad: Now I need to find out which of our suspects owns this bracelet.
+"Diwata Laya": Your mind is sharp. Now hear me - this bracelet carries immense grief. It belonged to someone who has passed, and the owner treasures it above all else.
+"Diwata Laya": Whoever owns this would do anything to get it back. Use that.
+Conrad: So if I threaten to expose it... they might confess just to reclaim it. That's our leverage.
 leave --All--
 [background arg="res://Bg/hallway.png" fade="1.0"]
 Conrad and Mark track down the students from the WiFi logs.
@@ -70,10 +74,13 @@ Conrad: It was on the floor, partially hidden under the desk. It must have falle
 Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
 Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
 "Diwata Laya": (Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
-Conrad: (Thinking) Did you see that? The way his eyes widened when I mentioned the bracelet...
-Conrad: Laya says he has a deep emotional connection to it. I need to use that.
+Conrad: (Whispering to Laya) You're sure it's his?
+"Diwata Laya": (Whispering) Absolutely. But he will not confess easily. You need the right approach.
+Conrad: (Whispering) What should I do?
+"Diwata Laya": (Whispering) Clear your mind first. Then I will guide you.
 [signal arg="start_minigame statement_analysis"]
-Conrad: (Thinking) His reaction gave him away. Time to press harder.
+"Diwata Laya": (Whispering) Good. Now listen - threaten to show the bracelet to others. His fear of losing it will break him.
+Conrad: (Thinking) Got it.
 Conrad: You know, I'm planning to show this bracelet around school. Ask if anyone recognizes it. Something this special... someone must be missing it.
 Greg: (Visibly shaken) I...
 Conrad: Unless... you know who it belongs to?

@@ -13,19 +13,19 @@ var current_minigame = null
 # Fill-in-the-blank puzzle configs
 var fillinblank_configs = {
 	"timeline_deduction": {
-		"sentence_parts": ["The sabotage happened after ", " PM when the faculty room was ", "."],
-		"answers": ["6:00", "empty"],
-		"choices": ["6:00", "3:00", "9:00", "empty", "locked", "open", "cleaned", "occupied"]
+		"sentence_parts": ["The scientific method starts with ", " and ends with a ", "."],
+		"answers": ["observation", "conclusion"],
+		"choices": ["observation", "experiment", "conclusion", "hypothesis", "question", "theory", "analysis", "research"]
 	},
 	"evidence_analysis": {
-		"sentence_parts": ["The ", " was found near the ", ", linking someone to the crime scene."],
-		"answers": ["bracelet", "AC unit"],
-		"choices": ["bracelet", "key", "phone", "AC unit", "window", "desk", "door", "chair"]
+		"sentence_parts": ["In a court of law, the ", " must prove guilt beyond reasonable ", "."],
+		"answers": ["prosecution", "doubt"],
+		"choices": ["prosecution", "defense", "doubt", "evidence", "judge", "jury", "witness", "question"]
 	},
 	"statement_analysis": {
-		"sentence_parts": ["Greg's ", " to the bracelet proves his ", " attachment to it."],
-		"answers": ["reaction", "emotional"],
-		"choices": ["reaction", "denial", "silence", "emotional", "casual", "angry", "nervous", "calm"]
+		"sentence_parts": ["Critical thinking requires ", " evidence before forming a ", "."],
+		"answers": ["evaluating", "judgment"],
+		"choices": ["evaluating", "ignoring", "judgment", "question", "collecting", "opinion", "belief", "theory"]
 	}
 }
 

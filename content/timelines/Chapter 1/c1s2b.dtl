@@ -1,9 +1,14 @@
 [background arg="res://Bg/classroom.png" fade="1.0"]
 join Conrad (half) left
-Conrad: Before I head to the faculty room, let me piece together the timeline.
-Conrad: Teachers usually leave by 6:00 PM... and the janitor said the room was empty when he locked up.
-Conrad: So the saboteur must have snuck in sometime after that. Let me work out when this happened...
+Conrad: Hmm... how did someone even get into the faculty room after hours? This doesn't add up.
+join "Diwata Laya" (Half_mirror) right
+"Diwata Laya": You seem troubled, Conrad. I sense your mind is clouded.
+Conrad: Laya! I'm stuck. There's something I'm missing about how this happened.
+"Diwata Laya": I may be able to guide your thoughts... but first, prove to me your mind is sharp enough to receive my insight.
+Conrad: Alright, test me.
 [signal arg="start_minigame timeline_deduction"]
-Conrad: Right. The sabotage happened after hours when no one was around. Now I need to find out WHO had access.
+"Diwata Laya": Good. Your mind is clear. Now listen - I sense lingering traces of guilt in that faculty room. Someone entered through a door that should have been locked.
+"Diwata Laya": Seek out those who move unseen through this school. The ones who clean after all have left.
+Conrad: The janitors... of course! They have keys to every room. One of them might have seen something.
 leave --All--
 jump c1s3/
