@@ -45,7 +45,8 @@ join Mark (Mark_half) leftmost
 Mark: Okay, that leaves Greg. And 9\:00 PM is way more suspicious.
 Conrad: Let's find him. And I have something that might help us get the truth.
 leave --All--
-[background arg="res://Bg/hallway.png" fade="1.0"]
+[background arg="res://Bg/classroom.png" fade="1.0"]
+Conrad and Mark find Greg alone in the classroom after classes.
 join Greg (Greg_half) right
 join Conrad (half) left
 Conrad: Greg, we need to ask you something. Were you inside the faculty room yesterday evening?
@@ -65,7 +66,7 @@ Conrad: When I was examining the faculty room earlier, I found this near the AC 
 leave --All--
 [background arg="res://Pics/Charm.png" fade="0.3"]
 Conrad shows a photo on his phone - a small, worn charm bracelet with distinctive beads.
-[background arg="res://Bg/hallway.png" fade="1.0"]
+[background arg="res://Bg/classroom.png" fade="1.0"]
 join Conrad left
 join Greg right
 join "Diwata Laya" rightmost
