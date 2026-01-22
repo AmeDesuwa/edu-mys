@@ -37,8 +37,14 @@ join Conrad (half) left
 Conrad: Ben, we need to ask you something. Your phone connected to the Faculty WiFi at 8\:00 PM yesterday evening. Can you explain why?
 Ben: Oh, that? I went back after the library closed. I'd left my lucky pen in the faculty room earlier when I was asking Ms. Cruz about the homework.
 Ben: Mr. Santos was still working late. He let me in to grab it, then I left right after.
+[signal arg="laya_conversation_start"]
 join "Diwata Laya" (Half_mirror) rightmost
-"Diwata Laya": (Whispering) He speaks the truth. His flow is calm.
+The world dims as Laya appears beside Conrad, invisible to Ben.
+"Diwata Laya": (Whispering to Conrad) He speaks the truth. His flow is calm.
+Conrad: (Thinking) Good, he's innocent.
+[signal arg="laya_conversation_end"]
+leave "Diwata Laya"
+The world returns to normal.
 Conrad: Thanks for clearing that up, Ben. You can go.
 leave Ben
 join Mark (Mark_half) leftmost
@@ -51,8 +57,14 @@ join Greg (Greg_half) right
 join Conrad (half) left
 Conrad: Greg, we need to ask you something. Were you inside the faculty room yesterday evening?
 Greg: What? No! I went straight home after class. I wasn't anywhere near there!
+[signal arg="laya_conversation_start"]
 join "Diwata Laya" (Half_mirror) rightmost
-"Diwata Laya": (Whispering) Deceit clouds his words. He is lying.
+The world dims as Laya materializes beside Conrad, unseen by Greg or Mark.
+"Diwata Laya": (Whispering to Conrad) Deceit clouds his words. He is lying.
+Conrad: (Thinking) I knew it.
+[signal arg="laya_conversation_end"]
+leave "Diwata Laya"
+The world returns to normal.
 join Mark (Mark_half) right
 Conrad: Greg, your phone connected to the Faculty WiFi at exactly 9\:00 PM last night. The faculty room was supposed to be empty by then.
 Greg: That doesn't mean anything! Maybe my phone just auto-connected while I was passing by!
@@ -73,14 +85,18 @@ join "Diwata Laya" rightmost
 Conrad: It was on the floor, partially hidden under the desk. It must have fallen off during the sabotage.
 Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
 Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
-"Diwata Laya": (Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
-Conrad: (Whispering to Laya) You're sure it's his?
-"Diwata Laya": (Whispering) Absolutely. But he will not confess easily. You need the right approach.
-Conrad: (Whispering) What should I do?
-"Diwata Laya": (Whispering) Clear your mind first. Then I will guide you.
+[signal arg="laya_conversation_start"]
+The world dims around Conrad.
+"Diwata Laya": (Whispering to Conrad) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
+Conrad: (Thinking) You're sure it's his?
+"Diwata Laya": (Whispering to Conrad) Absolutely. But he will not confess easily. You need the right approach.
+Conrad: (Thinking) What should I do?
+"Diwata Laya": (Whispering to Conrad) Clear your mind first. Then I will guide you.
 [signal arg="start_minigame statement_analysis"]
-"Diwata Laya": (Whispering) Good. Now listen - threaten to show the bracelet to others. His fear of losing it will break him.
+"Diwata Laya": (Whispering to Conrad) Good. Now listen - threaten to show the bracelet to others. His fear of losing it will break him.
 Conrad: (Thinking) Got it.
+[signal arg="laya_conversation_end"]
+The world returns to normal.
 Conrad: You know, I'm planning to show this bracelet around school. Ask if anyone recognizes it. Something this special... someone must be missing it.
 Greg: (Visibly shaken) I...
 Conrad: Unless... you know who it belongs to?
