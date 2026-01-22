@@ -1,9 +1,9 @@
 [background arg="res://Bg/classroom.png" fade="1.0"]
 join Conrad (half) left
-Conrad: Before I head to the faculty room, let me piece together what we know so far.
-Conrad: The AC was sabotaged sometime after school hours. The faculty room should have been locked...
-Conrad: So either someone had a key, or the room was left open by mistake. I need to figure out the sequence of events.
+Conrad: Before I head to the faculty room, let me piece together the timeline.
+Conrad: Teachers usually leave by 6:00 PM... and the janitor said the room was empty when he locked up.
+Conrad: So the saboteur must have snuck in sometime after that. Let me work out when this happened...
 [signal arg="start_minigame timeline_deduction"]
-Conrad: Alright, I've got a clearer picture now. Time to investigate the faculty room myself.
+Conrad: Right. The sabotage happened after hours when no one was around. Now I need to find out WHO had access.
 leave --All--
 jump c1s3/
