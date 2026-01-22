@@ -1,10 +1,9 @@
 [background arg="res://Bg/classroom.png" fade="1.0"]
 join Conrad (half) left
-Conrad: Before I go to the faculty room, let me organize my thoughts.
-Conrad: A good detective needs sharp critical thinking skills...
-Conrad: Let me test myself with a quick exercise.
+Conrad: Before I head to the faculty room, let me piece together what we know so far.
+Conrad: The AC was sabotaged sometime after school hours. The faculty room should have been locked...
+Conrad: So either someone had a key, or the room was left open by mistake. I need to figure out the sequence of events.
 [signal arg="start_minigame timeline_deduction"]
-Conrad: Good. Keeping my mind sharp will help with this investigation.
-Conrad: Time to visit the faculty room.
+Conrad: Alright, I've got a clearer picture now. Time to investigate the faculty room myself.
 leave --All--
 jump c1s3/

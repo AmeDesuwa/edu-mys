@@ -21,10 +21,11 @@ join Conrad left
 Conrad: So if we find who this belongs to, they'd be desperate to get it back.
 "Diwata Laya": More than desperate. They would confess to anything to reclaim it.
 Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
-Conrad: Before confronting anyone, let me sharpen my analytical thinking...
+Conrad: Let me think this through. The bracelet was found near the AC unit, which means it likely fell off during the sabotage.
+Conrad: If I can connect this to one of the suspects from the WiFi logs...
 [signal arg="start_minigame evidence_analysis"]
-Conrad: Good. Now I'm ready. This bracelet is our key to solving this case.
-Conrad: Then we have our leverage. Let's go talk to our suspects.
+Conrad: That's it. This bracelet is our key piece of evidence. Whoever it belongs to was at the scene.
+Conrad: Time to confront our suspects and see who reacts to it.
 leave --All--
 [background arg="res://Bg/hallway.png" fade="1.0"]
 Conrad and Mark track down the students from the WiFi logs.
@@ -69,10 +70,11 @@ Conrad: It was on the floor, partially hidden under the desk. It must have falle
 Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
 Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
 "Diwata Laya": (Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
-Conrad: I need to think clearly before pressing further...
+Conrad: (Thinking) His reaction confirms it. But I need to be careful how I approach this. The bracelet clearly means a lot to him...
+Conrad: If I threaten to expose it publicly, he might crack. Let me consider my options.
 [signal arg="start_minigame statement_analysis"]
-Conrad: The evidence is clear. It's time to get the truth.
-Conrad: I'm planning to show it around and ask if anyone recognizes it. Someone must be missing something this special.
+Conrad: (Thinking) I know what to do.
+Conrad: You know, I'm planning to show this bracelet around school. Ask if anyone recognizes it. Something this special... someone must be missing it.
 Greg: (Visibly shaken) I...
 Conrad: Unless... you know who it belongs to?
 Greg: Wait! Don't... don't show that to anyone else.
