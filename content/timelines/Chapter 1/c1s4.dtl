@@ -13,7 +13,7 @@ Conrad: The timing is what matters. 8\:00 PM could be innocent - someone working
 join "Diwata Laya" (Half_mirror) rightmost
 Laya appears beside Conrad, unseen by Mark.
 "Diwata Laya": [i][color=#9999ff](Whispering) I can assist. I will listen to their hearts. If they speak deceit, I will know.[/color][/i]
-Conrad: (Thinking) Perfect.
+"Conrad (Thinking)": Perfect.
 Conrad: Let's go find them.
 leave --All-- [animation="Instant Out" length="0.4"]
 jump c1s5/

@@ -73,13 +73,13 @@ Conrad: It was on the floor, partially hidden under the desk. It must have falle
 Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
 Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
 "Diwata Laya": [i][color=#9999ff](Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.[/color][/i]
-Conrad: (Thinking) You're sure it's his?
+"Conrad (Thinking)": You're sure it's his?
 "Diwata Laya": [i][color=#9999ff](Whispering) Absolutely. But he will not confess easily. You need the right approach.[/color][/i]
-Conrad: (Thinking) What should I do?
+"Conrad (Thinking)": What should I do?
 "Diwata Laya": [i][color=#9999ff](Whispering) Clear your mind first. Then I will guide you.[/color][/i]
 [signal arg="start_minigame statement_analysis"]
 "Diwata Laya": [i][color=#9999ff](Whispering) Good. Now listen - threaten to show the bracelet to others. His fear of losing it will break him.[/color][/i]
-Conrad: (Thinking) Got it.
+"Conrad (Thinking)": Got it.
 Conrad: You know, I'm planning to show this bracelet around school. Ask if anyone recognizes it. Something this special... someone must be missing it.
 Greg: (Visibly shaken) I...
 Conrad: Unless... you know who it belongs to?
