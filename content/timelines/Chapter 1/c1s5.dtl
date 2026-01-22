@@ -12,24 +12,23 @@ leave --All--
 [background arg="res://Pics/Charm.png" fade="0.0"]
 Conrad reaches under the desk and pulls out a small, worn charm bracelet with distinctive blue, red, and white beads, and a tiny silver cross.
 "Diwata Laya": (Suddenly alert) Conrad, wait! That object...
-"Diwata Laya": I sense something powerful emanating from it. Deep grief... profound love... and loss. Whoever owns this treasures it more than anything.
+"Diwata Laya": I sense something powerful emanating from it. Strong emotions... but I can't read it clearly.
 Conrad: (Examining the bracelet) This must have fallen off during the sabotage. It's pretty distinctive.
 [background arg="res://Bg/faculty_empty.png" fade="0.0"]
 join "Diwata Laya" right [animation="Instant In"]
 join Conrad left
-"Diwata Laya": This is no ordinary keepsake. It carries the weight of memory - a connection to someone who has passed. The owner's emotional attachment is... overwhelming.
-Conrad: So if we find who this belongs to, they'd be desperate to get it back.
-"Diwata Laya": More than desperate. They would confess to anything to reclaim it.
-Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
-Conrad: I found this bracelet, but how do I use it? I can't just ask everyone if it's theirs...
-"Diwata Laya": Conrad, I sense your frustration. This object... it speaks to me.
-Conrad: You can read something from it?
-"Diwata Laya": I can feel the emotions bound to it. But to share what I sense, you must first prove your mind is focused.
-Conrad: Fine. Test me.
+Conrad: Can you tell me more about it? Who does it belong to?
+"Diwata Laya": The emotions are too tangled... I need you to focus your mind so I can channel my energy properly.
+Conrad: Another test?
+"Diwata Laya": If you want my help, yes.
+Conrad: Alright, let's do it.
 [signal arg="start_minigame evidence_analysis"]
-"Diwata Laya": Your mind is sharp. Now hear me - this bracelet carries immense grief. It belonged to someone who has passed, and the owner treasures it above all else.
-"Diwata Laya": Whoever owns this would do anything to get it back. Use that.
-Conrad: So if I threaten to expose it... they might confess just to reclaim it. That's our leverage.
+"Diwata Laya": Good. Your focus has cleared the path. Now I can see...
+"Diwata Laya": This bracelet carries immense grief. It belonged to someone who has passed - a grandmother, I think. The owner treasures it above all else.
+"Diwata Laya": Whoever owns this would confess to anything to get it back. Use that.
+Conrad: So if I threaten to show it around or give it away... they'd panic and confess just to reclaim it.
+Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
+Conrad: This is our leverage. Let's go find our suspects.
 leave --All--
 [background arg="res://Bg/hallway.png" fade="1.0"]
 Conrad and Mark track down the students from the WiFi logs.
