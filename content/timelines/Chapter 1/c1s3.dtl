@@ -1,17 +1,13 @@
-[background arg="res://Bg/faculty_few.png" fade="1.0"]
+[background arg="res://Bg/faculty_few.png" fade="0.0"]
 Conrad enters the school faculty room. He sees that some teachers and student are doing schoolwork.
 He sees the Principal and approaches him.
-join Principal right [animation="fade in" length="0.5"]
-join Conrad (half) left [animation="slide from left" length="0.8"]
-update Conrad (half) center [move_time="0.3"]
+join Principal right [animation="Instant In" length="0.0"]
+join Conrad (half) left [animation="Slide From Left"]
 Conrad: Excuse me Principal Alan, do you have time to talk sir?
 Principal: Classes are over, you should head home as soon as possible to stay out of trouble. However, students do have a right to ask their principal for advice.
-update Principal center [move_time="0.3"]
 Principal: Fine, go ahead and ask me anything.
-update Conrad (half) left [move_time="0.3"]
 Conrad: I'm just curious about the ruined exam papers. Is it true that they ruined to the point that they can't be graded?
 Principal: Yes, it's true. All of the exam papers of Grade 12-A are wet. Thankfully the exam papers of Grade 12-B  weren't included.
-update Conrad (half) center [move_time="0.3"]
 Conrad: Can I take a look at the place where it happened sir?
 Principal: It was already cleaned up earlier, here take a look. I took a photo of the mess earlier since the store where the leaking air conditioner was bought didn't believe that it was leaking.
 leave --All--
@@ -29,29 +25,21 @@ What's wrong with this picture?
 label After
 Conrad: Sir Alan, the tube was definitely cut. But there's no sign of forced entry on the door.
 Principal: That is impossible. Only the staff have keys to this room.
-[background arg="res://Bg/faculty_few.png" fade="0.5"]
-join Conrad (half) left [animation="fade in" length="0.3"]
-join Principal right [animation="fade in" length="0.3"]
-update Conrad (half) center [move_time="0.3"]
+[background arg="res://Bg/faculty_few.png" fade="0.0"]
+join Conrad (half) left [animation="Instant In" length="0.1"]
+join Principal right [animation="Instant In" length="0.1"]
 Conrad: Unless someone stole a key... or was given one.
-update Principal center [move_time="0.3"]
 Principal: That implies deliberate sabotage from someone with access. Why would someone do this?
-update Conrad (half) left [move_time="0.3"]
 Conrad: Considering that this incident made it so that the exam papers cannot be graded. The motive should be to cause a retake.
 Principal: And because they already took the exam, even though the exam questions will be altered. The exam will be much easier since we have a deadline to follow so we cant rigorously alter the exam questions.
-update Conrad (half) center [move_time="0.3"]
 Conrad: Correct Sir
-update Principal right [move_time="0.3"]
 Principal: As an educator this is unacceptable, but I can't really investigate this myself since the 3rd grading is ending and I have too much work to finish.
-update Conrad (half) center [move_time="0.3"]
 Conrad: Can I investigate this in your stead sir?
 Principal: Are you sure? Is all your school work already done? If not then I can't let you ignore your responsibilities while you investigate this.
 Conrad: All my exams are already done and I have already passed all my requirements.
-update Principal center [move_time="0.3"]
 Principal: Fine, you investigate this matter. I'll inform the staff and teachers to cooperate.
 Conrad: Leave it to me sir.
 Principal: Good.
-update Conrad (half) left [move_time="0.3"]
 Conrad: (My phone is buzzing. It's a message from Mark.)
 leave --All--
 [background arg="res://Pics/Mark_msg.jpg" fade="0.0"]
@@ -60,18 +48,14 @@ Conrad: He sent a picture? Wait a minute.
 Conrad: I don't have any mobile data left. How did I receive this photo?
 [background arg="res://Pics/Wifi_Faculty.png" fade="0.0"]
 Conrad: I'm connected to "Faculty_Wifi".
-[background arg="res://Bg/faculty_few.png" fade="0.5"]
-join Conrad (half) left [animation="fade in" length="0.3"]
-update Conrad (half) center [move_time="0.3"]
+[background arg="res://Bg/faculty_few.png" fade="0.0"]
+join Conrad (half) left
 Conrad: Sir, does this room have a dedicated Wi-Fi router?
-join Principal right [animation="fade in" length="0.3"]
-update Principal center [move_time="0.3"]
+join Principal right
 Principal: Yes, since the general wifi set up for the school is weak in the faculty room. A dedicated wifi network and a router for staff use is installed here.
 Principal: While it may be for staff use, it is also intended for students to use it as well. Why?
-update Conrad (half) center [move_time="0.3"]
 Conrad: My phone just auto-connected to it. If the culprit was here, their phone might have done the same. Can we check the connection logs?
 Principal: All the phones of the students should have access since it the password was provided in the orientation and is available to see at the Bulletin Board.
-update Principal right [move_time="0.3"]
 Principal: That is a clever idea. Let me check the admin panel...
 leave --All--
 [background arg="res://Pics/Wifi_Logs.png" fade="0.0"]
@@ -79,59 +63,49 @@ Principal: Interesting. Two devices connected to the "Faculty_Wifi" network yest
 Principal: One connected at 8\:00 PM, device name "Galaxy_A52". The other at 9\:00 PM, device name "Redmi_Note_10".
 Conrad: Galaxy A52 and Redmi Note 10... Those are specific models.
 Conrad: I need to confirm who owns these.
-[background arg="res://Bg/faculty_few.png" fade="0.5"]
-join Principal right [animation="fade in" length="0.3"]
-join Conrad left [animation="fade in" length="0.3"]
+[background arg="res://Bg/faculty_few.png" fade="0.0"]
+join Principal right
+join Conrad left
 Conrad: (Texts Mark) "Hey, do you know anyone in 12-A who uses a Galaxy A52 or a Redmi Note 10?"
 Conrad: (Mark replies) "I'm not sure about the specific models. But Alice, the class monitor, collects our phones during exams. She would know."
 Conrad: (Mark replies) "She's usually at the lockers this time."
-update Conrad (half) center [move_time="0.3"]
 Conrad: Thanks, Sir. I have a lead to follow up on.
-leave Principal [animation="fade out" length="0.3"]
-leave Conrad [animation="slide to left" length="0.5"]
-[background arg="res://Bg/hallway.png" fade="0.5"]
-join Conrad (full) center [animation="fade in" length="0.5"]
-Conrad leaves the room and is walking in the hallway.
-update Conrad (half) center
+leave Principal
+leave Conrad [animation="Instant Out"]
+[background arg="res://Bg/hallway.png" fade="0.0"]
+join Conrad center
+Conrad leaves the room and is walking in the hallway
+join Conrad (half) left
 Conrad: (Of course the students of 12-A are definitely suspects but it's gonna take a long time to question them all individually, which makes it impossible to catch them before the grades are permanently recorded.)
 Conrad: (It would also alert the perp which makes the investigation harder.)
-update Conrad (half) left [move_time="0.3"]
 Conrad: (Also it wouldn't be impossible for this to be coordinated by multiple people.)
-update Conrad (half) center [move_time="0.3"]
 Conrad: Ughhhh... This is so hard. Why did I think that I could do this.
-Conrad walks in the hallway to leave the building to go to the school gate.
-leave Conrad [animation="slide to right" length="0.5"]
-# Conrad goes to find Alice
-[background arg="res://Bg/school_gate.png" fade="0.5"]
-join Alice right [animation="fade in" length="0.5"]
-join Conrad left [animation="slide from left" length="0.8"]
-update Conrad (half) center [move_time="0.3"]
+Conrad walks in the hallway to leave the building to go to the school gate
+leave Conrad
+# Conrad goes to find Alice (Placeholder: Janitor Fred)
+[background arg="res://Bg/school_gate.png" fade="0.0"]
+join Alice right [animation="Instant In" length="0.1"]
+join Conrad left [animation="Slide From Left" length="1.0"]
 Conrad: Excuse me... Alice?
-update Alice center [move_time="0.3"]
+# Placeholder: Janitor Fred represents Alice, the class monitor
 Alice: Yes? What is it, Conrad?
 Conrad: Mark said you know a lot about our classmates' phones since you collect them. Do you know anyone who uses a Galaxy A52 or a Redmi Note 10?
 Alice: Hmm... let me think.
 Alice: Oh, right. Ben has a Galaxy A52. He's always bragging about the camera.
 Alice: And Greg has a Redmi Note 10. I remember the red case.
-update Conrad (half) left [move_time="0.3"]
 Conrad: Thanks, Alice. That helps a lot.
-leave Alice [animation="slide to right" length="0.5"]
-update Conrad (half) center [move_time="0.3"]
+leave Alice [animation="Slide To Left"]
 Conrad: (So the devices in the logs belong to Ben and Greg. They were in the faculty room last night.)
 Conrad: (I have the suspects. Now I just need to prove it.)
-join "Diwata Laya" (Half_mirror) right [animation="fade in" length="0.8"]
+join "Diwata Laya" (Half_mirror) right
 "Diwata Laya": It's alright you can do this.
-update Conrad (half) left [move_time="0.3"]
 Conrad: Looks like you're awake. I've narrowed it down to two students.
-update "Diwata Laya" (Half_mirror) center [move_time="0.3"]
 "Diwata Laya": Last time, it took me too much energy so I had to rest. I've recovered mostly but the help I can give is limited.
-update Conrad (half) center [move_time="0.3"]
 Conrad: This case is kinda rough though, I really need your help.
 "Diwata Laya": I've seen what's been happening even though I've been resting for a while. Don't worry too much, do what you can and we'll see how I can help. Since I've recovered quite a bit, my ability to compel people to tell the truth or cooperate has come back to me.
 Conrad: Well that's gonna be super helpful.
 Diwata Laya is your helper! She is very intelligent and can help you quite a lot. However she is very limited as she is not allowed to interact much with the human world, so she is limited in the help she can give.
 Conrad: Great, I'll tell Mark what we've learned later. Help me brainstorm once we get home later.
 "Diwata Laya": Ok.
-leave Conrad [animation="slide to left" length="0.5"]
-leave "Diwata Laya" [animation="fade out" length="0.5"]
+leave --All-- [animation="Instant Out" length="0.0"]
 jump c1s4/

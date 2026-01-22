@@ -1,25 +1,21 @@
-[background arg="res://Bg/computer_lab.png" fade="1.0"]
-They arrive at the computer lab.
+[background arg="res://Bg/hallway.png" fade="1.0"]
+Conrad waits by the janitor's closet.
 join Conrad (half) left
-join Mark (Mark_half) right
-Mark: Here are the printer logs from yesterday. Let me find Ryan's account...
-Mark scrolls through the computer.
-Mark: Got it. Ryan's print jobs.
-Mark: 5:45 PM - Budget Proposal Draft, 12 pages.
-Mark: 6:15 PM - Summary Sheet, 3 pages.
-Mark: Then... nothing until 7:20 PM - Final Proposal, 8 pages.
-Conrad: That's over an hour with no activity.
-Mark: He said he was here the whole time. Why would he stop printing for an hour?
-Conrad: Because he wasn't here. He was somewhere else.
-Mark: Ms. Santos said she saw him near the stairs at 6:45. That's right after her coffee break.
-Conrad: The key drawer was unlocked from 6:30 to 6:45. Ryan had fifteen minutes to take the key, open the money box, hide the cash, and return the key.
-Mark: But where would he hide twenty thousand pesos?
-Conrad: Somewhere no one would look. Somewhere only he has access to.
-Mark: The sports equipment storage room! He's the only council member with a key.
-Conrad: We can't just accuse him without solid proof. Having opportunity isn't enough.
-Mark: So what do we do?
-Conrad: We need evidence that directly connects him to the crime. Something he can't explain away.
-Conrad: Let's go back and talk to Ria again. Maybe she noticed something she didn't think was important.
-leave Conrad
-leave Mark
-jump c2s5/
+# Placeholder: Using Ben as Leo
+join Ben (Ben_half) center
+Conrad: Looking for this, Leo?
+Ben: (Jumps) I... I was just looking for a mop!
+Conrad: (Holds up the transmitter) You were coming to change the batteries.
+Ben: I don't know what that is!
+Conrad: The dust on the vent matches your fingerprints, Leo.
+Ben: (Sighs) It wasn't supposed to be scary! It was just a job.
+Conrad: Who hired you?
+Ben: I don't know. I found the device in my locker with cash and instructions.
+Ben: "Place in vent. Turn on at 9 AM."
+Conrad: Let me see the device casing.
+Conrad: (Turns it over. There is a small sticker of a pixelated spider.)
+Conrad: The Pixelated Spider.
+Ben: Is that a band?
+Conrad: No. It's a warning. They're testing how easily they can bypass our security.
+Conrad: (Thinking) First the network, now physical infrastructure. They are everywhere.
+[end_timeline]

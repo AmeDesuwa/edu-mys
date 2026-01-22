@@ -1,169 +1,117 @@
 [background arg="res://Bg/faculty_empty.png" fade="1.0"]
 Before confronting the suspects, Conrad returns to the faculty room one more time to examine the scene.
-join Conrad (half) center [animation="fade in" length="0.5"]
-join "Diwata Laya" (Half_mirror) right [animation="fade in" length="0.8"]
-update Conrad (half) left [move_time="0.3"]
+join Conrad (half) left
+join "Diwata Laya" (Half_mirror) right
 Conrad: Laya, help me look around. There has to be something we missed.
 "Diwata Laya": I will try, but remember - my ability to interact with the physical world is limited.
 Conrad walks around the room, carefully examining the area near the AC unit.
-update Conrad (half) center [move_time="0.5"]
 Conrad: The WiFi logs put Greg here at 9\:00 PM, but that's still circumstantial. I need something more concrete.
-update Conrad (half) right [move_time="0.5"]
 Conrad crouches near the desk below the AC unit, looking under it.
 Conrad: Wait, what's this?
-leave Conrad [animation="fade out" length="0.3"]
-leave "Diwata Laya" [animation="fade out" length="0.3"]
-[background arg="res://Pics/Charm.png" fade="0.5"]
+leave --All--
+[background arg="res://Pics/Charm.png" fade="0.0"]
 Conrad reaches under the desk and pulls out a small, worn charm bracelet with distinctive blue, red, and white beads, and a tiny silver cross.
 "Diwata Laya": (Suddenly alert) Conrad, wait! That object...
 "Diwata Laya": I sense something powerful emanating from it. Deep grief... profound love... and loss. Whoever owns this treasures it more than anything.
 Conrad: (Examining the bracelet) This must have fallen off during the sabotage. It's pretty distinctive.
-[background arg="res://Bg/faculty_empty.png" fade="0.5"]
-join "Diwata Laya" (Half_mirror) right [animation="fade in" length="0.5"]
-join Conrad (half) left [animation="fade in" length="0.5"]
-update "Diwata Laya" (Half_mirror) center [move_time="0.3"]
+[background arg="res://Bg/faculty_empty.png" fade="0.0"]
+join "Diwata Laya" right [animation="Instant In"]
+join Conrad left
 "Diwata Laya": This is no ordinary keepsake. It carries the weight of memory - a connection to someone who has passed. The owner's emotional attachment is... overwhelming.
-update Conrad (half) center [move_time="0.3"]
 Conrad: So if we find who this belongs to, they'd be desperate to get it back.
 "Diwata Laya": More than desperate. They would confess to anything to reclaim it.
 Conrad takes a photo of the bracelet with his phone, then carefully places it in his pocket.
-update Conrad (half) left [move_time="0.3"]
 Conrad: Before confronting anyone, let me sharpen my analytical thinking...
 [signal arg="start_minigame evidence_analysis"]
 Conrad: Good. Now I'm ready. This bracelet is our key to solving this case.
-update Conrad (half) center [move_time="0.3"]
 Conrad: Then we have our leverage. Let's go talk to our suspects.
-leave Conrad [animation="slide to right" length="0.5"]
-leave "Diwata Laya" [animation="fade out" length="0.4"]
+leave --All--
 [background arg="res://Bg/hallway.png" fade="1.0"]
 Conrad and Mark track down the students from the WiFi logs.
-join Ben (Ben_half) right [animation="fade in" length="0.5"]
-join Conrad (half) left [animation="slide from left" length="0.6"]
-update Conrad (half) center [move_time="0.3"]
+join Ben (Ben_half) right
+join Conrad (half) left
 Conrad: Ben, we need to ask you something. Your phone connected to the Faculty WiFi at 8\:00 PM yesterday evening. Can you explain why?
-update Ben (Ben_half) center [move_time="0.3"]
 Ben: Oh, that? I went back after the library closed. I'd left my lucky pen in the faculty room earlier when I was asking Ms. Cruz about the homework.
 Ben: Mr. Santos was still working late. He let me in to grab it, then I left right after.
-join "Diwata Laya" (Half_mirror) rightmost [animation="fade in" length="0.5"]
+join "Diwata Laya" (Half_mirror) rightmost
 "Diwata Laya": (Whispering) He speaks the truth. His flow is calm.
-update Conrad (half) left [move_time="0.3"]
 Conrad: Thanks for clearing that up, Ben. You can go.
-leave Ben [animation="slide to right" length="0.5"]
-join Mark (Mark_half) right [animation="slide from right" length="0.5"]
-update Mark (Mark_half) center [move_time="0.3"]
+leave Ben
+join Mark (Mark_half) leftmost
 Mark: Okay, that leaves Greg. And 9\:00 PM is way more suspicious.
-update Conrad (half) center [move_time="0.3"]
 Conrad: Let's find him. And I have something that might help us get the truth.
-leave Conrad [animation="slide to right" length="0.4"]
-leave Mark [animation="slide to right" length="0.4"]
-leave "Diwata Laya" [animation="fade out" length="0.3"]
+leave --All--
 [background arg="res://Bg/hallway.png" fade="1.0"]
-join Greg (Greg_half) right [animation="fade in" length="0.5"]
-join Conrad (half) left [animation="slide from left" length="0.6"]
-update Conrad (half) center [move_time="0.3"]
+join Greg (Greg_half) right
+join Conrad (half) left
 Conrad: Greg, we need to ask you something. Were you inside the faculty room yesterday evening?
-update Greg (Greg_half) right [move_time="0.3"]
 Greg: What? No! I went straight home after class. I wasn't anywhere near there!
-join "Diwata Laya" (Half_mirror) rightmost [animation="fade in" length="0.5"]
+join "Diwata Laya" (Half_mirror) rightmost
 "Diwata Laya": (Whispering) Deceit clouds his words. He is lying.
-join Mark (Mark_half) left [animation="slide from left" length="0.5"]
-update Conrad (half) center [move_time="0.3"]
+join Mark (Mark_half) right
 Conrad: Greg, your phone connected to the Faculty WiFi at exactly 9\:00 PM last night. The faculty room was supposed to be empty by then.
-update Greg (Greg_half) right [move_time="0.3"]
 Greg: That doesn't mean anything! Maybe my phone just auto-connected while I was passing by!
-update Mark (Mark_half) center [move_time="0.3"]
 Mark: The Faculty WiFi signal doesn't reach the hallway. Your phone would only connect if you were right outside the door... or inside.
 label Choice_3
 Greg: You still can't prove I did anything wrong!
 [signal arg="minigame_evidence_choice"]
 label Correct_3
-update Conrad (half) left [move_time="0.3"]
 Conrad: You're right. The WiFi log alone isn't definitive proof. But I found something else.
-update Conrad (half) center [move_time="0.3"]
 Conrad: When I was examining the faculty room earlier, I found this near the AC unit.
-leave Conrad [animation="fade out" length="0.3"]
-leave Greg [animation="fade out" length="0.3"]
-leave Mark [animation="fade out" length="0.3"]
-leave "Diwata Laya" [animation="fade out" length="0.3"]
-[background arg="res://Pics/Charm.png" fade="0.5"]
+leave --All--
+[background arg="res://Pics/Charm.png" fade="0.0"]
 Conrad shows a photo on his phone - a small, worn charm bracelet with distinctive beads.
-[background arg="res://Bg/hallway.png" fade="0.5"]
-join Conrad (half) left [animation="fade in" length="0.4"]
-join Greg (Greg_half) right [animation="fade in" length="0.4"]
-join "Diwata Laya" (Half_mirror) rightmost [animation="fade in" length="0.4"]
-update Conrad (half) center [move_time="0.3"]
+[background arg="res://Bg/hallway.png" fade="1.0"]
+join Conrad left
+join Greg right
+join "Diwata Laya" rightmost
 Conrad: It was on the floor, partially hidden under the desk. It must have fallen off during the sabotage.
-update Greg (Greg_sad_half) right [move_time="0.3"]
 Greg (Greg_sad_half): (Eyes widen) That's... that could belong to anyone!
-update Conrad (half) left [move_time="0.3"]
 Conrad: It has very specific beads - blue, red, and white, with a tiny silver cross. Pretty distinctive.
 "Diwata Laya": (Whispering) His heart... the emotional surge is unmistakable. This is his. The grief and longing are overwhelming him.
 Conrad: I need to think clearly before pressing further...
 [signal arg="start_minigame statement_analysis"]
 Conrad: The evidence is clear. It's time to get the truth.
-update Conrad (half) center [move_time="0.3"]
 Conrad: I'm planning to show it around and ask if anyone recognizes it. Someone must be missing something this special.
-update Greg (Greg_sad_half) center [move_time="0.3"]
 Greg: (Visibly shaken) I...
 Conrad: Unless... you know who it belongs to?
-update Greg (Greg_sad_half) left [move_time="0.3"]
 Greg: Wait! Don't... don't show that to anyone else.
-update Conrad (half) left [move_time="0.3"]
 Conrad: Why not? If it's not yours—
-update Greg (Greg_sad_half) center [move_time="0.3"]
 Greg: It's mine! Okay? It's mine!
 Greg: My grandmother gave it to me before she passed away. It's the only thing I have left from her.
 Greg: Please, I'll tell you everything. Just... just give it back to me. Please.
-join Mark (Mark_half) left [animation="fade in" length="0.3"]
-Mark whispers to Conrad.
+Mark whispers to Conrad
 Mark: How did you know?
-Conrad looks at Diwata Laya.
+Conrad looks at Diwata Laya
 Conrad: I had a hunch.
-Mark notices that Conrad is suddenly looking at a part of the room that has nothing near it.
-update Conrad (half) center [move_time="0.3"]
+Mark notices that Conrad suddenly looking at a part of the room that has nothing near it.
 Conrad: Now, Greg. Tell us the truth. How did you get into the faculty room?
-update Greg (Greg_sad_half) right [move_time="0.3"]
 Greg: I didn't steal the key. I swear I didn't.
 Greg: I was panicking about the exam. I studied the wrong chapters and I knew I was going to fail.
-update Greg (Greg_sad_half) center [move_time="0.3"]
 Greg: Then yesterday, I found an envelope in my locker. It had a key inside and a note that just said "For your problem."
-update Mark (Mark_half) center [move_time="0.3"]
 Mark: Someone just gave you a key? And you didn't question it?
 Greg: I know it sounds crazy! But I was desperate. I thought... I thought if I could just delay the exam, I'd have time to study properly.
-update Greg (Greg_sad_half) left [move_time="0.3"]
 Greg: I went to the faculty room at 9\:00 PM. I used the key, got inside, and... I cut the AC tube to make it leak.
 Greg: The bracelet must have fallen off when I was reaching up to the unit. I didn't even notice it was gone until now.
-update Conrad (half) left [move_time="0.3"]
 Conrad: Do you still have the envelope?
-update Greg (Greg_sad_half) center [move_time="0.3"]
 Greg: Yes, here.
 Conrad examines the envelope. There is no name, but a small symbol is stamped on the inside flap\: a pixelated spider.
-join Principal (Principal_half) leftmost [animation="slide from left" length="0.6"]
+join Principal (Principal_half) leftmost
 "Principal Alan": I believe I've heard enough.
-update Greg (Greg_sad_half) right [move_time="0.3"]
 Greg: Principal Alan! I'm so sorry, I—
-update Principal (Principal_half) center [move_time="0.3"]
 "Principal Alan": I am deeply disappointed, Greg. But we need to discuss this "mysterious person" who gave you the key. This is clearly more complex than simple academic pressure.
 "Principal Alan": Come to my office. We'll need to contact your parents and discuss consequences.
-update Greg (Greg_sad_half) center [move_time="0.3"]
 Greg: (To Conrad, pleading) My bracelet... please...
 Conrad hands the bracelet back to Greg gently.
-update Conrad (half) center [move_time="0.3"]
 Conrad: Here. I understand what it means to you.
 Greg: (Clutching it tightly) Thank you... I'm sorry for everything.
-update Principal (Principal_half) left [move_time="0.3"]
 "Principal Alan": Conrad, Mark. You have shown great responsibility and intellect. The school thanks you both.
-leave Principal [animation="slide to left" length="0.5"]
-leave Greg [animation="slide to left" length="0.5"]
-leave "Diwata Laya" [animation="fade out" length="0.3"]
-update Conrad (half) center [move_time="0.3"]
+leave Principal
+leave Greg
 Conrad: (Sighs) Well, that's case closed.
-update Mark (Mark_half) center [move_time="0.3"]
 Mark: Dude, that was intense. How did you know the bracelet was so important to him?
-update Conrad (half) left [move_time="0.3"]
 Conrad: When I first found it in the faculty room, I just felt that it had to be important.
 Conrad: (That was thanks to Laya though.)
-update Conrad (half) center [move_time="0.3"]
 Conrad: That's when I knew it could be the key to getting a confession.
 Mark: So you knew before we even confronted him?
 Conrad: I knew it was important. I just didn't know it was Greg's. Haha

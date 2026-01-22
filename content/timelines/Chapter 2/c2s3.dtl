@@ -1,36 +1,16 @@
-[background arg="res://Bg/council_room.png" fade="1.0"]
+[background arg="res://Bg/classroom.png" fade="1.0"]
+Conrad climbs a chair to inspect the ceiling vent near the wires.
 join Conrad (half) left
 join Mark (Mark_half) right
-Conrad paces the room, deep in thought.
-Conrad: We're going in circles. Everyone had some access. Everyone has a reason to be nervous.
-Mark: Ria's nervous because she's being blamed. Ms. Santos is nervous because she left her drawer unlocked.
-Mark: And Ryan's nervous because... well, he's just defensive about his budget proposal.
-Conrad: But I can't tell who actually took the money. The evidence points everywhere and nowhere.
-join "Diwata Laya" (Half_mirror) center
-"Diwata Laya": I sensed the confusion from down the hall. You're stuck.
-Conrad: Laya. Yeah, I am. There's too much uncertainty.
-"Diwata Laya": Maybe you're looking with the wrong eyes.
-Conrad: What do you mean?
-"Diwata Laya": You're searching for facts. But sometimes the truth hides in feelings.
-"Diwata Laya": Let me try something. Clear your mind... and let the pieces fall into place.
-[signal arg="start_minigame fund_insight_1"]
-"Diwata Laya" closes her eyes and focuses.
-"Diwata Laya": I see... frustration. Deep frustration.
-"Diwata Laya": Someone who felt ignored. Dismissed. They wanted to be heard, but no one listened.
-Mark: That could be anyone having a bad day.
-"Diwata Laya": No. This person didn't just feel ignored. They wanted to prove something.
-"Diwata Laya": To show that others were wrong... by making them face consequences.
-Mark: Prove something? Like what?
-"Diwata Laya": I can't see the details. Just the emotion. Righteous anger. A desire to teach a lesson.
-Conrad: That's interesting. Most thieves feel greed or desperation. Not righteousness.
-Mark: So we're looking for someone who thinks they're doing the right thing?
-Conrad: Maybe someone who disagreed with how things were being done.
-Mark: Ryan was pretty upset about the budget decision.
-Conrad: He was. But I don't want to jump to conclusions based on feelings alone.
-Conrad: We need facts to back this up. Ryan said he was in the computer lab all evening.
-Mark: The computer lab keeps printer logs. We can check if his story holds up.
-Conrad: Good thinking. Let's go.
-leave Conrad
-leave Mark
-leave "Diwata Laya"
-jump c2s4/
+Conrad: Got it.
+[background arg="res://Pics/Exam_ruined.png" fade="0.0"]
+Mark: What is that? A walkie-talkie?
+Conrad: A modified FM transmitter. It's broadcasting on a low frequency.
+Conrad: It's sitting right next to the speaker line. The signal induces a current in the wire, driving the speakers directly.
+Conrad: No amp needed. The wire *is* the receiver.
+Mark: That's... actually genius. But why broadcast numbers?
+Conrad: It's a code. Answers to a test? Locker combinations?
+Conrad: Someone planted this. And they had to climb up here to do it.
+Mark: Look at the dust on the vent. There are finger marks. Small ones.
+Conrad: Like someone with small hands. Maybe a student assistant?
+[end_timeline]
