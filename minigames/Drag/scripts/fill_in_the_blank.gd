@@ -30,6 +30,7 @@ var is_ready = false
 # If they are auto-named ColorRect/ColorRect2, update the names in your scene or path
 @onready var drop_zone_1 = $CanvasLayer/TextureRect/CenterContainer/PanelContainer/AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer/drop1
 @onready var drop_zone_2 = $CanvasLayer/TextureRect/CenterContainer/PanelContainer/AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer/drop2
+@onready var texture_rect = $CanvasLayer/TextureRect
 
 var correct_drops = 0
 const TOTAL_DROPS = 2
@@ -38,6 +39,10 @@ const DROP_SCRIPT = preload("res://minigames/Drag/scripts/DropZone.gd")
 
 func _ready():
 	is_ready = true
+	# Quick fade-in for smooth transition
+	texture_rect.modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(texture_rect, "modulate:a", 1.0, 0.15)
 	# Initialize puzzle now that nodes are ready
 	_initialize_puzzle()
 
@@ -93,7 +98,10 @@ func check_win_condition(correctly_dropped):
 		# Win condition achieved!
 		emit_signal("game_finished", true, 100)
 		print("Puzzle Solved!")
-		get_tree().create_timer(1.5).timeout.connect(queue_free)
+		# Fade out before closing
+		var tween = create_tween()
+		tween.tween_property(texture_rect, "modulate:a", 0.0, 0.2)
+		tween.tween_callback(queue_free)
 	else:
 		# Optionally handle failure/time runs out here
 		pass

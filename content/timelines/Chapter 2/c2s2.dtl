@@ -1,16 +1,43 @@
-# Placeholder: Using classroom as Broadcasting Room
-[background arg="res://Bg/classroom.png" fade="1.0"]
-Conrad and Mark enter the Broadcasting Room. It's dusty and silent.
-join Conrad (half) left
-join Mark (Mark_half) right
-Conrad: The amplifier is cold. It's definitely off. Unplugged, even.
-Mark: See? I told you. No power, but the speakers still make noise.
-join "Diwata Laya" (Half_mirror) center
-"Diwata Laya": (Whispering) The air here is thick... but not with spirits.
-Conrad: What do you sense?
-"Diwata Laya": Waves. Invisible ripples passing through the walls. Like the wind, but carrying words.
-Conrad: Ripples... Radio waves?
-Conrad: (Looks at the speaker wires running up the wall) These cables are old. Unshielded copper.
-Mark: So?
-Conrad: Unshielded wires can act as antennas if a signal is strong enough and close enough.
-[end_timeline]
+[background arg="res://Bg/council_room.png" fade="1.0"]
+They enter the Student Council room. Ria is sitting at the desk, eyes red from crying.
+join Ria (Ria_half) center [animation="fade in" length="0.5"]
+join Conrad (half) left [animation="slide from left" length="0.5"]
+update Ria (Ria_half) left [move_time="0.3"]
+Ria: (startled) I didn't take it! I swear!
+update Conrad (half) center [move_time="0.3"]
+Conrad: We believe you, Ria. That's why we're here to help.
+join Mark (Mark_half) right [animation="fade in" length="0.3"]
+update Mark (Mark_half) center [move_time="0.3"]
+Mark: Can you tell us exactly what happened yesterday?
+update Ria (Ria_half) center [move_time="0.3"]
+Ria: I counted the money at 6 PM. Twenty thousand pesos, exactly.
+Ria: I put it in the box, locked it, and left the key in Ms. Santos's drawer like always.
+update Conrad (half) left [move_time="0.3"]
+Conrad: Is the drawer usually locked?
+update Ria (Ria_half) right [move_time="0.3"]
+Ria: It's supposed to be. But... Ms. Santos sometimes forgets when she's busy grading.
+update Conrad (half) center [move_time="0.3"]
+Conrad: Who else was here yesterday evening?
+update Ria (Ria_half) center [move_time="0.3"]
+Ria: Ryan was in the hallway when I left. He said he was going to the computer lab to print something.
+Ria: And Ms. Santos was still in the faculty room.
+update Ria (Ria_half) left [move_time="0.3"]
+Ria: (voice breaking) Conrad... that money was for the outreach program. Twelve students are counting on it.
+Ria: I know what it's like to not afford school supplies. The council helped me once, and I swore I'd do the same for others.
+Ria: Now I have to tell those kids we can't help them? That I lost the money they were counting on?
+update Conrad (half) left [move_time="0.3"]
+Conrad: You didn't lose anything, Ria. Someone stole it. And we're going to find out who.
+Conrad examines the money box on the desk.
+update Conrad (half) center [move_time="0.3"]
+Conrad: No scratches on the lock. No signs of forced entry.
+Conrad: Whoever took this had a key... or knew where to find one.
+update Mark (Mark_half) left [move_time="0.3"]
+Mark: So we're looking at people who had access to the key.
+update Conrad (half) right [move_time="0.3"]
+Conrad: Ryan was in the building. Ms. Santos had the key in her drawer.
+update Conrad (half) center [move_time="0.3"]
+Conrad: Let's talk to both of them. Starting with Ryan.
+leave Conrad [animation="slide to right" length="0.4"]
+leave Mark [animation="slide to right" length="0.4"]
+leave Ria [animation="fade out" length="0.3"]
+jump c2s2b/

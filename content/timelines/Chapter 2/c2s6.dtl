@@ -1,0 +1,44 @@
+[background arg="res://Bg/storage_room.png" fade="1.0"]
+They arrive at the sports equipment storage room.
+join Conrad (half) left
+join Mark (Mark_half) right
+join "Diwata Laya" (Half_mirror) center
+Conrad: This is the only place Ryan has exclusive access to.
+Mark: The door's locked. We can't just break in.
+Conrad: We don't have to.
+Conrad knocks on the door.
+Conrad: Ryan, we know you're in there. We need to talk.
+After a moment, the door opens. Ryan stands inside, looking defensive.
+leave Mark
+leave "Diwata Laya"
+join Ryan (half) right
+Ryan: What do you want? I'm organizing equipment.
+Conrad: We found something interesting in the printer reject tray.
+Conrad: A draft of your budget proposal. With notes in your handwriting.
+Ryan: So what? I write notes to myself all the time.
+Conrad: "If they won't listen, I'll have to make them see reason."
+Conrad: The same handwriting appears on a threatening note that Ria received in her locker.
+Ryan's expression falters.
+Ryan: That... that doesn't prove anything.
+Conrad: The printer logs show you stopped printing for over an hour yesterday.
+Conrad: During that time, Ms. Santos left the faculty room unlocked for her coffee break.
+Conrad: You had access to the key. You had motive. And you wrote that threatening note.
+Ryan: I...
+Conrad: Where's the money, Ryan?
+Ryan stands silent for a moment, then his shoulders slump.
+Ryan: It's behind the equipment racks. In a gym bag.
+join Mark (Mark_half) center
+Mark retrieves the bag and opens it.
+Mark: Twenty thousand pesos. All here.
+Ryan: I wasn't stealing it! I was going to return it!
+Conrad: Then why take it at all?
+Ryan: I was going to "discover" it in a few days. Show everyone how easy it was to take.
+Ryan: The council is careless! Ria left the box unlocked before. Ms. Santos forgets her drawer.
+Ryan: Someone had to prove that we need better systems!
+Conrad: By framing Ria? By making her cry and think her reputation was ruined?
+Ryan: I... I didn't think about it that way. I just wanted them to listen to me.
+Conrad: There are better ways to be heard, Ryan. This wasn't leadership. This was manipulation.
+leave Conrad
+leave Mark
+leave Ryan
+jump c2s7/

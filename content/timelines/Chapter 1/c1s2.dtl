@@ -1,30 +1,39 @@
 [background arg="res://Bg/classroom.png" fade="3.0"]
 set {chapter1_score} = 0
 The time is now 5\:30. Today's classes are over. Instead of going home, Conrad and Mark stay in the classroom to talk.
-join Conrad (half) left
-join Mark (Mark_half) right
+join Conrad (half) left [animation="fade in" length="0.5"]
+join Mark (Mark_half) right [animation="fade in" length="0.5"]
+update Conrad (half) center [move_time="0.3"]
 Conrad: Finally, classes are over. Dude, let's go find that Janitor!
+update Mark (Mark_half) center [move_time="0.3"]
 Mark: I can't man, mom told me to go home as soon as possible. My mom and I got invited to celebrate my cousin's birthday. You know how my mom is.
+update Conrad (half) left [move_time="0.3"]
 Conrad: Alright, fine. We can just talk through messages just in case I need you for something. You better respond as soon as you can.
 Mark: Alright.
-leave Mark [animation="Instant Out"]
-leave Conrad [animation="Instant Out"]
+leave Mark [animation="slide to right" length="0.5"]
+leave Conrad [animation="fade out" length="0.3"]
 A Janitor enters the classroom.
-join "Janitor Fred" (Janitor_half) right [animation="Slide From Right" length="1.5" move_time="2.0"]
+join "Janitor Fred" (Janitor_half) right [animation="slide from right" length="1.0"]
 The Janitor brings in his cleaning equipment in the room.
-join Conrad (half) left [animation="Slide From Left" length="3.6"]
+join Conrad (half) left [animation="slide from left" length="0.8"]
+update Conrad (half) center [move_time="0.3"]
 Conrad: Excuse me sir, are you in a rush?
+update "Janitor Fred" (Janitor_half) center [move_time="0.3"]
 "Janitor Fred": No young man, what do you need from me?
 Conrad: I noticed earlier today that there seems to be a problem with the exam papers? Do you know what that's about?
 "Janitor Fred": I overheard them at the faculty earlier panicking about how the exam papers are ruined because they got wet. One air conditioning unit in the faculty room started leaking yesterday. It was noticed by the English teacher this morning.
+update Conrad (half) left [move_time="0.3"]
 Conrad: Huh, those looked pretty new from what I can remember.
 "Janitor Fred": That is why the principal is so mad. He called the store where the air conditioner was bought to complain. The store is sending a repair guy.
+update Conrad (half) center [move_time="0.3"]
 Conrad: Do you know when the repair guy will arrive?
 "Janitor Fred": He'll probably arrive anytime now. I heard the principal say that it will probably be after classes are done for the day.
 Conrad: Thanks for answering my questions.
+update "Janitor Fred" (Janitor_half) right [move_time="0.3"]
 "Janitor Fred": No problem kid.
-leave "Janitor Fred" [animation="Slide To Right"]
+leave "Janitor Fred" [animation="slide to right" length="0.5"]
 Janitor leaves the room after checking how dirty it is, but does not clean the room yet.
+update Conrad (half) center [move_time="0.3"]
 Conrad: Hmmm, nothing is really suspicious from what I have gathered so far.
 label choice_1
 Conrad: What's the most logical next step based on what the Janitor said?
@@ -40,6 +49,6 @@ Conrad: What's the most logical next step based on what the Janitor said?
 	set {chapter1_score} += 10
 	Conrad: That's it. The leak happened yesterday, but was only found this morning. What happened in between? That feels like the real mystery.
 Conrad: I have a strange feeling about this. Something doesn't add up. I should keep digging for more information.
-leave --All-- [animation="Slide To Right"]
+leave --All-- [animation="slide to right"]
 Conrad goes out of the room and heads for the faculty room.
 jump c1s2b/

@@ -1,0 +1,38 @@
+[background arg="res://Bg/council_room.png" fade="1.0"]
+They return to the Student Council room to speak with Ria again.
+join Conrad (half) left
+join Mark (Mark_half) right
+join Ria (half) center
+Conrad: Ria, we need to ask you something else. Has anything strange happened recently? Anything you haven't told us?
+Ria hesitates, looking down at her hands.
+Ria: I... there is something.
+Mark: What is it?
+Ria: I got a note in my locker. A few days ago.
+Conrad: What kind of note?
+Ria: (voice shaking) It said... "I know what you did with last year's fund. Resign or I'll expose you."
+Mark: Someone was threatening you? Why didn't you tell anyone?
+Ria: I was scared! I thought it would make me look more guilty.
+Conrad: What did you do with last year's fund, Ria?
+Ria: Nothing! I mean... I made a mistake once.
+Ria: I left the money box unlocked overnight. But nothing was taken!
+Ria: I fixed it the next morning. I thought no one knew.
+Conrad: Someone knew. And they used it against you.
+Conrad: Do you still have the note?
+Ria: (pulls out a folded paper) Here. I've been carrying it around, too afraid to show anyone.
+Conrad takes the note and examines it carefully.
+Conrad: This handwriting is careful. Deliberate. Not written in anger.
+Mark: So whoever wrote this planned it out.
+Conrad: Exactly. This wasn't a random threat. It was calculated.
+join "Diwata Laya" (Half_mirror) center
+update Ria (half) right
+"Diwata Laya": I sense something. Let me look closer at this note.
+"Diwata Laya" holds the note gently.
+"Diwata Laya": The person who wrote this... they wanted control. They wanted chaos, but on their terms.
+Conrad: I need to see Ryan's budget proposal. The one he was printing yesterday.
+Mark: You think Ryan wrote this?
+Conrad: I think we need to compare the handwriting. Let's check the printer's reject tray.
+leave Conrad
+leave Mark
+leave Ria
+leave "Diwata Laya"
+jump c2s5b/

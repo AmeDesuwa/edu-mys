@@ -1,0 +1,51 @@
+[background arg="res://Bg/computer_lab.png" fade="1.0"]
+They find Ryan in the computer lab.
+join Conrad (half) left
+join Ryan (half) right
+Ryan: Why are you asking me? I was in the computer lab all evening.
+Conrad: We're just gathering information. What were you doing here?
+Ryan: Printing my budget proposal. The one the council rejected last week.
+Conrad: You disagreed with the budget decision?
+Ryan: Of course I did! We're spending fifteen thousand on decorations for Foundation Day.
+Ryan: Meanwhile, the sports teams don't have proper equipment. It's wasteful!
+Conrad: That sounds frustrating.
+Ryan: It is. But I didn't steal the money, if that's what you're thinking.
+Conrad: No one's accusing you. Just asking questions.
+Ryan: Well, I have nothing to hide. I was here printing until 7 PM.
+Ryan leaves, clearly annoyed.
+leave Ryan
+join Mark (Mark_half) right
+Mark: He seemed pretty defensive.
+Conrad: Being defensive doesn't make someone guilty. But he has a clear motive... and he was in the building.
+Conrad: Let's talk to Ms. Santos.
+leave Conrad
+leave Mark
+[background arg="res://Bg/faculty_empty.png" fade="1.0"]
+They find Ms. Santos in the faculty room.
+join Conrad (half) left
+join "Ms Santos" (half) right
+"Ms Santos": (tired) I already told the principal everything I know.
+Conrad: We're just trying to help, Ma'am. Can you tell us about yesterday evening?
+"Ms Santos": I was grading papers until 8 PM. Same as always.
+Conrad: The entire time?
+"Ms Santos": (pauses) Well... I took a coffee break around 6:30. Maybe fifteen minutes.
+Conrad: Did you lock your desk drawer before leaving?
+"Ms Santos": (uncomfortable) I... I'm not sure. I might have forgotten.
+Conrad: The council office key is kept in that drawer, correct?
+"Ms Santos": (defensive) Yes, but I always lock it! Well... usually.
+"Ms Santos": With all the grading, sometimes I forget small things.
+Conrad: Did you see anyone near the faculty room during your break?
+"Ms Santos": The hallway was empty when I left. When I came back... I think I saw Ryan walking toward the stairs.
+Conrad: What time was that?
+"Ms Santos": Around 6:45, maybe.
+Conrad: Thank you, Ma'am.
+leave "Ms Santos"
+join Mark (Mark_half) right
+Mark: So during those fifteen minutes, anyone could have accessed the key.
+Conrad: And she saw Ryan near the stairs at 6:45. Right after her coffee break.
+Mark: That's suspicious timing. The drawer was unlocked, and Ryan was nearby.
+Conrad: Maybe. But we can't accuse someone just because they were in the building.
+Conrad: We need more than just opportunity. We need evidence.
+leave Conrad
+leave Mark
+jump c2s3/

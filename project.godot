@@ -35,8 +35,12 @@ directories/dch_directory={
 "Greg": "res://content/characters/Greg.dch",
 "Janitor Fred": "res://content/characters/Janitor Fred.dch",
 "Mark": "res://content/characters/Mark.dch",
+"Ms Santos": "res://content/characters/Ms Santos.dch",
 "Principal": "res://content/characters/Principal.dch",
+"Ria": "res://Ria.dch",
+"Ryan": "res://content/characters/Ryan.dch",
 "character": "res://content/characters/character.dch",
+"characters/Ria": "res://content/characters/Ria.dch",
 "example character": "res://content/characters/example character.dch"
 }
 directories/dtl_directory={
@@ -46,10 +50,16 @@ directories/dtl_directory={
 "c1s3": "res://content/timelines/Chapter 1/c1s3.dtl",
 "c1s4": "res://content/timelines/Chapter 1/c1s4.dtl",
 "c1s5": "res://content/timelines/Chapter 1/c1s5.dtl",
+"c2s0": "res://content/timelines/Chapter 2/c2s0.dtl",
 "c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
 "c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
+"c2s2b": "res://content/timelines/Chapter 2/c2s2b.dtl",
 "c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
 "c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
+"c2s5": "res://content/timelines/Chapter 2/c2s5.dtl",
+"c2s5b": "res://content/timelines/Chapter 2/c2s5b.dtl",
+"c2s6": "res://content/timelines/Chapter 2/c2s6.dtl",
+"c2s7": "res://content/timelines/Chapter 2/c2s7.dtl",
 "d": "res://content/timelines/d.dtl",
 "level_test": "res://content/timelines/level_test.dtl",
 "level_up": "res://content/timelines/level_up.dtl"

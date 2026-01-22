@@ -33,6 +33,11 @@ const FLOOR_COLOR = Color(0.9, 0.87, 0.8, 1)
 const PLAYER_START_COLOR = Color(0.3, 0.8, 0.4, 0.4)
 
 func _ready():
+	# Quick fade-in for smooth transition
+	modulate.a = 0.0
+	var fade_tween = create_tween()
+	fade_tween.tween_property(self, "modulate:a", 1.0, 0.15)
+
 	# Default questions for testing
 	questions = [
 		{"question": "2 + 2 = ?", "correct": "4", "wrong": ["3", "5", "6"]},
@@ -434,10 +439,12 @@ func _end_game(success: bool):
 	$UILayer/ResultPanel.show()
 	$UILayer/ResultPanel/ResultLabel.text = result_text
 
-	# Emit signal after delay
-	await get_tree().create_timer(2.0).timeout
+	# Emit signal after delay, then fade out
+	await get_tree().create_timer(1.5).timeout
 	emit_signal("game_finished", success, score)
-	queue_free()
+	var fade_tween = create_tween()
+	fade_tween.tween_property(self, "modulate:a", 0.0, 0.2)
+	fade_tween.tween_callback(get_parent().queue_free)
 
 # ============ UI ============
 
