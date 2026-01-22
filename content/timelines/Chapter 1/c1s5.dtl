@@ -14,7 +14,7 @@ Conrad reaches under the desk and pulls out a small, worn charm bracelet with di
 "Diwata Laya": (Suddenly alert) Conrad, wait! That object...
 "Diwata Laya": I sense something powerful emanating from it. Strong emotions... but I can't read it clearly.
 Conrad: (Examining the bracelet) This must have fallen off during the sabotage. It's pretty distinctive.
-[background arg="res://Bg/faculty_empty.png" fade="0.5"]
+[background arg="res://Bg/faculty_empty.png" fade="0.0"]
 join "Diwata Laya" right [animation="Instant In"]
 join Conrad left
 Conrad: Can you tell me more about it? Who does it belong to?
@@ -66,7 +66,7 @@ Conrad: When I was examining the faculty room earlier, I found this near the AC 
 leave --All--
 [background arg="res://Pics/Charm.png" fade="0.3"]
 Conrad shows a photo on his phone - a small, worn charm bracelet with distinctive beads.
-[background arg="res://Bg/classroom.png" fade="1.0"]
+[background arg="res://Bg/classroom.png" fade="0.0"]
 join Conrad left
 join Greg right
 join "Diwata Laya" rightmost

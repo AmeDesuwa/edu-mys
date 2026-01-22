@@ -25,7 +25,7 @@ What's wrong with this picture?
 label After
 Conrad: Sir Alan, the tube was definitely cut. But there's no sign of forced entry on the door.
 Principal: That is impossible. Only the staff have keys to this room.
-[background arg="res://Bg/faculty_few.png" fade="0.5"]
+[background arg="res://Bg/faculty_few.png" fade="0.0"]
 join Conrad (half) left [animation="Instant In" length="0.1"]
 join Principal right [animation="Instant In" length="0.1"]
 Conrad: Unless someone stole a key... or was given one.
@@ -48,7 +48,7 @@ Conrad: He sent a picture? Wait a minute.
 Conrad: I don't have any mobile data left. How did I receive this photo?
 [background arg="res://Pics/Wifi_Faculty.png" fade="0.2"]
 Conrad: I'm connected to "Faculty_Wifi".
-[background arg="res://Bg/faculty_few.png" fade="0.5"]
+[background arg="res://Bg/faculty_few.png" fade="0.0"]
 join Conrad (half) left
 Conrad: Sir, does this room have a dedicated Wi-Fi router?
 join Principal right
@@ -63,7 +63,7 @@ Principal: Interesting. Two devices connected to the "Faculty_Wifi" network yest
 Principal: One connected at 8\:00 PM, device name "Galaxy_A52". The other at 9\:00 PM, device name "Redmi_Note_10".
 Conrad: Galaxy A52 and Redmi Note 10... Those are specific models.
 Conrad: I need to confirm who owns these.
-[background arg="res://Bg/faculty_few.png" fade="0.5"]
+[background arg="res://Bg/faculty_few.png" fade="0.0"]
 join Principal right
 join Conrad left
 Conrad: (Texts Mark) "Hey, do you know anyone in 12-A who uses a Galaxy A52 or a Redmi Note 10?"
