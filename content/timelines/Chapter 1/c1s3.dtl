@@ -1,4 +1,4 @@
-[background arg="res://Bg/faculty_few.png" fade="0.0"]
+[background arg="res://Bg/faculty_few.png" fade="1.5"]
 Conrad enters the school faculty room. He sees that some teachers and student are doing schoolwork.
 He sees the Principal and approaches him.
 join Principal right [animation="Instant In" length="0.0"]
@@ -11,9 +11,9 @@ Principal: Yes, it's true. All of the exam papers of Grade 12-A are wet. Thankfu
 Conrad: Can I take a look at the place where it happened sir?
 Principal: It was already cleaned up earlier, here take a look. I took a photo of the mess earlier since the store where the leaking air conditioner was bought didn't believe that it was leaking.
 leave --All--
-[background arg="res://Pics/Exam_ruined.png" fade="0.0"]
+[background arg="res://Pics/Exam_ruined.png" fade="0.3"]
 Conrad (none): (Hmmm...... the water seems to be a bit too much from only a natural leak. The amount of water looks more like from a pipe instead of a leak.
-[background arg="res://Pics/Ac_leak.png" fade="0.0"]
+[background arg="res://Pics/Ac_leak.png" fade="0.3"]
 label Deduction
 What's wrong with this picture?
 - The airconditioning unit looks old so it was only natural that it leaked
@@ -25,7 +25,7 @@ What's wrong with this picture?
 label After
 Conrad: Sir Alan, the tube was definitely cut. But there's no sign of forced entry on the door.
 Principal: That is impossible. Only the staff have keys to this room.
-[background arg="res://Bg/faculty_few.png" fade="0.0"]
+[background arg="res://Bg/faculty_few.png" fade="0.5"]
 join Conrad (half) left [animation="Instant In" length="0.1"]
 join Principal right [animation="Instant In" length="0.1"]
 Conrad: Unless someone stole a key... or was given one.
@@ -42,13 +42,13 @@ Conrad: Leave it to me sir.
 Principal: Good.
 Conrad: (My phone is buzzing. It's a message from Mark.)
 leave --All--
-[background arg="res://Pics/Mark_msg.jpg" fade="0.0"]
+[background arg="res://Pics/Mark_msg.jpg" fade="0.2"]
 # Placeholder for the picture Mark sent
 Conrad: He sent a picture? Wait a minute.
 Conrad: I don't have any mobile data left. How did I receive this photo?
-[background arg="res://Pics/Wifi_Faculty.png" fade="0.0"]
+[background arg="res://Pics/Wifi_Faculty.png" fade="0.2"]
 Conrad: I'm connected to "Faculty_Wifi".
-[background arg="res://Bg/faculty_few.png" fade="0.0"]
+[background arg="res://Bg/faculty_few.png" fade="0.5"]
 join Conrad (half) left
 Conrad: Sir, does this room have a dedicated Wi-Fi router?
 join Principal right
@@ -58,12 +58,12 @@ Conrad: My phone just auto-connected to it. If the culprit was here, their phone
 Principal: All the phones of the students should have access since it the password was provided in the orientation and is available to see at the Bulletin Board.
 Principal: That is a clever idea. Let me check the admin panel...
 leave --All--
-[background arg="res://Pics/Wifi_Logs.png" fade="0.0"]
+[background arg="res://Pics/Wifi_Logs.png" fade="0.2"]
 Principal: Interesting. Two devices connected to the "Faculty_Wifi" network yesterday evening.
 Principal: One connected at 8\:00 PM, device name "Galaxy_A52". The other at 9\:00 PM, device name "Redmi_Note_10".
 Conrad: Galaxy A52 and Redmi Note 10... Those are specific models.
 Conrad: I need to confirm who owns these.
-[background arg="res://Bg/faculty_few.png" fade="0.0"]
+[background arg="res://Bg/faculty_few.png" fade="0.5"]
 join Principal right
 join Conrad left
 Conrad: (Texts Mark) "Hey, do you know anyone in 12-A who uses a Galaxy A52 or a Redmi Note 10?"
@@ -72,7 +72,7 @@ Conrad: (Mark replies) "She's usually at the lockers this time."
 Conrad: Thanks, Sir. I have a lead to follow up on.
 leave Principal
 leave Conrad [animation="Instant Out"]
-[background arg="res://Bg/hallway.png" fade="0.0"]
+[background arg="res://Bg/hallway.png" fade="1.5"]
 join Conrad center
 Conrad leaves the room and is walking in the hallway
 join Conrad (half) left
@@ -83,7 +83,7 @@ Conrad: Ughhhh... This is so hard. Why did I think that I could do this.
 Conrad walks in the hallway to leave the building to go to the school gate
 leave Conrad
 # Conrad goes to find Alice (Placeholder: Janitor Fred)
-[background arg="res://Bg/school_gate.png" fade="0.0"]
+[background arg="res://Bg/school_gate.png" fade="1.5"]
 join Alice right [animation="Instant In" length="0.1"]
 join Conrad left [animation="Slide From Left" length="1.0"]
 Conrad: Excuse me... Alice?

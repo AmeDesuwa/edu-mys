@@ -9,12 +9,12 @@ Conrad: The WiFi logs put Greg here at 9\:00 PM, but that's still circumstantial
 Conrad crouches near the desk below the AC unit, looking under it.
 Conrad: Wait, what's this?
 leave --All--
-[background arg="res://Pics/Charm.png" fade="0.0"]
+[background arg="res://Pics/Charm.png" fade="0.3"]
 Conrad reaches under the desk and pulls out a small, worn charm bracelet with distinctive blue, red, and white beads, and a tiny silver cross.
 "Diwata Laya": (Suddenly alert) Conrad, wait! That object...
 "Diwata Laya": I sense something powerful emanating from it. Strong emotions... but I can't read it clearly.
 Conrad: (Examining the bracelet) This must have fallen off during the sabotage. It's pretty distinctive.
-[background arg="res://Bg/faculty_empty.png" fade="0.0"]
+[background arg="res://Bg/faculty_empty.png" fade="0.5"]
 join "Diwata Laya" right [animation="Instant In"]
 join Conrad left
 Conrad: Can you tell me more about it? Who does it belong to?
@@ -63,7 +63,7 @@ label Correct_3
 Conrad: You're right. The WiFi log alone isn't definitive proof. But I found something else.
 Conrad: When I was examining the faculty room earlier, I found this near the AC unit.
 leave --All--
-[background arg="res://Pics/Charm.png" fade="0.0"]
+[background arg="res://Pics/Charm.png" fade="0.3"]
 Conrad shows a photo on his phone - a small, worn charm bracelet with distinctive beads.
 [background arg="res://Bg/hallway.png" fade="1.0"]
 join Conrad left
