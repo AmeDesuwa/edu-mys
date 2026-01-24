@@ -50,6 +50,8 @@ Conrad: Whoever B.C. is, they're not just leaving clues. They're guiding us towa
 Conrad: Each case teaches us a lesson. Each lesson builds on the last.
 Mark: First lesson was about truth. This one was about responsibility.
 Mark: I wonder what's next.
+set {conrad_level} = 4
+[signal arg="show_level_up"]
 Conrad: We'll find out when we're meant to.
 Conrad stares at the note, deep in thought.
 Conrad: Every case, we learn something new. About others. About ourselves.

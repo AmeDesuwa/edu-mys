@@ -89,9 +89,12 @@ Conrad: Careful handwriting. Calculated timing. Knowledge of Ria's past mistake.
 	jump note_choice
 - Ryan. He had motive, and this fits his personality.
 	set {chapter2_score} += 10
+	[signal arg="correct_choice"]
 	Conrad: Ryan was frustrated that his budget proposals kept getting rejected.
 	Conrad: If he wanted to force change in the council, discrediting the treasurer would be a calculated first step.
 	Conrad: He could observe council operations. He would notice Ria's habits.
+set {conrad_level} = 3
+[signal arg="show_level_up"]
 Mark: But how do we prove Ryan wrote it?
 Conrad: I need to see something written in Ryan's own hand. His budget proposal.
 Conrad: He said the printer was jamming yesterday. Maybe there's a rejected copy somewhere.
