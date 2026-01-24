@@ -315,30 +315,61 @@ var maze_configs = {
 	}
 }
 
-# Pronunciation puzzle configs - player must speak sentences clearly
+# Pronunciation puzzle configs - K-12 English Oral Communications
 var pronunciation_configs = {
-	"pronounce_science": {
-		"sentence": "the scientific method helps us understand the world",
+	# Basic articulation and clarity
+	"oral_greeting": {
+		"sentence": "good morning everyone my name is conrad",
 		"min_confidence": 0.6,
 		"max_attempts": 3
 	},
-	"pronounce_math": {
-		"sentence": "mathematics is the language of the universe",
+	"oral_introduction": {
+		"sentence": "today i will talk about an important topic",
 		"min_confidence": 0.6,
 		"max_attempts": 3
 	},
-	"pronounce_reading": {
-		"sentence": "reading opens doors to new adventures",
+	# Presentation skills
+	"oral_transition": {
+		"sentence": "now let us move on to the next point",
 		"min_confidence": 0.6,
 		"max_attempts": 3
 	},
-	"pronounce_history": {
-		"sentence": "history teaches us lessons from the past",
+	"oral_conclusion": {
+		"sentence": "in conclusion we have learned three key ideas",
 		"min_confidence": 0.6,
 		"max_attempts": 3
 	},
-	"pronounce_english": {
-		"sentence": "practice makes perfect when learning english",
+	# Reading fluency
+	"oral_fluency_1": {
+		"sentence": "the quick brown fox jumps over the lazy dog",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oral_fluency_2": {
+		"sentence": "she sells seashells by the seashore",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	# Expression and emphasis
+	"oral_question": {
+		"sentence": "what do you think is the best solution",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oral_persuasion": {
+		"sentence": "i believe we should work together as a team",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	# Formal speaking
+	"oral_formal": {
+		"sentence": "thank you for giving me this opportunity to speak",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	# Storytelling
+	"oral_narrative": {
+		"sentence": "once upon a time there lived a brave young hero",
 		"min_confidence": 0.6,
 		"max_attempts": 3
 	}
