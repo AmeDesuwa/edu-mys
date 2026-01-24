@@ -1,0 +1,35 @@
+[background arg="res://Bg/courtyard_night.png" fade="2.0"]
+set {chapter3_score} = 0
+The night before Art Week...
+The courtyard lies quiet under a pale moon. Student artwork stands arranged on pedestals, waiting for tomorrow's opening.
+[wait time="1.0"]
+In the center, a sculpture catches the moonlight: a student reading under a tree, carved in clay with careful, loving hands.
+A plaque at its base reads: "The Reader - by Mia Santos. Regional Art Competition Winner."
+[wait time="1.5"]
+A shadow moves between the displays.
+A figure approaches the sculpture, breathing unsteadily.
+Their hands tremble as they reach toward the clay figure.
+[wait time="1.0"]
+The figure hesitates. Their voice is barely a whisper.
+???: I don't want to do this.
+???: But I can't stand it anymore. Everyone sees her. No one sees me.
+???: Maybe if this is gone... they'll finally look at my work.
+[wait time="1.0"]
+The figure's hands press against the sculpture.
+A pause. A shaky breath.
+Then - a push.
+[wait time="0.5"]
+The crash echoes through the empty courtyard.
+Clay and plaster scatter across the ground. The Reader lies in pieces.
+[wait time="1.0"]
+The figure stumbles backward, staring at what they've done.
+???: What... what have I done?
+They turn and flee into the darkness.
+Something small falls from their pocket, landing silently among the debris.
+[wait time="1.5"]
+The courtyard returns to silence.
+The broken sculpture lies alone, waiting to be discovered.
+[background arg="res://Bg/hallway.png" fade="2.0"]
+[wait time="1.0"]
+The next morning...
+jump c3s1/

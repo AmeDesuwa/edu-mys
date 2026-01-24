@@ -1,0 +1,87 @@
+[background arg="res://Bg/courtyard.png" fade="1.0"]
+A few days later. Art Week continues, transformed by what happened.
+The spot where "The Reader" once stood now holds something new.
+join Conrad (half) left
+join Mark (Mark_half) right
+Mark: What's that? Where Mia's sculpture used to be?
+Conrad approaches the pedestal.
+A collaborative piece stands in place of the broken sculpture.
+Dozens of small clay hands, each made by a different student, reach upward together, holding an open book.
+A plaque reads: "Together We Rise - A collaborative tribute to The Reader."
+Conrad: The art club made this. Each student contributed a hand.
+Mark: Even Victor?
+Conrad: Even Victor. His is the one in the center.
+Mark: That's... actually kind of beautiful.
+Conrad: Mia said art is about sharing. Looks like everyone learned that lesson.
+They stand in comfortable silence, admiring the piece.
+Mark: Hey, what's that?
+He points to something tucked behind the pedestal.
+Conrad reaches down and pulls out a small, elegant card.
+Conrad: Another one.
+Mark: B.C.?
+Conrad nods, reading aloud.
+Conrad: "Lesson 3: Creativity."
+Conrad: "True artists create to express, not to compete."
+Conrad: "Envy sees another's light and tries to extinguish it, not realizing it could have warmed them both."
+Conrad: "The jealous heart destroys what it cannot possess. The wise heart learns to admire what it cannot be."
+Mark: That's... actually really relevant.
+Conrad continues reading.
+Conrad: "Well done, detectives. The chain continues."
+Conrad: "Signed... B.C."
+Mark: Three cases. Three lessons. Three cards.
+Mark: Truth. Responsibility. Creativity.
+Mark: What's the pattern here?
+Conrad: Someone's teaching us. Through these mysteries.
+Mark: But who? And why?
+join "Diwata Laya" (Half_mirror) center
+[signal arg="laya_start"]
+"Diwata Laya" appears, her eyes fixed on the card.
+"Diwata Laya": B.C. Their presence grows stronger with each lesson.
+"Diwata Laya": They are not merely watching. They are guiding.
+Conrad: Guiding us toward what?
+"Diwata Laya": I cannot see the end. Only the path unfolding.
+"Diwata Laya": But each lesson builds on the last. Truth. Responsibility. Creativity.
+"Diwata Laya": These are not random values. They form something larger.
+Mark: A curriculum?
+"Diwata Laya": Perhaps. Or a test. Preparing you for something to come.
+Conrad: Who is B.C.?
+"Diwata Laya" shakes her head slowly.
+"Diwata Laya": Even I cannot pierce that veil. They exist outside my sight.
+"Diwata Laya": But I sense no malice. Only purpose. Ancient and patient.
+[signal arg="laya_end"]
+leave "Diwata Laya"
+Mark: A mysterious teacher who leaves cryptic cards after we solve crimes.
+Mark: Our lives have gotten weird, Conrad.
+Conrad: Weird, but meaningful.
+Conrad looks at the collaborative sculpture.
+Conrad: Victor wanted to be seen. To matter.
+Conrad: But he was looking for validation in the wrong places.
+Conrad: Competition pushed him to improve. But when it became about tearing others down...
+Mark: That's when it stopped being about the art.
+Conrad: Exactly. Creation should lift people up. Not tear them down.
+Conrad: Victor had real skill. He just forgot why he started making art in the first place.
+Mark: And Mia?
+Conrad: She never forgot. That's why her work resonates.
+Conrad: It's not about technique. It's about connection.
+set {conrad_level} = 6
+[signal arg="show_level_up"]
+Mark stretches, looking at the setting sun.
+Mark: Three cases solved. Three mysterious cards.
+Mark: Think there'll be more?
+Conrad: "The chain continues." That's what B.C. said.
+Conrad: There will definitely be more.
+Mark: Then we'll be ready.
+Conrad: Together.
+They share a smile.
+Mark: Come on. Let's get some food. All this detective work makes me hungry.
+Conrad: Everything makes you hungry, Mark.
+Mark: Fair point.
+They walk away from the courtyard, leaving the collaborative sculpture glowing in the afternoon light.
+leave Conrad
+leave Mark
+The B.C. card sits on the pedestal beside the sculpture.
+The wind ruffles its edge, but it stays in place.
+Watching.
+Waiting.
+The chain continues.
+[end_timeline]

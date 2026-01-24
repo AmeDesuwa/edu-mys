@@ -32,6 +32,12 @@ var fillinblank_configs = {
 		"sentence_parts": ["A budget helps track ", " and ", " to manage money wisely."],
 		"answers": ["income", "expenses"],
 		"choices": ["income", "expenses", "savings", "debts", "profits", "losses", "assets", "taxes"]
+	},
+	# Chapter 3 - Art vocabulary
+	"art_vocabulary": {
+		"sentence_parts": ["In art, the arrangement of elements is called ", " and the contrast between light and dark is ", "."],
+		"answers": ["composition", "value"],
+		"choices": ["composition", "value", "texture", "color", "balance", "rhythm", "emphasis", "form"]
 	}
 }
 

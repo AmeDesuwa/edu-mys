@@ -1,0 +1,76 @@
+[background arg="res://Bg/courtyard.png" fade="1.0"]
+Art Week. The courtyard buzzes with excitement as students gather around colorful displays.
+Paintings line the walls. Sculptures stand on pedestals. The air smells of fresh paint and possibility.
+join Conrad (half) left
+join Mark (Mark_half) right
+Mark: You know, I never took you for an art guy.
+Conrad: I appreciate craftsmanship. The way someone takes raw materials and creates meaning from them.
+Mark: Deep thoughts for 8 AM.
+Conrad: Everything tells a story, Mark. Art is just one way of telling it.
+Mark: Speaking of stories, have you seen Mia's sculpture? The one that won regionals?
+Conrad: The Reader? I heard it's the centerpiece of the exhibit.
+Mark: Let's check it out. Everyone's been talking about it.
+leave Conrad
+leave Mark
+[background arg="res://Bg/courtyard.png" fade="0.5"]
+They walk toward the center of the courtyard.
+A crowd has gathered, but not in admiration.
+[wait time="0.5"]
+join Conrad (half) left
+join Mark (Mark_half) right
+Mark: What's going on?
+A student rushes past, face pale.
+Student: Someone destroyed Mia's sculpture! It's in pieces!
+Conrad: What?
+Conrad pushes through the crowd.
+leave Conrad
+leave Mark
+[wait time="0.5"]
+join Conrad (half) left
+The sculpture lies shattered on the ground. Clay fragments spread across the stone tiles like broken dreams.
+The pedestal stands empty, mocking.
+join Mia (half) right
+Mia kneels among the pieces, her hands hovering over the fragments as if afraid to touch them.
+Tears stream silently down her face.
+Mia: Lolo... I made this for you...
+Conrad approaches carefully.
+Conrad: Mia?
+She looks up, eyes red and hollow.
+Mia: It took me three months. Every night after school.
+Mia: My grandfather used to read to me under the mango tree in our yard.
+Mia: He passed away last year. This was... this was my way of remembering him.
+Conrad: I'm so sorry.
+Mia: Who would do this? Why would anyone...?
+Conrad notices something on the empty pedestal.
+Conrad: Wait. What's that?
+A small note is tucked under the edge of the plaque.
+Conrad picks it up carefully, reading aloud.
+Conrad: "Not everyone deserves to shine."
+Mark pushes through the crowd.
+join Mark (Mark_half) leftmost
+Mark: Conrad! I heard what happened. Is Mia okay?
+Conrad: Someone destroyed her sculpture deliberately. And left this.
+Conrad shows Mark the note.
+Mark: That's... that's cruel. Who writes something like that?
+Conrad's expression hardens with determination.
+Conrad: Someone who wanted to hurt her. This wasn't random vandalism.
+Conrad: This was personal.
+He turns to Mia.
+Conrad: Mia, I promise you. I'm going to find out who did this and why.
+Mia looks up, a fragile hope in her eyes.
+Mia: You... you will?
+Conrad: Evidence doesn't lie. And whoever did this left evidence.
+Conrad crouches near the debris, examining the scene.
+Conrad: The note. The way the sculpture was pushed, not kicked.
+Conrad: And... what's this?
+He picks up a small piece of cloth, stained with various colors.
+Conrad: Paint-stained fabric. Someone dropped this.
+Mark: A clue already?
+Conrad: The beginning of one.
+Conrad straightens, pocketing the cloth and the note.
+Conrad: Mark, let's start asking questions.
+Conrad: Someone knows something. They always do.
+leave Conrad
+leave Mark
+leave Mia
+jump c3s2/
