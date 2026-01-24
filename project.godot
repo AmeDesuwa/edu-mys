@@ -28,8 +28,8 @@ MinigameManager="*res://autoload/minigame_manager.gd"
 
 directories/dch_directory={
 "Alex": "res://content/characters/Alex.dch",
+"Alice": "res://content/characters/Alice.dch",
 "Ben": "res://content/characters/Ben.dch",
-"Bg/Alice": "res://Bg/Alice.dch",
 "Conrad": "res://content/characters/Conrad.dch",
 "Conrad (Thinking)": "res://content/characters/Conrad (Thinking).dch",
 "Diwata Laya": "res://content/characters/Diwata Laya.dch",
@@ -38,7 +38,7 @@ directories/dch_directory={
 "Mark": "res://content/characters/Mark.dch",
 "Ms Santos": "res://content/characters/Ms Santos.dch",
 "Principal": "res://content/characters/Principal.dch",
-"Ria": "res://Ria.dch",
+"Ria": "res://content/characters/Ria.dch",
 "Ryan": "res://content/characters/Ryan.dch",
 "character": "res://content/characters/character.dch",
 "characters/Alice": "res://content/characters/Alice.dch",
