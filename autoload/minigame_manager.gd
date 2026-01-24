@@ -8,6 +8,7 @@ var pacman_scene = preload("res://minigames/Pacman/scenes/Main.tscn")
 var runner_scene = preload("res://minigames/Runner/scenes/Main.tscn")
 var platformer_scene = preload("res://minigames/Platformer/scenes/Main.tscn")
 var maze_scene = preload("res://minigames/Maze/scenes/Main.tscn")
+var pronunciation_scene = preload("res://minigames/Pronunciation/scenes/Main.tscn")
 var current_minigame = null
 
 # Fill-in-the-blank puzzle configs
@@ -314,6 +315,35 @@ var maze_configs = {
 	}
 }
 
+# Pronunciation puzzle configs - player must speak sentences clearly
+var pronunciation_configs = {
+	"pronounce_science": {
+		"sentence": "the scientific method helps us understand the world",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"pronounce_math": {
+		"sentence": "mathematics is the language of the universe",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"pronounce_reading": {
+		"sentence": "reading opens doors to new adventures",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"pronounce_history": {
+		"sentence": "history teaches us lessons from the past",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"pronounce_english": {
+		"sentence": "practice makes perfect when learning english",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	}
+}
+
 func start_minigame(puzzle_id: String) -> void:
 	print("DEBUG: MinigameManager.start_minigame called with: ", puzzle_id)
 	if current_minigame:
@@ -331,6 +361,8 @@ func start_minigame(puzzle_id: String) -> void:
 		_start_platformer(puzzle_id)
 	elif maze_configs.has(puzzle_id):
 		_start_maze(puzzle_id)
+	elif pronunciation_configs.has(puzzle_id):
+		_start_pronunciation(puzzle_id)
 	else:
 		push_error("Unknown puzzle: " + puzzle_id)
 		return
@@ -376,6 +408,14 @@ func _start_maze(puzzle_id: String) -> void:
 	game_node.configure_puzzle(maze_configs[puzzle_id])
 	game_node.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
 	print("DEBUG: Maze minigame should now be visible")
+
+func _start_pronunciation(puzzle_id: String) -> void:
+	print("DEBUG: Starting Pronunciation minigame...")
+	current_minigame = pronunciation_scene.instantiate()
+	get_tree().root.add_child(current_minigame)
+	current_minigame.configure_puzzle(pronunciation_configs[puzzle_id])
+	current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+	print("DEBUG: Pronunciation minigame should now be visible")
 
 func _on_minigame_finished(success: bool, score: int, puzzle_id: String) -> void:
 	print("DEBUG: Minigame finished. Success: ", success, ", Score: ", score, ", Puzzle: ", puzzle_id)
