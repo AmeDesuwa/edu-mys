@@ -27,10 +27,10 @@ var fillinblank_configs = {
 		"answers": ["evaluating", "judgment"],
 		"choices": ["evaluating", "ignoring", "judgment", "question", "collecting", "opinion", "belief", "theory"]
 	},
-	"fund_insight": {
-		"sentence_parts": ["Ryan planned to ", " the money himself and be praised as a ", "."],
-		"answers": ["discover", "hero"],
-		"choices": ["discover", "steal", "hero", "thief", "hide", "return", "leader", "victim"]
+	"budget_basics": {
+		"sentence_parts": ["A budget helps track ", " and ", " to manage money wisely."],
+		"answers": ["income", "expenses"],
+		"choices": ["income", "expenses", "savings", "debts", "profits", "losses", "assets", "taxes"]
 	}
 }
 

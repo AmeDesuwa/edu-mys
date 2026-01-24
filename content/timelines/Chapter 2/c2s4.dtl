@@ -28,8 +28,9 @@ Conrad: She was too afraid to defend herself. The perfect scapegoat.
 join "Diwata Laya" (Half_mirror) center
 [signal arg="laya_start"]
 "Diwata Laya" materializes, her expression troubled.
-"Diwata Laya": There is more to uncover. Let me see if I can sense his full intention.
-[signal arg="start_minigame fund_insight"]
+"Diwata Laya": Before we proceed, test your knowledge. Understanding finances will help you see Ryan's motive.
+[signal arg="start_minigame budget_basics"]
+"Diwata Laya": Good. Now let me see if I can sense his full intention.
 "Diwata Laya" closes her eyes, her hands hovering over both papers.
 For a moment, her form flickers with soft light.
 "Diwata Laya": I see... a plan. Careful steps, like pieces on a game board.
