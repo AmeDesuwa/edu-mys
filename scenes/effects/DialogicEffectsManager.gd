@@ -3,34 +3,56 @@
 extends Node
 
 # Effect nodes - will be created automatically
+var canvas_layer: CanvasLayer
 var screen_overlay: ColorRect
+var edge_vignette: ColorRect  # For colored edge effects
 var particles_container: Node2D
 var camera: Camera2D
 
 # Effect state
 var is_shaking: bool = false
 var original_camera_offset: Vector2
+var laya_effect_active: bool = false
 
 func _ready():
 	_setup_effect_nodes()
 	_connect_dialogic_signals()
 
 func _setup_effect_nodes():
+	# Create a CanvasLayer to render on top of everything
+	canvas_layer = CanvasLayer.new()
+	canvas_layer.name = "EffectsCanvasLayer"
+	canvas_layer.layer = 100  # High layer to be on top
+	add_child(canvas_layer)
+
+	# Create a Control container for proper anchoring
+	var container = Control.new()
+	container.name = "OverlayContainer"
+	container.set_anchors_preset(Control.PRESET_FULL_RECT)
+	container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	canvas_layer.add_child(container)
+
 	# Create screen overlay for flashes and fades
 	screen_overlay = ColorRect.new()
 	screen_overlay.name = "ScreenOverlay"
 	screen_overlay.color = Color(0, 0, 0, 0)
 	screen_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(screen_overlay)
-	
-	# Make it cover the whole screen
 	screen_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
-	
+	container.add_child(screen_overlay)
+
+	# Create edge vignette for colored border effects
+	edge_vignette = ColorRect.new()
+	edge_vignette.name = "EdgeVignette"
+	edge_vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
+	edge_vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	container.add_child(edge_vignette)
+	_setup_edge_vignette_shader()
+
 	# Create particles container
 	particles_container = Node2D.new()
 	particles_container.name = "ParticlesContainer"
 	add_child(particles_container)
-	
+
 	# Try to find camera
 	camera = get_viewport().get_camera_2d()
 	if camera:
@@ -126,6 +148,17 @@ func _on_dialogic_signal(argument: String):
 		
 		"vignette_clear":
 			clear_vignette()
+
+		# Wrong choice feedback
+		"wrong_choice":
+			wrong_choice_effect()
+
+		# Laya conversation effects
+		"laya_start":
+			start_laya_effect()
+
+		"laya_end":
+			end_laya_effect()
 
 func _on_text_signal(argument: String):
 	"""Handler for inline text signals"""
@@ -441,6 +474,136 @@ func clear_vignette():
 	if vignette_shader:
 		vignette_shader.queue_free()
 		vignette_shader = null
+
+# ============================================
+# EDGE VIGNETTE SHADER SETUP
+# ============================================
+
+func _setup_edge_vignette_shader():
+	"""Setup the shader for colored edge vignette effects"""
+	var shader_code = """
+shader_type canvas_item;
+
+uniform vec4 edge_color : source_color = vec4(1.0, 0.0, 0.0, 1.0);
+uniform float intensity : hint_range(0.0, 1.0) = 0.0;
+uniform float softness : hint_range(0.0, 1.0) = 0.3;
+uniform float edge_size : hint_range(0.0, 0.5) = 0.15;
+
+void fragment() {
+	vec2 uv = UV;
+
+	// Calculate distance from edges
+	float left = smoothstep(0.0, edge_size + softness, uv.x);
+	float right = smoothstep(0.0, edge_size + softness, 1.0 - uv.x);
+	float top = smoothstep(0.0, edge_size + softness, uv.y);
+	float bottom = smoothstep(0.0, edge_size + softness, 1.0 - uv.y);
+
+	// Combine edges (multiply for corner darkening)
+	float edge_mask = 1.0 - (left * right * top * bottom);
+
+	// Apply color with intensity
+	COLOR = vec4(edge_color.rgb, edge_mask * intensity * edge_color.a);
+}
+"""
+	var shader = Shader.new()
+	shader.code = shader_code
+	var material = ShaderMaterial.new()
+	material.shader = shader
+	material.set_shader_parameter("intensity", 0.0)
+	material.set_shader_parameter("edge_color", Color(1, 0, 0, 1))
+	material.set_shader_parameter("softness", 0.3)
+	material.set_shader_parameter("edge_size", 0.15)
+	edge_vignette.material = material
+
+# ============================================
+# WRONG CHOICE EFFECT
+# ============================================
+
+func wrong_choice_effect():
+	"""Red edge flash and shake to indicate wrong answer"""
+	print("DEBUG: wrong_choice_effect triggered")
+
+	var material = edge_vignette.material as ShaderMaterial
+	if not material:
+		return
+
+	# Set red color for error
+	material.set_shader_parameter("edge_color", Color(0.9, 0.1, 0.1, 1.0))
+	material.set_shader_parameter("edge_size", 0.12)
+	material.set_shader_parameter("softness", 0.25)
+
+	# Flash the edge vignette
+	var tween = create_tween()
+	tween.tween_method(
+		func(value): material.set_shader_parameter("intensity", value),
+		0.0, 0.8, 0.08
+	)
+	tween.tween_method(
+		func(value): material.set_shader_parameter("intensity", value),
+		0.8, 0.0, 0.35
+	)
+
+	# Shake the viewport
+	_shake_viewport()
+
+func _shake_viewport():
+	"""Shake the viewport canvas transform for screen shake effect"""
+	var viewport = get_viewport()
+	var original_transform = viewport.canvas_transform
+
+	for i in range(6):
+		var offset = Vector2(
+			randf_range(-8, 8),
+			randf_range(-4, 4)
+		)
+		var shake_transform = Transform2D(0, offset)
+		viewport.canvas_transform = original_transform * shake_transform
+		await get_tree().create_timer(0.03).timeout
+
+	viewport.canvas_transform = original_transform
+
+# ============================================
+# LAYA CONVERSATION EFFECT
+# ============================================
+
+func start_laya_effect():
+	"""Start the purple edge glow for Laya conversations"""
+	if laya_effect_active:
+		return
+
+	laya_effect_active = true
+	var material = edge_vignette.material as ShaderMaterial
+	if not material:
+		return
+
+	# Set purple/mystical color for Laya
+	material.set_shader_parameter("edge_color", Color(0.6, 0.4, 1.0, 1.0))
+	material.set_shader_parameter("edge_size", 0.1)
+	material.set_shader_parameter("softness", 0.35)
+
+	# Fade in the effect
+	var tween = create_tween()
+	tween.tween_method(
+		func(value): material.set_shader_parameter("intensity", value),
+		0.0, 0.5, 0.4
+	)
+
+func end_laya_effect():
+	"""End the Laya conversation effect"""
+	if not laya_effect_active:
+		return
+
+	laya_effect_active = false
+	var material = edge_vignette.material as ShaderMaterial
+	if not material:
+		return
+
+	# Fade out the effect
+	var tween = create_tween()
+	tween.tween_method(
+		func(value): material.set_shader_parameter("intensity", value),
+		0.5, 0.0, 0.3
+	)
 
 # ============================================
 # HELPER FUNCTIONS

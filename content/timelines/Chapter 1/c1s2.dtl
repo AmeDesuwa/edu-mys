@@ -1,5 +1,7 @@
 [background arg="res://Bg/classroom.png" fade="3.0"]
 set {chapter1_score} = 0
+set {c1s2_repair_tried} = false
+set {c1s2_teacher_tried} = false
 The time is now 5\:30. Today's classes are over. Instead of going home, Conrad and Mark stay in the classroom to talk.
 join Conrad (half) left
 join Mark (Mark_half) right
@@ -28,11 +30,15 @@ Janitor leaves the room after checking how dirty it is, but does not clean the r
 Conrad: Hmmm, nothing is really suspicious from what I have gathered so far.
 label choice_1
 Conrad: What's the most logical next step based on what the Janitor said?
-- The repair guy is the main suspect.
+- The repair guy is the main suspect. [if {c1s2_repair_tried} == false]
+	set {c1s2_repair_tried} = true
+	[signal arg="wrong_choice"]
 	set {chapter1_score} -= 5
 	Conrad: No, that doesn't feel right. The leak was discovered this morning, but happened yesterday. The repair guy was only called today. He's not a suspect.
 	jump choice_1
-- The English teacher is suspicious.
+- The English teacher is suspicious. [if {c1s2_teacher_tried} == false]
+	set {c1s2_teacher_tried} = true
+	[signal arg="wrong_choice"]
 	set {chapter1_score} -= 5
 	Conrad: The English teacher found the leak, but the Janitor said it started yesterday. I shouldn't jump to conclusions about who found it. The timeline is more important.
 	jump choice_1

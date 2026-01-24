@@ -1,37 +1,48 @@
 [background arg="res://Bg/council_room.png" fade="2.0"]
 set {chapter2_score} = 0
 A few days before the incident...
-The Student Council room is quiet in the late afternoon. Ria, the council treasurer, is carefully counting bills at her desk.
-join Ria (Ria_half) center [animation="fade in" length="1.0"]
-Ria: Eighteen thousand... nineteen thousand... twenty thousand. Perfect.
-Ria smiles as she places the money back into the lockbox.
+The late afternoon sun filters through the Student Council room windows, casting long shadows across the desks.
+join Ria (half) center [animation="fade in" length="1.0"]
+Ria sits alone, counting bills with practiced precision.
+Ria: Eighteen thousand... nineteen thousand...
+She places the last few bills carefully into the pile.
+Ria: Twenty thousand. Perfect.
+Ria's face softens into a warm smile as she looks at the money.
 Ria: The outreach fund is finally complete.
-update Ria (Ria_half) left [move_time="0.3"]
-Ria picks up a worn notebook and flips through it, revealing a list of names.
-Ria: Twelve students on the list. Twelve families who can barely afford school supplies.
-update Ria (Ria_half) center [move_time="0.3"]
-Ria: I still remember what that felt like...
-Ria's expression grows distant, remembering.
-Ria: Back in Grade 7, my family couldn't afford new notebooks. I had to use the backs of old papers.
-Ria: The other kids laughed at me. Called me poor. Said I didn't belong in this school.
-update Ria (Ria_half) right [move_time="0.3"]
-Ria: But then... the student council helped me. They gave me supplies, no questions asked.
-Ria: That small act of kindness... it changed everything for me.
-update Ria (Ria_half) center [move_time="0.3"]
-Ria looks at the lockbox with determination.
-Ria: That's why I became treasurer. So I could do the same for others.
-Ria: This money isn't just paper. It's hope. It's dignity. It's a chance for kids like me.
-update Ria (Ria_half) left [move_time="0.3"]
-Ria carefully locks the box.
-Ria: I'll protect this fund no matter what.
-She places the key in Ms. Santos's drawer as instructed.
-update Ria (Ria_half) center [move_time="0.3"]
-Ria: Next week, twelve students will get the help they need.
-Ria: I can't wait to see their faces.
-Ria gathers her things, taking one last look at the council room.
-Ria: See you tomorrow, little lockbox. Stay safe.
+update Ria (half) left [move_time="0.3"]
+She picks up a worn notebook, its pages filled with careful handwriting.
+Ria: Twelve names. Twelve students who need help.
+update Ria (half) center [move_time="0.3"]
+Her fingers trace the list gently, pausing at certain names.
+Ria: I know what it's like to be on a list like this.
+Ria: Back in Grade 7, my family couldn't afford new notebooks.
+Ria: I had to write on the backs of old papers. Recycled everything I could find.
+update Ria (half) right [move_time="0.3"]
+Ria: The other kids noticed. They always do.
+Ria: "Basurera," they called me. Garbage girl.
+Ria: They said I didn't belong in this school.
+update Ria (half) center [move_time="0.3"]
+Ria's expression shifts from pain to determination.
+Ria: But then the student council helped me. Quietly. No announcement. No pity.
+Ria: Just a bag of supplies left on my desk one morning.
+Ria: That small act... it changed everything.
+She places the money gently into the lockbox.
+Ria: That's why I became treasurer. So I could be that person for someone else.
+update Ria (half) left [move_time="0.3"]
+Ria closes the lockbox and tests the lock twice.
+Ria: This money isn't just paper and ink.
+Ria: It's hope. It's dignity. It's proof that someone cares.
+She walks to Ms. Santos's desk and places the key in the drawer.
+update Ria (half) center [move_time="0.3"]
+Ria: Next week, twelve students will know they're not alone.
+Ria: Just like I learned I wasn't alone.
+She gathers her bag, taking one last look at the lockbox.
+Ria: Stay safe, little fund. I'm counting on you.
 leave Ria [animation="fade out" length="0.8"]
-[background arg="res://Bg/hallway.png" fade="1.0"]
+The room falls silent. The lockbox sits alone on the desk.
+[wait time="0.5"]
+Outside the window, a figure watches from the hallway.
+[background arg="res://Bg/hallway.png" fade="1.5"]
 [wait time="1.0"]
 Three days later...
 jump c2s1/

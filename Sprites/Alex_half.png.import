@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://civvtqxr2il4m"
-path="res://.godot/imported/Alice_half.png-880c3b79dc8cb801e3ec97355e52eaa5.ctex"
+uid="uid://b75d5j6bbg5ry"
+path="res://.godot/imported/Alex_half.png-0ae6f298a4299cd235ad963b01da6fb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Alice_half.png"
-dest_files=["res://.godot/imported/Alice_half.png-880c3b79dc8cb801e3ec97355e52eaa5.ctex"]
+source_file="res://Sprites/Alex_half.png"
+dest_files=["res://.godot/imported/Alex_half.png-0ae6f298a4299cd235ad963b01da6fb0.ctex"]
 
 [params]
 

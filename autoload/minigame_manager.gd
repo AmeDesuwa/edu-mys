@@ -26,6 +26,11 @@ var fillinblank_configs = {
 		"sentence_parts": ["Critical thinking requires ", " evidence before forming a ", "."],
 		"answers": ["evaluating", "judgment"],
 		"choices": ["evaluating", "ignoring", "judgment", "question", "collecting", "opinion", "belief", "theory"]
+	},
+	"fund_insight": {
+		"sentence_parts": ["Ryan planned to ", " the money himself and be praised as a ", "."],
+		"answers": ["discover", "hero"],
+		"choices": ["discover", "steal", "hero", "thief", "hide", "return", "leader", "victim"]
 	}
 }
 

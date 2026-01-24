@@ -34,6 +34,15 @@
 "offset": Vector2(0, 0),
 "scale": 0.8,
 "scene": "res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
+},
+"Mark_half_mirror": {
+"export_overrides": {
+"image": "\"res://Sprites/Mark_half.png\""
+},
+"mirror": true,
+"offset": Vector2(0, 0),
+"scale": 0.8,
+"scene": "res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
 }
 },
 &"scale": 1.0

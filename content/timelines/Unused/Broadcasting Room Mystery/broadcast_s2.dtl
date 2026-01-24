@@ -1,0 +1,38 @@
+# Placeholder: Using classroom as Broadcasting Room
+[background arg="res://Bg/classroom.png" fade="1.0"]
+set {c2s2_ghost_tried} = false
+set {c2s2_broken_tried} = false
+Conrad and Mark enter the Broadcasting Room. It's dusty and silent.
+join Conrad (half) left
+join Mark (Mark_half) right
+Conrad: The amplifier is cold. It's definitely off. Unplugged, even.
+Mark: See? I told you. No power, but the speakers still make noise.
+join "Diwata Laya" (Half_mirror) center
+[signal arg="laya_start"]
+"Diwata Laya": (Whispering) The air here is thick... but not with spirits.
+Conrad: What do you sense?
+"Diwata Laya": Waves. Invisible ripples passing through the walls. Like the wind, but carrying words.
+[signal arg="laya_end"]
+label sound_choice
+Conrad: Laya mentions waves carrying words. What could be causing this?
+- It must be a ghost or supernatural entity. [if {c2s2_ghost_tried} == false]
+	set {c2s2_ghost_tried} = true
+	[signal arg="wrong_choice"]
+	set {chapter2_score} -= 5
+	Conrad: No, Laya specifically said "not with spirits." There must be a scientific explanation.
+	jump sound_choice
+- The old speakers are malfunctioning on their own. [if {c2s2_broken_tried} == false]
+	set {c2s2_broken_tried} = true
+	[signal arg="wrong_choice"]
+	set {chapter2_score} -= 5
+	Conrad: But the amplifier is unplugged. Broken equipment can't play sound without power.
+	jump sound_choice
+- Radio waves from a hidden transmitter.
+	set {chapter2_score} += 10
+	Conrad: Ripples... Radio waves? That's it!
+Conrad: (Looks at the speaker wires running up the wall) These cables are old. Unshielded copper.
+Mark: So?
+Conrad: Unshielded wires can act as antennas if a signal is strong enough and close enough.
+Conrad: Someone must have planted a transmitter nearby. Let's search the room.
+leave --All--
+jump c2s3/

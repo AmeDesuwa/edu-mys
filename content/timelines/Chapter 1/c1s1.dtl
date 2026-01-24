@@ -1,5 +1,6 @@
+set {c1s1_principal_tried} = false
 [background arg="res://Bg/faculty_exam.png" fade="1.0"]
-The Grade 12-A History exams were ruined last night due to a water leak. We’ll suspend the test until further notice. \
+The Grade 12-A History exams were ruined last night due to a water leak. We'll suspend the test until further notice. \
 The faculty room is off-limits.
 [background arg="res://Bg/hallway.png" fade="2.0"]
 [wait time="2.0"]
@@ -28,7 +29,9 @@ Conrad: Let's ask the Janitor after classes. Last time I checked there are 3 jan
 leave Conrad
 leave Mark
 jump c1s2/
-- Principal
+- Principal [if {c1s1_principal_tried} == false]
+	set {c1s1_principal_tried} = true
+	[signal arg="wrong_choice"]
 	Conrad: Maybe we ask the Principal?
 	Conrad: I'm sure if the principal had additional information that would be useful, he would've already announced it.
 	jump fork 1

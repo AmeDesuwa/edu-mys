@@ -1,3 +1,5 @@
+set {c1s3_old_ac_tried} = false
+set {c1s3_animal_tried} = false
 [background arg="res://Bg/faculty_few.png" fade="1.5"]
 Conrad enters the school faculty room. He sees that some teachers and student are doing schoolwork.
 He sees the Principal and approaches him.
@@ -12,15 +14,19 @@ Conrad: Can I take a look at the place where it happened sir?
 Principal: It was already cleaned up earlier, here take a look. I took a photo of the mess earlier since the store where the leaking air conditioner was bought didn't believe that it was leaking.
 leave --All--
 [background arg="res://Pics/Exam_ruined.png" fade="0.3"]
-Conrad (none): (Hmmm...... the water seems to be a bit too much from only a natural leak. The amount of water looks more like from a pipe instead of a leak.
+"Conrad (Thinking)": Hmmm...... the water seems to be a bit too much from only a natural leak. The amount of water looks more like from a pipe instead of a leak.
 [background arg="res://Pics/Ac_leak.png" fade="0.3"]
 label Deduction
 What's wrong with this picture?
-- The airconditioning unit looks old so it was only natural that it leaked
+- The airconditioning unit looks old so it was only natural that it leaked [if {c1s3_old_ac_tried} == false]
+	set {c1s3_old_ac_tried} = true
+	[signal arg="wrong_choice"]
 	jump Deduction
 - The tube is cut, but the door was locked. How did they get in?
 	jump After
-- The tube where the leak is looks like it was bitten by an animal.
+- The tube where the leak is looks like it was bitten by an animal. [if {c1s3_animal_tried} == false]
+	set {c1s3_animal_tried} = true
+	[signal arg="wrong_choice"]
 	jump Deduction
 label After
 Conrad: Sir Alan, the tube was definitely cut. But there's no sign of forced entry on the door.
@@ -40,7 +46,7 @@ Conrad: All my exams are already done and I have already passed all my requireme
 Principal: Fine, you investigate this matter. I'll inform the staff and teachers to cooperate.
 Conrad: Leave it to me sir.
 Principal: Good.
-Conrad: (My phone is buzzing. It's a message from Mark.)
+"Conrad (Thinking)": My phone is buzzing. It's a message from Mark.
 leave --All--
 [background arg="res://Pics/Mark_msg.jpg" fade="0.2"]
 # Placeholder for the picture Mark sent
@@ -76,9 +82,9 @@ leave Conrad [animation="Instant Out"]
 join Conrad center
 Conrad leaves the room and is walking in the hallway
 join Conrad (half) left
-Conrad: (Of course the students of 12-A are definitely suspects but it's gonna take a long time to question them all individually, which makes it impossible to catch them before the grades are permanently recorded.)
-Conrad: (It would also alert the perp which makes the investigation harder.)
-Conrad: (Also it wouldn't be impossible for this to be coordinated by multiple people.)
+"Conrad (Thinking)": Of course the students of 12-A are definitely suspects but it's gonna take a long time to question them all individually, which makes it impossible to catch them before the grades are permanently recorded.
+"Conrad (Thinking)": It would also alert the perp which makes the investigation harder.
+"Conrad (Thinking)": Also it wouldn't be impossible for this to be coordinated by multiple people.
 Conrad: Ughhhh... This is so hard. Why did I think that I could do this.
 Conrad walks in the hallway to leave the building to go to the school gate
 leave Conrad
@@ -95,9 +101,10 @@ Alice: Oh, right. Ben has a Galaxy A52. He's always bragging about the camera.
 Alice: And Greg has a Redmi Note 10. I remember the red case.
 Conrad: Thanks, Alice. That helps a lot.
 leave Alice [animation="Slide To Left"]
-Conrad: (So the devices in the logs belong to Ben and Greg. They were in the faculty room last night.)
-Conrad: (I have the suspects. Now I just need to prove it.)
+"Conrad (Thinking)": So the devices in the logs belong to Ben and Greg. They were in the faculty room last night.
+"Conrad (Thinking)": I have the suspects. Now I just need to prove it.
 join "Diwata Laya" (Half_mirror) right
+[signal arg="laya_start"]
 "Diwata Laya": It's alright you can do this.
 Conrad: Looks like you're awake. I've narrowed it down to two students.
 "Diwata Laya": Last time, it took me too much energy so I had to rest. I've recovered mostly but the help I can give is limited.
@@ -107,5 +114,6 @@ Conrad: Well that's gonna be super helpful.
 Diwata Laya is your helper! She is very intelligent and can help you quite a lot. However she is very limited as she is not allowed to interact much with the human world, so she is limited in the help she can give.
 Conrad: Great, I'll tell Mark what we've learned later. Help me brainstorm once we get home later.
 "Diwata Laya": Ok.
+[signal arg="laya_end"]
 leave --All-- [animation="Instant Out" length="0.0"]
 jump c1s4/

@@ -27,10 +27,11 @@ MinigameManager="*res://autoload/minigame_manager.gd"
 [dialogic]
 
 directories/dch_directory={
-"Alice": "res://assets/backgrounds/Alice.dch",
+"Alex": "res://content/characters/Alex.dch",
 "Ben": "res://content/characters/Ben.dch",
 "Bg/Alice": "res://Bg/Alice.dch",
 "Conrad": "res://content/characters/Conrad.dch",
+"Conrad (Thinking)": "res://content/characters/Conrad (Thinking).dch",
 "Diwata Laya": "res://content/characters/Diwata Laya.dch",
 "Greg": "res://content/characters/Greg.dch",
 "Janitor Fred": "res://content/characters/Janitor Fred.dch",
@@ -40,10 +41,15 @@ directories/dch_directory={
 "Ria": "res://Ria.dch",
 "Ryan": "res://content/characters/Ryan.dch",
 "character": "res://content/characters/character.dch",
+"characters/Alice": "res://content/characters/Alice.dch",
 "characters/Ria": "res://content/characters/Ria.dch",
 "example character": "res://content/characters/example character.dch"
 }
 directories/dtl_directory={
+"broadcast_s1": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s1.dtl",
+"broadcast_s2": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s2.dtl",
+"broadcast_s3": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s3.dtl",
+"broadcast_s4": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s4.dtl",
 "c1s1": "res://content/timelines/Chapter 1/c1s1.dtl",
 "c1s2": "res://content/timelines/Chapter 1/c1s2.dtl",
 "c1s2b": "res://content/timelines/Chapter 1/c1s2b.dtl",
@@ -53,13 +59,13 @@ directories/dtl_directory={
 "c2s0": "res://content/timelines/Chapter 2/c2s0.dtl",
 "c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
 "c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
-"c2s2b": "res://content/timelines/Chapter 2/c2s2b.dtl",
+"c2s2b_old": "res://content/timelines/Unused/c2s2b_old.dtl",
 "c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
 "c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
 "c2s5": "res://content/timelines/Chapter 2/c2s5.dtl",
-"c2s5b": "res://content/timelines/Chapter 2/c2s5b.dtl",
+"c2s5b_old": "res://content/timelines/Unused/c2s5b_old.dtl",
 "c2s6": "res://content/timelines/Chapter 2/c2s6.dtl",
-"c2s7": "res://content/timelines/Chapter 2/c2s7.dtl",
+"c2s7_old": "res://content/timelines/Unused/c2s7_old.dtl",
 "d": "res://content/timelines/d.dtl",
 "level_test": "res://content/timelines/level_test.dtl",
 "level_up": "res://content/timelines/level_up.dtl"
@@ -68,6 +74,17 @@ layout/style_directory={}
 layout/style_list=[]
 layout/default_style=""
 variables={
+"c1s1_principal_tried": false,
+"c1s2_repair_tried": false,
+"c1s2_teacher_tried": false,
+"c1s3_animal_tried": false,
+"c1s3_old_ac_tried": false,
+"c2s2_alex_tried": false,
+"c2s2_outsider_tried": false,
+"c2s2_santos_tried": false,
+"c2s3_alex_tried": false,
+"c2s3_outsider_tried": false,
+"c2s3_ria_tried": false,
 "can_redo_for_score": false,
 "can_skip_hard": false,
 "chapter1_score": 0,
@@ -116,6 +133,9 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+history/simple_history_enabled=true
+history/full_history_enabled=true
+history/visited_event_history_enabled=true
 
 [display]
 

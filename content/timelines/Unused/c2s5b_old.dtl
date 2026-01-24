@@ -1,0 +1,35 @@
+[background arg="res://Bg/computer_lab.png" fade="1.0"]
+They return to the computer lab.
+join Conrad (half) left
+join Mark (Mark_half) right
+Mark finds a crumpled paper in the printer's reject tray.
+Mark: Here. It looks like a draft of Ryan's budget proposal. He must have printed a bad copy.
+Conrad: Look at the margins. He wrote notes to himself.
+Conrad reads aloud.
+Conrad: "If they won't listen, I'll have to make them see reason."
+Mark: That sounds like a threat.
+Conrad: Or a plan.
+Conrad holds the threatening note next to Ryan's draft, comparing the handwriting.
+Conrad: The letters match. Same careful strokes. Same deliberate style.
+Mark: Ryan wrote the threatening note to Ria?
+Conrad: He wanted her scared. Distracted. So when the money went missing, everyone would suspect her first.
+join "Diwata Laya" (Half_mirror) center
+[signal arg="laya_start"]
+"Diwata Laya": There's more to uncover. Let me see if I can sense his full intention.
+[signal arg="start_minigame fund_insight_2"]
+"Diwata Laya" closes her eyes again, focusing deeply.
+"Diwata Laya": I see a plan. Careful steps.
+"Diwata Laya": Take the money. Hide it somewhere safe. Wait for the panic.
+"Diwata Laya": Then... become the hero.
+"Diwata Laya": He wanted to be seen as the responsible one. The only one who could fix things.
+[signal arg="laya_end"]
+Conrad: He was going to "find" the money himself.
+Mark: And blame the council for being careless. Then propose his own budget with better security.
+Conrad: It's not theft to him. It's a lesson he thinks he's teaching everyone.
+Mark: That's actually kind of twisted.
+Conrad: We have motive. We have opportunity. And now we have evidence connecting him to the threatening note.
+Conrad: Let's find the money and end this.
+leave Conrad
+leave Mark
+leave "Diwata Laya"
+jump c2s6/
