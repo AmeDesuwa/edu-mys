@@ -44,6 +44,12 @@ var fillinblank_configs = {
 		"sentence_parts": ["To solve the case, Conrad must analyze ", " and identify ", " to find the truth."],
 		"answers": ["patterns", "evidence"],
 		"choices": ["patterns", "evidence", "suspects", "motives", "alibis", "witnesses", "clues", "facts"]
+	},
+	# Chapter 5 - Lesson reflection
+	"lesson_reflection": {
+		"sentence_parts": ["True teaching requires ", " and respects ", " while guiding growth."],
+		"answers": ["wisdom", "choice"],
+		"choices": ["wisdom", "choice", "control", "force", "patience", "freedom", "power", "authority"]
 	}
 }
 

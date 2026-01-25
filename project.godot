@@ -83,6 +83,12 @@ directories/dtl_directory={
 "c4s4": "res://content/timelines/Chapter 4/c4s4.dtl",
 "c4s5": "res://content/timelines/Chapter 4/c4s5.dtl",
 "c4s6": "res://content/timelines/Chapter 4/c4s6.dtl",
+"c5s0": "res://content/timelines/Chapter 5/c5s0.dtl",
+"c5s1": "res://content/timelines/Chapter 5/c5s1.dtl",
+"c5s2": "res://content/timelines/Chapter 5/c5s2.dtl",
+"c5s3": "res://content/timelines/Chapter 5/c5s3.dtl",
+"c5s4": "res://content/timelines/Chapter 5/c5s4.dtl",
+"c5s5": "res://content/timelines/Chapter 5/c5s5.dtl",
 "d": "res://content/timelines/d.dtl",
 "level_test": "res://content/timelines/level_test.dtl",
 "level_up": "res://content/timelines/level_up.dtl"
