@@ -49,15 +49,15 @@ Conrad closes the sketchbook.
 join "Diwata Laya" (Half_mirror) center
 [signal arg="laya_start"]
 "Diwata Laya" appears, her expression thoughtful.
-"Diwata Laya": You are gathering pieces, but the picture remains incomplete.
-Conrad: I have motive, I have circumstantial evidence. But nothing definitive.
-"Diwata Laya": Perhaps clarity will come if you center your mind.
-"Diwata Laya": Focus on what you know. Let the pieces arrange themselves.
-Conrad: Another test?
-"Diwata Laya": Consider it... sharpening your tools.
+"Diwata Laya": [i][color=#9999ff]You are gathering pieces, but the picture remains incomplete.[/color][/i]
+"Conrad (Thinking)": I have motive, I have circumstantial evidence. But nothing definitive.
+"Diwata Laya": [i][color=#9999ff]Perhaps clarity will come if you center your mind.[/color][/i]
+"Diwata Laya": [i][color=#9999ff]Focus on what you know. Let the pieces arrange themselves.[/color][/i]
+"Conrad (Thinking)": Another test?
+"Diwata Laya": [i][color=#9999ff]Consider it... sharpening your tools.[/color][/i]
 [signal arg="start_minigame art_vocabulary"]
-"Diwata Laya": Good. Your mind is clear now.
-"Diwata Laya": Consider this: the cloth you found at the scene. Look more closely.
+"Diwata Laya": [i][color=#9999ff]Good. Your mind is clear now.[/color][/i]
+"Diwata Laya": [i][color=#9999ff]Consider this: the cloth you found at the scene. Look more closely.[/color][/i]
 [signal arg="laya_end"]
 leave "Diwata Laya"
 Conrad examines the paint cloth more carefully.

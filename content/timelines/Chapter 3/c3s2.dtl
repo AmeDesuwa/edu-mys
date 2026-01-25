@@ -106,17 +106,17 @@ Mia: Victor always felt overlooked.
 Conrad: Thank you, Mia. I'm going to find the truth.
 join "Diwata Laya" (Half) leftmost
 [signal arg="laya_start"]
-"Diwata Laya" materializes beside Conrad, her form shimmering.
-"Diwata Laya": Conrad. May I see the note?
-Conrad passes it to her discretely.
+"Diwata Laya" materializes beside Conrad, her form shimmering faintly.
+"Diwata Laya": [i][color=#9999ff]Conrad. May I see the note?[/color][/i]
+Conrad passes it to her discretely, careful not to draw attention.
 "Diwata Laya" holds the paper gently, closing her eyes.
-"Diwata Laya": I sense... pain. Deep, festering pain.
-"Diwata Laya": The person who wrote this has been hurting for a long time.
-"Diwata Laya": They didn't destroy that sculpture out of hate. They destroyed it out of desperation.
-"Diwata Laya": They believed this was the only way anyone would see them.
-Conrad: That's tragic.
-"Diwata Laya": It is. But tragedy does not excuse the harm they caused.
-"Diwata Laya": Find them, Conrad. Not to punish, but to understand.
+"Diwata Laya": [i][color=#9999ff]I sense... pain. Deep, festering pain.[/color][/i]
+"Diwata Laya": [i][color=#9999ff]The person who wrote this has been hurting for a long time.[/color][/i]
+"Diwata Laya": [i][color=#9999ff]They didn't destroy that sculpture out of hate. They destroyed it out of desperation.[/color][/i]
+"Diwata Laya": [i][color=#9999ff]They believed this was the only way anyone would see them.[/color][/i]
+"Conrad (Thinking)": That's tragic.
+"Diwata Laya": [i][color=#9999ff]It is. But tragedy does not excuse the harm they caused.[/color][/i]
+"Diwata Laya": [i][color=#9999ff]Find them, Conrad. Not to punish, but to understand.[/color][/i]
 [signal arg="laya_end"]
 leave "Diwata Laya"
 leave Mia

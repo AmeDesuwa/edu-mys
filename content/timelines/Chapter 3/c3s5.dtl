@@ -2,26 +2,33 @@
 The art room feels different now. Quieter. Heavy with the weight of what happened.
 join Conrad (half) leftmost
 join Mark (Mark_half) left
+Conrad and Mark stand near the door, watching the scene unfold.
+join "Ms Reyes" (half) center
 Ms. Reyes stands near her desk, her expression a mix of disappointment and sadness.
-Victor sits on a stool, shoulders hunched. Mia stands a few feet away, arms wrapped around herself.
-join "Ms Reyes" (half) right
-join Victor (half) rightmost
+join Victor (half) right
+Victor sits on a stool, shoulders hunched, unable to meet anyone's eyes.
 "Ms Reyes": Victor. I've always believed in your talent.
 "Ms Reyes": But talent without empathy is just... technique. Empty movements.
 Victor: I know. I understand that now.
 "Ms Reyes": The principal has decided on your consequences.
 "Ms Reyes": You'll be suspended from the art program for the rest of the semester.
+Victor winces but doesn't protest.
 "Ms Reyes": And you'll help organize next year's Art Week. Setting up displays. Supporting other students.
 "Ms Reyes": Learning that art is about community, not competition.
 Victor nods slowly.
-Victor: That's fair.
-"Ms Reyes" turns to Mia.
-"Ms Reyes": Mia, do you have anything you want to say?
+Victor: That's... that's fair. More than fair.
+leave Victor
 leave "Ms Reyes"
-join Mia (half) center
-Mia looks at Victor. Her eyes are red, but her expression is not angry.
-Mia: Victor... I always thought you were amazing.
-Victor looks up, surprised.
+[wait time="0.5"]
+join Mia (half) right
+Mia enters the room quietly. Her eyes are still red, but her expression is steady.
+Victor looks up as she approaches. He flinches, expecting anger.
+join Victor (half) center
+Victor: Mia... I...
+Mia: Let me speak first.
+Victor falls silent.
+Mia: Victor, I always thought you were amazing.
+Victor looks up, genuinely surprised.
 Mia: Your technical skill is incredible. The way you render light and shadow...
 Mia: I could never do what you do. I just... feel things and try to capture them.
 Mia: We're different kinds of artists. Neither is better.
@@ -31,17 +38,25 @@ Mia: Your art is perfect, but it feels... closed. Like you're trying to prove so
 Mia: Art isn't about proving. It's about sharing.
 Victor: I... I never thought of it that way.
 Mia: My sculpture wasn't meant to win competitions.
-Mia: I made it because I missed my grandfather. I wanted to remember how it felt when he read to me.
+Mia: I made it because I missed my Lolo. I wanted to remember how it felt when he read to me.
 Mia: The judges responded to that feeling. Not the technique.
+Victor's voice breaks.
 Victor: And I destroyed it because I was jealous.
-Victor: I'm so sorry, Mia. I'm so sorry.
-Mia takes a deep breath.
+Victor: I'm so sorry, Mia. I'm so, so sorry.
+Mia takes a deep breath, steadying herself.
 Mia: I can't forgive you yet. It hurts too much.
 Mia: But... I understand hurt. I understand feeling invisible.
 Mia: Destroying my art didn't make yours better. It just destroyed something beautiful.
 Mia: I hope you learn from this. I really do.
 Victor: I will. I promise I will.
-Mia nods slowly, then turns and leaves the room.
+Victor: And someday... someday I'll create something that honors what I destroyed.
+Victor: Something with heart. Something real.
+Mia nods slowly.
+Mia: I'd like to see that.
+Mia turns and walks toward the door, pausing beside Conrad.
+Mia: Thank you. For finding the truth.
+Conrad: The truth was always there. I just helped it come to light.
+Mia manages a small, sad smile before leaving.
 leave Mia
 leave Victor
 [background arg="res://Bg/art_room.png" fade="0.5"]
@@ -49,12 +64,16 @@ Conrad and Mark remain in the art room.
 Mark: That was... heavy.
 Conrad: Justice isn't always satisfying.
 Conrad: Victor will face consequences. But the real punishment is what he's feeling right now.
-Mark: Mia was surprisingly kind.
+Mark: Mia was surprisingly kind. I don't know if I could have been.
 Conrad: She's an artist. She understands that pain can make people do terrible things.
 Conrad: That doesn't excuse what Victor did. But understanding matters.
 Mark: What happens now?
 Conrad: Victor has a chance to change. To learn why he was really hurting.
+Conrad: His father's expectations. His need to be the best. His loneliness.
 Conrad: Whether he takes that chance is up to him.
+Mark: You think he will?
+Conrad looks at the door where Victor left.
+Conrad: I think he wants to. And sometimes, that's enough to start.
 leave Conrad
 leave Mark
 jump c3s6/
