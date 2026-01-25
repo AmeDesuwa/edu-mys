@@ -38,6 +38,12 @@ var fillinblank_configs = {
 		"sentence_parts": ["In art, the arrangement of elements is called ", " and the contrast between light and dark is ", "."],
 		"answers": ["composition", "value"],
 		"choices": ["composition", "value", "texture", "color", "balance", "rhythm", "emphasis", "form"]
+	},
+	# Chapter 4 - Library access logic
+	"library_logic": {
+		"sentence_parts": ["To solve the case, Conrad must analyze ", " and identify ", " to find the truth."],
+		"answers": ["patterns", "evidence"],
+		"choices": ["patterns", "evidence", "suspects", "motives", "alibis", "witnesses", "clues", "facts"]
 	}
 }
 

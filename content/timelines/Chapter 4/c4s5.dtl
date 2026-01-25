@@ -1,0 +1,51 @@
+[background arg="res://Bg/principal_office.png" fade="1.0"]
+Alex stands before the Principal's desk, the leather-bound journal in her hands.
+join Alex (half) center
+join Principal (half) right
+join Conrad (half) left
+join Mark (Mark_half) leftmost
+Principal: Alex. Conrad explained what happened.
+Alex: I'm sorry, Principal. I took the journal without permission and used it inappropriately.
+Alex: I thought I was helping, but I understand now that I caused harm.
+Alex places the journal on the desk.
+Principal: This journal has been missing for over twenty years. I'm surprised it was still in the archive.
+Principal picks it up, examining it thoughtfully.
+Principal: This belonged to a teacher who left the school in 1995.
+Principal: They were brilliant but misguided. They believed students should be challenged constantly, tested, observed.
+Principal: Eventually, parents complained. Students felt manipulated. The teacher resigned.
+Principal: We kept the journal as a cautionary example of good intentions gone wrong.
+Alex: I see that now. I'm truly sorry.
+Principal: Your consequences will be fair but clear.
+Principal: You'll write apology letters to each student who received a note.
+Principal: You'll serve detention for unauthorized use of school property.
+Principal: And you'll assist the guidance counselor in organizing a proper peer mentorship program.
+Principal: One that respects consent and boundaries.
+Alex: I accept all of that. Thank you for giving me a chance to make this right.
+leave Alex
+leave Principal
+[wait time="0.5"]
+join Conrad (half) center
+join Mark (Mark_half) right
+Mark: That went better than expected.
+Conrad: Alex isn't a bad person. She just made a mistake.
+Mark: A mistake that could have caused real damage.
+Conrad: True. But she's learning. That's what matters.
+Conrad: She wanted to help people grow. Now she's growing herself.
+Mark: You think she'll be okay?
+Conrad: I think she'll be better than okay. This experience taught her something important.
+Conrad: Knowledge alone isn't enough. You need wisdom, empathy, and humility.
+Mark: Heavy lesson for one week.
+Conrad smiles slightly.
+Conrad: The best lessons usually are.
+Conrad: You think she'll be okay?
+Conrad: I think she'll be better than okay. This experience taught her something important.
+Conrad: Knowledge alone isn't enough. You need wisdom, empathy, and humility.
+Mark: Heavy lesson for one week.
+Conrad smiles slightly.
+Conrad: The best lessons usually are.
+Mark: So what now?
+Conrad: Now we verify the journal is properly stored and close this case.
+Conrad: Let's go to the archive.
+leave Conrad
+leave Mark
+jump c4s6/
