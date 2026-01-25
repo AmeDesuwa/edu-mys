@@ -16,12 +16,12 @@ Victor: "Emotionally transcendent." That's what the judges said.
 Victor: They didn't even look at mine. One glance and they moved on.
 update Victor (half) right [move_time="0.3"]
 His hands clench into fists.
-Victor: Tatay was right. Second place is first loser.
-Victor: "Why can't you be more like your Ate? She's a doctor now."
+Victor: Dad was right. Second place is first loser.
+Victor: "Why can't you be more like your sister? She's a doctor now."
 Victor: "Art is a waste of time unless you're the best."
 update Victor (half) center [move_time="0.3"]
 Victor's voice cracks.
-Victor: I've tried so hard, Tatay. I've given everything.
+Victor: I've tried so hard, Dad. I've given everything.
 Victor: But it's never enough. I'm never enough.
 He stares at his reflection in the darkened window.
 Victor: At school, I'm invisible. At home, I'm a disappointment.
@@ -59,7 +59,7 @@ Victor: Mia... I'm sorry.
 Victor: But no one will ever see me if you're in the way.
 Victor's hands press against the sculpture.
 A pause. A shaky breath.
-Victor: Patawarin mo ako.
+Victor: Forgive me.
 Then - a push.
 [wait time="0.5"]
 leave Victor
@@ -69,7 +69,7 @@ Clay and plaster scatter across the ground. The Reader lies in pieces.
 join Victor (half) center
 Victor stumbles backward, staring at what he's done.
 Victor: What... what have I done?
-Victor: This won't bring them to me. This won't make Tatay proud.
+Victor: This won't bring them to me. This won't make Dad proud.
 Victor: I've just... destroyed something beautiful.
 He turns and flees into the darkness.
 Something small falls from his pocket, landing silently among the debris.
