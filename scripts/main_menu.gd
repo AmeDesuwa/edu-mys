@@ -41,9 +41,7 @@ func _on_continue_pressed() -> void:
 	Dialogic.start("c1s1")
 
 func _on_settings_pressed() -> void:
-	# TODO: Open settings menu
-	print("Settings menu not yet implemented")
-	pass
+	get_tree().change_scene_to_file("res://scenes/ui/settings_menu.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

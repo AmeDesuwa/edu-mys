@@ -23,6 +23,7 @@ DialogicEffectsManager="*res://scenes/effects/DialogicEffectsManager.gd"
 LevelUpManager="*res://autoload/level_up_manager.gd"
 DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
 MinigameManager="*res://autoload/minigame_manager.gd"
+SettingsManager="*res://autoload/settings_manager.gd"
 
 [dialogic]
 
