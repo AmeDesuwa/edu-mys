@@ -73,11 +73,29 @@ func load_stats():
 		if file:
 			var json_string = file.get_as_text()
 			var data = JSON.parse_string(json_string)
-			
+
 			if data:
 				score = data.get("score", 0)
 				xp = data.get("xp", 0)
 				level = data.get("level", 1)
-	
+
 	emit_signal("stats_changed", get_stats())
+
+
+func save_exists() -> bool:
+	"""
+	Returns true if a save file exists.
+	"""
+	return FileAccess.file_exists(SAVE_PATH)
+
+
+func reset_stats():
+	"""
+	Resets all player stats to default values.
+	"""
+	score = 0
+	xp = 0
+	level = 1
+	emit_signal("stats_changed", get_stats())
+	save_stats()
 
