@@ -62,6 +62,8 @@ func _handle_check_level_up():
 
 func _handle_title_card_signal(chapter: String):
 	Dialogic.paused = true
+	# Update current chapter for curriculum question selection
+	Dialogic.VAR.current_chapter = int(chapter)
 	TitleCardManager.show_chapter_title(chapter)
 	await TitleCardManager.title_card_completed
 	if is_instance_valid(Dialogic) and Dialogic.current_timeline != null:

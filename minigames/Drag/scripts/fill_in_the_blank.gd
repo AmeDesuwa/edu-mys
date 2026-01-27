@@ -7,30 +7,39 @@ signal game_finished(success: bool, score: int)
 # Default puzzle data - can be overridden via configure_puzzle()
 var puzzle_data = {
 	"sentence_parts": [
-		"Knowledge must be ", # Part 1
-		", and someone ",      # Part 2
-		" it."                 # Part 3
+		"A function assigns each ", # Part 1
+		" to exactly one ",          # Part 2
+		"."                          # Part 3
 	],
-	"answers": ["protected", "stole"],
+	"answers": ["input", "output"],
 	"choices": [
-		"protected", "instruction", "take", "text",
-		"committed", "stole", "took", "make"
-	]
+		"input", "output", "domain", "range",
+		"variable", "constant", "equation", "value"
+	],
+	"title": "Complete the Sentence",
+	"subtitle": "Drag the correct words into the blanks",
+	"context": ""
 }
 
 var is_configured = false
 var is_ready = false
 
-# --- Node Paths (Verify these names match your Scene Dock EXACTLY) ---
-# NOTE: Using Option B (Absolute Paths) for safety
-@onready var sentence_line = $CanvasLayer/TextureRect/CenterContainer/PanelContainer/AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer
-@onready var choices_grid = $CanvasLayer/TextureRect/CenterContainer/PanelContainer/AspectRatioContainer/MarginContainer/VBoxContainer/GridContainer
+# --- Node Paths ---
+var header_path = "CanvasLayer/TextureRect/CenterContainer/PanelContainer/"
+var header_path2 = "AspectRatioContainer/MarginContainer/VBoxContainer/ColorRect/MarginContainer/VBoxContainer/"
+var content_path = "CanvasLayer/TextureRect/CenterContainer/PanelContainer/"
+var content_path2 = "AspectRatioContainer/MarginContainer/VBoxContainer/"
 
-# Assuming your drop zone ColorRects are named 'DropZone1' and 'DropZone2' or similar
-# If they are auto-named ColorRect/ColorRect2, update the names in your scene or path
-@onready var drop_zone_1 = $CanvasLayer/TextureRect/CenterContainer/PanelContainer/AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer/drop1
-@onready var drop_zone_2 = $CanvasLayer/TextureRect/CenterContainer/PanelContainer/AspectRatioContainer/MarginContainer/VBoxContainer/HBoxContainer/drop2
+@onready var sentence_line = get_node(content_path + content_path2 + "HBoxContainer")
+@onready var choices_grid = get_node(content_path + content_path2 + "GridContainer")
+@onready var drop_zone_1 = get_node(content_path + content_path2 + "HBoxContainer/drop1")
+@onready var drop_zone_2 = get_node(content_path + content_path2 + "HBoxContainer/drop2")
 @onready var texture_rect = $CanvasLayer/TextureRect
+
+# Header labels (now configurable)
+@onready var title_label = get_node(header_path + header_path2 + "TitleLabel")
+@onready var subtitle_label = get_node(header_path + header_path2 + "SubtitleLabel")
+@onready var context_label = get_node(header_path + header_path2 + "ContextLabel")
 
 var correct_drops = 0
 const TOTAL_DROPS = 2
@@ -51,7 +60,10 @@ func configure_puzzle(config: Dictionary) -> void:
 	puzzle_data = {
 		"sentence_parts": config.get("sentence_parts", []),
 		"answers": config.get("answers", []),
-		"choices": config.get("choices", [])
+		"choices": config.get("choices", []),
+		"title": config.get("title", "Complete the Sentence"),
+		"subtitle": config.get("subtitle", "Drag the correct words into the blanks"),
+		"context": config.get("context", "")
 	}
 	is_configured = true
 	# Only initialize if _ready() has already run, otherwise _ready() will handle it
@@ -59,6 +71,14 @@ func configure_puzzle(config: Dictionary) -> void:
 		_initialize_puzzle()
 
 func _initialize_puzzle():
+	# 0. Set header labels if configured
+	if puzzle_data.has("title"):
+		title_label.text = puzzle_data.title
+	if puzzle_data.has("subtitle"):
+		subtitle_label.text = puzzle_data.subtitle
+	if puzzle_data.has("context"):
+		context_label.text = puzzle_data.context
+
 	# 1. Set the sentence labels
 	var labels = sentence_line.get_children().filter(func(c): return c is Label)
 	if labels.size() >= 3 and puzzle_data.sentence_parts.size() >= 3:

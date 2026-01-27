@@ -43,9 +43,11 @@ func _on_new_game_pressed() -> void:
 	Dialogic.VAR.chapter4_score = 0
 	Dialogic.VAR.chapter5_score = 0
 	Dialogic.VAR.minigames_completed = 0
+	Dialogic.VAR.selected_subject = ""
+	Dialogic.VAR.current_chapter = 1
 
-	# Switch to game scene and start the timeline
-	get_tree().change_scene_to_file("res://node_2d.tscn")
+	# Navigate to subject selection screen
+	get_tree().change_scene_to_file("res://scenes/ui/subject_selection.tscn")
 
 func _on_continue_pressed() -> void:
 	# Load saved game stats

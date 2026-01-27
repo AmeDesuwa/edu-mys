@@ -139,3 +139,6 @@ Conrad: That's when I knew it could be the key to getting a confession.
 Mark: So you knew before we even confronted him?
 Conrad: I knew it was important. I just didn't know it was Greg's. Haha
 [signal arg="check_level_up"]
+leave --All--
+[wait time="1.0"]
+jump c2s0/

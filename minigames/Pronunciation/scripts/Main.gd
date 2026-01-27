@@ -16,11 +16,32 @@ var mic_player: AudioStreamPlayer  # AudioStreamPlayer with microphone input
 var is_recording: bool = false
 var audio_buffer: PackedByteArray = PackedByteArray()
 
+# Audio feedback
+var sfx_player: AudioStreamPlayer
+var sfx_start_recording: AudioStream
+var sfx_stop_recording: AudioStream
+var sfx_success: AudioStream
+var sfx_failure: AudioStream
+var sfx_retry: AudioStream
+
+# Audio paths (placeholder - add your own audio files)
+const SFX_START_PATH = "res://assets/audio/sfx/record_start.wav"
+const SFX_STOP_PATH = "res://assets/audio/sfx/record_stop.wav"
+const SFX_SUCCESS_PATH = "res://assets/audio/sfx/success.wav"
+const SFX_FAILURE_PATH = "res://assets/audio/sfx/failure.wav"
+const SFX_RETRY_PATH = "res://assets/audio/sfx/retry.wav"
+
 # Puzzle configuration
 var target_sentence: String = ""
 var min_confidence: float = 0.6  # Minimum confidence to pass (60%)
 var max_attempts: int = 3
 var current_attempt: int = 0
+
+# Scoring thresholds
+const SCORE_EXCELLENT = 85  # Green, immediate pass
+const SCORE_GOOD = 70       # Yellow-green, pass
+const SCORE_FAIR = 50       # Orange, retry
+const SCORE_POOR = 0        # Red, needs improvement
 
 # State
 var is_configured: bool = false
@@ -44,6 +65,8 @@ func _ready():
 	is_ready = true
 	_setup_ui()
 	print("DEBUG: UI setup complete")
+	_setup_audio_feedback()
+	print("DEBUG: Audio feedback setup complete")
 	_setup_vosk()
 	print("DEBUG: Vosk setup complete")
 	_setup_audio_capture()
@@ -52,6 +75,30 @@ func _ready():
 	if is_configured:
 		_display_puzzle()
 	print("DEBUG: Pronunciation minigame _ready() finished")
+
+func _setup_audio_feedback():
+	# Create audio player for sound effects
+	sfx_player = AudioStreamPlayer.new()
+	sfx_player.bus = "Master"
+	add_child(sfx_player)
+
+	# Load audio files (gracefully handle missing files)
+	sfx_start_recording = _load_audio_safe(SFX_START_PATH)
+	sfx_stop_recording = _load_audio_safe(SFX_STOP_PATH)
+	sfx_success = _load_audio_safe(SFX_SUCCESS_PATH)
+	sfx_failure = _load_audio_safe(SFX_FAILURE_PATH)
+	sfx_retry = _load_audio_safe(SFX_RETRY_PATH)
+
+func _load_audio_safe(path: String) -> AudioStream:
+	if ResourceLoader.exists(path):
+		return load(path)
+	print("DEBUG: Audio file not found: ", path)
+	return null
+
+func _play_sfx(stream: AudioStream) -> void:
+	if stream and sfx_player:
+		sfx_player.stream = stream
+		sfx_player.play()
 
 func configure_puzzle(config: Dictionary) -> void:
 	target_sentence = config.get("sentence", "Hello world").to_lower().strip_edges()
@@ -267,15 +314,19 @@ func _start_recording():
 	audio_buffer.clear()
 	vosk.reset()
 
+	# Play start recording sound
+	_play_sfx(sfx_start_recording)
+
 	# Clear capture buffer
 	audio_effect_capture.clear_buffer()
 
 	# Start microphone capture by playing the mic stream
 	mic_player.play()
 
-	status_label.text = "Listening... Speak now!"
+	status_label.text = "🎤 Listening... Speak now!"
 	status_label.add_theme_color_override("font_color", Color.YELLOW)
-	record_button.text = "Recording..."
+	record_button.text = "🔴 Recording..."
+	record_button.add_theme_color_override("font_color", Color.RED)
 	confidence_label.text = ""
 
 func _stop_recording():
@@ -283,8 +334,12 @@ func _stop_recording():
 	# Stop the microphone
 	mic_player.stop()
 
-	status_label.text = "Processing..."
+	# Play stop recording sound
+	_play_sfx(sfx_stop_recording)
+
+	status_label.text = "⏳ Processing..."
 	record_button.text = "Processing..."
+	record_button.remove_theme_color_override("font_color")
 	record_button.disabled = true
 
 	current_attempt += 1
@@ -347,52 +402,133 @@ func _calculate_word_match(target: PackedStringArray, recognized: PackedStringAr
 	if target.size() == 0:
 		return 0.0
 
-	var matches = 0
-	for word in target:
-		if word in recognized:
-			matches += 1
+	var total_score = 0.0
 
-	return float(matches) / float(target.size())
+	for target_word in target:
+		var best_match = 0.0
+
+		for rec_word in recognized:
+			# Exact match
+			if target_word == rec_word:
+				best_match = 1.0
+				break
+
+			# Partial match using similarity
+			var similarity = _word_similarity(target_word, rec_word)
+			if similarity > best_match:
+				best_match = similarity
+
+		total_score += best_match
+
+	return total_score / float(target.size())
+
+func _word_similarity(word1: String, word2: String) -> float:
+	# Simple similarity based on common characters and length
+	if word1.is_empty() or word2.is_empty():
+		return 0.0
+
+	# Check if one contains the other (handles partial recognition)
+	if word1 in word2 or word2 in word1:
+		var shorter = min(word1.length(), word2.length())
+		var longer = max(word1.length(), word2.length())
+		return float(shorter) / float(longer) * 0.8  # 80% credit for partial match
+
+	# Levenshtein-like similarity (simplified)
+	var common_chars = 0
+	var word2_chars = word2.split("")
+
+	for c in word1.split(""):
+		var idx = word2_chars.find(c)
+		if idx >= 0:
+			common_chars += 1
+			word2_chars.remove_at(idx)
+
+	var max_len = max(word1.length(), word2.length())
+	return float(common_chars) / float(max_len) * 0.6  # 60% max for fuzzy match
 
 func _display_evaluation(recognized: String, word_match: float, confidence: float, final: float):
-	var success = final >= min_confidence and word_match >= 0.7
+	var score_percent = int(final * 100)
+	var word_percent = int(word_match * 100)
+	var clarity_percent = int(confidence * 100)
+
+	# Determine success based on combined criteria
+	var _success = score_percent >= SCORE_GOOD and word_percent >= 60
 
 	# Show what was recognized
 	status_label.text = "You said: \"" + recognized + "\""
 
-	# Show confidence score
-	var score_percent = int(final * 100)
+	# Show detailed score breakdown
 	confidence_label.text = "Score: %d%% (Words: %d%%, Clarity: %d%%)" % [
-		score_percent,
-		int(word_match * 100),
-		int(confidence * 100)
+		score_percent, word_percent, clarity_percent
 	]
 
-	if success:
-		confidence_label.add_theme_color_override("font_color", Color.GREEN)
-		status_label.add_theme_color_override("font_color", Color.GREEN)
-		_finish_game(true, score_percent)
-	else:
-		confidence_label.add_theme_color_override("font_color", Color.ORANGE)
+	# Color and feedback based on score tier
+	var bright_green = Color(0.2, 1.0, 0.2)
+	var yellow_green = Color(0.6, 1.0, 0.3)
+	var orange = Color(1.0, 0.7, 0.2)
+	var red = Color(1.0, 0.3, 0.3)
 
+	if score_percent >= SCORE_EXCELLENT:
+		confidence_label.add_theme_color_override("font_color", bright_green)
+		status_label.add_theme_color_override("font_color", bright_green)
+		status_label.text = "✨ Excellent! \"" + recognized + "\""
+		_play_sfx(sfx_success)
+		_finish_game(true, score_percent)
+	elif score_percent >= SCORE_GOOD:
+		confidence_label.add_theme_color_override("font_color", yellow_green)
+		status_label.add_theme_color_override("font_color", yellow_green)
+		status_label.text = "✓ Good! \"" + recognized + "\""
+		_play_sfx(sfx_success)
+		_finish_game(true, score_percent)
+	elif score_percent >= SCORE_FAIR:
+		confidence_label.add_theme_color_override("font_color", orange)
 		if current_attempt >= max_attempts:
-			status_label.add_theme_color_override("font_color", Color.RED)
+			status_label.add_theme_color_override("font_color", orange)
+			status_label.text = "Almost there! \"" + recognized + "\""
+			_play_sfx(sfx_failure)
 			_finish_game(false, score_percent)
 		else:
-			status_label.add_theme_color_override("font_color", Color.YELLOW)
-			status_label.text += "\nTry again! Speak more clearly."
-			record_button.text = "Hold to Record"
+			status_label.add_theme_color_override("font_color", orange)
+			var tip = _get_improvement_tip(word_percent, clarity_percent)
+			status_label.text = "You said: \"" + recognized + "\"\n💡 " + tip
+			_play_sfx(sfx_retry)
+			record_button.text = "🎤 Hold to Record"
+			record_button.disabled = false
+	else:
+		confidence_label.add_theme_color_override("font_color", red)
+		if current_attempt >= max_attempts:
+			status_label.add_theme_color_override("font_color", red)
+			status_label.text = "Keep practicing! \"" + recognized + "\""
+			_play_sfx(sfx_failure)
+			_finish_game(false, score_percent)
+		else:
+			status_label.add_theme_color_override("font_color", Color(1.0, 0.5, 0.3))
+			var tip = _get_improvement_tip(word_percent, clarity_percent)
+			status_label.text = "You said: \"" + recognized + "\"\n💡 " + tip
+			_play_sfx(sfx_retry)
+			record_button.text = "🎤 Hold to Record"
 			record_button.disabled = false
 
+func _get_improvement_tip(word_percent: int, clarity_percent: int) -> String:
+	if word_percent < 50:
+		return "Try to say each word clearly and completely."
+	if clarity_percent < 50:
+		return "Speak a bit louder and more clearly."
+	if word_percent < 70:
+		return "Good effort! Focus on pronouncing each word."
+	return "Almost perfect! Just a bit more clarity needed."
+
 func _handle_no_speech():
-	status_label.text = "No speech detected. Try again."
+	status_label.text = "🔇 No speech detected. Try again."
 	status_label.add_theme_color_override("font_color", Color.ORANGE)
 	confidence_label.text = ""
+	_play_sfx(sfx_retry)
 
 	if current_attempt >= max_attempts:
+		_play_sfx(sfx_failure)
 		_finish_game(false, 0)
 	else:
-		record_button.text = "Hold to Record"
+		record_button.text = "🎤 Hold to Record"
 		record_button.disabled = false
 
 func _finish_game(success: bool, score: int):

@@ -804,6 +804,12 @@ func start_minigame(puzzle_id: String) -> void:
 		push_warning("Minigame already active!")
 		return
 
+	# Check for curriculum-based minigames (format: "curriculum:type")
+	if puzzle_id.begins_with("curriculum:"):
+		var minigame_type = puzzle_id.trim_prefix("curriculum:")
+		_start_curriculum_minigame(minigame_type)
+		return
+
 	# Check which type of minigame this is
 	if fillinblank_configs.has(puzzle_id):
 		_start_fillinblank(puzzle_id)
@@ -917,6 +923,48 @@ func _start_pronunciation(puzzle_id: String) -> void:
 	current_minigame.configure_puzzle(pronunciation_configs[puzzle_id])
 	current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
 	print("DEBUG: Pronunciation minigame should now be visible")
+
+func _start_curriculum_minigame(minigame_type: String) -> void:
+	var config = CurriculumQuestions.get_config(minigame_type)
+	if config.is_empty():
+		push_error("No curriculum config for: " + minigame_type)
+		return
+
+	var puzzle_id = "curriculum_" + minigame_type
+	print("DEBUG: Starting curriculum minigame: ", minigame_type)
+
+	match minigame_type:
+		"pacman":
+			current_minigame = pacman_scene.instantiate()
+			get_tree().root.add_child(current_minigame)
+			current_minigame.configure_puzzle(config)
+			current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+		"runner":
+			current_minigame = runner_scene.instantiate()
+			get_tree().root.add_child(current_minigame)
+			current_minigame.configure_puzzle(config)
+			current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+		"platformer":
+			current_minigame = platformer_scene.instantiate()
+			get_tree().root.add_child(current_minigame)
+			current_minigame.configure_puzzle(config)
+			current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+		"maze":
+			current_minigame = maze_scene.instantiate()
+			get_tree().root.add_child(current_minigame)
+			var game_node = current_minigame.get_node("Game")
+			game_node.configure_puzzle(config)
+			game_node.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+		"fillinblank":
+			current_minigame = fillinblank_scene.instantiate()
+			get_tree().root.add_child(current_minigame)
+			current_minigame.configure_puzzle(config)
+			current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+		_:
+			push_error("Unknown curriculum minigame type: " + minigame_type)
+			return
+
+	print("DEBUG: Curriculum minigame started: ", minigame_type)
 
 func _on_minigame_finished(success: bool, score: int, puzzle_id: String) -> void:
 	print("DEBUG: Minigame finished. Success: ", success, ", Score: ", score, ", Puzzle: ", puzzle_id)

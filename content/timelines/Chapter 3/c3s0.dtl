@@ -1,3 +1,4 @@
+[signal arg="show_title_card 3"]
 [background arg="res://Bg/art_room.png" fade="2.0"]
 set {chapter3_score} = 0
 The evening before Art Week...

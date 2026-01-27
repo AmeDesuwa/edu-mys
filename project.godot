@@ -30,6 +30,7 @@ TitleCardManager="*res://autoload/title_card_manager.gd"
 DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
 SettingsManager="*res://autoload/settings_manager.gd"
 PauseManager="*res://autoload/pause_manager.gd"
+CurriculumQuestions="*res://autoload/curriculum_questions.gd"
 
 [dialogic]
 
@@ -130,10 +131,12 @@ variables={
 "chapter4_score": 0,
 "chapter5_score": 0,
 "conrad_level": 1,
+"current_chapter": 1,
 "detective_rank": "",
 "hint_count": 0,
 "minigames_completed": 0,
 "retry_count": 0,
+"selected_subject": "",
 "time_bonus": 0
 }
 glossary/default_case_sensitive=true

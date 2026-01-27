@@ -83,4 +83,5 @@ leave Conrad
 leave Mark
 The B.C. card remains on the table, catching the last rays of afternoon sunlight.
 The chain continues.
-[end_timeline]
+[wait time="1.0"]
+jump c3s0/

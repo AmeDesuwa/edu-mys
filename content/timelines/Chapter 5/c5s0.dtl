@@ -1,3 +1,4 @@
+[signal arg="show_title_card 5"]
 [background arg="res://Bg/classroom.png" fade="2.0"]
 set {chapter5_score} = 0
 Two weeks after the journal incident...
