@@ -53,6 +53,210 @@ var fillinblank_configs = {
 	}
 }
 
+# ========================================
+# ORAL COMMUNICATION MODULE QUIZ CONFIGS
+# ========================================
+
+# Module 1: Functions, Nature, and Process of Communication
+var oralcom_module1_configs = {
+	"oralcom_m1_pacman": {
+		"questions": [
+			{"question": "What is the exchange of information, ideas, or feelings between people?", "correct": "Communication", "wrong": ["Language", "Interaction", "Conversation"]},
+			{"question": "Who is the person that starts or creates the message?", "correct": "Sender", "wrong": ["Receiver", "Decoder", "Listener"]},
+			{"question": "Who receives and interprets the message?", "correct": "Receiver", "wrong": ["Speaker", "Sender", "Encoder"]},
+			{"question": "What is the idea or information being communicated?", "correct": "Message", "wrong": ["Feedback", "Channel", "Noise"]}
+		]
+	},
+	"oralcom_m1_runner": {
+		"questions": [
+			{"question": "What is the process of converting ideas into words or symbols?", "correct": "Encoding", "wrong": ["Decoding", "Feedback", "Noise"]},
+			{"question": "What is the process of interpreting the message?", "correct": "Decoding", "wrong": ["Encoding", "Sending", "Responding"]},
+			{"question": "What is the medium used to transmit the message?", "correct": "Channel", "wrong": ["Context", "Message", "Noise"]},
+			{"question": "What is the response given by the receiver?", "correct": "Feedback", "wrong": ["Message", "Channel", "Noise"]},
+			{"question": "What refers to anything that interferes with communication?", "correct": "Noise", "wrong": ["Context", "Feedback", "Channel"]}
+		],
+		"answers_needed": 4
+	},
+	"oralcom_m1_platformer": {
+		"questions": [
+			{"question": "What type of communication uses spoken or written words?", "correct": "Verbal", "wrong": ["Nonverbal", "Oral", "Visual"]},
+			{"question": "What type of communication uses body language and facial expressions?", "correct": "Nonverbal", "wrong": ["Oral", "Written", "Verbal"]},
+			{"question": "What refers to the characteristics that describe how communication works?", "correct": "Nature", "wrong": ["Function", "Process", "Context"]},
+			{"question": "What is the continuous exchange between sender and receiver?", "correct": "Process", "wrong": ["Channel", "Encoding", "Feedback"]}
+		],
+		"answers_needed": 3
+	},
+	"oralcom_m1_maze": {
+		"questions": [
+			{"question": "What type of communication is clear and understood by the receiver?", "correct": "Effective", "wrong": ["Verbal", "Formal", "Correct"]},
+			{"question": "What refers to the purpose of communication?", "correct": "Function", "wrong": ["Channel", "Nature", "Process"]},
+			{"question": "What refers to the situation or environment where communication occurs?", "correct": "Context", "wrong": ["Channel", "Noise", "Message"]},
+			{"question": "What means expressing ideas clearly and understandably?", "correct": "Clarity", "wrong": ["Courtesy", "Conciseness", "Correctness"]},
+			{"question": "What refers to politeness and respect in communication?", "correct": "Courtesy", "wrong": ["Clarity", "Conciseness", "Correctness"]}
+		]
+	}
+}
+
+# Module 2: Models of Communication
+var oralcom_module2_configs = {
+	"oralcom_m2_pacman": {
+		"questions": [
+			{"question": "What refers to a visual representation of how communication works?", "correct": "Diagram", "wrong": ["Speech", "Message", "Language"]},
+			{"question": "Which model shows communication as a one-way process?", "correct": "Linear", "wrong": ["Interactive", "Transactional", "Circular"]},
+			{"question": "Which model includes feedback from the receiver?", "correct": "Interactive", "wrong": ["Linear", "Passive", "Static"]},
+			{"question": "Which model shows participants as simultaneous sender and receiver?", "correct": "Transactional", "wrong": ["Linear", "Interactive", "Sequential"]}
+		]
+	},
+	"oralcom_m2_runner": {
+		"questions": [
+			{"question": "Who developed the Shannon-Weaver model?", "correct": "Shannon", "wrong": ["Aristotle", "Berlo", "Schramm"]},
+			{"question": "What refers to interference in communication?", "correct": "Noise", "wrong": ["Channel", "Feedback", "Context"]},
+			{"question": "Who starts the communication process?", "correct": "Sender", "wrong": ["Receiver", "Decoder", "Listener"]},
+			{"question": "Who receives and interprets the message?", "correct": "Receiver", "wrong": ["Sender", "Encoder", "Speaker"]},
+			{"question": "Which model emphasizes shared experience?", "correct": "Schramm", "wrong": ["Aristotle", "Shannon", "Linear"]}
+		],
+		"answers_needed": 4
+	},
+	"oralcom_m2_platformer": {
+		"questions": [
+			{"question": "Which model focuses on public speaking?", "correct": "Aristotle", "wrong": ["Interactive", "Transactional", "Circular"]},
+			{"question": "What refers to the medium used to transmit messages?", "correct": "Channel", "wrong": ["Message", "Feedback", "Noise"]},
+			{"question": "What refers to the content of communication?", "correct": "Message", "wrong": ["Context", "Noise", "Feedback"]},
+			{"question": "What refers to the receiver's response?", "correct": "Feedback", "wrong": ["Channel", "Noise", "Encoding"]}
+		],
+		"answers_needed": 3
+	},
+	"oralcom_m2_maze": {
+		"questions": [
+			{"question": "Which model is commonly used in mass communication?", "correct": "Linear", "wrong": ["Transactional", "Interactive", "Circular"]},
+			{"question": "Which model allows turn-taking?", "correct": "Interactive", "wrong": ["Linear", "Aristotle", "Passive"]},
+			{"question": "What refers to the situation of communication?", "correct": "Context", "wrong": ["Noise", "Channel", "Message"]},
+			{"question": "Which model views communication as dynamic?", "correct": "Transactional", "wrong": ["Linear", "Interactive", "Mechanical"]},
+			{"question": "Which model highlights fields of experience?", "correct": "Schramm", "wrong": ["Aristotle", "Shannon", "Linear"]}
+		]
+	}
+}
+
+# Module 3: Strategies to Avoid Communication Breakdown
+var oralcom_module3_configs = {
+	"oralcom_m3_pacman": {
+		"questions": [
+			{"question": "What refers to the failure of communication?", "correct": "Breakdown", "wrong": ["Clarity", "Feedback", "Context"]},
+			{"question": "What strategy involves paying full attention to the speaker?", "correct": "Listening", "wrong": ["Speaking", "Reading", "Writing"]},
+			{"question": "What refers to asking questions to ensure understanding?", "correct": "Clarification", "wrong": ["Encoding", "Noise", "Feedback"]},
+			{"question": "What helps reduce misunderstanding?", "correct": "Feedback", "wrong": ["Ambiguity", "Silence", "Noise"]}
+		]
+	},
+	"oralcom_m3_runner": {
+		"questions": [
+			{"question": "What refers to expressing ideas clearly?", "correct": "Clarity", "wrong": ["Courtesy", "Context", "Conciseness"]},
+			{"question": "What strategy involves showing respect to the listener?", "correct": "Courtesy", "wrong": ["Volume", "Speed", "Gesture"]},
+			{"question": "What refers to shortening messages without losing meaning?", "correct": "Conciseness", "wrong": ["Clarity", "Completeness", "Correctness"]},
+			{"question": "What causes misunderstanding in communication?", "correct": "Noise", "wrong": ["Feedback", "Context", "Clarity"]},
+			{"question": "What refers to the situation where communication occurs?", "correct": "Context", "wrong": ["Channel", "Feedback", "Message"]}
+		],
+		"answers_needed": 4
+	},
+	"oralcom_m3_platformer": {
+		"questions": [
+			{"question": "What strategy involves adjusting language to the audience?", "correct": "Adaptation", "wrong": ["Encoding", "Decoding", "Noise"]},
+			{"question": "What refers to responding to confirm understanding?", "correct": "Feedback", "wrong": ["Channel", "Noise", "Message"]},
+			{"question": "What refers to polite language use?", "correct": "Courtesy", "wrong": ["Clarity", "Volume", "Speed"]},
+			{"question": "What refers to listening with understanding?", "correct": "Listening", "wrong": ["Hearing", "Speaking", "Writing"]}
+		],
+		"answers_needed": 3
+	},
+	"oralcom_m3_maze": {
+		"questions": [
+			{"question": "What refers to correcting misunderstandings?", "correct": "Clarification", "wrong": ["Silence", "Noise", "Context"]},
+			{"question": "What prevents confusion?", "correct": "Clarity", "wrong": ["Ambiguity", "Noise", "Speed"]},
+			{"question": "What strategy avoids using unnecessary words?", "correct": "Conciseness", "wrong": ["Courtesy", "Completeness", "Adaptation"]},
+			{"question": "What occurs when the message is unclear?", "correct": "Breakdown", "wrong": ["Success", "Understanding", "Adaptation"]},
+			{"question": "What strategy helps confirm message accuracy?", "correct": "Feedback", "wrong": ["Noise", "Silence", "Ambiguity"]}
+		]
+	}
+}
+
+# Module 4: Oral Communication Activities
+var oralcom_module4_configs = {
+	"oralcom_m4_pacman": {
+		"questions": [
+			{"question": "What refers to spoken interaction between two or more people?", "correct": "Communication", "wrong": ["Writing", "Speaking", "Listening"]},
+			{"question": "What oral activity involves sharing personal experiences?", "correct": "Storytelling", "wrong": ["Reporting", "Interviewing", "Debating"]},
+			{"question": "What oral activity involves asking and answering questions?", "correct": "Interview", "wrong": ["Debate", "Speech", "Reporting"]},
+			{"question": "What oral activity involves expressing opinions on an issue?", "correct": "Debating", "wrong": ["Reporting", "Narrating", "Listening"]}
+		]
+	},
+	"oralcom_m4_runner": {
+		"questions": [
+			{"question": "What oral activity aims to inform an audience?", "correct": "Reporting", "wrong": ["Persuading", "Entertaining", "Arguing"]},
+			{"question": "What oral activity involves sharing ideas to a group?", "correct": "Speaking", "wrong": ["Listening", "Writing", "Reading"]},
+			{"question": "What oral activity uses voice and gestures?", "correct": "Speaking", "wrong": ["Writing", "Reading", "Typing"]},
+			{"question": "What oral activity involves attentive hearing?", "correct": "Listening", "wrong": ["Speaking", "Reading", "Writing"]},
+			{"question": "What oral activity focuses on audience understanding?", "correct": "Feedback", "wrong": ["Clarity", "Courtesy", "Context"]}
+		],
+		"answers_needed": 4
+	},
+	"oralcom_m4_platformer": {
+		"questions": [
+			{"question": "What oral activity involves sharing information formally?", "correct": "Reporting", "wrong": ["Interview", "Storytelling", "Debating"]},
+			{"question": "What refers to planned oral activities?", "correct": "Controlled", "wrong": ["Random", "Casual", "Unplanned"]},
+			{"question": "What refers to spontaneous oral activities?", "correct": "Uncontrolled", "wrong": ["Controlled", "Formal", "Planned"]},
+			{"question": "What oral activity involves telling events in sequence?", "correct": "Storytelling", "wrong": ["Interview", "Reporting", "Debating"]}
+		],
+		"answers_needed": 3
+	},
+	"oralcom_m4_maze": {
+		"questions": [
+			{"question": "What oral activity involves exchanging ideas politely?", "correct": "Discussion", "wrong": ["Listening", "Writing", "Reading"]},
+			{"question": "What oral activity allows sharing viewpoints?", "correct": "Discussion", "wrong": ["Silence", "Listening", "Reading"]},
+			{"question": "What helps improve oral communication activities?", "correct": "Practice", "wrong": ["Noise", "Silence", "Speed"]},
+			{"question": "What oral activity requires clear pronunciation?", "correct": "Speaking", "wrong": ["Writing", "Reading", "Typing"]},
+			{"question": "What oral activity improves communication skills?", "correct": "Practice", "wrong": ["Avoidance", "Silence", "Noise"]}
+		]
+	}
+}
+
+# Module 5: Types of Speech Context
+var oralcom_module5_configs = {
+	"oralcom_m5_pacman": {
+		"questions": [
+			{"question": "Communication that happens within oneself is called?", "correct": "Intrapersonal", "wrong": ["Interpersonal", "Public", "Mass"]},
+			{"question": "Communication between two or more people is called?", "correct": "Interpersonal", "wrong": ["Intrapersonal", "Public", "Mass"]},
+			{"question": "Communication delivered to a large audience at once is?", "correct": "Mass", "wrong": ["Public", "Interpersonal", "Intrapersonal"]},
+			{"question": "Communication addressed to a smaller audience or group is?", "correct": "Public", "wrong": ["Interpersonal", "Mass", "Intrapersonal"]}
+		]
+	},
+	"oralcom_m5_runner": {
+		"questions": [
+			{"question": "What refers to the situation where communication occurs?", "correct": "Context", "wrong": ["Audience", "Feedback", "Noise"]},
+			{"question": "Who receives the message in communication?", "correct": "Audience", "wrong": ["Sender", "Feedback", "Noise"]},
+			{"question": "What shows if the message is understood?", "correct": "Feedback", "wrong": ["Context", "Noise", "Channel"]},
+			{"question": "Communication that is organized and professional is called?", "correct": "Formal", "wrong": ["Informal", "Casual", "Personal"]},
+			{"question": "Communication that is casual and relaxed is?", "correct": "Informal", "wrong": ["Formal", "Public", "Mass"]}
+		],
+		"answers_needed": 4
+	},
+	"oralcom_m5_platformer": {
+		"questions": [
+			{"question": "What describes communication that is clear and successful?", "correct": "Effective", "wrong": ["Noise", "Ambiguous", "Context"]},
+			{"question": "Communication that happens in your mind is?", "correct": "Intrapersonal", "wrong": ["Interpersonal", "Public", "Mass"]},
+			{"question": "Communication that happens between classmates is?", "correct": "Interpersonal", "wrong": ["Public", "Intrapersonal", "Mass"]},
+			{"question": "Speaking in front of a classroom is what type?", "correct": "Public", "wrong": ["Mass", "Interpersonal", "Intrapersonal"]}
+		],
+		"answers_needed": 3
+	},
+	"oralcom_m5_maze": {
+		"questions": [
+			{"question": "Broadcasting a message to thousands is what type?", "correct": "Mass", "wrong": ["Interpersonal", "Intrapersonal", "Public"]},
+			{"question": "The listeners or viewers in communication are called?", "correct": "Audience", "wrong": ["Sender", "Feedback", "Channel"]},
+			{"question": "The response from the audience is called?", "correct": "Feedback", "wrong": ["Noise", "Channel", "Message"]},
+			{"question": "Communication done during ceremonies or official events is?", "correct": "Formal", "wrong": ["Informal", "Mass", "Casual"]},
+			{"question": "Communication that succeeds in delivering meaning is?", "correct": "Effective", "wrong": ["Noise", "Context", "Feedback"]}
+		]
+	}
+}
+
 # Pacman quiz puzzle configs
 var pacman_configs = {
 	"pacman_science": {
@@ -335,6 +539,13 @@ var maze_configs = {
 
 # Pronunciation puzzle configs - K-12 English Oral Communications
 var pronunciation_configs = {
+	# Story-related pronunciation challenges
+	"focus_test": {
+		"sentence": "i will focus my mind and find the truth",
+		"prompt": "Prove your focus: Say 'I will focus my mind and find the truth.'",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
 	# Basic articulation and clarity
 	"oral_greeting": {
 		"sentence": "good morning everyone my name is conrad",
@@ -390,6 +601,200 @@ var pronunciation_configs = {
 		"sentence": "once upon a time there lived a brave young hero",
 		"min_confidence": 0.6,
 		"max_attempts": 3
+	},
+
+	# ========================================
+	# ORAL COMMUNICATION MODULE SPEECH RECOGNITION
+	# ========================================
+
+	# Module 1: Subject-Verb Agreement & Grammar
+	"oralcom_m1_grammar_1": {
+		"sentence": "she goes to school every day",
+		"prompt": "Say the sentence using the correct verb form: 'She ___ (go) to school every day.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m1_grammar_2": {
+		"sentence": "yesterday i finished my homework",
+		"prompt": "Say the sentence using the correct past tense: 'Yesterday, I ___ (finish) my homework.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m1_grammar_3": {
+		"sentence": "this gift is for me",
+		"prompt": "Say the sentence using the correct pronoun: 'This gift is for ___.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m1_grammar_4": {
+		"sentence": "he is always on time",
+		"prompt": "Rearrange and say the sentence correctly: 'always / on time / is / he'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m1_grammar_5": {
+		"sentence": "she adopted an honest dog",
+		"prompt": "Say the sentence using the correct article: 'She adopted ___ honest dog.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+
+	# Module 2: Models of Communication Grammar
+	"oralcom_m2_grammar_1": {
+		"sentence": "the linear model shows one way communication",
+		"prompt": "Say the sentence correctly: 'The linear model ___ (show) one-way communication.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m2_grammar_2": {
+		"sentence": "the interactive model includes feedback",
+		"prompt": "Say the sentence using the correct article: '___ interactive model includes feedback.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m2_grammar_3": {
+		"sentence": "the transactional model includes feedback",
+		"prompt": "Arrange and say correctly: 'includes / transactional / feedback / model / the'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m2_grammar_4": {
+		"sentence": "communication noise interrupts understanding",
+		"prompt": "Say using correct present tense: 'Communication noise ___ (interrupt) understanding.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m2_grammar_5": {
+		"sentence": "feedback is important because it shows understanding",
+		"prompt": "Complete and say: 'Feedback is important because ___.'",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+
+	# Module 3: Avoiding Communication Breakdown Grammar
+	"oralcom_m3_grammar_1": {
+		"sentence": "clear communication helps avoid misunderstanding",
+		"prompt": "Say correctly: 'Clear communication ___ (help) avoid misunderstanding.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m3_grammar_2": {
+		"sentence": "speakers should listen carefully to their audience",
+		"prompt": "Say using correct modal verb: 'Speakers ___ listen carefully to their audience.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m3_grammar_3": {
+		"sentence": "asking for clarification prevents misunderstanding",
+		"prompt": "Rearrange and say: 'asking / clarification / prevents / misunderstanding'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m3_grammar_4": {
+		"sentence": "miscommunication occurs when the message is unclear",
+		"prompt": "Say using correct present tense: 'Miscommunication ___ (occur) when the message is unclear.'",
+		"min_confidence": 0.6,
+		"max_attempts": 3
+	},
+	"oralcom_m3_grammar_5": {
+		"sentence": "communication breakdown happens when the message is not understood",
+		"prompt": "Complete and say: 'Communication breakdown happens when ___.'",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+
+	# Module 4: Oral Communication Activities - Word Usage
+	"oralcom_m4_word_storytelling": {
+		"sentence": "storytelling helps share personal experiences with the audience",
+		"prompt": "Use the word STORYTELLING in a sentence about oral communication.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m4_word_interview": {
+		"sentence": "an interview allows people to ask and answer questions",
+		"prompt": "Use the word INTERVIEW in a grammatically correct sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m4_word_debating": {
+		"sentence": "debating helps students express their opinions clearly",
+		"prompt": "Use the word DEBATING in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m4_word_reporting": {
+		"sentence": "reporting shares important information with the audience",
+		"prompt": "Use the word REPORTING in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m4_word_practice": {
+		"sentence": "practice helps improve your oral communication skills",
+		"prompt": "Use the word PRACTICE in a sentence about improving oral communication.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+
+	# Module 5: Types of Speech Context - Word Usage
+	"oralcom_m5_word_intrapersonal": {
+		"sentence": "intrapersonal communication happens when i reflect on my own thoughts",
+		"prompt": "Use INTRAPERSONAL in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_interpersonal": {
+		"sentence": "interpersonal communication occurs when i talk with my friend",
+		"prompt": "Use INTERPERSONAL in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_public": {
+		"sentence": "public communication happens when the teacher speaks to the class",
+		"prompt": "Use PUBLIC in a sentence about communication.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_mass": {
+		"sentence": "mass communication reaches many people through television or radio",
+		"prompt": "Use MASS in a sentence about communication.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_context": {
+		"sentence": "the context of communication affects how the message is understood",
+		"prompt": "Use CONTEXT in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_audience": {
+		"sentence": "the speaker adjusts the speech based on the audience",
+		"prompt": "Use AUDIENCE in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_feedback": {
+		"sentence": "feedback helps the speaker know if the audience understands the message",
+		"prompt": "Use FEEDBACK in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_formal": {
+		"sentence": "formal communication is used during school presentations",
+		"prompt": "Use FORMAL in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_informal": {
+		"sentence": "informal communication happens when i chat with my classmates",
+		"prompt": "Use INFORMAL in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
+	},
+	"oralcom_m5_word_effective": {
+		"sentence": "effective communication occurs when the message is clear and understood",
+		"prompt": "Use EFFECTIVE in a sentence.",
+		"min_confidence": 0.5,
+		"max_attempts": 3
 	}
 }
 
@@ -412,9 +817,56 @@ func start_minigame(puzzle_id: String) -> void:
 		_start_maze(puzzle_id)
 	elif pronunciation_configs.has(puzzle_id):
 		_start_pronunciation(puzzle_id)
+	# Oral Communication Module configs
+	elif _get_oralcom_config(puzzle_id) != null:
+		_start_oralcom_minigame(puzzle_id)
 	else:
 		push_error("Unknown puzzle: " + puzzle_id)
 		return
+
+# Helper to find which oral communication module config contains the puzzle
+func _get_oralcom_config(puzzle_id: String) -> Dictionary:
+	# Check all module configs
+	for module in [oralcom_module1_configs, oralcom_module2_configs, oralcom_module3_configs, oralcom_module4_configs, oralcom_module5_configs]:
+		if module.has(puzzle_id):
+			return module[puzzle_id]
+	return {}
+
+# Start the appropriate minigame type based on puzzle_id suffix
+func _start_oralcom_minigame(puzzle_id: String) -> void:
+	var config = _get_oralcom_config(puzzle_id)
+	if config.is_empty():
+		push_error("Could not find oral com config for: " + puzzle_id)
+		return
+
+	# Determine minigame type from puzzle_id suffix
+	if puzzle_id.ends_with("_pacman"):
+		print("DEBUG: Starting Oral Com Pacman minigame...")
+		current_minigame = pacman_scene.instantiate()
+		get_tree().root.add_child(current_minigame)
+		current_minigame.configure_puzzle(config)
+		current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+	elif puzzle_id.ends_with("_runner"):
+		print("DEBUG: Starting Oral Com Runner minigame...")
+		current_minigame = runner_scene.instantiate()
+		get_tree().root.add_child(current_minigame)
+		current_minigame.configure_puzzle(config)
+		current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+	elif puzzle_id.ends_with("_platformer"):
+		print("DEBUG: Starting Oral Com Platformer minigame...")
+		current_minigame = platformer_scene.instantiate()
+		get_tree().root.add_child(current_minigame)
+		current_minigame.configure_puzzle(config)
+		current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+	elif puzzle_id.ends_with("_maze"):
+		print("DEBUG: Starting Oral Com Maze minigame...")
+		current_minigame = maze_scene.instantiate()
+		get_tree().root.add_child(current_minigame)
+		var game_node = current_minigame.get_node("Game")
+		game_node.configure_puzzle(config)
+		game_node.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+	else:
+		push_error("Unknown oral com minigame type for: " + puzzle_id)
 
 func _start_fillinblank(puzzle_id: String) -> void:
 	print("DEBUG: Starting fill-in-the-blank minigame...")

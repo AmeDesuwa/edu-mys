@@ -241,4 +241,6 @@ func _end_game(success: bool):
 
 	await get_tree().create_timer(2.5).timeout
 	game_finished.emit(success, score)
+	# Wait a frame to ensure signal is processed before cleanup
+	await get_tree().process_frame
 	queue_free()

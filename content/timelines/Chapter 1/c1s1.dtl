@@ -1,3 +1,4 @@
+[signal arg="show_title_card 1"]
 set {c1s1_principal_tried} = false
 [background arg="res://Bg/faculty_exam.png" fade="1.0"]
 The Grade 12-A History exams were ruined last night due to a water leak. We'll suspend the test until further notice. \

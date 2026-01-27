@@ -15,14 +15,19 @@ run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/enable_input=true
+
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 PlayerStats="*res://src/core/PlayerStats.gd"
 DialogicEffectsManager="*res://scenes/effects/DialogicEffectsManager.gd"
 LevelUpManager="*res://autoload/level_up_manager.gd"
-DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
 MinigameManager="*res://autoload/minigame_manager.gd"
+TitleCardManager="*res://autoload/title_card_manager.gd"
+DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
 SettingsManager="*res://autoload/settings_manager.gd"
 PauseManager="*res://autoload/pause_manager.gd"
 

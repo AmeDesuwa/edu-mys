@@ -4,9 +4,23 @@ compatibility_minimum = 4.1
 
 [libraries]
 windows.debug.x86_64 = "res://addons/vosk/bin/libvosk_godot.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/vosk/bin/libvosk_godot.windows.template_debug.x86_64.dll"
+windows.editor.x86_64 = "res://addons/vosk/bin/libvosk_godot.windows.template_debug.x86_64.dll"
 
 [dependencies]
 windows.debug.x86_64 = {
+    "res://addons/vosk/bin/libvosk.dll": "",
+    "res://addons/vosk/bin/libgcc_s_seh-1.dll": "",
+    "res://addons/vosk/bin/libstdc++-6.dll": "",
+    "res://addons/vosk/bin/libwinpthread-1.dll": ""
+}
+windows.release.x86_64 = {
+    "res://addons/vosk/bin/libvosk.dll": "",
+    "res://addons/vosk/bin/libgcc_s_seh-1.dll": "",
+    "res://addons/vosk/bin/libstdc++-6.dll": "",
+    "res://addons/vosk/bin/libwinpthread-1.dll": ""
+}
+windows.editor.x86_64 = {
     "res://addons/vosk/bin/libvosk.dll": "",
     "res://addons/vosk/bin/libgcc_s_seh-1.dll": "",
     "res://addons/vosk/bin/libstdc++-6.dll": "",

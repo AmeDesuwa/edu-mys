@@ -10,7 +10,7 @@ A shimmering figure appears beside Conrad - visible only to him. This is Diwata 
 "Conrad (Thinking)": Laya! I know the timeline is suspicious, but I don't know what to look for when I get to the faculty room.
 "Diwata Laya": [i][color=#9999ff]I may be able to guide you... but first, prove your mind is focused enough to receive my insight.[/color][/i]
 "Conrad (Thinking)": Fine. Test me.
-[signal arg="start_minigame timeline_deduction"]
+[signal arg="start_minigame focus_test"]
 "Diwata Laya": [i][color=#9999ff]Good. Your mind is clear. Now listen carefully.[/color][/i]
 "Diwata Laya": [i][color=#9999ff]When you reach that room, do not just look at what was damaged. Look for what was left behind.[/color][/i]
 "Diwata Laya": [i][color=#9999ff]Saboteurs are careless. They leave traces - not just of their actions, but of their presence.[/color][/i]

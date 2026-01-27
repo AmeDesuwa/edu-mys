@@ -96,12 +96,16 @@ func check_win_condition(correctly_dropped):
 
 	if correct_drops == TOTAL_DROPS:
 		# Win condition achieved!
-		emit_signal("game_finished", true, 100)
 		print("Puzzle Solved!")
-		# Fade out before closing
+		# Fade out before emitting signal and closing
 		var tween = create_tween()
 		tween.tween_property(texture_rect, "modulate:a", 0.0, 0.2)
-		tween.tween_callback(queue_free)
+		await tween.finished
+		# Emit signal AFTER fade completes but BEFORE queue_free
+		emit_signal("game_finished", true, 100)
+		# Small delay to ensure signal is processed
+		await get_tree().process_frame
+		queue_free()
 	else:
 		# Optionally handle failure/time runs out here
 		pass

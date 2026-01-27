@@ -5,13 +5,14 @@ extends Control
 signal game_finished(success: bool, score: int)
 
 # Vosk settings
-var vosk: GodotVoskRecognizer
+var vosk  # GodotVoskRecognizer - type hint removed to allow loading when extension unavailable
 var model_path: String = "res://addons/vosk/models/vosk-model-small-en-us-0.15"
 var sample_rate: float = 16000.0
 
 # Audio capture
 var audio_effect_capture: AudioEffectCapture
 var audio_bus_index: int = -1
+var mic_player: AudioStreamPlayer  # AudioStreamPlayer with microphone input
 var is_recording: bool = false
 var audio_buffer: PackedByteArray = PackedByteArray()
 
@@ -39,13 +40,18 @@ var attempts_label: Label
 var result_container: VBoxContainer
 
 func _ready():
+	print("DEBUG: Pronunciation minigame _ready() called")
 	is_ready = true
 	_setup_ui()
+	print("DEBUG: UI setup complete")
 	_setup_vosk()
+	print("DEBUG: Vosk setup complete")
 	_setup_audio_capture()
+	print("DEBUG: Audio capture setup complete")
 
 	if is_configured:
 		_display_puzzle()
+	print("DEBUG: Pronunciation minigame _ready() finished")
 
 func configure_puzzle(config: Dictionary) -> void:
 	target_sentence = config.get("sentence", "Hello world").to_lower().strip_edges()
@@ -58,16 +64,21 @@ func configure_puzzle(config: Dictionary) -> void:
 		_display_puzzle()
 
 func _setup_ui():
+	# Create a CanvasLayer to render on top of everything (including Dialogic)
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100  # High layer to be on top of Dialogic
+	add_child(canvas_layer)
+
 	# Dark semi-transparent background
 	background = ColorRect.new()
 	background.color = Color(0, 0, 0, 0.85)
 	background.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(background)
+	canvas_layer.add_child(background)
 
 	# Center container
 	var center = CenterContainer.new()
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(center)
+	canvas_layer.add_child(center)
 
 	# Main panel
 	panel = PanelContainer.new()
@@ -156,19 +167,33 @@ func _setup_ui():
 	attempts_label.add_theme_color_override("font_color", Color(0.6, 0.6, 0.6))
 	vbox.add_child(attempts_label)
 
-	# Fade in
-	modulate.a = 0.0
+	# Fade in - fade the background which contains all UI
+	background.modulate.a = 0.0
+	panel.modulate.a = 0.0
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.3)
+	tween.set_parallel(true)
+	tween.tween_property(background, "modulate:a", 1.0, 0.3)
+	tween.tween_property(panel, "modulate:a", 1.0, 0.3)
 
 func _setup_vosk():
+	# Check if GodotVoskRecognizer class exists (GDExtension loaded)
+	if not ClassDB.class_exists("GodotVoskRecognizer"):
+		push_error("GodotVoskRecognizer class not found - Vosk GDExtension not loaded")
+		status_label.text = "ERROR: Speech recognition not available"
+		status_label.add_theme_color_override("font_color", Color.RED)
+		# Allow skipping by clicking anywhere after a delay
+		_setup_skip_fallback()
+		return
+
 	vosk = GodotVoskRecognizer.new()
 	var absolute_path = ProjectSettings.globalize_path(model_path)
+	print("DEBUG: Vosk model path: ", absolute_path)
 
 	if not vosk.initialize(absolute_path, sample_rate):
 		push_error("Failed to initialize Vosk recognizer")
 		status_label.text = "ERROR: Speech recognition failed to initialize"
 		status_label.add_theme_color_override("font_color", Color.RED)
+		_setup_skip_fallback()
 		return
 
 	# Enable word-level confidence scores
@@ -176,19 +201,44 @@ func _setup_vosk():
 	vosk_initialized = true
 	print("Vosk initialized for pronunciation minigame")
 
+func _setup_skip_fallback():
+	# When Vosk fails, allow user to skip after 2 seconds
+	await get_tree().create_timer(2.0).timeout
+	status_label.text += "\n\nClick anywhere to skip..."
+	# Connect a one-shot click handler
+	var click_handler = func(event):
+		if event is InputEventMouseButton and event.pressed:
+			_finish_game(true, 50)  # Give partial credit for skipping
+	set_process_input(true)
+	# Store handler for _input
+	set_meta("skip_handler", click_handler)
+
+func _input(event):
+	if has_meta("skip_handler"):
+		var handler = get_meta("skip_handler")
+		handler.call(event)
+
 func _setup_audio_capture():
 	# Create dedicated audio bus for microphone capture
 	audio_bus_index = AudioServer.get_bus_count()
 	AudioServer.add_bus(audio_bus_index)
 	AudioServer.set_bus_name(audio_bus_index, "PronunciationCapture")
 
-	# Add capture effect
+	# Add capture effect to this bus
 	audio_effect_capture = AudioEffectCapture.new()
 	audio_effect_capture.buffer_length = 10.0  # 10 second buffer
 	AudioServer.add_bus_effect(audio_bus_index, audio_effect_capture)
 
 	# Mute output (we don't want to hear the mic playback)
 	AudioServer.set_bus_mute(audio_bus_index, true)
+
+	# Create AudioStreamPlayer with microphone input
+	mic_player = AudioStreamPlayer.new()
+	mic_player.stream = AudioStreamMicrophone.new()
+	mic_player.bus = "PronunciationCapture"
+	add_child(mic_player)
+
+	print("Audio capture setup complete - microphone ready")
 
 func _display_puzzle():
 	sentence_label.text = "\"" + target_sentence.capitalize() + "\""
@@ -220,8 +270,8 @@ func _start_recording():
 	# Clear capture buffer
 	audio_effect_capture.clear_buffer()
 
-	# Unmute to start capturing
-	AudioServer.set_bus_mute(audio_bus_index, false)
+	# Start microphone capture by playing the mic stream
+	mic_player.play()
 
 	status_label.text = "Listening... Speak now!"
 	status_label.add_theme_color_override("font_color", Color.YELLOW)
@@ -230,7 +280,8 @@ func _start_recording():
 
 func _stop_recording():
 	is_recording = false
-	AudioServer.set_bus_mute(audio_bus_index, true)
+	# Stop the microphone
+	mic_player.stop()
 
 	status_label.text = "Processing..."
 	record_button.text = "Processing..."
@@ -349,13 +400,16 @@ func _finish_game(success: bool, score: int):
 
 	await get_tree().create_timer(2.0).timeout
 
-	# Fade out
+	# Fade out, emit signal, then cleanup
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(func():
-		emit_signal("game_finished", success, score)
-		queue_free()
-	)
+	tween.set_parallel(true)
+	tween.tween_property(background, "modulate:a", 0.0, 0.3)
+	tween.tween_property(panel, "modulate:a", 0.0, 0.3)
+	await tween.finished
+	emit_signal("game_finished", success, score)
+	# Wait a frame to ensure signal is processed before cleanup
+	await get_tree().process_frame
+	queue_free()
 
 func _process(_delta):
 	if not is_recording:

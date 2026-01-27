@@ -18,5 +18,9 @@ func _ready() -> void:
 		Dialogic.start("c1s1")
 
 func _load_save() -> void:
+	# Wait an extra frame to ensure Dialogic is fully initialized
+	await get_tree().process_frame
+
 	# Dialogic.Save.load() handles starting the timeline from saved state
+	# This will restore the timeline, position, and all game state
 	Dialogic.Save.load("continue_save")

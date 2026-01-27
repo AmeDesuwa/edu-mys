@@ -11,6 +11,10 @@ func _ready() -> void:
 	continue_button.disabled = not has_save
 
 	# Connect button signals
+	new_game_button.pressed.connect(_on_new_game_pressed)
+	continue_button.pressed.connect(_on_continue_pressed)
+	settings_button.pressed.connect(_on_settings_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
 
 func _input(event: InputEvent) -> void:
 	# Debug: Press Delete key to clear all save data
@@ -19,10 +23,6 @@ func _input(event: InputEvent) -> void:
 			Dialogic.Save.delete_slot("continue_save")
 			print("DEBUG: Save data cleared!")
 			continue_button.disabled = true
-	new_game_button.pressed.connect(_on_new_game_pressed)
-	continue_button.pressed.connect(_on_continue_pressed)
-	settings_button.pressed.connect(_on_settings_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
 
 func _on_new_game_pressed() -> void:
 	# Reset player stats for new game

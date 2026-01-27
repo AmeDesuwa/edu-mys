@@ -444,7 +444,7 @@ func _on_enemy_hit():
 
 func show_game_over():
 	game_over = true
-	$UI/QuestionLabel.text = "Game Over! Score: " + str(score) + "\nPress R to restart or ESC to exit"
+	$UI/QuestionLabel.text = "Game Over! Score: " + str(score)
 
 	for obj in answer_objects:
 		if is_instance_valid(obj):
@@ -455,12 +455,23 @@ func show_game_over():
 		player.queue_free()
 		player = null
 
+	# Auto-close after delay
+	await get_tree().create_timer(2.0).timeout
 	game_finished.emit(false, score)
+	# Wait a frame to ensure signal is processed before cleanup
+	await get_tree().process_frame
+	queue_free()
 
 func show_victory():
 	game_over = true
-	$UI/QuestionLabel.text = "Victory! Score: " + str(score) + "\nPress R to play again or ESC to exit"
+	$UI/QuestionLabel.text = "Victory! Score: " + str(score)
+
+	# Auto-close after delay
+	await get_tree().create_timer(2.0).timeout
 	game_finished.emit(true, score)
+	# Wait a frame to ensure signal is processed before cleanup
+	await get_tree().process_frame
+	queue_free()
 
 func _process(delta):
 	_update_timers(delta)
@@ -468,11 +479,7 @@ func _process(delta):
 	_update_enemy_data()
 	_update_screen_flash(delta)
 
-	if game_over:
-		if Input.is_key_pressed(KEY_R):
-			start_game()
-		elif Input.is_key_pressed(KEY_ESCAPE):
-			queue_free()
+	# Game now auto-closes after victory/game over
 
 func _update_player_direction():
 	if is_instance_valid(player):

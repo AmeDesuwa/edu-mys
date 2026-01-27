@@ -442,6 +442,8 @@ func _end_game(success: bool):
 	# Emit signal after delay, then fade out
 	await get_tree().create_timer(1.5).timeout
 	emit_signal("game_finished", success, score)
+	# Wait a frame to ensure signal is processed before cleanup
+	await get_tree().process_frame
 	var fade_tween = create_tween()
 	fade_tween.tween_property(self, "modulate:a", 0.0, 0.2)
 	fade_tween.tween_callback(get_parent().queue_free)
