@@ -44,8 +44,7 @@ Conrad: This wasn't written in anger or haste. Someone planned this message.
 Mark: So whoever wrote this had time to think it through.
 Conrad: More than that. They knew about Ria's mistake from last year.
 Conrad: This information wasn't public. Only someone watching closely would know.
-join "Diwata Laya" (Half_mirror) center
-update Ria (half) right
+join "Diwata Laya" (Half) leftmost
 [signal arg="laya_start"]
 "Diwata Laya" appears beside Conrad, her form shimmering faintly.
 "Diwata Laya": There is more to this note than paper and ink.
@@ -63,21 +62,21 @@ leave "Diwata Laya"
 update Ria (half) center
 label note_choice
 Conrad: Careful handwriting. Calculated timing. Knowledge of Ria's past mistake. Who could have written this?
-- Maybe Ria wrote it herself to deflect suspicion. [if {c2s3_ria_tried} == false]
+- Maybe Ria wrote it herself to deflect suspicion. | [if {c2s3_ria_tried} == false]
 	set {c2s3_ria_tried} = true
 	[signal arg="wrong_choice"]
 	set {chapter2_score} -= 5
 	Conrad: No. Look at her. She's genuinely terrified.
 	Conrad: And why would she show us a fake note that makes her look worse? That makes no sense.
 	jump note_choice
-- It could be an outsider trying to cause chaos at school. [if {c2s3_outsider_tried} == false]
+- It could be an outsider trying to cause chaos at school. | [if {c2s3_outsider_tried} == false]
 	set {c2s3_outsider_tried} = true
 	[signal arg="wrong_choice"]
 	set {chapter2_score} -= 5
 	Conrad: But the note mentions Ria's specific mistake from last year.
 	Conrad: Only someone inside the school, someone watching the council closely, would know that detail.
 	jump note_choice
-- Alex. She resented being replaced and knew about Ria's mistake. [if {c2s3_alex_tried} == false]
+- Alex. She resented being replaced and knew about Ria's mistake. | [if {c2s3_alex_tried} == false]
 	set {c2s3_alex_tried} = true
 	[signal arg="wrong_choice"]
 	set {chapter2_score} -= 5
@@ -89,12 +88,9 @@ Conrad: Careful handwriting. Calculated timing. Knowledge of Ria's past mistake.
 	jump note_choice
 - Ryan. He had motive, and this fits his personality.
 	set {chapter2_score} += 10
-	[signal arg="correct_choice"]
 	Conrad: Ryan was frustrated that his budget proposals kept getting rejected.
 	Conrad: If he wanted to force change in the council, discrediting the treasurer would be a calculated first step.
 	Conrad: He could observe council operations. He would notice Ria's habits.
-set {conrad_level} = 3
-[signal arg="show_level_up"]
 Mark: But how do we prove Ryan wrote it?
 Conrad: I need to see something written in Ryan's own hand. His budget proposal.
 Conrad: He said the printer was jamming yesterday. Maybe there's a rejected copy somewhere.

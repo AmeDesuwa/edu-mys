@@ -75,7 +75,7 @@ func _try_move(direction: Vector2):
 		# Can move!
 		target_position = Vector2(
 			target_grid.x * cell_size + cell_size / 2,
-			target_grid.y * cell_size + cell_size / 2
+ 			target_grid.y * cell_size + cell_size / 2
 		)
 		is_moving = true
 	else:

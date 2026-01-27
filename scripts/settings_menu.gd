@@ -8,18 +8,22 @@ const SETTING_AUTOADVANCE_FIXED_DELAY := 'dialogic/text/autoadvance_fixed_delay'
 # Save path for user settings
 const USER_SETTINGS_PATH := "user://settings.cfg"
 
-@onready var text_speed_slider = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/TextSpeedContainer/TextSpeedSlider
-@onready var text_speed_value = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/TextSpeedContainer/TextSpeedValue
-@onready var auto_advance_check = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/AutoAdvanceContainer/AutoAdvanceCheck
-@onready var auto_advance_delay = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/AutoAdvanceContainer/AutoAdvanceDelay
-@onready var master_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MasterVolumeContainer/MasterVolumeSlider
-@onready var master_volume_value = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MasterVolumeContainer/MasterVolumeValue
-@onready var music_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MusicVolumeContainer/MusicVolumeSlider
-@onready var music_volume_value = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MusicVolumeContainer/MusicVolumeValue
-@onready var sfx_volume_slider = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/SFXVolumeContainer/SFXVolumeSlider
-@onready var sfx_volume_value = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/SFXVolumeContainer/SFXVolumeValue
-@onready var fullscreen_check = $PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/FullscreenContainer/FullscreenCheck
-@onready var back_button = $PanelContainer/MarginContainer/VBoxContainer/BackButton
+# Track where settings was opened from
+# Set by PauseManager before changing to this scene
+static var opened_from_pause := false
+
+@onready var text_speed_slider = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/TextSpeedContainer/TextSpeedSlider
+@onready var text_speed_value = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/TextSpeedContainer/TextSpeedValue
+@onready var auto_advance_check = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/AutoAdvanceContainer/AutoAdvanceCheck
+@onready var auto_advance_delay = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/AutoAdvanceContainer/AutoAdvanceDelay
+@onready var master_volume_slider = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MasterVolumeContainer/MasterVolumeSlider
+@onready var master_volume_value = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MasterVolumeContainer/MasterVolumeValue
+@onready var music_volume_slider = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MusicVolumeContainer/MusicVolumeSlider
+@onready var music_volume_value = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/MusicVolumeContainer/MusicVolumeValue
+@onready var sfx_volume_slider = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/SFXVolumeContainer/SFXVolumeSlider
+@onready var sfx_volume_value = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/SFXVolumeContainer/SFXVolumeValue
+@onready var fullscreen_check = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsContainer/FullscreenContainer/FullscreenCheck
+@onready var back_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton
 
 var config := ConfigFile.new()
 
@@ -145,5 +149,10 @@ func _on_fullscreen_toggled(enabled: bool) -> void:
 	save_settings()
 
 func _on_back_pressed() -> void:
-	# Return to main menu
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	if opened_from_pause:
+		# Restore game state from temporary save
+		opened_from_pause = false
+		Dialogic.Save.load("_pause_temp")
+	else:
+		# Return to main menu
+		get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")

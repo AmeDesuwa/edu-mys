@@ -24,6 +24,7 @@ LevelUpManager="*res://autoload/level_up_manager.gd"
 DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
 MinigameManager="*res://autoload/minigame_manager.gd"
 SettingsManager="*res://autoload/settings_manager.gd"
+PauseManager="*res://autoload/pause_manager.gd"
 
 [dialogic]
 

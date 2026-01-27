@@ -20,18 +20,18 @@ Mark: Alright, but where do we start?
 Conrad: First we need to find potential witnesses.
 Mark: Since the incident took place after school hours, we should focus first on the school staff since they should be the last people to leave the school.
 Conrad: Good idea, but it would take a lot of time to track and question all of the school staff. It would be impractical to ask them all.
-label fork 1
+label fork_1
 Conrad: Hmmmm. Who among the school employees would be most likely to have useful information?
-[signal arg="minigame_witness_choice"]
-Conrad: Oh, a Janitor!
-Mark: Good thinking bro. Since their job description doesn't really include security, they don't need to make a report.
-Conrad: Let's ask the Janitor after classes. Last time I checked there are 3 janitors, and they have their own areas. We just need to find the one assigned to the faculty room.
-leave Conrad
-leave Mark
-jump c1s2/
+- Janitor
+	Conrad: Oh, a Janitor!
+	Mark: Good thinking bro. Since their job description doesn't really include security, they don't need to make a report.
+	Conrad: Let's ask the Janitor after classes. Last time I checked there are 3 janitors, and they have their own areas. We just need to find the one assigned to the faculty room.
+	leave Conrad
+	leave Mark
+	jump c1s2/
 - Principal [if {c1s1_principal_tried} == false]
 	set {c1s1_principal_tried} = true
 	[signal arg="wrong_choice"]
 	Conrad: Maybe we ask the Principal?
 	Conrad: I'm sure if the principal had additional information that would be useful, he would've already announced it.
-	jump fork 1
+	jump fork_1

@@ -8,7 +8,7 @@ Conrad knocks firmly on the partially open door.
 Conrad: Ryan, we know you're in here. We need to talk.
 Silence. Then the sound of something being set down.
 The door opens wider. Ryan stands inside, his expression caught between surprise and defiance.
-leave Mark
+update Mark rightmost
 join Ryan (half) right
 Ryan: What are you two doing here? This storage is off-limits to non-committee members.
 Conrad: We found something interesting in the computer lab.
@@ -38,7 +38,6 @@ Conrad: Where's the money, Ryan?
 Ryan's shoulders slump. The defiance drains from his face.
 His voice comes out quiet, defeated.
 Ryan: Behind the equipment racks. In a gym bag.
-join Mark (Mark_half) center
 Mark moves past Ryan and searches behind the dusty equipment.
 Mark pulls out a faded blue gym bag and unzips it.
 Mark: Twenty thousand pesos. It's all here.

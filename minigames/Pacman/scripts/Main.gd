@@ -72,6 +72,10 @@ var screen_flash_timer = 0.0
 # Ghost references for AI coordination
 var blinky = null  # Red ghost - needed for Inky's targeting
 
+# Global teleport system - only one ghost can teleport at a time
+var global_teleport_cooldown = 0.0
+const GLOBAL_TELEPORT_COOLDOWN = 2.5  # Time between any ghost teleporting
+
 func _ready():
 	if not is_configured:
 		start_game()
@@ -509,12 +513,24 @@ func _update_timers(delta):
 			combo_count = 0
 			_update_combo_display()
 
+	if global_teleport_cooldown > 0:
+		global_teleport_cooldown -= delta
+
 	if invincibility_timer > 0:
 		invincibility_timer -= delta
 		if invincibility_timer <= 0:
 			invincible = false
 			if is_instance_valid(player):
 				player.modulate = Color.WHITE
+
+# Called by ghosts to request permission to teleport (one at a time)
+func request_ghost_teleport(_ghost) -> bool:
+	if global_teleport_cooldown > 0:
+		return false
+
+	# Grant permission and set global cooldown
+	global_teleport_cooldown = GLOBAL_TELEPORT_COOLDOWN
+	return true
 
 func _update_combo_display():
 	if has_node("UI/ComboLabel"):
