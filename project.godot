@@ -57,6 +57,13 @@ directories/dch_directory={
 "example character": "res://content/characters/example character.dch"
 }
 directories/dtl_directory={
+"Chapter 2/c2s0": "res://content/timelines/Chapter 2/c2s0.dtl",
+"Chapter 2/c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
+"Chapter 2/c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
+"Chapter 2/c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
+"Chapter 2/c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
+"Chapter 2/c2s5": "res://content/timelines/Chapter 2/c2s5.dtl",
+"Chapter 2/c2s6": "res://content/timelines/Chapter 2/c2s6.dtl",
 "broadcast_s1": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s1.dtl",
 "broadcast_s2": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s2.dtl",
 "broadcast_s3": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s3.dtl",
@@ -67,15 +74,15 @@ directories/dtl_directory={
 "c1s3": "res://content/timelines/Chapter 1/c1s3.dtl",
 "c1s4": "res://content/timelines/Chapter 1/c1s4.dtl",
 "c1s5": "res://content/timelines/Chapter 1/c1s5.dtl",
-"c2s0": "res://content/timelines/Chapter 2/c2s0.dtl",
-"c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
-"c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
+"c2s0": "res://content/timelines/Chapter 3/Chapter 2/c2s0.dtl",
+"c2s1": "res://content/timelines/Chapter 3/Chapter 2/c2s1.dtl",
+"c2s2": "res://content/timelines/Chapter 3/Chapter 2/c2s2.dtl",
 "c2s2b_old": "res://content/timelines/Unused/c2s2b_old.dtl",
-"c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
-"c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
-"c2s5": "res://content/timelines/Chapter 2/c2s5.dtl",
+"c2s3": "res://content/timelines/Chapter 3/Chapter 2/c2s3.dtl",
+"c2s4": "res://content/timelines/Chapter 3/Chapter 2/c2s4.dtl",
+"c2s5": "res://content/timelines/Chapter 3/Chapter 2/c2s5.dtl",
 "c2s5b_old": "res://content/timelines/Unused/c2s5b_old.dtl",
-"c2s6": "res://content/timelines/Chapter 2/c2s6.dtl",
+"c2s6": "res://content/timelines/Chapter 3/Chapter 2/c2s6.dtl",
 "c2s7_old": "res://content/timelines/Unused/c2s7_old.dtl",
 "c3s0": "res://content/timelines/Chapter 3/c3s0.dtl",
 "c3s1": "res://content/timelines/Chapter 3/c3s1.dtl",
@@ -143,9 +150,9 @@ glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
-text/text_reveal_skip_delay=0.1
-text/advance_delay=0.1
-text/autoadvance_per_character_delay=0.1
+text/text_reveal_skip_delay=0.05
+text/advance_delay=0.05
+text/autoadvance_per_character_delay=0.015
 text/autoadvance_ignored_characters_enabled=true
 animations/join_default_length=0.5
 animations/join_default_wait=true
@@ -176,6 +183,8 @@ audio/channel_defaults={
 history/simple_history_enabled=true
 history/full_history_enabled=true
 history/visited_event_history_enabled=true
+text/autoskip_time_per_event=0.05
+text/autoadvance_fixed_delay=0.5
 
 [display]
 

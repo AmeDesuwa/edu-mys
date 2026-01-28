@@ -109,10 +109,16 @@ func _on_text_speed_changed(value: float) -> void:
 func _on_auto_advance_toggled(enabled: bool) -> void:
 	ProjectSettings.set_setting(SETTING_AUTOADVANCE_ENABLED, enabled)
 	auto_advance_delay.editable = enabled
+	# Update Dialogic's auto-advance directly (ProjectSettings only read at init)
+	if Dialogic.Inputs != null and Dialogic.Inputs.auto_advance != null:
+		Dialogic.Inputs.auto_advance.enabled_forced = enabled
 	save_settings()
 
 func _on_auto_advance_delay_changed(value: float) -> void:
 	ProjectSettings.set_setting(SETTING_AUTOADVANCE_FIXED_DELAY, value)
+	# Update Dialogic's auto-advance directly (ProjectSettings only read at init)
+	if Dialogic.Inputs != null and Dialogic.Inputs.auto_advance != null:
+		Dialogic.Inputs.auto_advance.fixed_delay = value
 	save_settings()
 
 func _on_master_volume_changed(value: float) -> void:

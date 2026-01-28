@@ -9,6 +9,7 @@ var runner_scene = preload("res://minigames/Runner/scenes/Main.tscn")
 var platformer_scene = preload("res://minigames/Platformer/scenes/Main.tscn")
 var maze_scene = preload("res://minigames/Maze/scenes/Main.tscn")
 var pronunciation_scene = preload("res://minigames/Pronunciation/scenes/Main.tscn")
+var math_scene = preload("res://minigames/Math/scenes/Main.tscn")
 var current_minigame = null
 
 # Fill-in-the-blank puzzle configs
@@ -17,11 +18,6 @@ var fillinblank_configs = {
 		"sentence_parts": ["The scientific method starts with ", " and ends with a ", "."],
 		"answers": ["observation", "conclusion"],
 		"choices": ["observation", "experiment", "conclusion", "hypothesis", "question", "theory", "analysis", "research"]
-	},
-	"evidence_analysis": {
-		"sentence_parts": ["In a court of law, the ", " must prove guilt beyond reasonable ", "."],
-		"answers": ["prosecution", "doubt"],
-		"choices": ["prosecution", "defense", "doubt", "evidence", "judge", "jury", "witness", "question"]
 	},
 	"statement_analysis": {
 		"sentence_parts": ["Critical thinking requires ", " evidence before forming a ", "."],
@@ -32,12 +28,6 @@ var fillinblank_configs = {
 		"sentence_parts": ["A budget helps track ", " and ", " to manage money wisely."],
 		"answers": ["income", "expenses"],
 		"choices": ["income", "expenses", "savings", "debts", "profits", "losses", "assets", "taxes"]
-	},
-	# Chapter 3 - Art vocabulary
-	"art_vocabulary": {
-		"sentence_parts": ["In art, the arrangement of elements is called ", " and the contrast between light and dark is ", "."],
-		"answers": ["composition", "value"],
-		"choices": ["composition", "value", "texture", "color", "balance", "rhythm", "emphasis", "form"]
 	},
 	# Chapter 4 - Library access logic
 	"library_logic": {
@@ -50,6 +40,388 @@ var fillinblank_configs = {
 		"sentence_parts": ["True teaching requires ", " and respects ", " while guiding growth."],
 		"answers": ["wisdom", "choice"],
 		"choices": ["wisdom", "choice", "control", "force", "patience", "freedom", "power", "authority"]
+	},
+
+	# ========================================
+	# ENGLISH MODULE 1: Nature, Functions, and Process of Communication
+	# ========================================
+
+	# Q1: Definition of Communication
+	"english_m1_communication_def": {
+		"sentence_parts": ["The exchange of ", ", ideas, or feelings between people is called ", "."],
+		"answers": ["information", "communication"],
+		"choices": ["language", "information", "message", "interaction", "communication", "feedback", "channel", "context"]
+	},
+	# Q2: Sender
+	"english_m1_sender": {
+		"sentence_parts": ["The ", " is the person who ", " the message."],
+		"answers": ["sender", "creates"],
+		"choices": ["sender", "receiver", "listener", "decoder", "creates", "receives", "sends", "interprets"]
+	},
+	# Q3: Receiver
+	"english_m1_receiver": {
+		"sentence_parts": ["The ", " is the person who ", " the message."],
+		"answers": ["receiver", "interprets"],
+		"choices": ["sender", "receiver", "speaker", "listener", "receives", "interprets", "sends", "creates"]
+	},
+	# Q4: Message
+	"english_m1_message": {
+		"sentence_parts": ["The ", " is the ", " being communicated."],
+		"answers": ["message", "information"],
+		"choices": ["message", "channel", "information", "feedback", "noise", "context", "medium", "process"]
+	},
+	# Q5: Encoding
+	"english_m1_encoding": {
+		"sentence_parts": ["", " is the process of ", " ideas into words or symbols."],
+		"answers": ["encoding", "converting"],
+		"choices": ["encoding", "decoding", "feedback", "noise", "converting", "interpreting", "sending", "responding"]
+	},
+	# Q6: Decoding
+	"english_m1_decoding": {
+		"sentence_parts": ["", " is the process of ", " the message."],
+		"answers": ["decoding", "interpreting"],
+		"choices": ["encoding", "decoding", "feedback", "noise", "sending", "interpreting", "receiving", "responding"]
+	},
+	# Q7: Channel
+	"english_m1_channel": {
+		"sentence_parts": ["The ", " is the ", " used to transmit the message."],
+		"answers": ["channel", "medium"],
+		"choices": ["channel", "message", "feedback", "context", "medium", "noise", "sender", "receiver"]
+	},
+	# Q8: Feedback
+	"english_m1_feedback": {
+		"sentence_parts": ["", " is the ", " given by the receiver."],
+		"answers": ["feedback", "response"],
+		"choices": ["feedback", "message", "channel", "noise", "response", "encoding", "decoding", "context"]
+	},
+	# Q9: Noise
+	"english_m1_noise": {
+		"sentence_parts": ["", " refers to anything that ", " communication."],
+		"answers": ["noise", "interferes"],
+		"choices": ["noise", "feedback", "context", "channel", "interferes", "improves", "sends", "receives"]
+	},
+	# Q10: Verbal Communication
+	"english_m1_verbal": {
+		"sentence_parts": ["", " communication uses ", " or written words."],
+		"answers": ["verbal", "spoken"],
+		"choices": ["verbal", "nonverbal", "visual", "digital", "spoken", "gestures", "images", "signals"]
+	},
+	# Q11: Nonverbal Communication
+	"english_m1_nonverbal": {
+		"sentence_parts": ["", " communication uses ", " language and facial expressions."],
+		"answers": ["nonverbal", "body"],
+		"choices": ["verbal", "written", "nonverbal", "oral", "body", "spoken", "digital", "formal"]
+	},
+	# Q12: Nature of Communication
+	"english_m1_nature": {
+		"sentence_parts": ["The ", " of communication describes how it ", "."],
+		"answers": ["nature", "works"],
+		"choices": ["nature", "function", "process", "context", "works", "begins", "ends", "changes"]
+	},
+	# Q13: Process of Communication
+	"english_m1_process": {
+		"sentence_parts": ["The ", " is the continuous ", " between sender and receiver."],
+		"answers": ["process", "exchange"],
+		"choices": ["process", "channel", "message", "feedback", "exchange", "response", "medium", "context"]
+	},
+	# Q14: Effective Communication
+	"english_m1_effective": {
+		"sentence_parts": ["", " communication is ", " by the receiver."],
+		"answers": ["effective", "understood"],
+		"choices": ["effective", "formal", "verbal", "clear", "understood", "spoken", "written", "sent"]
+	},
+	# Q15: Function of Communication
+	"english_m1_function": {
+		"sentence_parts": ["The ", " of communication is its ", "."],
+		"answers": ["function", "purpose"],
+		"choices": ["function", "nature", "process", "channel", "purpose", "message", "context", "feedback"]
+	},
+	# Q16: Context
+	"english_m1_context": {
+		"sentence_parts": ["The ", " is the situation where communication ", "."],
+		"answers": ["context", "occurs"],
+		"choices": ["context", "channel", "message", "noise", "occurs", "ends", "begins", "stops"]
+	},
+	# Q17: Clarity
+	"english_m1_clarity": {
+		"sentence_parts": ["", " means expressing ideas ", " and understandably."],
+		"answers": ["clarity", "clearly"],
+		"choices": ["clarity", "courtesy", "conciseness", "correctness", "clearly", "briefly", "politely", "accurately"]
+	},
+	# Q18: Courtesy
+	"english_m1_courtesy": {
+		"sentence_parts": ["", " refers to politeness and ", " in communication."],
+		"answers": ["courtesy", "respect"],
+		"choices": ["courtesy", "clarity", "respect", "tone", "conciseness", "accuracy", "feedback", "context"]
+	},
+	# Q19: Conciseness
+	"english_m1_conciseness": {
+		"sentence_parts": ["", " means expressing ideas ", " and directly."],
+		"answers": ["conciseness", "briefly"],
+		"choices": ["conciseness", "clarity", "courtesy", "correctness", "briefly", "clearly", "politely", "accurately"]
+	},
+	# Q20: Communication Breakdown
+	"english_m1_breakdown": {
+		"sentence_parts": ["A communication ", " happens when the message is not ", "."],
+		"answers": ["breakdown", "understood"],
+		"choices": ["breakdown", "barrier", "noise", "error", "understood", "sent", "heard", "received"]
+	},
+
+	# ========================================
+	# ENGLISH MODULE 2: Models of Communication
+	# ========================================
+
+	# Q1: Diagram Definition
+	"english_m2_diagram": {
+		"sentence_parts": ["A ", " is a visual ", " of how communication works."],
+		"answers": ["diagram", "representation"],
+		"choices": ["diagram", "speech", "model", "message", "representation", "language", "process", "interaction"]
+	},
+	# Q2: Linear Model
+	"english_m2_linear": {
+		"sentence_parts": ["The ", " model shows communication as a ", " process."],
+		"answers": ["linear", "oneway"],
+		"choices": ["linear", "interactive", "transactional", "circular", "oneway", "twoway", "dynamic", "simultaneous"]
+	},
+	# Q3: Interactive Model
+	"english_m2_interactive": {
+		"sentence_parts": ["The ", " model includes ", " from the receiver."],
+		"answers": ["interactive", "feedback"],
+		"choices": ["linear", "passive", "interactive", "static", "feedback", "noise", "message", "channel"]
+	},
+	# Q4: Transactional Model
+	"english_m2_transactional": {
+		"sentence_parts": ["The ", " model shows participants as ", " sender and receiver."],
+		"answers": ["transactional", "simultaneous"],
+		"choices": ["linear", "interactive", "transactional", "sequential", "simultaneous", "passive", "active", "circular"]
+	},
+	# Q5: Shannon-Weaver
+	"english_m2_shannon_weaver": {
+		"sentence_parts": ["The Shannon-Weaver model was developed by ", " ", "."],
+		"answers": ["shannon", "claude"],
+		"choices": ["aristotle", "berlo", "shannon", "schramm", "claude", "wilbur", "linear", "model"]
+	},
+	# Q6: Noise Definition
+	"english_m2_noise": {
+		"sentence_parts": ["", " refers to ", " in communication."],
+		"answers": ["noise", "interference"],
+		"choices": ["channel", "noise", "feedback", "context", "interference", "response", "process", "message"]
+	},
+	# Q7: Sender Role
+	"english_m2_sender": {
+		"sentence_parts": ["The ", " ", " the communication process."],
+		"answers": ["sender", "starts"],
+		"choices": ["receiver", "decoder", "sender", "listener", "starts", "ends", "interrupts", "responds"]
+	},
+	# Q8: Receiver Role
+	"english_m2_receiver": {
+		"sentence_parts": ["The ", " ", " and interprets the message."],
+		"answers": ["receiver", "receives"],
+		"choices": ["sender", "encoder", "receiver", "speaker", "receives", "sends", "creates", "converts"]
+	},
+	# Q9: Schramm Model
+	"english_m2_schramm": {
+		"sentence_parts": ["The ", " model emphasizes ", " experience."],
+		"answers": ["schramm", "shared"],
+		"choices": ["aristotle", "shannon", "schramm", "linear", "shared", "public", "individual", "passive"]
+	},
+	# Q10: Aristotle Model
+	"english_m2_aristotle": {
+		"sentence_parts": ["The ", " model focuses on ", " speaking."],
+		"answers": ["aristotle", "public"],
+		"choices": ["interactive", "transactional", "aristotle", "circular", "public", "group", "mass", "digital"]
+	},
+	# Q11: Channel Definition
+	"english_m2_channel": {
+		"sentence_parts": ["The ", " is the ", " used to transmit messages."],
+		"answers": ["channel", "medium"],
+		"choices": ["message", "channel", "feedback", "noise", "medium", "process", "context", "sender"]
+	},
+	# Q12: Message Content
+	"english_m2_message": {
+		"sentence_parts": ["The ", " refers to the ", " of communication."],
+		"answers": ["message", "content"],
+		"choices": ["context", "message", "noise", "feedback", "content", "situation", "medium", "process"]
+	},
+	# Q13: Feedback Definition
+	"english_m2_feedback": {
+		"sentence_parts": ["", " refers to the receiver's ", "."],
+		"answers": ["feedback", "response"],
+		"choices": ["channel", "noise", "feedback", "encoding", "response", "message", "medium", "process"]
+	},
+	# Q14: Linear Mass Communication
+	"english_m2_linear_mass": {
+		"sentence_parts": ["The ", " model is commonly used in ", " communication."],
+		"answers": ["linear", "mass"],
+		"choices": ["transactional", "interactive", "linear", "circular", "mass", "personal", "group", "digital"]
+	},
+	# Q15: Interactive Turn-Taking
+	"english_m2_interactive_turn": {
+		"sentence_parts": ["The ", " model allows ", " taking."],
+		"answers": ["interactive", "turn"],
+		"choices": ["linear", "interactive", "aristotle", "passive", "turn", "role", "message", "feedback"]
+	},
+	# Q16: Context Situation
+	"english_m2_context": {
+		"sentence_parts": ["The ", " refers to the ", " of communication."],
+		"answers": ["context", "situation"],
+		"choices": ["noise", "channel", "context", "message", "situation", "medium", "process", "feedback"]
+	},
+	# Q17: Transactional Dynamic
+	"english_m2_transactional_dynamic": {
+		"sentence_parts": ["The ", " model views communication as ", "."],
+		"answers": ["transactional", "dynamic"],
+		"choices": ["linear", "interactive", "transactional", "mechanical", "dynamic", "static", "passive", "fixed"]
+	},
+	# Q18: Encoding Definition
+	"english_m2_encoding": {
+		"sentence_parts": ["", " refers to ", " ideas into symbols."],
+		"answers": ["encoding", "converting"],
+		"choices": ["decoding", "feedback", "encoding", "noise", "converting", "interpreting", "sending", "receiving"]
+	},
+	# Q19: Decoding Definition
+	"english_m2_decoding": {
+		"sentence_parts": ["", " refers to ", " symbols."],
+		"answers": ["decoding", "interpreting"],
+		"choices": ["encoding", "channel", "decoding", "feedback", "interpreting", "sending", "receiving", "converting"]
+	},
+	# Q20: Schramm Fields
+	"english_m2_schramm_fields": {
+		"sentence_parts": ["The ", " model highlights ", " experience."],
+		"answers": ["schramm", "fields"],
+		"choices": ["aristotle", "shannon", "schramm", "linear", "fields", "shared", "public", "passive"]
+	},
+
+	# ========================================
+	# SCIENCE MODULE 1: SI Units, Measurement, Scientific Notation
+	# ========================================
+
+	# SI Base Units (Q1-Q5)
+	# Q1: Length Unit
+	"science_m1_length_unit": {
+		"sentence_parts": ["The SI unit of ", " is ", "."],
+		"answers": ["length", "meter"],
+		"choices": ["length", "mass", "time", "current", "meter", "gram", "second", "liter"]
+	},
+	# Q2: Mass Unit
+	"science_m1_mass_unit": {
+		"sentence_parts": ["The SI unit of ", " is ", "."],
+		"answers": ["mass", "kilogram"],
+		"choices": ["length", "mass", "time", "current", "kilogram", "meter", "second", "ampere"]
+	},
+	# Q3: Time Unit
+	"science_m1_time_unit": {
+		"sentence_parts": ["The SI unit of ", " is ", "."],
+		"answers": ["time", "second"],
+		"choices": ["time", "length", "mass", "temperature", "second", "minute", "hour", "day"]
+	},
+	# Q4: Electric Current Unit
+	"science_m1_current_unit": {
+		"sentence_parts": ["The SI unit of ", " current is ", "."],
+		"answers": ["electric", "ampere"],
+		"choices": ["electric", "thermal", "mechanical", "magnetic", "ampere", "volt", "watt", "ohm"]
+	},
+	# Q5: Derived Quantity
+	"science_m1_derived": {
+		"sentence_parts": ["A physical quantity formed from base units is called ", " ", "."],
+		"answers": ["derived", "quantity"],
+		"choices": ["base", "derived", "scalar", "vector", "quantity", "unit", "measure", "value"]
+	},
+
+	# Measurement Instruments (Q6-Q10)
+	# Q6: Length Instrument
+	"science_m1_length_instrument": {
+		"sentence_parts": ["", " is measured using a ", "."],
+		"answers": ["length", "ruler"],
+		"choices": ["length", "mass", "time", "temperature", "ruler", "balance", "clock", "thermometer"]
+	},
+	# Q7: Mass Instrument
+	"science_m1_mass_instrument": {
+		"sentence_parts": ["", " is measured using a ", "."],
+		"answers": ["mass", "balance"],
+		"choices": ["length", "mass", "time", "temperature", "balance", "ruler", "clock", "stopwatch"]
+	},
+	# Q8: Time Instrument
+	"science_m1_time_instrument": {
+		"sentence_parts": ["", " is measured using a ", "."],
+		"answers": ["time", "clock"],
+		"choices": ["time", "length", "mass", "temperature", "clock", "ruler", "balance", "thermometer"]
+	},
+	# Q9: Temperature Instrument
+	"science_m1_temp_instrument": {
+		"sentence_parts": ["", " is measured using a ", "."],
+		"answers": ["temperature", "thermometer"],
+		"choices": ["temperature", "mass", "time", "length", "thermometer", "balance", "clock", "ruler"]
+	},
+	# Q10: Least Count
+	"science_m1_least_count": {
+		"sentence_parts": ["The ", " measurement an instrument can detect is called ", "."],
+		"answers": ["smallest", "least"],
+		"choices": ["smallest", "largest", "accurate", "exact", "least", "precision", "error", "limit"]
+	},
+
+	# Scientific Notation and Significant Figures (Q11-Q15)
+	# Q11: Scientific Notation Example
+	"science_m1_sci_notation1": {
+		"sentence_parts": ["0.00052 written in ", " notation is ", "."],
+		"answers": ["scientific", "5.2×10⁻⁴"],
+		"choices": ["scientific", "standard", "decimal", "expanded", "5.2×10⁻⁴", "5.2×10⁴", "52×10⁻⁶", "0.52×10⁻³"]
+	},
+	# Q12: Significant Figures Count
+	"science_m1_sig_figs": {
+		"sentence_parts": ["The number of ", " figures in 0.00450 is ", "."],
+		"answers": ["significant", "three"],
+		"choices": ["significant", "decimal", "exact", "whole", "three", "two", "four", "five"]
+	},
+	# Q13: Multiplication Rule
+	"science_m1_mult_rule": {
+		"sentence_parts": ["In multiplication, the result follows the ", " number of ", " figures."],
+		"answers": ["smallest", "significant"],
+		"choices": ["largest", "smallest", "average", "mean", "significant", "decimal", "exact", "whole"]
+	},
+	# Q14: Scientific Notation Example 2
+	"science_m1_sci_notation2": {
+		"sentence_parts": ["3,900 written in ", " notation is ", "."],
+		"answers": ["scientific", "3.9×10³"],
+		"choices": ["scientific", "standard", "decimal", "expanded", "3.9×10³", "39×10²", "0.39×10⁴", "3.9×10²"]
+	},
+	# Q15: Significant Figure Definition
+	"science_m1_sig_fig_def": {
+		"sentence_parts": ["A digit showing measurement precision is called a ", " ", "."],
+		"answers": ["significant", "figure"],
+		"choices": ["significant", "decimal", "exact", "whole", "figure", "value", "count", "number"]
+	},
+
+	# Unit Conversion (Q16-Q20)
+	# Q16: Meters to Centimeters
+	"science_m1_m_to_cm": {
+		"sentence_parts": ["2.5 meters is equal to ", " ", "."],
+		"answers": ["250", "centimeters"],
+		"choices": ["25", "250", "2500", "0.25", "centimeters", "meters", "millimeters", "kilometers"]
+	},
+	# Q17: Kilometers to Meters
+	"science_m1_km_to_m": {
+		"sentence_parts": ["5 kilometers is equal to ", " ", "."],
+		"answers": ["5000", "meters"],
+		"choices": ["50", "500", "5000", "0.005", "meters", "centimeters", "millimeters", "kilometers"]
+	},
+	# Q18: Centimeters to Meters
+	"science_m1_cm_to_m": {
+		"sentence_parts": ["120 centimeters is equal to ", " ", "."],
+		"answers": ["1.20", "meters"],
+		"choices": ["1.20", "12.0", "0.120", "1200", "meters", "centimeters", "kilometers", "millimeters"]
+	},
+	# Q19: Hours to Seconds
+	"science_m1_hr_to_sec": {
+		"sentence_parts": ["One hour is equal to ", " ", "."],
+		"answers": ["3600", "seconds"],
+		"choices": ["360", "1800", "3600", "6000", "seconds", "minutes", "hours", "days"]
+	},
+	# Q20: Inches to Centimeters
+	"science_m1_in_to_cm": {
+		"sentence_parts": ["Ten inches is equal to ", " ", "."],
+		"answers": ["25.4", "centimeters"],
+		"choices": ["25.4", "254", "2.54", "0.254", "centimeters", "meters", "millimeters", "kilometers"]
 	}
 }
 
@@ -335,6 +707,17 @@ var pacman_configs = {
 
 # Runner quiz configs
 var runner_configs = {
+	# Chapter 1: Investigation basics - before talking to janitor
+	"investigation_basics": {
+		"questions": [
+			{"question": "What should a detective do first at a scene?", "correct": "Observe", "wrong": ["Accuse", "Leave", "Guess"]},
+			{"question": "What makes a good question during an interview?", "correct": "Open-ended", "wrong": ["Yes/No only", "Leading", "Confusing"]},
+			{"question": "What should you do with witness statements?", "correct": "Verify", "wrong": ["Ignore", "Assume true", "Dismiss"]},
+			{"question": "What is the key to finding truth?", "correct": "Evidence", "wrong": ["Rumors", "Feelings", "Luck"]},
+			{"question": "A good investigator remains...?", "correct": "Objective", "wrong": ["Biased", "Emotional", "Hasty"]}
+		],
+		"answers_needed": 4
+	},
 	"runner_geography": {
 		"questions": [
 			{
@@ -508,6 +891,16 @@ var platformer_configs = {
 
 # Maze puzzle configs - questions shown in order, player plans route through maze
 var maze_configs = {
+	# Chapter 1: Evidence Analysis - when Conrad finds the bracelet
+	"evidence_analysis": {
+		"questions": [
+			{"question": "What must evidence be to be used in an argument?", "correct": "Relevant", "wrong": ["Popular", "Emotional", "Lengthy"]},
+			{"question": "What do we call information that proves something?", "correct": "Evidence", "wrong": ["Opinion", "Rumor", "Guess"]},
+			{"question": "In law, the prosecution must prove guilt beyond reasonable...?", "correct": "Doubt", "wrong": ["Time", "Effort", "Distance"]},
+			{"question": "What type of evidence comes from witnesses?", "correct": "Testimony", "wrong": ["Physical", "Digital", "Forensic"]},
+			{"question": "What skill helps you evaluate if evidence is trustworthy?", "correct": "Critical thinking", "wrong": ["Speed reading", "Memorization", "Guessing"]}
+		]
+	},
 	"maze_deduction": {
 		"questions": [
 			{"question": "What comes after 'observation' in the scientific method?", "correct": "Hypothesis", "wrong": ["Conclusion", "Experiment", "Theory"]},
@@ -533,6 +926,16 @@ var maze_configs = {
 			{"question": "Words that sound the same are called?", "correct": "Homophones", "wrong": ["Synonyms", "Antonyms", "Metaphors"]},
 			{"question": "The main character in a story is the?", "correct": "Protagonist", "wrong": ["Antagonist", "Narrator", "Author"]},
 			{"question": "A comparison using 'like' or 'as' is a?", "correct": "Simile", "wrong": ["Metaphor", "Hyperbole", "Irony"]}
+		]
+	},
+	# Chapter 3: Art vocabulary - examining Victor's art supplies
+	"art_vocabulary": {
+		"questions": [
+			{"question": "The arrangement of elements in art is called?", "correct": "Composition", "wrong": ["Texture", "Hue", "Medium"]},
+			{"question": "Light and dark contrast in art is called?", "correct": "Value", "wrong": ["Color", "Line", "Shape"]},
+			{"question": "The surface quality of artwork is its?", "correct": "Texture", "wrong": ["Form", "Space", "Balance"]},
+			{"question": "The material used to create art is the?", "correct": "Medium", "wrong": ["Subject", "Style", "Genre"]},
+			{"question": "Visual weight distribution in art is called?", "correct": "Balance", "wrong": ["Rhythm", "Unity", "Contrast"]}
 		]
 	}
 }
@@ -798,6 +1201,100 @@ var pronunciation_configs = {
 	}
 }
 
+# ========================================
+# MATH MINIGAME CONFIGS - Grade 12 General Mathematics (Philippine Curriculum)
+# ========================================
+
+var math_configs = {
+	# Quarter 1: Functions
+	"math_q1_functions": {
+		"questions": [
+			{"question": "Evaluate f(x) = 3x - 5 when x = 4", "correct": "7", "wrong": ["12", "2", "17"]},
+			{"question": "If f(x) = x² + 1, what is f(3)?", "correct": "10", "wrong": ["9", "8", "6"]},
+			{"question": "What is the domain of f(x) = 1/(x-2)?", "correct": "x ≠ 2", "wrong": ["x > 2", "x < 2", "All real numbers"]},
+			{"question": "If f(x) = 2x and g(x) = x + 3, find (f∘g)(2)", "correct": "10", "wrong": ["7", "8", "12"]},
+			{"question": "What is the inverse of f(x) = 2x + 4?", "correct": "(x-4)/2", "wrong": ["2x-4", "x/2+4", "(x+4)/2"]}
+		],
+		"time_per_question": 20.0
+	},
+	"math_q1_inverse": {
+		"questions": [
+			{"question": "If f(x) = 3x - 6, find f⁻¹(x)", "correct": "(x+6)/3", "wrong": ["3x+6", "(x-6)/3", "x/3-6"]},
+			{"question": "Is f(x) = x² one-to-one?", "correct": "No", "wrong": ["Yes", "Only for x>0", "Only for x<0"]},
+			{"question": "The inverse of an exponential function is?", "correct": "Logarithmic", "wrong": ["Polynomial", "Rational", "Linear"]},
+			{"question": "If f(f⁻¹(x)) = x, then the functions are?", "correct": "Inverses", "wrong": ["Equal", "Parallel", "Perpendicular"]},
+			{"question": "Find f⁻¹(x) if f(x) = (x+1)/2", "correct": "2x - 1", "wrong": ["(x-1)/2", "2x + 1", "x/2 + 1"]}
+		],
+		"time_per_question": 25.0
+	},
+
+	# Quarter 2: Exponential and Logarithmic Functions
+	"math_q2_exponential": {
+		"questions": [
+			{"question": "Simplify: 2³ × 2⁴", "correct": "128", "wrong": ["64", "256", "32"]},
+			{"question": "What is log₁₀(1000)?", "correct": "3", "wrong": ["2", "4", "10"]},
+			{"question": "Solve: 2ˣ = 16", "correct": "4", "wrong": ["3", "5", "8"]},
+			{"question": "What is ln(e)?", "correct": "1", "wrong": ["0", "e", "2.718"]},
+			{"question": "Simplify: log₂(8)", "correct": "3", "wrong": ["2", "4", "8"]}
+		],
+		"time_per_question": 20.0
+	},
+	"math_q2_logarithm": {
+		"questions": [
+			{"question": "log(ab) equals?", "correct": "log a + log b", "wrong": ["log a × log b", "log a - log b", "(log a)(log b)"]},
+			{"question": "log(a/b) equals?", "correct": "log a - log b", "wrong": ["log a + log b", "log a / log b", "log(a-b)"]},
+			{"question": "What is log₃(27)?", "correct": "3", "wrong": ["9", "2", "27"]},
+			{"question": "Solve: log x = 2", "correct": "100", "wrong": ["20", "10", "1000"]},
+			{"question": "log(aⁿ) equals?", "correct": "n log a", "wrong": ["log(na)", "a log n", "log a + n"]}
+		],
+		"time_per_question": 20.0
+	},
+
+	# Quarter 3: Trigonometry
+	"math_q3_trigonometry": {
+		"questions": [
+			{"question": "What is sin(30°)?", "correct": "1/2", "wrong": ["√3/2", "√2/2", "1"]},
+			{"question": "What is cos(60°)?", "correct": "1/2", "wrong": ["√3/2", "√2/2", "0"]},
+			{"question": "What is tan(45°)?", "correct": "1", "wrong": ["0", "√2", "√3"]},
+			{"question": "sin²θ + cos²θ equals?", "correct": "1", "wrong": ["0", "2", "sin 2θ"]},
+			{"question": "What is the period of sin(x)?", "correct": "2π", "wrong": ["π", "π/2", "4π"]}
+		],
+		"time_per_question": 20.0
+	},
+	"math_q3_identities": {
+		"questions": [
+			{"question": "What is 1/sin(θ)?", "correct": "csc θ", "wrong": ["sec θ", "cot θ", "cos θ"]},
+			{"question": "What is 1/cos(θ)?", "correct": "sec θ", "wrong": ["csc θ", "tan θ", "sin θ"]},
+			{"question": "tan θ equals?", "correct": "sin θ/cos θ", "wrong": ["cos θ/sin θ", "1/sin θ", "1/cos θ"]},
+			{"question": "cos(90° - θ) equals?", "correct": "sin θ", "wrong": ["cos θ", "tan θ", "-sin θ"]},
+			{"question": "What is sin(0°)?", "correct": "0", "wrong": ["1", "-1", "undefined"]}
+		],
+		"time_per_question": 20.0
+	},
+
+	# Quarter 4: Statistics and Probability
+	"math_q4_statistics": {
+		"questions": [
+			{"question": "The mean of 2, 4, 6, 8 is?", "correct": "5", "wrong": ["4", "6", "20"]},
+			{"question": "The median of 1, 3, 5, 7, 9 is?", "correct": "5", "wrong": ["3", "7", "25"]},
+			{"question": "The mode of 2, 3, 3, 4, 5 is?", "correct": "3", "wrong": ["2", "4", "17"]},
+			{"question": "Range of 5, 10, 15, 20 is?", "correct": "15", "wrong": ["5", "10", "50"]},
+			{"question": "Standard deviation measures?", "correct": "Spread", "wrong": ["Center", "Mode", "Range"]}
+		],
+		"time_per_question": 20.0
+	},
+	"math_q4_probability": {
+		"questions": [
+			{"question": "P(A) + P(not A) equals?", "correct": "1", "wrong": ["0", "2", "P(A)²"]},
+			{"question": "Probability of rolling 6 on a die?", "correct": "1/6", "wrong": ["1/2", "1/3", "6"]},
+			{"question": "If P(A) = 0.3 and P(B) = 0.4 (independent), P(A and B) = ?", "correct": "0.12", "wrong": ["0.7", "0.1", "0.34"]},
+			{"question": "P(A or B) for mutually exclusive events?", "correct": "P(A) + P(B)", "wrong": ["P(A) × P(B)", "P(A) - P(B)", "P(A)/P(B)"]},
+			{"question": "Coin flip: P(heads) = ?", "correct": "1/2", "wrong": ["1/4", "2/3", "1"]}
+		],
+		"time_per_question": 20.0
+	}
+}
+
 func start_minigame(puzzle_id: String) -> void:
 	print("DEBUG: MinigameManager.start_minigame called with: ", puzzle_id)
 	if current_minigame:
@@ -823,6 +1320,8 @@ func start_minigame(puzzle_id: String) -> void:
 		_start_maze(puzzle_id)
 	elif pronunciation_configs.has(puzzle_id):
 		_start_pronunciation(puzzle_id)
+	elif math_configs.has(puzzle_id):
+		_start_math(puzzle_id)
 	# Oral Communication Module configs
 	elif _get_oralcom_config(puzzle_id) != null:
 		_start_oralcom_minigame(puzzle_id)
@@ -924,6 +1423,14 @@ func _start_pronunciation(puzzle_id: String) -> void:
 	current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
 	print("DEBUG: Pronunciation minigame should now be visible")
 
+func _start_math(puzzle_id: String) -> void:
+	print("DEBUG: Starting Math minigame...")
+	current_minigame = math_scene.instantiate()
+	get_tree().root.add_child(current_minigame)
+	current_minigame.configure_puzzle(math_configs[puzzle_id])
+	current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+	print("DEBUG: Math minigame should now be visible")
+
 func _start_curriculum_minigame(minigame_type: String) -> void:
 	var config = CurriculumQuestions.get_config(minigame_type)
 	if config.is_empty():
@@ -957,6 +1464,11 @@ func _start_curriculum_minigame(minigame_type: String) -> void:
 			game_node.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
 		"fillinblank":
 			current_minigame = fillinblank_scene.instantiate()
+			get_tree().root.add_child(current_minigame)
+			current_minigame.configure_puzzle(config)
+			current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
+		"math":
+			current_minigame = math_scene.instantiate()
 			get_tree().root.add_child(current_minigame)
 			current_minigame.configure_puzzle(config)
 			current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))

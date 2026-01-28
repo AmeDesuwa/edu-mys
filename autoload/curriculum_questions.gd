@@ -47,493 +47,276 @@ func get_config(minigame_type: String) -> Dictionary:
 var questions = {
 	# =========================================================================
 	# MATHEMATICS - Philippine SHS General Mathematics Curriculum
+	# Grade 12 - General Mathematics
 	# =========================================================================
 	"math": {
-		# Q1: Functions, Operations, Inverse Functions
+		# Q1: Functions, Operations, Inverse Functions (Chapters 1-2)
 		"Q1": {
 			"pacman": {
 				"questions": [
-					{
-						"question": "What is f(x) = 2x + 3 when x = 4?",
-						"correct": "11",
-						"wrong": ["8", "9", "14"]
-					},
-					{
-						"question": "What type of function passes the vertical line test?",
-						"correct": "Function",
-						"wrong": ["Relation", "Equation", "Variable"]
-					},
-					{
-						"question": "What is the domain of f(x) = 1/x?",
-						"correct": "x not 0",
-						"wrong": ["All reals", "x > 0", "x < 0"]
-					},
-					{
-						"question": "If f(x) = x^2, what is f(3)?",
-						"correct": "9",
-						"wrong": ["6", "3", "12"]
-					}
+					# Function evaluation
+					{"question": "If f(x) = 2x + 3, what is f(4)?", "correct": "11", "wrong": ["8", "9", "14"]},
+					{"question": "If f(x) = x^2, what is f(3)?", "correct": "9", "wrong": ["6", "3", "12"]},
+					{"question": "If f(x) = x - 7, what is f(10)?", "correct": "3", "wrong": ["7", "17", "-3"]},
+					{"question": "If g(x) = 3x, what is g(5)?", "correct": "15", "wrong": ["8", "35", "53"]},
+					# Function concepts
+					{"question": "What test determines if a graph is a function?", "correct": "Vertical line", "wrong": ["Horizontal line", "Diagonal line", "Slope test"]},
+					{"question": "The domain is the set of all?", "correct": "Inputs", "wrong": ["Outputs", "Functions", "Ranges"]},
+					{"question": "The range is the set of all?", "correct": "Outputs", "wrong": ["Inputs", "Domains", "Variables"]},
+					{"question": "f(x) = 1/x is undefined when x = ?", "correct": "0", "wrong": ["1", "-1", "2"]}
 				]
 			},
 			"runner": {
 				"questions": [
-					{
-						"question": "What is the inverse of f(x) = x + 5?",
-						"correct": "x - 5",
-						"wrong": ["x + 5", "x / 5", "5x"]
-					},
-					{
-						"question": "A one-to-one function has what property?",
-						"correct": "Unique output",
-						"wrong": ["No output", "Many outputs", "Zero output"]
-					},
-					{
-						"question": "What is (f + g)(x) if f(x)=2x and g(x)=3x?",
-						"correct": "5x",
-						"wrong": ["6x", "x", "6x^2"]
-					},
-					{
-						"question": "The range of a function is the set of all?",
-						"correct": "Outputs",
-						"wrong": ["Inputs", "Variables", "Constants"]
-					},
-					{
-						"question": "What is f(g(x)) called?",
-						"correct": "Composition",
-						"wrong": ["Addition", "Inverse", "Product"]
-					}
+					# Inverse functions
+					{"question": "What is the inverse of f(x) = x + 5?", "correct": "x - 5", "wrong": ["x + 5", "x / 5", "5x"]},
+					{"question": "What is the inverse of f(x) = 2x?", "correct": "x / 2", "wrong": ["2x", "x - 2", "x + 2"]},
+					{"question": "What is the inverse of f(x) = x - 3?", "correct": "x + 3", "wrong": ["x - 3", "3x", "x / 3"]},
+					# Function operations
+					{"question": "If f(x)=2x and g(x)=3x, what is (f+g)(x)?", "correct": "5x", "wrong": ["6x", "x", "6x^2"]},
+					{"question": "If f(x)=x and g(x)=2, what is (f*g)(x)?", "correct": "2x", "wrong": ["x+2", "x-2", "x/2"]},
+					# One-to-one functions
+					{"question": "A one-to-one function passes which test?", "correct": "Horizontal line", "wrong": ["Vertical line", "Slope test", "Zero test"]},
+					{"question": "The notation for inverse of f is?", "correct": "f^-1", "wrong": ["1/f", "-f", "f*"]},
+					{"question": "f(f^-1(x)) always equals?", "correct": "x", "wrong": ["0", "1", "f(x)"]}
 				],
-				"answers_needed": 4
+				"answers_needed": 5
 			},
 			"maze": {
 				"questions": [
-					{
-						"question": "What is the notation for an inverse function?",
-						"correct": "f^-1(x)",
-						"wrong": ["f(x)^-1", "1/f(x)", "-f(x)"]
-					},
-					{
-						"question": "Piecewise functions are defined by?",
-						"correct": "Multiple rules",
-						"wrong": ["One rule", "No rules", "Equations"]
-					},
-					{
-						"question": "What test checks if an inverse is a function?",
-						"correct": "Horizontal line",
-						"wrong": ["Vertical line", "Diagonal line", "No test"]
-					},
-					{
-						"question": "The domain of f^-1 is the ___ of f?",
-						"correct": "Range",
-						"wrong": ["Domain", "Function", "Inverse"]
-					},
-					{
-						"question": "f(f^-1(x)) equals?",
-						"correct": "x",
-						"wrong": ["0", "1", "f(x)"]
-					}
+					{"question": "What is the notation for an inverse function?", "correct": "f^-1(x)", "wrong": ["f(x)^-1", "1/f(x)", "-f(x)"]},
+					{"question": "Piecewise functions are defined by?", "correct": "Multiple rules", "wrong": ["One rule", "No rules", "Equations"]},
+					{"question": "What test checks if an inverse is a function?", "correct": "Horizontal line", "wrong": ["Vertical line", "Diagonal line", "No test"]},
+					{"question": "The domain of f^-1 is the ___ of f?", "correct": "Range", "wrong": ["Domain", "Function", "Inverse"]},
+					{"question": "A relation where each input has one output is a?", "correct": "Function", "wrong": ["Variable", "Constant", "Set"]}
 				]
 			},
 			"platformer": {
 				"questions": [
-					{
-						"question": "What is (f * g)(x) if f(x)=2 and g(x)=x?",
-						"correct": "2x",
-						"wrong": ["x+2", "x-2", "x/2"]
-					},
-					{
-						"question": "A function maps each input to how many outputs?",
-						"correct": "Exactly one",
-						"wrong": ["Two", "Many", "None"]
-					},
-					{
-						"question": "What is 3! (factorial)?",
-						"correct": "6",
-						"wrong": ["3", "9", "27"]
-					},
-					{
-						"question": "Evaluate: |−7|",
-						"correct": "7",
-						"wrong": ["-7", "0", "1"]
-					}
+					{"question": "What is (f * g)(x) if f(x)=2 and g(x)=x?", "correct": "2x", "wrong": ["x+2", "x-2", "x/2"]},
+					{"question": "A function maps each input to how many outputs?", "correct": "Exactly one", "wrong": ["Two", "Many", "None"]},
+					{"question": "What is 4! (factorial)?", "correct": "24", "wrong": ["4", "16", "8"]},
+					{"question": "Evaluate: |−9|", "correct": "9", "wrong": ["-9", "0", "1"]},
+					{"question": "If f(x) = x + 1, what is f(0)?", "correct": "1", "wrong": ["0", "-1", "2"]}
 				],
 				"answers_needed": 3
 			},
 			"fillinblank": {
-				"sentence_parts": [
-					"A function assigns each ", " to exactly one ", "."
-				],
+				"sentence_parts": ["A function assigns each ", " to exactly one ", "."],
 				"answers": ["input", "output"],
-				"choices": [
-					"input", "output", "domain", "range",
-					"variable", "constant", "equation", "value"
-				]
+				"choices": ["input", "output", "domain", "range", "variable", "constant", "equation", "value"]
+			},
+			"math": {
+				"questions": [
+					{"question": "Evaluate f(x) = 3x - 5 when x = 4", "correct": "7", "wrong": ["12", "2", "17"]},
+					{"question": "If f(x) = x² + 1, what is f(3)?", "correct": "10", "wrong": ["9", "8", "6"]},
+					{"question": "What is the domain of f(x) = 1/(x-2)?", "correct": "x ≠ 2", "wrong": ["x > 2", "x < 2", "All reals"]},
+					{"question": "If f(x) = 2x and g(x) = x+3, find (f∘g)(2)", "correct": "10", "wrong": ["7", "8", "12"]},
+					{"question": "What is the inverse of f(x) = 2x + 4?", "correct": "(x-4)/2", "wrong": ["2x-4", "x/2+4", "(x+4)/2"]}
+				],
+				"time_per_question": 20.0
 			}
 		},
 
-		# Q2: Exponential & Logarithmic Functions, Business Math
+		# Q2: Exponential & Logarithmic Functions (Chapter 3)
 		"Q2": {
 			"pacman": {
 				"questions": [
-					{
-						"question": "What is log base 10 of 100?",
-						"correct": "2",
-						"wrong": ["10", "100", "1"]
-					},
-					{
-						"question": "2^3 equals?",
-						"correct": "8",
-						"wrong": ["6", "9", "5"]
-					},
-					{
-						"question": "What is the base of natural logarithm?",
-						"correct": "e",
-						"wrong": ["10", "2", "1"]
-					},
-					{
-						"question": "Simple interest formula uses I = ?",
-						"correct": "Prt",
-						"wrong": ["P+rt", "P/rt", "Pr+t"]
-					}
+					# Logarithm basics
+					{"question": "What is log base 10 of 100?", "correct": "2", "wrong": ["10", "100", "1"]},
+					{"question": "What is log base 10 of 1000?", "correct": "3", "wrong": ["10", "100", "30"]},
+					{"question": "What is log base 2 of 8?", "correct": "3", "wrong": ["2", "4", "8"]},
+					{"question": "What is log base 2 of 16?", "correct": "4", "wrong": ["2", "8", "16"]},
+					# Exponential basics
+					{"question": "2^4 equals?", "correct": "16", "wrong": ["8", "6", "32"]},
+					{"question": "3^3 equals?", "correct": "27", "wrong": ["9", "6", "81"]},
+					{"question": "5^2 equals?", "correct": "25", "wrong": ["10", "52", "32"]},
+					{"question": "Any number raised to 0 equals?", "correct": "1", "wrong": ["0", "Undefined", "Itself"]}
 				]
 			},
 			"runner": {
 				"questions": [
-					{
-						"question": "log(ab) equals log(a) + ?",
-						"correct": "log(b)",
-						"wrong": ["log(a)", "ab", "a+b"]
-					},
-					{
-						"question": "Compound interest grows how?",
-						"correct": "Exponentially",
-						"wrong": ["Linearly", "Constantly", "Slowly"]
-					},
-					{
-						"question": "What is e approximately equal to?",
-						"correct": "2.718",
-						"wrong": ["3.14", "1.618", "2.5"]
-					},
-					{
-						"question": "log(a^n) equals?",
-						"correct": "n log(a)",
-						"wrong": ["a log(n)", "log(n)", "a^n"]
-					},
-					{
-						"question": "Principal + Interest = ?",
-						"correct": "Amount",
-						"wrong": ["Rate", "Time", "Sum"]
-					}
+					# Log properties
+					{"question": "log(ab) equals log(a) + ?", "correct": "log(b)", "wrong": ["log(a)", "ab", "a+b"]},
+					{"question": "log(a/b) equals log(a) - ?", "correct": "log(b)", "wrong": ["log(a)", "a-b", "b/a"]},
+					{"question": "log(a^n) equals?", "correct": "n log(a)", "wrong": ["a log(n)", "log(n)", "a^n"]},
+					{"question": "log(1) equals?", "correct": "0", "wrong": ["1", "10", "undefined"]},
+					# Exponential properties
+					{"question": "a^m * a^n equals?", "correct": "a^(m+n)", "wrong": ["a^(mn)", "a^(m-n)", "(a*a)^mn"]},
+					{"question": "a^m / a^n equals?", "correct": "a^(m-n)", "wrong": ["a^(m+n)", "a^(mn)", "a^(m/n)"]},
+					# Applications
+					{"question": "Compound interest grows how?", "correct": "Exponentially", "wrong": ["Linearly", "Constantly", "Slowly"]},
+					{"question": "What is e approximately equal to?", "correct": "2.718", "wrong": ["3.14", "1.618", "2.5"]}
 				],
-				"answers_needed": 4
+				"answers_needed": 5
 			},
 			"maze": {
 				"questions": [
-					{
-						"question": "Exponential decay has a base between?",
-						"correct": "0 and 1",
-						"wrong": ["1 and 2", "-1 and 0", "2 and 3"]
-					},
-					{
-						"question": "log(1) equals?",
-						"correct": "0",
-						"wrong": ["1", "10", "e"]
-					},
-					{
-						"question": "Half-life problems use which function?",
-						"correct": "Exponential",
-						"wrong": ["Linear", "Quadratic", "Constant"]
-					},
-					{
-						"question": "What is the inverse of y = 10^x?",
-						"correct": "y = log x",
-						"wrong": ["y = 10x", "y = x^10", "y = x/10"]
-					},
-					{
-						"question": "In A = P(1+r)^t, what is t?",
-						"correct": "Time",
-						"wrong": ["Rate", "Principal", "Amount"]
-					}
+					{"question": "Exponential decay has a base between?", "correct": "0 and 1", "wrong": ["1 and 2", "-1 and 0", "2 and 3"]},
+					{"question": "Half-life problems use which function?", "correct": "Exponential", "wrong": ["Linear", "Quadratic", "Constant"]},
+					{"question": "What is the inverse of y = 10^x?", "correct": "y = log x", "wrong": ["y = 10x", "y = x^10", "y = x/10"]},
+					{"question": "The base of natural logarithm ln is?", "correct": "e", "wrong": ["10", "2", "pi"]},
+					{"question": "Exponential growth has base greater than?", "correct": "1", "wrong": ["0", "-1", "0.5"]}
 				]
 			},
 			"platformer": {
 				"questions": [
-					{
-						"question": "5^0 equals?",
-						"correct": "1",
-						"wrong": ["0", "5", "50"]
-					},
-					{
-						"question": "log base 2 of 8 is?",
-						"correct": "3",
-						"wrong": ["2", "4", "8"]
-					},
-					{
-						"question": "If P = 1000, r = 5%, t = 2, simple I = ?",
-						"correct": "100",
-						"wrong": ["50", "200", "1000"]
-					},
-					{
-						"question": "Exponential growth has base greater than?",
-						"correct": "1",
-						"wrong": ["0", "-1", "2"]
-					}
+					{"question": "5^0 equals?", "correct": "1", "wrong": ["0", "5", "50"]},
+					{"question": "10^1 equals?", "correct": "10", "wrong": ["1", "100", "0"]},
+					{"question": "2^5 equals?", "correct": "32", "wrong": ["10", "25", "64"]},
+					{"question": "4^2 equals?", "correct": "16", "wrong": ["8", "6", "42"]},
+					{"question": "log base 10 of 10 equals?", "correct": "1", "wrong": ["0", "10", "100"]}
 				],
 				"answers_needed": 3
 			},
 			"fillinblank": {
-				"sentence_parts": [
-					"The inverse of an ", " function is a ", " function."
-				],
+				"sentence_parts": ["The inverse of an ", " function is a ", " function."],
 				"answers": ["exponential", "logarithmic"],
-				"choices": [
-					"exponential", "logarithmic", "linear", "quadratic",
-					"polynomial", "rational", "constant", "inverse"
-				]
+				"choices": ["exponential", "logarithmic", "linear", "quadratic", "polynomial", "rational", "constant", "inverse"]
+			},
+			"math": {
+				"questions": [
+					{"question": "Simplify: 2³ × 2⁴", "correct": "128", "wrong": ["64", "256", "32"]},
+					{"question": "What is log₁₀(1000)?", "correct": "3", "wrong": ["2", "4", "10"]},
+					{"question": "Solve: 2ˣ = 16", "correct": "4", "wrong": ["3", "5", "8"]},
+					{"question": "What is ln(e)?", "correct": "1", "wrong": ["0", "e", "2.718"]},
+					{"question": "log(ab) equals?", "correct": "log a + log b", "wrong": ["log a × log b", "log a - log b", "(log a)(log b)"]}
+				],
+				"time_per_question": 20.0
 			}
 		},
 
-		# Q3: Trigonometry
+		# Q3: Trigonometry - Unit Circle, Identities (Chapter 4)
 		"Q3": {
 			"pacman": {
 				"questions": [
-					{
-						"question": "sin(90°) equals?",
-						"correct": "1",
-						"wrong": ["0", "-1", "0.5"]
-					},
-					{
-						"question": "cos(0°) equals?",
-						"correct": "1",
-						"wrong": ["0", "-1", "0.5"]
-					},
-					{
-						"question": "How many degrees in a full circle?",
-						"correct": "360",
-						"wrong": ["180", "90", "270"]
-					},
-					{
-						"question": "tan = sin divided by?",
-						"correct": "cos",
-						"wrong": ["tan", "sin", "sec"]
-					}
+					# Basic trig values
+					{"question": "sin(90°) equals?", "correct": "1", "wrong": ["0", "-1", "0.5"]},
+					{"question": "cos(0°) equals?", "correct": "1", "wrong": ["0", "-1", "0.5"]},
+					{"question": "sin(0°) equals?", "correct": "0", "wrong": ["1", "-1", "0.5"]},
+					{"question": "cos(90°) equals?", "correct": "0", "wrong": ["1", "-1", "0.5"]},
+					{"question": "tan(45°) equals?", "correct": "1", "wrong": ["0", "2", "0.5"]},
+					{"question": "sin(30°) equals?", "correct": "0.5", "wrong": ["1", "0", "0.866"]},
+					{"question": "cos(60°) equals?", "correct": "0.5", "wrong": ["1", "0", "0.866"]},
+					{"question": "sin(180°) equals?", "correct": "0", "wrong": ["1", "-1", "0.5"]}
 				]
 			},
 			"runner": {
 				"questions": [
-					{
-						"question": "Pi radians equals how many degrees?",
-						"correct": "180",
-						"wrong": ["360", "90", "270"]
-					},
-					{
-						"question": "The period of sin(x) is?",
-						"correct": "2 pi",
-						"wrong": ["pi", "pi/2", "4 pi"]
-					},
-					{
-						"question": "sin^2(x) + cos^2(x) = ?",
-						"correct": "1",
-						"wrong": ["0", "2", "sin(2x)"]
-					},
-					{
-						"question": "What is the amplitude of y = 3sin(x)?",
-						"correct": "3",
-						"wrong": ["1", "6", "1/3"]
-					},
-					{
-						"question": "csc is the reciprocal of?",
-						"correct": "sin",
-						"wrong": ["cos", "tan", "sec"]
-					}
+					# Conversions and identities
+					{"question": "Pi radians equals how many degrees?", "correct": "180", "wrong": ["360", "90", "270"]},
+					{"question": "How many radians in 90 degrees?", "correct": "pi/2", "wrong": ["pi", "2pi", "pi/4"]},
+					{"question": "sin^2(x) + cos^2(x) = ?", "correct": "1", "wrong": ["0", "2", "sin(2x)"]},
+					{"question": "The period of sin(x) is?", "correct": "2 pi", "wrong": ["pi", "pi/2", "4 pi"]},
+					{"question": "What is the amplitude of y = 3sin(x)?", "correct": "3", "wrong": ["1", "6", "1/3"]},
+					# Reciprocal functions
+					{"question": "csc is the reciprocal of?", "correct": "sin", "wrong": ["cos", "tan", "sec"]},
+					{"question": "sec is the reciprocal of?", "correct": "cos", "wrong": ["sin", "tan", "cot"]},
+					{"question": "cot is the reciprocal of?", "correct": "tan", "wrong": ["sin", "cos", "sec"]}
 				],
-				"answers_needed": 4
+				"answers_needed": 5
 			},
 			"maze": {
 				"questions": [
-					{
-						"question": "In which quadrant is sin positive, cos negative?",
-						"correct": "II",
-						"wrong": ["I", "III", "IV"]
-					},
-					{
-						"question": "What is sin(30°)?",
-						"correct": "0.5",
-						"wrong": ["1", "0", "0.866"]
-					},
-					{
-						"question": "sec is the reciprocal of?",
-						"correct": "cos",
-						"wrong": ["sin", "tan", "cot"]
-					},
-					{
-						"question": "The unit circle has radius?",
-						"correct": "1",
-						"wrong": ["2", "pi", "0"]
-					},
-					{
-						"question": "cot = cos divided by?",
-						"correct": "sin",
-						"wrong": ["tan", "cos", "sec"]
-					}
+					{"question": "In Quadrant II, sin is positive and cos is?", "correct": "Negative", "wrong": ["Positive", "Zero", "Undefined"]},
+					{"question": "In Quadrant III, both sin and cos are?", "correct": "Negative", "wrong": ["Positive", "Zero", "One positive"]},
+					{"question": "The unit circle has radius?", "correct": "1", "wrong": ["2", "pi", "0"]},
+					{"question": "tan = sin divided by?", "correct": "cos", "wrong": ["tan", "sin", "sec"]},
+					{"question": "cot = cos divided by?", "correct": "sin", "wrong": ["tan", "cos", "sec"]}
 				]
 			},
 			"platformer": {
 				"questions": [
-					{
-						"question": "tan(45°) equals?",
-						"correct": "1",
-						"wrong": ["0", "2", "0.5"]
-					},
-					{
-						"question": "sin(0°) equals?",
-						"correct": "0",
-						"wrong": ["1", "-1", "0.5"]
-					},
-					{
-						"question": "How many radians in a full circle?",
-						"correct": "2 pi",
-						"wrong": ["pi", "4 pi", "pi/2"]
-					},
-					{
-						"question": "cos(180°) equals?",
-						"correct": "-1",
-						"wrong": ["1", "0", "0.5"]
-					}
+					{"question": "How many degrees in a full circle?", "correct": "360", "wrong": ["180", "90", "270"]},
+					{"question": "How many radians in a full circle?", "correct": "2 pi", "wrong": ["pi", "4 pi", "pi/2"]},
+					{"question": "cos(180°) equals?", "correct": "-1", "wrong": ["1", "0", "0.5"]},
+					{"question": "What angle has sin = cos?", "correct": "45 degrees", "wrong": ["30 degrees", "60 degrees", "90 degrees"]},
+					{"question": "sin(270°) equals?", "correct": "-1", "wrong": ["1", "0", "0.5"]}
 				],
 				"answers_needed": 3
 			},
 			"fillinblank": {
-				"sentence_parts": [
-					"The ", " function relates an angle to the ratio of opposite over ", "."
-				],
+				"sentence_parts": ["The ", " function relates an angle to the ratio of opposite over ", "."],
 				"answers": ["sine", "hypotenuse"],
-				"choices": [
-					"sine", "cosine", "tangent", "hypotenuse",
-					"adjacent", "opposite", "angle", "ratio"
-				]
+				"choices": ["sine", "cosine", "tangent", "hypotenuse", "adjacent", "opposite", "angle", "ratio"]
+			},
+			"math": {
+				"questions": [
+					{"question": "What is sin(30°)?", "correct": "1/2", "wrong": ["√3/2", "√2/2", "1"]},
+					{"question": "What is cos(60°)?", "correct": "1/2", "wrong": ["√3/2", "√2/2", "0"]},
+					{"question": "What is tan(45°)?", "correct": "1", "wrong": ["0", "√2", "√3"]},
+					{"question": "sin²θ + cos²θ equals?", "correct": "1", "wrong": ["0", "2", "sin 2θ"]},
+					{"question": "What is the period of sin(x)?", "correct": "2π", "wrong": ["π", "π/2", "4π"]}
+				],
+				"time_per_question": 20.0
 			}
 		},
 
-		# Q4: Statistics and Probability
+		# Q4: Statistics and Probability (Chapter 5)
 		"Q4": {
 			"pacman": {
 				"questions": [
-					{
-						"question": "The mean of 2, 4, 6 is?",
-						"correct": "4",
-						"wrong": ["2", "6", "12"]
-					},
-					{
-						"question": "Probability ranges from?",
-						"correct": "0 to 1",
-						"wrong": ["0 to 100", "-1 to 1", "1 to 10"]
-					},
-					{
-						"question": "The median is the ___ value?",
-						"correct": "Middle",
-						"wrong": ["First", "Last", "Largest"]
-					},
-					{
-						"question": "Mode is the most ___ value?",
-						"correct": "Frequent",
-						"wrong": ["Average", "Middle", "Large"]
-					}
+					# Central tendency
+					{"question": "The mean of 2, 4, 6 is?", "correct": "4", "wrong": ["2", "6", "12"]},
+					{"question": "The mean of 10, 20, 30 is?", "correct": "20", "wrong": ["10", "30", "60"]},
+					{"question": "The median of 1, 3, 5 is?", "correct": "3", "wrong": ["1", "5", "9"]},
+					{"question": "The mode of 2, 2, 3, 4 is?", "correct": "2", "wrong": ["3", "4", "2.75"]},
+					# Probability basics
+					{"question": "Probability ranges from?", "correct": "0 to 1", "wrong": ["0 to 100", "-1 to 1", "1 to 10"]},
+					{"question": "P(heads) for fair coin is?", "correct": "0.5", "wrong": ["0.25", "1", "0"]},
+					{"question": "Probability of impossible event?", "correct": "0", "wrong": ["1", "0.5", "-1"]},
+					{"question": "Probability of certain event?", "correct": "1", "wrong": ["0", "0.5", "100"]}
 				]
 			},
 			"runner": {
 				"questions": [
-					{
-						"question": "Standard deviation measures?",
-						"correct": "Spread",
-						"wrong": ["Center", "Mode", "Median"]
-					},
-					{
-						"question": "P(A and B) for independent events = ?",
-						"correct": "P(A) x P(B)",
-						"wrong": ["P(A) + P(B)", "P(A) - P(B)", "P(A)/P(B)"]
-					},
-					{
-						"question": "The normal curve is shaped like?",
-						"correct": "Bell",
-						"wrong": ["Square", "Triangle", "Line"]
-					},
-					{
-						"question": "Variance is standard deviation?",
-						"correct": "Squared",
-						"wrong": ["Halved", "Doubled", "Cubed"]
-					},
-					{
-						"question": "P(not A) = 1 minus?",
-						"correct": "P(A)",
-						"wrong": ["P(B)", "0", "1"]
-					}
+					# Variability measures
+					{"question": "Standard deviation measures?", "correct": "Spread", "wrong": ["Center", "Mode", "Median"]},
+					{"question": "Variance is standard deviation?", "correct": "Squared", "wrong": ["Halved", "Doubled", "Cubed"]},
+					{"question": "Range = Maximum minus?", "correct": "Minimum", "wrong": ["Mean", "Mode", "Median"]},
+					# Probability rules
+					{"question": "P(A and B) for independent events = ?", "correct": "P(A) x P(B)", "wrong": ["P(A) + P(B)", "P(A) - P(B)", "P(A)/P(B)"]},
+					{"question": "P(A or B) for mutually exclusive = ?", "correct": "P(A) + P(B)", "wrong": ["P(A) x P(B)", "P(A) - P(B)", "P(A)/P(B)"]},
+					{"question": "P(not A) = 1 minus?", "correct": "P(A)", "wrong": ["P(B)", "0", "1"]},
+					{"question": "The sum of all probabilities equals?", "correct": "1", "wrong": ["0", "100", "0.5"]},
+					# Distribution
+					{"question": "The normal curve is shaped like?", "correct": "Bell", "wrong": ["Square", "Triangle", "Line"]}
 				],
-				"answers_needed": 4
+				"answers_needed": 5
 			},
 			"maze": {
 				"questions": [
-					{
-						"question": "A fair coin flip has P(heads) = ?",
-						"correct": "0.5",
-						"wrong": ["0.25", "1", "0"]
-					},
-					{
-						"question": "The sum of all probabilities equals?",
-						"correct": "1",
-						"wrong": ["0", "100", "0.5"]
-					},
-					{
-						"question": "In a normal distribution, mean = ?",
-						"correct": "Median",
-						"wrong": ["Mode only", "0", "1"]
-					},
-					{
-						"question": "nCr is used for?",
-						"correct": "Combinations",
-						"wrong": ["Permutations", "Probability", "Mean"]
-					},
-					{
-						"question": "nPr is used for?",
-						"correct": "Permutations",
-						"wrong": ["Combinations", "Variance", "Mode"]
-					}
+					{"question": "In a normal distribution, mean = median = ?", "correct": "Mode", "wrong": ["Range", "Variance", "Sum"]},
+					{"question": "nCr is used for?", "correct": "Combinations", "wrong": ["Permutations", "Probability", "Mean"]},
+					{"question": "nPr is used for?", "correct": "Permutations", "wrong": ["Combinations", "Variance", "Mode"]},
+					{"question": "5! (factorial) equals?", "correct": "120", "wrong": ["25", "20", "60"]},
+					{"question": "4! (factorial) equals?", "correct": "24", "wrong": ["4", "16", "8"]}
 				]
 			},
 			"platformer": {
 				"questions": [
-					{
-						"question": "Range = Maximum minus?",
-						"correct": "Minimum",
-						"wrong": ["Mean", "Mode", "Median"]
-					},
-					{
-						"question": "5! equals?",
-						"correct": "120",
-						"wrong": ["25", "20", "60"]
-					},
-					{
-						"question": "Probability of impossible event?",
-						"correct": "0",
-						"wrong": ["1", "0.5", "-1"]
-					},
-					{
-						"question": "Probability of certain event?",
-						"correct": "1",
-						"wrong": ["0", "0.5", "100"]
-					}
+					{"question": "Mean is also called?", "correct": "Average", "wrong": ["Middle", "Most common", "Range"]},
+					{"question": "Median is the ___ value?", "correct": "Middle", "wrong": ["First", "Last", "Largest"]},
+					{"question": "Mode is the most ___ value?", "correct": "Frequent", "wrong": ["Average", "Middle", "Large"]},
+					{"question": "3! equals?", "correct": "6", "wrong": ["3", "9", "27"]},
+					{"question": "Rolling a 6 on fair die: P = ?", "correct": "1/6", "wrong": ["1/2", "1/3", "6"]}
 				],
 				"answers_needed": 3
 			},
 			"fillinblank": {
-				"sentence_parts": [
-					"The ", " is the sum of values divided by the ", " of values."
-				],
+				"sentence_parts": ["The ", " is the sum of values divided by the ", " of values."],
 				"answers": ["mean", "count"],
-				"choices": [
-					"mean", "median", "mode", "count",
-					"range", "sum", "total", "number"
-				]
+				"choices": ["mean", "median", "mode", "count", "range", "sum", "total", "number"]
+			},
+			"math": {
+				"questions": [
+					{"question": "The mean of 2, 4, 6, 8 is?", "correct": "5", "wrong": ["4", "6", "20"]},
+					{"question": "The median of 1, 3, 5, 7, 9 is?", "correct": "5", "wrong": ["3", "7", "25"]},
+					{"question": "P(A) + P(not A) equals?", "correct": "1", "wrong": ["0", "2", "P(A)²"]},
+					{"question": "Probability of rolling 6 on a die?", "correct": "1/6", "wrong": ["1/2", "1/3", "6"]},
+					{"question": "Standard deviation measures?", "correct": "Spread", "wrong": ["Center", "Mode", "Range"]}
+				],
+				"time_per_question": 20.0
 			}
 		}
 	},

@@ -30,7 +30,7 @@ Conrad: Hmmmm. Who among the school employees would be most likely to have usefu
 	leave Conrad
 	leave Mark
 	jump c1s2/
-- Principal [if {c1s1_principal_tried} == false]
+- Principal | [if {c1s1_principal_tried} == false]
 	set {c1s1_principal_tried} = true
 	[signal arg="wrong_choice"]
 	Conrad: Maybe we ask the Principal?

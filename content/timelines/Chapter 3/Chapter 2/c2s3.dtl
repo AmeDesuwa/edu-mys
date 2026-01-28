@@ -57,9 +57,6 @@ Conrad passes the note to the diwata.
 "Diwata Laya" opens her eyes.
 "Diwata Laya": This threat was the first step in a larger plan.
 "Diwata Laya": Someone set Ria up to take the blame.
-"Diwata Laya": Before we proceed, sharpen your analytical mind. Numbers reveal patterns.
-[signal arg="start_minigame math_q1_functions"]
-"Diwata Laya": Good. Your mind sees clearly now.
 [signal arg="laya_end"]
 leave "Diwata Laya"
 update Ria (half) center

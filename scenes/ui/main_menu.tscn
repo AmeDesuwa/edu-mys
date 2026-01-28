@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://1iibj03nb2fm"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
-[ext_resource type="Theme" path="res://resources/ui/game_theme.tres" id="2_theme"]
+[ext_resource type="Script" uid="uid://8q2rvtkyyes0" path="res://scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Theme" uid="uid://lbkbgl5rfv1g" path="res://resources/ui/game_theme.tres" id="2_theme"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_title_panel"]
 bg_color = Color(0.08, 0.06, 0.12, 0.85)
@@ -18,9 +18,9 @@ shadow_color = Color(0.55, 0.4, 0.8, 0.15)
 shadow_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_accent_line"]
-bg_color = Color(0.55, 0.45, 0.75, 0.8)
 content_margin_top = 2.0
 content_margin_bottom = 2.0
+bg_color = Color(0.55, 0.45, 0.75, 0.8)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

@@ -2,10 +2,10 @@ extends Node2D
 
 signal game_finished(success: bool, score: int)
 
-# Maze configuration - using odd dimensions for proper maze structure
-const CELL_SIZE = 26
-const MAZE_WIDTH = 45  # Must be odd
-const MAZE_HEIGHT = 35  # Must be odd
+# Maze configuration - using preset map dimensions
+const CELL_SIZE = 32  # Larger cells for better visibility
+var maze_width: int = 31
+var maze_height: int = 23
 
 # Cell types
 enum Cell { WALL, FLOOR }
@@ -18,11 +18,11 @@ var score: int = 0
 var health: int = 3
 var game_active: bool = false
 var answers_collected: int = 0
-var regeneration_attempts: int = 0
-const MAX_REGENERATION_ATTEMPTS = 10
+var current_map_index: int = -1  # -1 = random, 0-2 = specific map
 
-# For pathfinding and answer placement
-var solution_path: Array = []  # The golden path through correct answers
+# Preset map data
+var start_pos: Vector2i = Vector2i(1, 1)
+var answer_spots: Array = []  # Dedicated spots for correct answers
 
 # Scenes
 var collectible_scene = preload("res://minigames/Maze/scenes/Collectible.tscn")
@@ -59,6 +59,8 @@ func _ready():
 func configure_puzzle(config: Dictionary):
 	if config.has("questions"):
 		questions = config.questions
+	if config.has("map_index"):
+		current_map_index = config.map_index
 
 func _start_game():
 	game_active = true
@@ -66,92 +68,37 @@ func _start_game():
 	health = 3
 	current_question_index = 0
 	answers_collected = 0
-	regeneration_attempts = 0
 
-	_generate_maze()
+	_load_preset_map()
 	_draw_maze()
 	_place_answers()
 	_setup_player()
 	_update_ui()
 
-# ============ MAZE GENERATION (Proper Recursive Backtracking) ============
+func _load_preset_map():
+	# Select map based on index or random if -1
+	var map_data: Array
+	if current_map_index >= 0:
+		map_data = PresetMaps.get_map(current_map_index)
+	else:
+		map_data = PresetMaps.get_random_map()
 
-func _generate_maze():
-	# Initialize maze with all walls
-	maze = []
-	for y in range(MAZE_HEIGHT):
-		var row = []
-		for x in range(MAZE_WIDTH):
-			row.append(Cell.WALL)
-		maze.append(row)
+	var parsed = PresetMaps.parse_map(map_data)
 
-	# Use iterative approach with stack to avoid recursion limit
-	var stack: Array = []
-	var start_x = 1
-	var start_y = 1
+	maze = parsed.maze
+	start_pos = parsed.start
+	answer_spots = parsed.answer_spots
+	maze_width = parsed.width
+	maze_height = parsed.height
 
-	maze[start_y][start_x] = Cell.FLOOR
-	stack.append(Vector2i(start_x, start_y))
+	# Debug output
+	print("Loaded preset map ", current_map_index, ": ", maze_width, "x", maze_height)
+	print("Start position: ", start_pos)
+	print("Answer spots: ", answer_spots)
 
-	while stack.size() > 0:
-		var current = stack[-1]
-		var x = current.x
-		var y = current.y
-
-		# Get unvisited neighbors (2 cells away)
-		var neighbors: Array = []
-
-		# Check all 4 directions
-		if x >= 3 and maze[y][x - 2] == Cell.WALL:
-			neighbors.append(Vector2i(x - 2, y))
-		if x <= MAZE_WIDTH - 4 and maze[y][x + 2] == Cell.WALL:
-			neighbors.append(Vector2i(x + 2, y))
-		if y >= 3 and maze[y - 2][x] == Cell.WALL:
-			neighbors.append(Vector2i(x, y - 2))
-		if y <= MAZE_HEIGHT - 4 and maze[y + 2][x] == Cell.WALL:
-			neighbors.append(Vector2i(x, y + 2))
-
-		if neighbors.size() > 0:
-			# Choose random neighbor
-			var next = neighbors[randi() % neighbors.size()]
-
-			# Carve passage (remove wall between current and next)
-			var wall_x = int((x + next.x) / 2)
-			var wall_y = int((y + next.y) / 2)
-			maze[wall_y][wall_x] = Cell.FLOOR
-			maze[next.y][next.x] = Cell.FLOOR
-
-			stack.append(next)
-		else:
-			# Backtrack
-			stack.pop_back()
-
-	# Add a few extra connections to create some loops (makes it less linear)
-	_add_sparse_connections()
-
-func _add_sparse_connections():
-	# Add a small number of extra passages to create alternate routes
-	# This prevents the maze from being completely linear
-	var connections_to_add = int((MAZE_WIDTH + MAZE_HEIGHT) / 6)
-
-	for i in range(connections_to_add):
-		# Try to find a wall that can become a passage
-		for attempt in range(50):
-			# Pick a random wall position (must be on odd coordinates for proper structure)
-			var x = randi_range(2, MAZE_WIDTH - 3)
-			var y = randi_range(2, MAZE_HEIGHT - 3)
-
-			if maze[y][x] == Cell.WALL:
-				# Check if this wall separates two floor cells horizontally
-				if x > 0 and x < MAZE_WIDTH - 1:
-					if maze[y][x - 1] == Cell.FLOOR and maze[y][x + 1] == Cell.FLOOR:
-						maze[y][x] = Cell.FLOOR
-						break
-				# Or vertically
-				if y > 0 and y < MAZE_HEIGHT - 1:
-					if maze[y - 1][x] == Cell.FLOOR and maze[y + 1][x] == Cell.FLOOR:
-						maze[y][x] = Cell.FLOOR
-						break
+# ============ MAZE LOADING (Preset Maps) ============
+# Maze generation is now handled by PresetMaps class
+# See _load_preset_map() for map loading logic
 
 # ============ DRAWING ============
 
@@ -161,8 +108,8 @@ func _draw_maze():
 		if child.name != "Player":
 			child.queue_free()
 
-	for y in range(MAZE_HEIGHT):
-		for x in range(MAZE_WIDTH):
+	for y in range(maze_height):
+		for x in range(maze_width):
 			var cell_rect = ColorRect.new()
 			cell_rect.size = Vector2(CELL_SIZE, CELL_SIZE)
 			cell_rect.position = Vector2(x * CELL_SIZE, y * CELL_SIZE)
@@ -174,10 +121,10 @@ func _draw_maze():
 
 			$MazeLayer.add_child(cell_rect)
 
-	# Highlight player start
+	# Highlight player start position from map data
 	var start_highlight = ColorRect.new()
 	start_highlight.size = Vector2(CELL_SIZE, CELL_SIZE)
-	start_highlight.position = Vector2(1 * CELL_SIZE, 1 * CELL_SIZE)
+	start_highlight.position = Vector2(start_pos.x * CELL_SIZE, start_pos.y * CELL_SIZE)
 	start_highlight.color = PLAYER_START_COLOR
 	$MazeLayer.add_child(start_highlight)
 
@@ -201,7 +148,7 @@ func _find_path(from_pos: Vector2i, to_pos: Vector2i) -> Array:
 
 		for dir in directions:
 			var next = current + dir
-			if next.x >= 0 and next.x < MAZE_WIDTH and next.y >= 0 and next.y < MAZE_HEIGHT:
+			if next.x >= 0 and next.x < maze_width and next.y >= 0 and next.y < maze_height:
 				if maze[next.y][next.x] == Cell.FLOOR and not visited.has(next):
 					visited[next] = true
 					var new_path = path.duplicate()
@@ -228,7 +175,7 @@ func _get_reachable_positions(from_pos: Vector2i, exclude: Array = []) -> Array:
 
 		for dir in directions:
 			var next = current + dir
-			if next.x >= 0 and next.x < MAZE_WIDTH and next.y >= 0 and next.y < MAZE_HEIGHT:
+			if next.x >= 0 and next.x < maze_width and next.y >= 0 and next.y < maze_height:
 				if maze[next.y][next.x] == Cell.FLOOR and not visited.has(next):
 					visited[next] = true
 					queue.append(next)
@@ -242,132 +189,58 @@ func _place_answers():
 	for child in $CollectibleLayer.get_children():
 		child.queue_free()
 
-	var correct_positions: Array = []
 	var used_positions: Array = []
-	var start_pos = Vector2i(1, 1)
 
-	# Step 1: Place correct answers ensuring a valid path exists
-	# We need to find positions such that: start -> correct1 -> correct2 -> ... -> correctN
-	var current_pos = start_pos
-
-	for q_index in range(questions.size()):
-		# Get all reachable positions from current location
-		var reachable = _get_reachable_positions(current_pos, used_positions)
-
-		# Filter positions and score them for minimal backtracking
-		var valid_positions: Array = []
-		for pos in reachable:
-			if not (pos.x <= 3 and pos.y <= 3):  # Not in start area
-				# Check that we can actually reach this position
-				var path = _find_path(current_pos, pos)
-				if path.size() > 0:
-					# Score based on distance from START (not current position)
-					# This encourages forward progression through the maze
-					var dist_from_start = abs(pos.x - start_pos.x) + abs(pos.y - start_pos.y)
-					valid_positions.append({"pos": pos, "score": dist_from_start})
-
-		if valid_positions.size() == 0:
-			push_error("Cannot find valid position for correct answer " + str(q_index))
-			continue
-
-		# Sort by distance from start (prefer positions farther from start)
-		# This reduces backtracking by creating a progressive path through the maze
-		valid_positions.sort_custom(func(a, b):
-			return a.score > b.score  # Higher score (farther from start) first
-		)
-
-		# Pick from the top 30% (farthest from start) with some randomness
-		var pick_range = max(1, int(valid_positions.size() * 0.3))
-		var chosen_data = valid_positions[randi_range(0, pick_range - 1)]
-		var chosen_pos = chosen_data.pos
-
-		correct_positions.append(chosen_pos)
-		used_positions.append(chosen_pos)
-		current_pos = chosen_pos
-
-	# Step 2: Build the complete solution path (protected path through all correct answers)
-	solution_path = []
-	var path_cells: Dictionary = {}  # For fast lookup
-
-	var from = start_pos
-	for correct_pos in correct_positions:
-		var path = _find_path(from, correct_pos)
-		if path.size() == 0:
-			push_error("Path verification failed")
-			_regenerate_and_retry()
-			return
-
-		# Add all cells in this path segment to solution path
-		for cell in path:
-			if not path_cells.has(cell):
-				solution_path.append(cell)
-				path_cells[cell] = true
-
-		from = correct_pos
-
-	# Step 3: Place correct answer collectibles
-	for q_index in range(questions.size()):
+	# Place correct answers at dedicated spots from preset map
+	var num_questions = min(questions.size(), answer_spots.size())
+	for q_index in range(num_questions):
 		var q = questions[q_index]
-		_spawn_collectible(correct_positions[q_index], q.correct, q_index, true)
+		var spot = answer_spots[q_index]
 
-	# Step 4: Place wrong answers ONLY in positions that are:
-	# - Not on the solution path
-	# - Not adjacent to the solution path (to avoid accidental collection)
-	var safe_positions: Array = []
-	for y in range(MAZE_HEIGHT):
-		for x in range(MAZE_WIDTH):
+		if spot.x >= 0 and spot.y >= 0:
+			_spawn_collectible(spot, q.correct, q_index, true)
+			used_positions.append(spot)
+		else:
+			push_error("Invalid answer spot for question " + str(q_index))
+
+	# Collect all floor positions for wrong answer placement
+	var floor_positions: Array = []
+	for y in range(maze_height):
+		for x in range(maze_width):
 			if maze[y][x] == Cell.FLOOR:
 				var pos = Vector2i(x, y)
 
-				# Skip if already used or in start area
-				if used_positions.has(pos) or (x <= 3 and y <= 3):
+				# Skip if already used (answer spot)
+				if used_positions.has(pos):
 					continue
 
-				# Skip if on solution path
-				if path_cells.has(pos):
+				# Skip start area
+				if pos.x <= 2 and pos.y <= 2:
 					continue
 
-				# Skip if adjacent to solution path (prevents accidental collection)
-				var adjacent_to_path = false
-				for dx in [-1, 0, 1]:
-					for dy in [-1, 0, 1]:
-						if dx == 0 and dy == 0:
-							continue
-						var check_pos = Vector2i(x + dx, y + dy)
-						if path_cells.has(check_pos):
-							adjacent_to_path = true
-							break
-					if adjacent_to_path:
+				# Skip positions adjacent to answer spots (avoid confusion)
+				var adjacent_to_answer = false
+				for spot in answer_spots:
+					if abs(pos.x - spot.x) <= 1 and abs(pos.y - spot.y) <= 1:
+						adjacent_to_answer = true
 						break
 
-				if not adjacent_to_path:
-					safe_positions.append(pos)
+				if not adjacent_to_answer:
+					floor_positions.append(pos)
 
-	safe_positions.shuffle()
-	var safe_index = 0
+	# Shuffle and place wrong answers
+	floor_positions.shuffle()
+	var floor_index = 0
 
-	# Place wrong answers in safe positions
-	for q_index in range(questions.size()):
+	for q_index in range(num_questions):
 		var q = questions[q_index]
 		# Place 2 wrong answers per question
 		for i in range(min(2, q.wrong.size())):
-			if safe_index < safe_positions.size():
-				var pos = safe_positions[safe_index]
+			if floor_index < floor_positions.size():
+				var pos = floor_positions[floor_index]
 				_spawn_collectible(pos, q.wrong[i], q_index, false)
 				used_positions.append(pos)
-				safe_index += 1
-
-func _regenerate_and_retry():
-	# If placement fails, regenerate the maze and try again
-	regeneration_attempts += 1
-	if regeneration_attempts > MAX_REGENERATION_ATTEMPTS:
-		push_error("Failed to generate solvable maze after max attempts")
-		return
-
-	print("Regenerating maze for valid path (attempt ", regeneration_attempts, ")...")
-	_generate_maze()
-	_draw_maze()
-	_place_answers()
+				floor_index += 1
 
 func _spawn_collectible(
 		grid_pos: Vector2i, answer_text: String, q_index: int, is_correct: bool
@@ -385,10 +258,14 @@ func _spawn_collectible(
 
 func _setup_player():
 	var player = $MazeLayer/Player
-	player.position = Vector2(1 * CELL_SIZE + CELL_SIZE / 2, 1 * CELL_SIZE + CELL_SIZE / 2)
+	# Use start position from preset map
+	player.position = Vector2(
+		start_pos.x * CELL_SIZE + CELL_SIZE / 2,
+		start_pos.y * CELL_SIZE + CELL_SIZE / 2
+	)
 	player.cell_size = CELL_SIZE
-	player.maze_width = MAZE_WIDTH
-	player.maze_height = MAZE_HEIGHT
+	player.maze_width = maze_width
+	player.maze_height = maze_height
 	player.z_index = 10  # Render on top of maze tiles
 	player.set_maze(maze)
 	var cols = maze[0].size() if maze.size() > 0 else 0

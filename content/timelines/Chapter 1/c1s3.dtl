@@ -18,13 +18,13 @@ leave --All--
 [background arg="res://Pics/Ac_leak.png" fade="0.3"]
 label Deduction
 What's wrong with this picture?
-- The airconditioning unit looks old so it was only natural that it leaked [if {c1s3_old_ac_tried} == false]
+- The airconditioning unit looks old so it was only natural that it leaked | [if {c1s3_old_ac_tried} == false]
 	set {c1s3_old_ac_tried} = true
 	[signal arg="wrong_choice"]
 	jump Deduction
 - The tube is cut, but the door was locked. How did they get in?
 	jump After
-- The tube where the leak is looks like it was bitten by an animal. [if {c1s3_animal_tried} == false]
+- The tube where the leak is looks like it was bitten by an animal. | [if {c1s3_animal_tried} == false]
 	set {c1s3_animal_tried} = true
 	[signal arg="wrong_choice"]
 	jump Deduction
@@ -73,8 +73,8 @@ Conrad: I need to confirm who owns these.
 join Principal right
 join Conrad left
 Conrad: (Texts Mark) "Hey, do you know anyone in 12-A who uses a Galaxy A52 or a Redmi Note 10?"
-Mark replies: "I'm not sure about the specific models. But Alice, the class monitor, collects our phones during exams. She would know."
-Mark replies: "She's usually at the lockers this time."
+Mark replies\: "I'm not sure about the specific models. But Alice, the class monitor, collects our phones during exams. She would know."
+Mark replies\: "She's usually at the lockers this time."
 Conrad: Thanks, Sir. I have a lead to follow up on.
 leave Principal
 leave Conrad [animation="Instant Out"]

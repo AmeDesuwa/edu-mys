@@ -37,9 +37,9 @@ edu-mys/
 │   └── dialogic_signal_handler.gd
 │
 └── src/                # Core game code
-    ├── core/          # Core systems (PlayerStats)
-    ├── vosk/          # Vosk integration (VoskPronunciationGame, VoskAudioFileTester)
-    └── ui/            # UI components (future)
+	├── core/          # Core systems (PlayerStats)
+	├── vosk/          # Vosk integration (VoskPronunciationGame, VoskAudioFileTester)
+	└── ui/            # UI components (future)
 ```
 
 ## Key Systems

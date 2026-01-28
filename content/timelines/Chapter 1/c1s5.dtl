@@ -60,7 +60,7 @@ join "Diwata Laya" (Half_mirror) rightmost
 [signal arg="laya_start"]
 "Diwata Laya": [i][color=#9999ff](Whispering) Deceit clouds his words. He is lying.[/color][/i]
 [signal arg="laya_end"]
-join Mark (Mark_half) leftmost
+join Mark (Mark_half_mirror) leftmost
 Conrad: Greg, your phone connected to the Faculty WiFi at exactly 9\:00 PM last night. The faculty room was supposed to be empty by then.
 Greg: That doesn't mean anything! Maybe my phone just auto-connected while I was passing by!
 Mark: The Faculty WiFi signal doesn't reach the hallway. Your phone would only connect if you were right outside the door... or inside.
@@ -117,7 +117,7 @@ Conrad examines the envelope. There is no name, but a small symbol is stamped on
 join Principal (Principa_half_mirror) leftmost
 Principal: I believe I've heard enough.
 Greg: Principal Alan! I'm so sorry, I—
-"Principal Alan": I am deeply disappointed, Greg. But we need to discuss this "mysterious person" who gave you the key. This is clearly more complex than simple academic pressure.
+Principal: I am deeply disappointed, Greg. But we need to discuss this "mysterious person" who gave you the key. This is clearly more complex than simple academic pressure.
 "Principal Alan": Come to my office. We'll need to contact your parents and discuss consequences.
 Greg pleads to Conrad
 Greg: My bracelet... please...
@@ -125,7 +125,7 @@ Conrad hands the bracelet back to Greg gently.
 Conrad: Here. I understand what it means to you.
 Greg clutches the bracelet tightly
 Greg: Thank you... I'm sorry for everything.
-"Principal Alan": Conrad, Mark. You have shown great responsibility and intellect. The school thanks you both.
+Principal: Conrad, Mark. You have shown great responsibility and intellect. The school thanks you both.
 leave Principal
 leave Greg
 Conrad Sighs...
