@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dplatformer_enemy"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://minigames/Platformer/scripts/Enemy.gd" id="1_enemy"]
+[ext_resource type="Script" uid="uid://tavclkxj6b2k" path="res://minigames/Platformer/scripts/Enemy.gd" id="1_enemy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy"]
 size = Vector2(28, 24)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dplatformer_main"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://minigames/Platformer/scripts/Main.gd" id="1_main"]
-[ext_resource type="PackedScene" uid="uid://dplatformer_player" path="res://minigames/Platformer/scenes/Player.tscn" id="2_player"]
+[ext_resource type="Script" uid="uid://i3w7r15dlm0x" path="res://minigames/Platformer/scripts/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://minigames/Platformer/scenes/Player.tscn" id="2_player"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_question"]
 font_size = 20

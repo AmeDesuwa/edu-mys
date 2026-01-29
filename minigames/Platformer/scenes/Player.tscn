@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dplatformer_player"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://minigames/Platformer/scripts/Player.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://dilthw51nq801" path="res://minigames/Platformer/scripts/Player.gd" id="1_player"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(24, 40)

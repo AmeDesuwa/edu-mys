@@ -196,7 +196,7 @@ func _flash_screen(color: Color):
 	tween.tween_callback($UILayer/FlashRect.hide)
 
 func _shake_screen():
-	# CanvasLayer uses 'offset' instead of 'position'
+	#awwas CanvasLayer uses 'offset' instead of 'position'
 	var original_offset = $GameLayer.offset
 	var tween = create_tween()
 

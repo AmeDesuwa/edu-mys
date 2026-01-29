@@ -190,26 +190,42 @@ func _place_answers():
 		child.queue_free()
 
 	var used_positions: Array = []
-
-	# Get all floor positions with their distance from start using BFS
+	var correct_positions: Array = []  # Track correct answer positions for path validation
+	var num_questions = min(questions.size(), 5)
 	var positions_with_distance = _get_positions_by_distance_from_start()
 
-	# Place correct answers at increasing distances (ensures they're reachable in order)
-	var num_questions = min(questions.size(), 5)
-	var positions_per_question = max(1, positions_with_distance.size() / (num_questions + 2))  # +2 for spacing
-
+	# Use the preset answer spots from the map (1-5 markers)
+	# These are hand-designed to be reachable in order
 	for q_index in range(num_questions):
 		var q = questions[q_index]
-		# Pick position at progressive distance intervals
-		var position_index = min((q_index + 1) * positions_per_question, positions_with_distance.size() - 1)
-		var pos = positions_with_distance[position_index]["pos"]
+		var pos = answer_spots[q_index]
+
+		# Validate the answer spot exists
+		if pos.x < 0 or pos.y < 0:
+			# Fallback: use distance-based placement if spot not defined
+			push_warning("Answer spot ", q_index + 1, " not defined in map, using fallback")
+			var positions_per_question = max(1, positions_with_distance.size() / (num_questions + 2))
+			var position_index = min((q_index + 1) * positions_per_question, positions_with_distance.size() - 1)
+			pos = positions_with_distance[position_index]["pos"]
 
 		_spawn_collectible(pos, q.correct, q_index, true)
 		used_positions.append(pos)
-		print("DEBUG: Placed Q", q_index + 1, " correct answer at ", pos, " (distance ", positions_with_distance[position_index]["distance"], ")")
+		correct_positions.append(pos)
+		print("DEBUG: Placed Q", q_index + 1, " correct answer at preset spot ", pos)
 
-	# Collect remaining floor positions for wrong answer placement
+	# Calculate paths between consecutive correct answers (start -> Q1 -> Q2 -> etc.)
+	var path_positions: Array = []  # All positions on the required path
+	var prev_pos = start_pos
+	for correct_pos in correct_positions:
+		var path = _find_path(prev_pos, correct_pos)
+		for p in path:
+			if not path_positions.has(p):
+				path_positions.append(p)
+		prev_pos = correct_pos
+
+	# Collect floor positions for wrong answers, avoiding the critical path
 	var floor_positions: Array = []
+
 	for entry in positions_with_distance:
 		var pos = entry["pos"]
 
@@ -221,10 +237,14 @@ func _place_answers():
 		if pos.x <= 2 and pos.y <= 2:
 			continue
 
+		# Skip positions ON the required path between correct answers
+		if path_positions.has(pos):
+			continue
+
 		# Skip positions too close to correct answers (avoid confusion)
 		var too_close = false
 		for used_pos in used_positions:
-			if abs(pos.x - used_pos.x) <= 2 and abs(pos.y - used_pos.y) <= 2:
+			if abs(pos.x - used_pos.x) <= 1 and abs(pos.y - used_pos.y) <= 1:
 				too_close = true
 				break
 
@@ -244,6 +264,7 @@ func _place_answers():
 				_spawn_collectible(pos, q.wrong[i], q_index, false)
 				used_positions.append(pos)
 				floor_index += 1
+				print("DEBUG: Placed Q", q_index + 1, " wrong answer at ", pos)
 
 # Get all floor positions sorted by distance from start (BFS)
 func _get_positions_by_distance_from_start() -> Array:

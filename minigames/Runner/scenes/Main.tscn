@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://drunner_main"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://minigames/Runner/scripts/Main.gd" id="1_main"]
-[ext_resource type="PackedScene" uid="uid://drunner_player" path="res://minigames/Runner/scenes/Player.tscn" id="2_player"]
+[ext_resource type="Script" uid="uid://c1frpo6irqe8k" path="res://minigames/Runner/scripts/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://minigames/Runner/scenes/Player.tscn" id="2_player"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_question"]
 font_size = 22

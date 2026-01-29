@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmaze_collectible"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://minigames/Maze/scripts/Collectible.gd" id="1_collectible"]
+[ext_resource type="Script" uid="uid://cq0rebxe5uxye" path="res://minigames/Maze/scripts/Collectible.gd" id="1_collectible"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_collectible"]
 radius = 9.0

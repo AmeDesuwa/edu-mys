@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5xvqgkd7m8rn"]
 
-[ext_resource type="Script" path="res://minigames/Math/scripts/Main.gd" id="1_math"]
+[ext_resource type="Script" uid="uid://bx5p2keoy13do" path="res://minigames/Math/scripts/Main.gd" id="1_math"]
 
 [node name="MathQuiz" type="Control"]
 layout_mode = 3

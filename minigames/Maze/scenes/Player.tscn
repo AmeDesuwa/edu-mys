@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmaze_player"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://minigames/Maze/scripts/Player.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://i6vxpf7v48xp" path="res://minigames/Maze/scripts/Player.gd" id="1_player"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_player"]
 radius = 9.0

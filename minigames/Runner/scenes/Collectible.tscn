@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://drunner_collectible"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://minigames/Runner/scripts/Collectible.gd" id="1_collectible"]
+[ext_resource type="Script" uid="uid://cs6e1tpqtjl4e" path="res://minigames/Runner/scripts/Collectible.gd" id="1_collectible"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_collectible"]
 size = Vector2(70, 40)
