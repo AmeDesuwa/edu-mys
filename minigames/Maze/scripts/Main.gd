@@ -273,13 +273,14 @@ func _setup_player():
 
 # ============ GAME LOGIC ============
 
-func _on_answer_collected(_answer_text: String, question_index: int, is_correct: bool):
+func _on_answer_collected(collectible: Node, _answer_text: String, question_index: int, is_correct: bool):
 	if not game_active:
 		return
 
 	# Check if this is the answer for the CURRENT question
 	if question_index == current_question_index and is_correct:
-		# Correct answer for current question!
+		# Correct answer for current question! Remove it.
+		collectible.confirm_collect()
 		score += 100
 		answers_collected += 1
 		current_question_index += 1
@@ -290,13 +291,15 @@ func _on_answer_collected(_answer_text: String, question_index: int, is_correct:
 			# All questions answered!
 			_end_game(true)
 	elif question_index != current_question_index and is_correct:
-		# Correct answer but WRONG order - penalty
+		# Correct answer but WRONG order - DON'T remove, just warn
+		collectible.wrong_order_feedback()
 		health -= 1
 		_flash_screen(Color(0.8, 0.6, 0.2, 0.4))
-		_show_feedback("Wrong order!", Color(0.8, 0.6, 0.2))
+		_show_feedback("Wrong order! Get Q" + str(current_question_index + 1) + " first!", Color(0.8, 0.6, 0.2))
 		_check_game_over()
 	else:
-		# Wrong answer - penalty
+		# Wrong answer - remove it as penalty
+		collectible.reject_collect()
 		health -= 1
 		_flash_screen(Color(0.8, 0.2, 0.2, 0.4))
 		_show_feedback("Wrong!", Color(0.8, 0.2, 0.2))

@@ -58,6 +58,13 @@ Conrad: Then we go in. Respectfully.
 Conrad stands, taking a deep breath.
 Conrad: This is it. After four cases, four lessons, four cards...
 Conrad: Finally, I meet my teacher.
+join "Diwata Laya" (Half) center
+[signal arg="laya_start"]
+"Diwata Laya": This final case requires all your skills. Prepare yourself.
+[signal arg="start_minigame curriculum:pacman"]
+"Diwata Laya": You are ready to face the truth.
+[signal arg="laya_end"]
+leave "Diwata Laya"
 leave Conrad
 leave Mark
 jump c5s2/

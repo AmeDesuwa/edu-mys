@@ -92,6 +92,13 @@ Mark: So both Ryan and Alex were near the faculty room during Ms. Santos's break
 Conrad: And Alex had a reason to be there. "Returning documents."
 Mark: A perfect excuse to slip in and grab the key.
 Conrad: We need to talk to Alex.
+join "Diwata Laya" (Half_mirror) center
+[signal arg="laya_start"]
+"Diwata Laya": Before confronting more witnesses, test your ability to recall details quickly.
+[signal arg="start_minigame curriculum:runner"]
+"Diwata Laya": Good. Your memory sharpens.
+[signal arg="laya_end"]
+leave "Diwata Laya"
 leave Conrad
 leave Mark
 [background arg="res://Bg/hallway.png" fade="1.0"]

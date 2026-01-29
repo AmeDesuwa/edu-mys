@@ -52,6 +52,13 @@ Conrad: Whoever is doing this isn't B.C. They're someone else entirely.
 leave Alice
 Mark: So we have a new mystery on our hands.
 Conrad: And it's escalating. Six students so far. If we don't find who's behind this, more will follow.
+join "Diwata Laya" (Half_mirror) center
+[signal arg="laya_start"]
+"Diwata Laya": A new case begins. Prepare your mind.
+[signal arg="start_minigame curriculum:pacman"]
+"Diwata Laya": Good. You are ready.
+[signal arg="laya_end"]
+leave "Diwata Laya"
 Conrad: I need to understand the pattern. Why these specific students? What's the connection?
 leave Conrad
 leave Mark

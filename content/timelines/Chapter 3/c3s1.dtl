@@ -79,6 +79,13 @@ He picks up a small piece of cloth, stained with various colors.
 Conrad: Paint-stained fabric. Someone dropped this.
 Mark: A clue already?
 Conrad: The beginning of one.
+join "Diwata Laya" (Half) center
+[signal arg="laya_start"]
+"Diwata Laya": A fresh case. Let your mind warm up to the challenge.
+[signal arg="start_minigame curriculum:fillinblank"]
+"Diwata Laya": Good. You are ready to investigate.
+[signal arg="laya_end"]
+leave "Diwata Laya"
 Conrad straightens, pocketing the cloth and the note carefully.
 Conrad: Mark, we have work to do.
 Mark: Just like old times.

@@ -17,6 +17,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kurgw")
+font_size_custom = 28
+boxes_min_size = Vector2(500, 60)
+boxes_v_separation = 15
 
 [node name="Choices" type="VBoxContainer" parent="."]
 layout_mode = 1

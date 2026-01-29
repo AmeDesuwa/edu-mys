@@ -73,6 +73,13 @@ Mark: He's bitter. Really bitter.
 Conrad: Bitter enough to destroy Mia's sculpture?
 Mark: He says he was home, but that alibi needs verification.
 Conrad: Let's gather more evidence before we confront anyone.
+join "Diwata Laya" (Half_mirror) center
+[signal arg="laya_start"]
+"Diwata Laya": Before you proceed, sharpen your investigative skills.
+[signal arg="start_minigame curriculum:pacman"]
+"Diwata Laya": Your instincts are keen.
+[signal arg="laya_end"]
+leave "Diwata Laya"
 Mark: What are you thinking?
 Conrad: The paint-stained cloth. If we can match it to Victor's supplies...
 Conrad: And the note. The handwriting might tell us something.

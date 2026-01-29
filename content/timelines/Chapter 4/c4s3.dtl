@@ -24,7 +24,7 @@ join "Diwata Laya" (Half_mirror) center
 "Diwata Laya": [i][color=#9999ff]Knowledge without context is dangerous, Conrad.[/color][/i]
 "Diwata Laya": [i][color=#9999ff]She learned the methods but not the wisdom behind them.[/color][/i]
 "Diwata Laya": [i][color=#9999ff]To see clearly, you must understand how pieces connect. Focus your mind.[/color][/i]
-[signal arg="start_minigame library_logic"]
+[signal arg="start_minigame curriculum:maze"]
 "Diwata Laya": [i][color=#9999ff]Good. Your mind sees the pattern now.[/color][/i]
 "Diwata Laya": [i][color=#9999ff]Look at the archive log more carefully. The timing reveals much.[/color][/i]
 [signal arg="laya_end"]

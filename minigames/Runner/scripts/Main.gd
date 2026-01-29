@@ -196,14 +196,15 @@ func _flash_screen(color: Color):
 	tween.tween_callback($UILayer/FlashRect.hide)
 
 func _shake_screen():
-	var original_pos = $GameLayer.position
+	# CanvasLayer uses 'offset' instead of 'position'
+	var original_offset = $GameLayer.offset
 	var tween = create_tween()
 
 	for i in range(5):
-		var offset = Vector2(randf_range(-10, 10), randf_range(-10, 10))
-		tween.tween_property($GameLayer, "position", original_pos + offset, 0.05)
+		var shake_offset = Vector2(randf_range(-10, 10), randf_range(-10, 10))
+		tween.tween_property($GameLayer, "offset", original_offset + shake_offset, 0.05)
 
-	tween.tween_property($GameLayer, "position", original_pos, 0.05)
+	tween.tween_property($GameLayer, "offset", original_offset, 0.05)
 
 func _update_ui():
 	$UILayer/ScoreLabel.text = "Score: " + str(score)

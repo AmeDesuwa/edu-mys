@@ -12,6 +12,14 @@ var pronunciation_scene = preload("res://minigames/Pronunciation/scenes/Main.tsc
 var math_scene = preload("res://minigames/Math/scenes/Main.tscn")
 var current_minigame = null
 
+# Review system
+var review_scene = preload("res://scenes/ui/minigame_review.tscn")
+var current_attempt_count = 0
+const MAX_ATTEMPTS_BEFORE_REVIEW = 2
+var current_puzzle_id = ""
+var minigame_result = null
+var waiting_for_result = false
+
 # Fill-in-the-blank puzzle configs
 var fillinblank_configs = {
 	"timeline_deduction": {
@@ -1296,11 +1304,58 @@ var math_configs = {
 }
 
 func start_minigame(puzzle_id: String) -> void:
-	print("DEBUG: MinigameManager.start_minigame called with: ", puzzle_id)
+	print("DEBUG: Starting minigame with retry system: ", puzzle_id)
+
 	if current_minigame:
 		push_warning("Minigame already active!")
 		return
 
+	# Initialize tracking
+	current_puzzle_id = puzzle_id
+	current_attempt_count = 0
+
+	# Retry loop
+	var success = false
+	while not success:
+		# Reset result tracking
+		minigame_result = null
+		waiting_for_result = true
+
+		# Start minigame instance
+		_spawn_minigame_instance(puzzle_id)
+
+		# Wait for completion
+		while waiting_for_result:
+			await get_tree().process_frame
+
+		# Check result
+		success = minigame_result["success"]
+
+		if not success:
+			current_attempt_count += 1
+			print("DEBUG: Attempt ", current_attempt_count, " failed")
+
+			# Show review after threshold
+			if current_attempt_count >= MAX_ATTEMPTS_BEFORE_REVIEW:
+				print("DEBUG: Showing review screen")
+				await _show_review_screen()
+				current_attempt_count = 0  # Reset after review
+
+			# Continue loop to retry
+		else:
+			# Success!
+			print("DEBUG: Minigame completed successfully")
+			Dialogic.VAR.minigames_completed += 1
+
+	# Cleanup
+	current_puzzle_id = ""
+	current_attempt_count = 0
+
+	# Emit completion (DialogicSignalHandler awaits this)
+	minigame_completed.emit(puzzle_id, true)
+
+# Extract the spawning logic into a separate method
+func _spawn_minigame_instance(puzzle_id: String) -> void:
 	# Check for curriculum-based minigames (format: "curriculum:type")
 	if puzzle_id.begins_with("curriculum:"):
 		var minigame_type = puzzle_id.trim_prefix("curriculum:")
@@ -1328,6 +1383,18 @@ func start_minigame(puzzle_id: String) -> void:
 	else:
 		push_error("Unknown puzzle: " + puzzle_id)
 		return
+
+# Show review screen with educational content
+func _show_review_screen():
+	var review_content = CurriculumQuestions.get_review_content()
+
+	var review_instance = review_scene.instantiate()
+	get_tree().root.add_child(review_instance)
+
+	review_instance.show_review(review_content)
+
+	await review_instance.review_completed
+	# review_instance queues itself for deletion
 
 # Helper to find which oral communication module config contains the puzzle
 func _get_oralcom_config(puzzle_id: String) -> Dictionary:
@@ -1480,7 +1547,8 @@ func _start_curriculum_minigame(minigame_type: String) -> void:
 
 func _on_minigame_finished(success: bool, score: int, puzzle_id: String) -> void:
 	print("DEBUG: Minigame finished. Success: ", success, ", Score: ", score, ", Puzzle: ", puzzle_id)
-	if success:
-		Dialogic.VAR.minigames_completed += 1
-	minigame_completed.emit(puzzle_id, success)
+
+	# Store result for retry loop (don't emit yet - start_minigame handles that)
+	minigame_result = {"success": success, "score": score}
+	waiting_for_result = false
 	current_minigame = null

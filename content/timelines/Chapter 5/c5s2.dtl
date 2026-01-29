@@ -72,6 +72,13 @@ Conrad: They were all building toward something. Training me for something.
 join Principal (half) right
 Principal: They were. But not for what you might think.
 Principal: Come. There's one more thing you need to understand.
+join "Diwata Laya" (Half_mirror) center
+[signal arg="laya_start"]
+"Diwata Laya": Before the final lesson, prove your readiness once more.
+[signal arg="start_minigame curriculum:runner"]
+"Diwata Laya": Good. Your journey nears completion.
+[signal arg="laya_end"]
+leave "Diwata Laya"
 Principal: The final lesson.
 leave Conrad
 leave Principal

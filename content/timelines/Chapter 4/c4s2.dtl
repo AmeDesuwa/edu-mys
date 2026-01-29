@@ -60,6 +60,13 @@ Conrad: What was she researching?
 Librarian: Her sign-in form said "educational history project for Advanced Studies class."
 Conrad: Can we access the archive?
 Librarian: With permission, yes. Let me get the key.
+join "Diwata Laya" (Half) center
+[signal arg="laya_start"]
+"Diwata Laya": Knowledge leads to understanding. Test yourself before proceeding.
+[signal arg="start_minigame curriculum:runner"]
+"Diwata Laya": Your recall sharpens.
+[signal arg="laya_end"]
+leave "Diwata Laya"
 leave Conrad
 leave Mark
 label suspect_choice

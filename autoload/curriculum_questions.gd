@@ -1307,3 +1307,168 @@ var questions = {
 		}
 	}
 }
+
+# =============================================================================
+# REVIEW CONTENT DATABASE
+# Educational content shown when players fail minigames repeatedly
+# =============================================================================
+
+var review_content = {
+	"math": {
+		"Q1": {
+			"title": "Functions & Relations",
+			"explanation": "A function assigns each input exactly one output. Understanding domain (inputs) and range (outputs) is crucial for working with functions.",
+			"key_concepts": [
+				"Domain: All possible input values",
+				"Range: All possible output values",
+				"Vertical Line Test: A graph is a function if no vertical line crosses it twice"
+			],
+			"example": "For f(x) = 2x + 3, if x = 4: f(4) = 2(4) + 3 = 11",
+			"tip": "To find the domain, ask 'what x values are allowed?' To find range, ask 'what y values can result?'"
+		},
+		"Q2": {
+			"title": "Exponentials & Logarithms",
+			"explanation": "Exponential functions grow rapidly. Logarithms are the inverse - they tell you 'what power do I need?'",
+			"key_concepts": [
+				"Exponential: y = a^x (a is base, x is exponent)",
+				"Logarithm: log_a(y) = x means a^x = y",
+				"Properties: log(ab) = log(a) + log(b)"
+			],
+			"example": "log₂(8) = 3 because 2³ = 8",
+			"tip": "When solving exponential equations, take the log of both sides to bring the exponent down."
+		},
+		"Q3": {
+			"title": "Trigonometry",
+			"explanation": "Trigonometry studies relationships between angles and sides of triangles. SOH-CAH-TOA is your friend!",
+			"key_concepts": [
+				"SOH: sin = opposite/hypotenuse",
+				"CAH: cos = adjacent/hypotenuse",
+				"TOA: tan = opposite/adjacent"
+			],
+			"example": "In a right triangle with angle 30°, opposite side 5, and hypotenuse 10: sin(30°) = 5/10 = 0.5",
+			"tip": "Draw a diagram! Most trig problems become easier when you can see the triangle."
+		},
+		"Q4": {
+			"title": "Statistics & Probability",
+			"explanation": "Statistics helps us understand data. Probability tells us how likely events are to occur.",
+			"key_concepts": [
+				"Mean: Average (sum of all values / count)",
+				"Median: Middle value when sorted",
+				"Mode: Most frequent value",
+				"Probability: (favorable outcomes) / (total outcomes)"
+			],
+			"example": "Rolling a die: P(rolling 6) = 1/6 ≈ 16.7%",
+			"tip": "For probability, first count all possible outcomes, then count how many are favorable."
+		}
+	},
+	"science": {
+		"Q1": {
+			"title": "Earth & Space Science",
+			"explanation": "Earth is made of layers (crust, mantle, core) and constantly changes through geological processes.",
+			"key_concepts": [
+				"Plate tectonics: Earth's crust is divided into moving plates",
+				"Rock cycle: Rocks transform between igneous, sedimentary, and metamorphic",
+				"Weathering & erosion: Breaking down and transporting materials"
+			],
+			"example": "Earthquakes occur where tectonic plates meet and release built-up energy.",
+			"tip": "Think of Earth as dynamic, not static - everything is slowly moving and changing."
+		},
+		"Q2": {
+			"title": "Life Science & Biology",
+			"explanation": "All living things are made of cells and share common characteristics like growth, reproduction, and response to environment.",
+			"key_concepts": [
+				"Cell theory: All life is made of cells",
+				"Photosynthesis: Plants convert light → sugar + oxygen",
+				"Cellular respiration: Cells convert sugar → energy + CO₂"
+			],
+			"example": "A plant cell uses chloroplasts for photosynthesis, while animal cells don't have chloroplasts.",
+			"tip": "Remember: plants do BOTH photosynthesis AND cellular respiration."
+		},
+		"Q3": {
+			"title": "Chemistry Basics",
+			"explanation": "Matter is made of atoms, which combine to form molecules. Chemical reactions rearrange atoms.",
+			"key_concepts": [
+				"Atoms: Smallest unit of an element (protons, neutrons, electrons)",
+				"Molecules: Atoms bonded together (H₂O = 2 hydrogen + 1 oxygen)",
+				"Chemical reactions: Bonds break and form, creating new substances"
+			],
+			"example": "Water (H₂O) forms when hydrogen gas (H₂) reacts with oxygen gas (O₂).",
+			"tip": "In chemical equations, atoms are never created or destroyed - they just rearrange."
+		},
+		"Q4": {
+			"title": "Physics Fundamentals",
+			"explanation": "Physics studies motion, forces, and energy. Newton's laws explain how objects move.",
+			"key_concepts": [
+				"Newton's 1st Law: Objects stay at rest or in motion unless acted on by force",
+				"Newton's 2nd Law: F = ma (force = mass × acceleration)",
+				"Newton's 3rd Law: For every action, there's an equal opposite reaction"
+			],
+			"example": "Pushing a cart: more force = more acceleration. Heavier cart = less acceleration for same force.",
+			"tip": "Forces always come in pairs. If you push on a wall, the wall pushes back on you."
+		}
+	},
+	"english": {
+		"Q1": {
+			"title": "Communication & Language",
+			"explanation": "Effective communication requires understanding your audience, purpose, and context.",
+			"key_concepts": [
+				"Sender → Message → Receiver (communication model)",
+				"Context matters: formal vs informal, written vs spoken",
+				"Active listening: Pay attention, ask questions, provide feedback"
+			],
+			"example": "Texting a friend: informal, brief. Writing a job application: formal, detailed.",
+			"tip": "Before communicating, ask: Who is my audience? What's my purpose? What tone is appropriate?"
+		},
+		"Q2": {
+			"title": "Reading Comprehension",
+			"explanation": "Strong readers make connections, ask questions, and identify main ideas.",
+			"key_concepts": [
+				"Main idea: The central point of a text",
+				"Supporting details: Evidence and examples that explain the main idea",
+				"Inference: Reading between the lines to understand implied meaning"
+			],
+			"example": "If a character slams a door and doesn't respond to questions, you can infer they're angry.",
+			"tip": "After each paragraph, pause and ask: 'What's the main point here?' Summarize in your own words."
+		},
+		"Q3": {
+			"title": "Writing & Composition",
+			"explanation": "Good writing is clear, organized, and purposeful. It has a beginning, middle, and end.",
+			"key_concepts": [
+				"Thesis statement: Your main argument or point",
+				"Topic sentences: Introduce the main idea of each paragraph",
+				"Transitions: Connect ideas smoothly (however, therefore, in addition)"
+			],
+			"example": "Essay structure: Introduction (thesis) → Body paragraphs (evidence) → Conclusion (summary).",
+			"tip": "Outline before writing! Plan your main points and supporting details first."
+		},
+		"Q4": {
+			"title": "Literary Analysis",
+			"explanation": "Literature uses literary devices (metaphor, symbolism, theme) to convey deeper meaning.",
+			"key_concepts": [
+				"Theme: The central idea or message (love, courage, justice)",
+				"Symbolism: Objects representing abstract ideas (dove = peace)",
+				"Point of view: Who tells the story (1st person 'I', 3rd person 'he/she')"
+			],
+			"example": "In 'The Little Prince', the rose symbolizes love and the complexity of relationships.",
+			"tip": "Ask: 'Why did the author choose this word/image? What deeper meaning might it have?'"
+		}
+	}
+}
+
+func get_review_content() -> Dictionary:
+	var subject = Dialogic.VAR.selected_subject
+	var chapter = Dialogic.VAR.current_chapter
+	var quarter = _chapter_to_quarter(chapter)
+
+	if review_content.has(subject) and review_content[subject].has(quarter):
+		return review_content[subject][quarter]
+
+	# Fallback for missing content
+	push_warning("No review content for ", subject, " ", quarter)
+	return {
+		"title": "Review the Material",
+		"explanation": "Take some time to review the concepts before trying again.",
+		"key_concepts": ["Review your notes", "Practice similar problems", "Ask for help if needed"],
+		"example": "",
+		"tip": "Don't give up! Learning takes practice."
+	}

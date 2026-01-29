@@ -65,7 +65,7 @@ Principal: Are you ready to learn it?
 Conrad nods solemnly.
 Conrad: I am.
 Principal: Then let's review what you've learned. To see it clearly, you must reflect deeply.
-[signal arg="start_minigame lesson_reflection"]
+[signal arg="start_minigame curriculum:fillinblank"]
 Principal: Good. Your mind sees the connections now.
 Principal: Each lesson built on the last. Truth, Responsibility, Creativity, Wisdom.
 Principal: But they all serve one greater principle.

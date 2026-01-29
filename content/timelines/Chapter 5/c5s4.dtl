@@ -42,8 +42,8 @@ join "Diwata Laya" (Half_mirror) leftmost
 "Conrad (Thinking)": Victor needed someone to see his pain. Alex needed someone to show her a better way.
 "Diwata Laya": [i][color=#9999ff]And in helping them, you became more than a detective.[/color][/i]
 "Diwata Laya": [i][color=#9999ff]You became a guide. A teacher. Someone who lights the path without forcing the journey.[/color][/i]
-"Diwata Laya": [i][color=#9999ff]One final test. Let probability and statistics sharpen your final insights.[/color][/i]
-[signal arg="start_minigame math_q4_statistics"]
+"Diwata Laya": [i][color=#9999ff]One final test. Prove your mastery.[/color][/i]
+[signal arg="start_minigame curriculum:platformer"]
 "Diwata Laya": [i][color=#9999ff]Excellent. You are ready for the final lesson.[/color][/i]
 [signal arg="laya_end"]
 leave "Diwata Laya"

@@ -55,7 +55,7 @@ join "Diwata Laya" (Half_mirror) center
 "Diwata Laya": [i][color=#9999ff]Focus on what you know. Let the pieces arrange themselves.[/color][/i]
 "Conrad (Thinking)": Another test?
 "Diwata Laya": [i][color=#9999ff]Consider it... sharpening your tools.[/color][/i]
-[signal arg="start_minigame art_vocabulary"]
+[signal arg="start_minigame curriculum:platformer"]
 "Diwata Laya": [i][color=#9999ff]Good. Your mind is clear now.[/color][/i]
 "Diwata Laya": [i][color=#9999ff]Consider this: the cloth you found at the scene. Look more closely.[/color][/i]
 [signal arg="laya_end"]

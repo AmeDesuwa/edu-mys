@@ -34,8 +34,8 @@ join "Diwata Laya" (Half) rightmost
 "Diwata Laya": [i][color=#9999ff]But he's afraid. Afraid of what comes next.[/color][/i]
 "Conrad (Thinking)": What should I do?
 "Diwata Laya": [i][color=#9999ff]Show him you understand his pain. He needs to feel seen, not judged.[/color][/i]
-"Diwata Laya": [i][color=#9999ff]First, clear your mind. Let mathematics focus your thoughts.[/color][/i]
-[signal arg="start_minigame math_q2_exponential"]
+"Diwata Laya": [i][color=#9999ff]First, clear your mind. Face this challenge.[/color][/i]
+[signal arg="start_minigame curriculum:runner"]
 "Diwata Laya": [i][color=#9999ff]Good. Now approach him with clarity.[/color][/i]
 [signal arg="laya_end"]
 leave "Diwata Laya"
