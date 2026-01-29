@@ -18,6 +18,12 @@ func _on_dialogic_signal(argument: String):
 		_handle_minigame_signal(puzzle_id)
 		return
 
+	# Handle evidence unlock: "unlock_evidence <evidence_id>"
+	if argument.begins_with("unlock_evidence "):
+		var evidence_id = argument.trim_prefix("unlock_evidence ").strip_edges()
+		_handle_evidence_unlock(evidence_id)
+		return
+
 	# Handle level up check after all minigames complete
 	if argument == "check_level_up":
 		_handle_check_level_up()
@@ -68,3 +74,7 @@ func _handle_title_card_signal(chapter: String):
 	await TitleCardManager.title_card_completed
 	if is_instance_valid(Dialogic) and Dialogic.current_timeline != null:
 		Dialogic.paused = false
+
+func _handle_evidence_unlock(evidence_id: String):
+	EvidenceManager.unlock_evidence(evidence_id)
+	# Note: No need to pause timeline - evidence unlocks are instant

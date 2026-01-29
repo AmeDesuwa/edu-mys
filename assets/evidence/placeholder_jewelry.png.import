@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmdsfyqpedcqs"
-path="res://.godot/imported/library.png-77e4cdbf2000d4098027144025ede792.ctex"
+uid="uid://dwmntxfsvgvn1"
+path="res://.godot/imported/placeholder_jewelry.png-47b5f624751a344615129fe0d3d225b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bg/library.png"
-dest_files=["res://.godot/imported/library.png-77e4cdbf2000d4098027144025ede792.ctex"]
+source_file="res://assets/evidence/placeholder_jewelry.png"
+dest_files=["res://.godot/imported/placeholder_jewelry.png-47b5f624751a344615129fe0d3d225b0.ctex"]
 
 [params]
 

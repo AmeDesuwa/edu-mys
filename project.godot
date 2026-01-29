@@ -31,6 +31,7 @@ DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
 SettingsManager="*res://autoload/settings_manager.gd"
 PauseManager="*res://autoload/pause_manager.gd"
 CurriculumQuestions="*res://autoload/curriculum_questions.gd"
+EvidenceManager="*res://autoload/evidence_manager.gd"
 
 [dialogic]
 

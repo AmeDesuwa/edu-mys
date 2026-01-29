@@ -6,6 +6,10 @@ static var load_continue_save := false
 func _ready() -> void:
 	Dialogic.paused = false
 
+	# Add evidence button UI
+	var evidence_button = preload("res://scenes/ui/evidence/evidence_button.tscn").instantiate()
+	add_child(evidence_button)
+
 	if load_continue_save:
 		# Load the saved game state
 		print("DEBUG: node_2d.gd loading continue save.")
