@@ -191,42 +191,45 @@ func _place_answers():
 
 	var used_positions: Array = []
 
-	# Place correct answers at dedicated spots from preset map
-	var num_questions = min(questions.size(), answer_spots.size())
+	# Get all floor positions with their distance from start using BFS
+	var positions_with_distance = _get_positions_by_distance_from_start()
+
+	# Place correct answers at increasing distances (ensures they're reachable in order)
+	var num_questions = min(questions.size(), 5)
+	var positions_per_question = max(1, positions_with_distance.size() / (num_questions + 2))  # +2 for spacing
+
 	for q_index in range(num_questions):
 		var q = questions[q_index]
-		var spot = answer_spots[q_index]
+		# Pick position at progressive distance intervals
+		var position_index = min((q_index + 1) * positions_per_question, positions_with_distance.size() - 1)
+		var pos = positions_with_distance[position_index]["pos"]
 
-		if spot.x >= 0 and spot.y >= 0:
-			_spawn_collectible(spot, q.correct, q_index, true)
-			used_positions.append(spot)
-		else:
-			push_error("Invalid answer spot for question " + str(q_index))
+		_spawn_collectible(pos, q.correct, q_index, true)
+		used_positions.append(pos)
+		print("DEBUG: Placed Q", q_index + 1, " correct answer at ", pos, " (distance ", positions_with_distance[position_index]["distance"], ")")
 
-	# Collect all floor positions for wrong answer placement
+	# Collect remaining floor positions for wrong answer placement
 	var floor_positions: Array = []
-	for y in range(maze_height):
-		for x in range(maze_width):
-			if maze[y][x] == Cell.FLOOR:
-				var pos = Vector2i(x, y)
+	for entry in positions_with_distance:
+		var pos = entry["pos"]
 
-				# Skip if already used (answer spot)
-				if used_positions.has(pos):
-					continue
+		# Skip if already used (correct answer)
+		if used_positions.has(pos):
+			continue
 
-				# Skip start area
-				if pos.x <= 2 and pos.y <= 2:
-					continue
+		# Skip start area
+		if pos.x <= 2 and pos.y <= 2:
+			continue
 
-				# Skip positions adjacent to answer spots (avoid confusion)
-				var adjacent_to_answer = false
-				for spot in answer_spots:
-					if abs(pos.x - spot.x) <= 1 and abs(pos.y - spot.y) <= 1:
-						adjacent_to_answer = true
-						break
+		# Skip positions too close to correct answers (avoid confusion)
+		var too_close = false
+		for used_pos in used_positions:
+			if abs(pos.x - used_pos.x) <= 2 and abs(pos.y - used_pos.y) <= 2:
+				too_close = true
+				break
 
-				if not adjacent_to_answer:
-					floor_positions.append(pos)
+		if not too_close:
+			floor_positions.append(pos)
 
 	# Shuffle and place wrong answers
 	floor_positions.shuffle()
@@ -241,6 +244,32 @@ func _place_answers():
 				_spawn_collectible(pos, q.wrong[i], q_index, false)
 				used_positions.append(pos)
 				floor_index += 1
+
+# Get all floor positions sorted by distance from start (BFS)
+func _get_positions_by_distance_from_start() -> Array:
+	var result: Array = []
+	var queue: Array = [[start_pos, 0]]  # [position, distance]
+	var visited: Dictionary = {start_pos: true}
+
+	var directions = [
+		Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)
+	]
+
+	while queue.size() > 0:
+		var current_data = queue.pop_front()
+		var current = current_data[0]
+		var distance = current_data[1]
+
+		result.append({"pos": current, "distance": distance})
+
+		for dir in directions:
+			var next = current + dir
+			if next.x >= 0 and next.x < maze_width and next.y >= 0 and next.y < maze_height:
+				if maze[next.y][next.x] == Cell.FLOOR and not visited.has(next):
+					visited[next] = true
+					queue.append([next, distance + 1])
+
+	return result
 
 func _spawn_collectible(
 		grid_pos: Vector2i, answer_text: String, q_index: int, is_correct: bool
