@@ -17,6 +17,7 @@ Conrad reaches under the desk and pulls out a small, worn charm bracelet with di
 "Diwata Laya": [i][color=#9999ff](Suddenly alert) Conrad, wait! That object...[/color][/i]
 "Diwata Laya": [i][color=#9999ff]I sense something powerful emanating from it. Strong emotions... but I can't read it clearly.[/color][/i]
 Conrad: (Examining the bracelet) This must have fallen off during the sabotage. It's pretty distinctive.
+[signal arg="unlock_evidence charm_bracelet_c1"]
 [background arg="res://Bg/faculty_empty.png" fade="0.5"]
 join "Diwata Laya" right [animation="Instant In"]
 join Conrad left

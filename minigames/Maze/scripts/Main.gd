@@ -214,16 +214,36 @@ func _place_answers():
 		print("DEBUG: Placed Q", q_index + 1, " correct answer at preset spot ", pos)
 
 	# Calculate paths between consecutive correct answers (start -> Q1 -> Q2 -> etc.)
+	# Also include a safety buffer zone around the path
 	var path_positions: Array = []  # All positions on the required path
+	var buffer_zone: Array = []  # Positions adjacent to the path (2-cell buffer)
 	var prev_pos = start_pos
+	
 	for correct_pos in correct_positions:
 		var path = _find_path(prev_pos, correct_pos)
+		if path.is_empty():
+			push_error("No path found from ", prev_pos, " to ", correct_pos)
+			continue
+			
 		for p in path:
 			if not path_positions.has(p):
 				path_positions.append(p)
+			
+			# Add buffer zone: all adjacent cells (2-cell radius for safety)
+			var directions = [
+				Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1),
+				Vector2i(1, 1), Vector2i(-1, -1), Vector2i(1, -1), Vector2i(-1, 1),
+				Vector2i(2, 0), Vector2i(-2, 0), Vector2i(0, 2), Vector2i(0, -2)
+			]
+			for dir in directions:
+				var buffer_pos = p + dir
+				if buffer_pos.x >= 0 and buffer_pos.x < maze_width and buffer_pos.y >= 0 and buffer_pos.y < maze_height:
+					if not buffer_zone.has(buffer_pos) and not path_positions.has(buffer_pos):
+						buffer_zone.append(buffer_pos)
+		
 		prev_pos = correct_pos
 
-	# Collect floor positions for wrong answers, avoiding the critical path
+	# Collect floor positions for wrong answers, strictly avoiding the critical path AND buffer zone
 	var floor_positions: Array = []
 
 	for entry in positions_with_distance:
@@ -233,18 +253,23 @@ func _place_answers():
 		if used_positions.has(pos):
 			continue
 
-		# Skip start area
-		if pos.x <= 2 and pos.y <= 2:
+		# Skip start area (larger buffer)
+		if pos.x <= 3 and pos.y <= 3:
 			continue
 
 		# Skip positions ON the required path between correct answers
 		if path_positions.has(pos):
 			continue
+		
+		# Skip positions in the buffer zone around the path
+		if buffer_zone.has(pos):
+			continue
 
-		# Skip positions too close to correct answers (avoid confusion)
+		# Skip positions too close to correct answers (3-cell radius for safety)
 		var too_close = false
 		for used_pos in used_positions:
-			if abs(pos.x - used_pos.x) <= 1 and abs(pos.y - used_pos.y) <= 1:
+			var dist = abs(pos.x - used_pos.x) + abs(pos.y - used_pos.y)
+			if dist <= 3:  # Manhattan distance <= 3
 				too_close = true
 				break
 

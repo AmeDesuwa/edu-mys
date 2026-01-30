@@ -26,6 +26,7 @@ Conrad: Huh, those looked pretty new from what I can remember.
 "Janitor Fred": That is why the principal is so mad. He called the store where the air conditioner was bought to complain. The store is sending a repair guy.
 Conrad: Do you know when the repair guy will arrive?
 "Janitor Fred": He'll probably arrive anytime now. I heard the principal say that it will probably be after classes are done for the day.
+[signal arg="unlock_evidence janitor_testimony_c1"]
 Conrad: Thanks for answering my questions.
 "Janitor Fred": No problem kid.
 leave "Janitor Fred" [animation="Slide To Right"]

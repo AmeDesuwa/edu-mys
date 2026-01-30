@@ -20,15 +20,15 @@ func _ready():
 	if has_node("Area2D"):
 		$Area2D.add_to_group("player")
 
-	# Get lane positions from parent
-	var main = get_parent().get_parent()
-	if main.has_node("") and main.get("lane_positions"):
-		lane_positions = main.lane_positions.duplicate()
+	# Get lane positions from the Runner main controller (robust even if scene hierarchy changes)
+	var main = get_tree().get_first_node_in_group("runner_main")
+	if main != null and main.has_method("get_lane_positions"):
+		lane_positions = main.get_lane_positions()
 	else:
 		# Fallback - calculate based on screen width
 		var screen_width = get_viewport_rect().size.x
-		var lane_width = screen_width / 3
-		lane_positions = [lane_width / 2, screen_width / 2, screen_width - lane_width / 2]
+		var lane_width = screen_width / 3.0
+		lane_positions = [lane_width / 2.0, screen_width / 2.0, screen_width - lane_width / 2.0]
 
 	# Set initial position
 	current_lane = 1
@@ -44,9 +44,9 @@ func _process(delta):
 		_move_to_lane(current_lane + 1)
 
 	# Smooth movement to target lane
-	if abs(position.x - target_x) > 1:
+	if abs(position.x - target_x) > 0.5:
 		is_moving = true
-		position.x = lerp(position.x, target_x, move_speed * delta / 100)
+		position.x = move_toward(position.x, target_x, move_speed * delta)
 
 		# Tilt while moving
 		var tilt_direction = sign(target_x - position.x)
