@@ -1,0 +1,213 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="EduMys"
+run/main_scene="res://scenes/ui/main_menu.tscn"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[audio]
+
+driver/enable_input=true
+
+[autoload]
+
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+PlayerStats="*res://src/core/PlayerStats.gd"
+DialogicEffectsManager="*res://scenes/effects/DialogicEffectsManager.gd"
+LevelUpManager="*res://autoload/level_up_manager.gd"
+MinigameManager="*res://autoload/minigame_manager.gd"
+TitleCardManager="*res://autoload/title_card_manager.gd"
+DialogicSignalHandler="*res://scripts/dialogic_signal_handler.gd"
+SettingsManager="*res://autoload/settings_manager.gd"
+PauseManager="*res://autoload/pause_manager.gd"
+CurriculumQuestions="*res://autoload/curriculum_questions.gd"
+EvidenceManager="*res://autoload/evidence_manager.gd"
+EvidenceButtonManager="*res://autoload/evidence_button_manager.gd"
+
+[dialogic]
+
+directories/dch_directory={
+"Alex": "res://content/characters/Alex.dch",
+"Alice": "res://content/characters/Alice.dch",
+"Ben": "res://content/characters/Ben.dch",
+"Conrad": "res://content/characters/Conrad.dch",
+"Conrad (Thinking)": "res://content/characters/Conrad (Thinking).dch",
+"Diwata Laya": "res://content/characters/Diwata Laya.dch",
+"Greg": "res://content/characters/Greg.dch",
+"Janitor Fred": "res://content/characters/Janitor Fred.dch",
+"Mark": "res://content/characters/Mark.dch",
+"Mia": "res://content/characters/Mia.dch",
+"Ms Reyes": "res://content/characters/Ms Reyes.dch",
+"Ms Santos": "res://content/characters/Ms Santos.dch",
+"Principal": "res://content/characters/Principal.dch",
+"Ria": "res://content/characters/Ria.dch",
+"Ryan": "res://content/characters/Ryan.dch",
+"Victor": "res://content/characters/Victor.dch",
+"character": "res://content/characters/character.dch",
+"example character": "res://content/characters/example character.dch"
+}
+directories/dtl_directory={
+"Chapter 2/c2s0": "res://content/timelines/Chapter 3/Chapter 2/c2s0.dtl",
+"Chapter 2/c2s1": "res://content/timelines/Chapter 3/Chapter 2/c2s1.dtl",
+"Chapter 2/c2s2": "res://content/timelines/Chapter 3/Chapter 2/c2s2.dtl",
+"Chapter 2/c2s3": "res://content/timelines/Chapter 3/Chapter 2/c2s3.dtl",
+"Chapter 2/c2s4": "res://content/timelines/Chapter 3/Chapter 2/c2s4.dtl",
+"Chapter 2/c2s5": "res://content/timelines/Chapter 3/Chapter 2/c2s5.dtl",
+"Chapter 2/c2s6": "res://content/timelines/Chapter 3/Chapter 2/c2s6.dtl",
+"broadcast_s1": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s1.dtl",
+"broadcast_s2": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s2.dtl",
+"broadcast_s3": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s3.dtl",
+"broadcast_s4": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s4.dtl",
+"c1s1": "res://content/timelines/Chapter 1/c1s1.dtl",
+"c1s2": "res://content/timelines/Chapter 1/c1s2.dtl",
+"c1s2b": "res://content/timelines/Chapter 1/c1s2b.dtl",
+"c1s3": "res://content/timelines/Chapter 1/c1s3.dtl",
+"c1s4": "res://content/timelines/Chapter 1/c1s4.dtl",
+"c1s5": "res://content/timelines/Chapter 1/c1s5.dtl",
+"c2s0": "res://content/timelines/Chapter 2/c2s0.dtl",
+"c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
+"c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
+"c2s2b_old": "res://content/timelines/Unused/c2s2b_old.dtl",
+"c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
+"c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
+"c2s5": "res://content/timelines/Chapter 2/c2s5.dtl",
+"c2s5b_old": "res://content/timelines/Unused/c2s5b_old.dtl",
+"c2s6": "res://content/timelines/Chapter 2/c2s6.dtl",
+"c2s7_old": "res://content/timelines/Unused/c2s7_old.dtl",
+"c3s0": "res://content/timelines/Chapter 3/c3s0.dtl",
+"c3s1": "res://content/timelines/Chapter 3/c3s1.dtl",
+"c3s2": "res://content/timelines/Chapter 3/c3s2.dtl",
+"c3s3": "res://content/timelines/Chapter 3/c3s3.dtl",
+"c3s4": "res://content/timelines/Chapter 3/c3s4.dtl",
+"c3s5": "res://content/timelines/Chapter 3/c3s5.dtl",
+"c3s6": "res://content/timelines/Chapter 3/c3s6.dtl",
+"c4s0": "res://content/timelines/Chapter 4/c4s0.dtl",
+"c4s1": "res://content/timelines/Chapter 4/c4s1.dtl",
+"c4s2": "res://content/timelines/Chapter 4/c4s2.dtl",
+"c4s3": "res://content/timelines/Chapter 4/c4s3.dtl",
+"c4s4": "res://content/timelines/Chapter 4/c4s4.dtl",
+"c4s5": "res://content/timelines/Chapter 4/c4s5.dtl",
+"c4s6": "res://content/timelines/Chapter 4/c4s6.dtl",
+"c5s0": "res://content/timelines/Chapter 5/c5s0.dtl",
+"c5s1": "res://content/timelines/Chapter 5/c5s1.dtl",
+"c5s2": "res://content/timelines/Chapter 5/c5s2.dtl",
+"c5s3": "res://content/timelines/Chapter 5/c5s3.dtl",
+"c5s4": "res://content/timelines/Chapter 5/c5s4.dtl",
+"c5s5": "res://content/timelines/Chapter 5/c5s5.dtl",
+"d": "res://content/timelines/d.dtl",
+"level_test": "res://content/timelines/level_test.dtl",
+"level_up": "res://content/timelines/level_up.dtl"
+}
+layout/style_directory={}
+layout/style_list=[]
+layout/default_style=""
+variables={
+"c1s1_principal_tried": false,
+"c1s2_repair_tried": false,
+"c1s2_teacher_tried": false,
+"c1s3_animal_tried": false,
+"c1s3_old_ac_tried": false,
+"c2s2_alex_tried": false,
+"c2s2_outsider_tried": false,
+"c2s2_santos_tried": false,
+"c2s3_alex_tried": false,
+"c2s3_outsider_tried": false,
+"c2s3_ria_tried": false,
+"c3s2_outsider_tried": false,
+"c3s2_reyes_tried": false,
+"c3s3_receipt_tried": false,
+"c3s3_sketchbook_tried": false,
+"c4s2_alex_tried": false,
+"c4s2_bc_tried": false,
+"c4s2_teacher_tried": false,
+"can_redo_for_score": false,
+"can_skip_hard": false,
+"chapter1_score": 0,
+"chapter2_score": 0,
+"chapter3_score": 0,
+"chapter4_score": 0,
+"chapter5_score": 0,
+"conrad_level": 1,
+"current_chapter": 1,
+"detective_rank": "",
+"hint_count": 0,
+"minigames_completed": 0,
+"retry_count": 0,
+"selected_subject": "",
+"time_bonus": 0
+}
+glossary/default_case_sensitive=true
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.05
+text/advance_delay=0.05
+text/autoadvance_per_character_delay=0.015
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
+history/simple_history_enabled=false
+history/full_history_enabled=false
+history/visited_event_history_enabled=false
+text/autoskip_time_per_event=0.05
+text/autoadvance_fixed_delay=0.5
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[input]
+
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+]
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

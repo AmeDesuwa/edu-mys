@@ -1,0 +1,19 @@
+[background arg="res://Bg/classroom.png" fade="1.0"]
+Conrad climbs a chair to inspect the ceiling vent near the wires.
+join Conrad (half) left
+join Mark (Mark_half) right
+Conrad: Got it.
+[background arg="res://Pics/Exam_ruined.png" fade="0.0"]
+Mark: What is that? A walkie-talkie?
+Conrad: A modified FM transmitter. It's broadcasting on a low frequency.
+Conrad: It's sitting right next to the speaker line. The signal induces a current in the wire, driving the speakers directly.
+Conrad: No amp needed. The wire *is* the receiver.
+Mark: That's... actually genius. But why broadcast numbers?
+Conrad: It's a code. Answers to a test? Locker combinations?
+Conrad: Someone planted this. And they had to climb up here to do it.
+Mark: Look at the dust on the vent. There are finger marks. Small ones.
+Conrad: Like someone with small hands. Maybe a student assistant?
+Conrad: I have an idea. Let's wait by the janitor's closet. Whoever planted this will need to come back eventually.
+leave Conrad
+leave Mark
+jump c2s4/

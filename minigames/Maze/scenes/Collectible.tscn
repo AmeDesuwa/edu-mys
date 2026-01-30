@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" uid="uid://cq0rebxe5uxye" path="res://minigames/Maze/scripts/Collectible.gd" id="1_collectible"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_collectible"]
+radius = 9.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_answer"]
+font_size = 9
+font_color = Color(1, 1, 1, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qnum"]
+font_size = 7
+font_color = Color(1, 1, 1, 0.9)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Collectible" type="Area2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_collectible")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_collectible")
+
+[node name="Glow" type="Polygon2D" parent="."]
+color = Color(0.4, 0.8, 0.4, 0.3)
+polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.3, 0.7, 0.4, 1)
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20
+offset_top = -6
+offset_right = 20
+offset_bottom = 6
+text = "?"
+label_settings = SubResource("LabelSettings_answer")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionNumber" type="Label" parent="."]
+offset_left = -10
+offset_top = -16
+offset_right = 10
+offset_bottom = -6
+text = "Q1"
+label_settings = SubResource("LabelSettings_qnum")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://dilthw51nq801" path="res://minigames/Platformer/scripts/Player.gd" id="1_player"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(24, 40)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Visual" type="Node2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="Shadow" type="Polygon2D" parent="Visual"]
+position = Vector2(0, 22)
+color = Color(0, 0, 0, 0.2)
+polygon = PackedVector2Array(-14, -3, -10, 0, 10, 0, 14, -3, 10, -5, -10, -5)
+
+[node name="Body" type="Polygon2D" parent="Visual"]
+color = Color(0.2, 0.4, 0.7, 1)
+polygon = PackedVector2Array(-12, 0, -12, 20, -8, 24, 8, 24, 12, 20, 12, 0)
+
+[node name="Face" type="Polygon2D" parent="Visual"]
+color = Color(0.95, 0.85, 0.75, 1)
+polygon = PackedVector2Array(-10, -18, -10, 2, 10, 2, 10, -18)
+
+[node name="Hair" type="Polygon2D" parent="Visual"]
+color = Color(0.15, 0.12, 0.1, 1)
+polygon = PackedVector2Array(-12, -24, -12, -14, -10, -10, 10, -10, 12, -14, 12, -24, 6, -20, 0, -22, -6, -20)
+
+[node name="EyeLeft" type="Polygon2D" parent="Visual"]
+position = Vector2(-4, -8)
+color = Color(0.1, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-2, -2, -2, 2, 2, 2, 2, -2)
+
+[node name="EyeRight" type="Polygon2D" parent="Visual"]
+position = Vector2(4, -8)
+color = Color(0.1, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-2, -2, -2, 2, 2, 2, 2, -2)

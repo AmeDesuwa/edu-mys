@@ -1,0 +1,34 @@
+[background arg="res://Bg/hallway.png" fade="1.0"]
+Conrad waits by the janitor's closet.
+join Conrad (half) left
+# Placeholder: Using Ben as Leo
+join Ben (Ben_half) center
+Conrad: Looking for this, Leo?
+Ben: (Jumps) I... I was just looking for a mop!
+Conrad: (Holds up the transmitter) You were coming to change the batteries.
+Ben: I don't know what that is!
+Conrad: The dust on the vent matches your fingerprints, Leo.
+Ben: (Sighs) It wasn't supposed to be scary! It was just a job.
+Conrad: Who hired you?
+Ben: I don't know. I found the device in my locker with cash and instructions.
+Ben: "Place in vent. Turn on at 9 AM."
+Conrad: Let me see the device casing.
+Conrad: (Turns it over. There is a small sticker of a pixelated spider.)
+Conrad: The Pixelated Spider.
+Ben: Is that a band?
+Conrad: No. It's a warning. They're testing how easily they can bypass our security.
+Conrad: (Thinking) First the network, now physical infrastructure. They are everywhere.
+leave Ben
+join Mark (Mark_half) right
+Mark: Conrad! There you are. Something else happened while you were investigating.
+Conrad: What is it?
+Mark: The Student Council fund is missing. Twenty thousand pesos, gone.
+Conrad: The outreach fund? When did this happen?
+Mark: Sometime yesterday evening. Ria is devastated. Everyone thinks she took it.
+Conrad: (Thinking) Two mysteries in one day. The Pixelated Spider... and now this.
+Conrad: Let's go talk to the suspects. Who was in the building yesterday?
+Mark: Ryan was in the computer lab. And Ms. Santos was grading papers in the faculty room.
+Conrad: Then that's where we start.
+leave Conrad
+leave Mark
+jump c2s2b/

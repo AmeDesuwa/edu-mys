@@ -1,0 +1,40 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(0.6, 0.4, 0.7, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "",
+"suffix": ""
+},
+&"default_portrait": "half",
+&"description": "Former Student Council Treasurer. Replaced by Ria last year. Bitter about losing her position but ultimately not malicious.",
+&"display_name": "Alex",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"full": {
+"export_overrides": {
+"image": "\"res://Sprites/Alex_full.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": "res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
+},
+"half": {
+"export_overrides": {
+"image": "\"res://Sprites/Alex_half.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.7,
+"scene": "res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
+}
+},
+&"scale": 1.0
+}
