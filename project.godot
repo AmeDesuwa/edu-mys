@@ -182,10 +182,13 @@ audio/channel_defaults={
 }
 }
 history/simple_history_enabled=true
-history/full_history_enabled=true
-history/visited_event_history_enabled=true
+history/full_history_enabled=false
+history/visited_event_history_enabled=false
 text/autoskip_time_per_event=0.05
 text/autoadvance_fixed_delay=0.5
+choices/hotkey_behaviour=1
+history/save_on_save=false
+history/simple_history_save=true
 
 [display]
 

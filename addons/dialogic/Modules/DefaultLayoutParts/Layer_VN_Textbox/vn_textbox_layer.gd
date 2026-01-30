@@ -202,7 +202,7 @@ func _apply_name_label_settings() -> void:
 	else:
 		name_label_panel.self_modulate = name_label_box_modulate
 	var dialog_text_panel: PanelContainer = %DialogTextPanel
-	name_label_panel.position = name_label_box_offset+Vector2(0, -40)
+	name_label_panel.position = name_label_box_offset+Vector2(0, -60)
 	name_label_panel.position -= Vector2(
 		dialog_text_panel.get_theme_stylebox(&'panel', &'PanelContainer').content_margin_left,
 		dialog_text_panel.get_theme_stylebox(&'panel', &'PanelContainer').content_margin_top)
