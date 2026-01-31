@@ -10,6 +10,7 @@ var platformer_scene = preload("res://minigames/Platformer/scenes/Main.tscn")
 var maze_scene = preload("res://minigames/Maze/scenes/Main.tscn")
 var pronunciation_scene = preload("res://minigames/Pronunciation/scenes/Main.tscn")
 var math_scene = preload("res://minigames/Math/scenes/Main.tscn")
+var dialogue_choice_scene = preload("res://minigames/DialogueChoice/scenes/Main.tscn")
 var current_minigame = null
 
 # Fill-in-the-blank puzzle configs
@@ -937,6 +938,308 @@ var maze_configs = {
 			{"question": "The material used to create art is the?", "correct": "Medium", "wrong": ["Subject", "Style", "Genre"]},
 			{"question": "Visual weight distribution in art is called?", "correct": "Balance", "wrong": ["Rhythm", "Unity", "Contrast"]}
 		]
+	},
+
+	# English Communication Module - 20 fill-in-the-blank questions (2 blanks each)
+	"english_communication_q1": {
+		"question": {
+			"text": "The exchange of ________, ideas, or feelings between people is called ________.",
+			"options": [
+				{"letter": "A", "text": "Language", "correct": false},
+				{"letter": "B", "text": "Information", "correct": true},
+				{"letter": "C", "text": "Message", "correct": false},
+				{"letter": "D", "text": "Interaction", "correct": false},
+				{"letter": "E", "text": "Communication", "correct": true},
+				{"letter": "F", "text": "Feedback", "correct": false},
+				{"letter": "G", "text": "Channel", "correct": false},
+				{"letter": "H", "text": "Context", "correct": false}
+			]
+		}
+	},
+	"english_communication_q2": {
+		"question": {
+			"text": "The ________ is the person who ________ the message.",
+			"options": [
+				{"letter": "A", "text": "Sender", "correct": true},
+				{"letter": "B", "text": "Receiver", "correct": false},
+				{"letter": "C", "text": "Listener", "correct": false},
+				{"letter": "D", "text": "Decoder", "correct": false},
+				{"letter": "E", "text": "Creates", "correct": true},
+				{"letter": "F", "text": "Receives", "correct": false},
+				{"letter": "G", "text": "Sends", "correct": false},
+				{"letter": "H", "text": "Interprets", "correct": false}
+			]
+		}
+	},
+	"english_communication_q3": {
+		"question": {
+			"text": "The ________ is the person who ________ the message.",
+			"options": [
+				{"letter": "A", "text": "Sender", "correct": false},
+				{"letter": "B", "text": "Receiver", "correct": true},
+				{"letter": "C", "text": "Speaker", "correct": false},
+				{"letter": "D", "text": "Listener", "correct": false},
+				{"letter": "E", "text": "Receives", "correct": false},
+				{"letter": "F", "text": "Interprets", "correct": true},
+				{"letter": "G", "text": "Sends", "correct": false},
+				{"letter": "H", "text": "Creates", "correct": false}
+			]
+		}
+	},
+	"english_communication_q4": {
+		"question": {
+			"text": "The ________ is the ________ being communicated.",
+			"options": [
+				{"letter": "A", "text": "Message", "correct": true},
+				{"letter": "B", "text": "Channel", "correct": false},
+				{"letter": "C", "text": "Information", "correct": true},
+				{"letter": "D", "text": "Feedback", "correct": false},
+				{"letter": "E", "text": "Noise", "correct": false},
+				{"letter": "F", "text": "Context", "correct": false},
+				{"letter": "G", "text": "Medium", "correct": false},
+				{"letter": "H", "text": "Process", "correct": false}
+			]
+		}
+	},
+	"english_communication_q5": {
+		"question": {
+			"text": "________ is the process of ________ ideas into words or symbols.",
+			"options": [
+				{"letter": "A", "text": "Encoding", "correct": true},
+				{"letter": "B", "text": "Decoding", "correct": false},
+				{"letter": "C", "text": "Feedback", "correct": false},
+				{"letter": "D", "text": "Noise", "correct": false},
+				{"letter": "E", "text": "Converting", "correct": true},
+				{"letter": "F", "text": "Interpreting", "correct": false},
+				{"letter": "G", "text": "Sending", "correct": false},
+				{"letter": "H", "text": "Responding", "correct": false}
+			]
+		}
+	},
+	"english_communication_q6": {
+		"question": {
+			"text": "________ is the process of ________ the message.",
+			"options": [
+				{"letter": "A", "text": "Encoding", "correct": false},
+				{"letter": "B", "text": "Decoding", "correct": true},
+				{"letter": "C", "text": "Feedback", "correct": false},
+				{"letter": "D", "text": "Noise", "correct": false},
+				{"letter": "E", "text": "Sending", "correct": false},
+				{"letter": "F", "text": "Interpreting", "correct": true},
+				{"letter": "G", "text": "Receiving", "correct": false},
+				{"letter": "H", "text": "Responding", "correct": false}
+			]
+		}
+	},
+	"english_communication_q7": {
+		"question": {
+			"text": "The ________ is the ________ used to transmit the message.",
+			"options": [
+				{"letter": "A", "text": "Channel", "correct": true},
+				{"letter": "B", "text": "Message", "correct": false},
+				{"letter": "C", "text": "Feedback", "correct": false},
+				{"letter": "D", "text": "Context", "correct": false},
+				{"letter": "E", "text": "Medium", "correct": true},
+				{"letter": "F", "text": "Noise", "correct": false},
+				{"letter": "G", "text": "Sender", "correct": false},
+				{"letter": "H", "text": "Receiver", "correct": false}
+			]
+		}
+	},
+	"english_communication_q8": {
+		"question": {
+			"text": "________ is the ________ given by the receiver.",
+			"options": [
+				{"letter": "A", "text": "Feedback", "correct": true},
+				{"letter": "B", "text": "Message", "correct": false},
+				{"letter": "C", "text": "Channel", "correct": false},
+				{"letter": "D", "text": "Noise", "correct": false},
+				{"letter": "E", "text": "Response", "correct": true},
+				{"letter": "F", "text": "Encoding", "correct": false},
+				{"letter": "G", "text": "Decoding", "correct": false},
+				{"letter": "H", "text": "Context", "correct": false}
+			]
+		}
+	},
+	"english_communication_q9": {
+		"question": {
+			"text": "________ refers to anything that ________ communication.",
+			"options": [
+				{"letter": "A", "text": "Noise", "correct": true},
+				{"letter": "B", "text": "Feedback", "correct": false},
+				{"letter": "C", "text": "Context", "correct": false},
+				{"letter": "D", "text": "Channel", "correct": false},
+				{"letter": "E", "text": "Interferes", "correct": true},
+				{"letter": "F", "text": "Improves", "correct": false},
+				{"letter": "G", "text": "Sends", "correct": false},
+				{"letter": "H", "text": "Receives", "correct": false}
+			]
+		}
+	},
+	"english_communication_q10": {
+		"question": {
+			"text": "________ communication uses ________ or written words.",
+			"options": [
+				{"letter": "A", "text": "Verbal", "correct": true},
+				{"letter": "B", "text": "Nonverbal", "correct": false},
+				{"letter": "C", "text": "Visual", "correct": false},
+				{"letter": "D", "text": "Digital", "correct": false},
+				{"letter": "E", "text": "Spoken", "correct": true},
+				{"letter": "F", "text": "Gestures", "correct": false},
+				{"letter": "G", "text": "Images", "correct": false},
+				{"letter": "H", "text": "Signals", "correct": false}
+			]
+		}
+	},
+	"english_communication_q11": {
+		"question": {
+			"text": "________ communication uses ________ language and facial expressions.",
+			"options": [
+				{"letter": "A", "text": "Verbal", "correct": false},
+				{"letter": "B", "text": "Written", "correct": false},
+				{"letter": "C", "text": "Nonverbal", "correct": true},
+				{"letter": "D", "text": "Oral", "correct": false},
+				{"letter": "E", "text": "Body", "correct": true},
+				{"letter": "F", "text": "Spoken", "correct": false},
+				{"letter": "G", "text": "Digital", "correct": false},
+				{"letter": "H", "text": "Formal", "correct": false}
+			]
+		}
+	},
+	"english_communication_q12": {
+		"question": {
+			"text": "The ________ of communication describes how it ________.",
+			"options": [
+				{"letter": "A", "text": "Nature", "correct": true},
+				{"letter": "B", "text": "Function", "correct": false},
+				{"letter": "C", "text": "Process", "correct": false},
+				{"letter": "D", "text": "Context", "correct": false},
+				{"letter": "E", "text": "Works", "correct": true},
+				{"letter": "F", "text": "Begins", "correct": false},
+				{"letter": "G", "text": "Ends", "correct": false},
+				{"letter": "H", "text": "Changes", "correct": false}
+			]
+		}
+	},
+	"english_communication_q13": {
+		"question": {
+			"text": "The ________ is the continuous ________ between sender and receiver.",
+			"options": [
+				{"letter": "A", "text": "Process", "correct": true},
+				{"letter": "B", "text": "Channel", "correct": false},
+				{"letter": "C", "text": "Message", "correct": false},
+				{"letter": "D", "text": "Feedback", "correct": false},
+				{"letter": "E", "text": "Exchange", "correct": true},
+				{"letter": "F", "text": "Response", "correct": false},
+				{"letter": "G", "text": "Medium", "correct": false},
+				{"letter": "H", "text": "Context", "correct": false}
+			]
+		}
+	},
+	"english_communication_q14": {
+		"question": {
+			"text": "________ communication is ________ by the receiver.",
+			"options": [
+				{"letter": "A", "text": "Effective", "correct": true},
+				{"letter": "B", "text": "Formal", "correct": false},
+				{"letter": "C", "text": "Verbal", "correct": false},
+				{"letter": "D", "text": "Clear", "correct": false},
+				{"letter": "E", "text": "Understood", "correct": true},
+				{"letter": "F", "text": "Spoken", "correct": false},
+				{"letter": "G", "text": "Written", "correct": false},
+				{"letter": "H", "text": "Sent", "correct": false}
+			]
+		}
+	},
+	"english_communication_q15": {
+		"question": {
+			"text": "The ________ of communication is its ________.",
+			"options": [
+				{"letter": "A", "text": "Function", "correct": true},
+				{"letter": "B", "text": "Nature", "correct": false},
+				{"letter": "C", "text": "Process", "correct": false},
+				{"letter": "D", "text": "Channel", "correct": false},
+				{"letter": "E", "text": "Purpose", "correct": true},
+				{"letter": "F", "text": "Message", "correct": false},
+				{"letter": "G", "text": "Context", "correct": false},
+				{"letter": "H", "text": "Feedback", "correct": false}
+			]
+		}
+	},
+	"english_communication_q16": {
+		"question": {
+			"text": "The ________ is the situation where communication ________.",
+			"options": [
+				{"letter": "A", "text": "Context", "correct": true},
+				{"letter": "B", "text": "Channel", "correct": false},
+				{"letter": "C", "text": "Message", "correct": false},
+				{"letter": "D", "text": "Noise", "correct": false},
+				{"letter": "E", "text": "Occurs", "correct": true},
+				{"letter": "F", "text": "Ends", "correct": false},
+				{"letter": "G", "text": "Begins", "correct": false},
+				{"letter": "H", "text": "Stops", "correct": false}
+			]
+		}
+	},
+	"english_communication_q17": {
+		"question": {
+			"text": "________ means expressing ideas ________ and understandably.",
+			"options": [
+				{"letter": "A", "text": "Clarity", "correct": true},
+				{"letter": "B", "text": "Courtesy", "correct": false},
+				{"letter": "C", "text": "Conciseness", "correct": false},
+				{"letter": "D", "text": "Correctness", "correct": false},
+				{"letter": "E", "text": "Clearly", "correct": true},
+				{"letter": "F", "text": "Briefly", "correct": false},
+				{"letter": "G", "text": "Politely", "correct": false},
+				{"letter": "H", "text": "Accurately", "correct": false}
+			]
+		}
+	},
+	"english_communication_q18": {
+		"question": {
+			"text": "________ refers to politeness and ________ in communication.",
+			"options": [
+				{"letter": "A", "text": "Courtesy", "correct": true},
+				{"letter": "B", "text": "Clarity", "correct": false},
+				{"letter": "C", "text": "Respect", "correct": true},
+				{"letter": "D", "text": "Tone", "correct": false},
+				{"letter": "E", "text": "Conciseness", "correct": false},
+				{"letter": "F", "text": "Accuracy", "correct": false},
+				{"letter": "G", "text": "Feedback", "correct": false},
+				{"letter": "H", "text": "Context", "correct": false}
+			]
+		}
+	},
+	"english_communication_q19": {
+		"question": {
+			"text": "________ means expressing ideas ________ and directly.",
+			"options": [
+				{"letter": "A", "text": "Conciseness", "correct": true},
+				{"letter": "B", "text": "Clarity", "correct": false},
+				{"letter": "C", "text": "Courtesy", "correct": false},
+				{"letter": "D", "text": "Correctness", "correct": false},
+				{"letter": "E", "text": "Briefly", "correct": true},
+				{"letter": "F", "text": "Clearly", "correct": false},
+				{"letter": "G", "text": "Politely", "correct": false},
+				{"letter": "H", "text": "Accurately", "correct": false}
+			]
+		}
+	},
+	"english_communication_q20": {
+		"question": {
+			"text": "A communication ________ happens when the message is not ________.",
+			"options": [
+				{"letter": "A", "text": "Breakdown", "correct": true},
+				{"letter": "B", "text": "Barrier", "correct": false},
+				{"letter": "C", "text": "Noise", "correct": false},
+				{"letter": "D", "text": "Error", "correct": false},
+				{"letter": "E", "text": "Understood", "correct": true},
+				{"letter": "F", "text": "Sent", "correct": false},
+				{"letter": "G", "text": "Heard", "correct": false},
+				{"letter": "H", "text": "Received", "correct": false}
+			]
+		}
 	}
 }
 
@@ -1322,6 +1625,8 @@ func start_minigame(puzzle_id: String) -> void:
 		_start_pronunciation(puzzle_id)
 	elif math_configs.has(puzzle_id):
 		_start_math(puzzle_id)
+	elif puzzle_id == "dialogue_choice_janitor":
+		_start_dialogue_choice(puzzle_id)
 	# Oral Communication Module configs
 	elif _get_oralcom_config(puzzle_id) != null:
 		_start_oralcom_minigame(puzzle_id)
@@ -1477,6 +1782,20 @@ func _start_curriculum_minigame(minigame_type: String) -> void:
 			return
 
 	print("DEBUG: Curriculum minigame started: ", minigame_type)
+
+func _start_dialogue_choice(puzzle_id: String) -> void:
+	print("DEBUG: Starting Dialogue Choice minigame...")
+	current_minigame = dialogue_choice_scene.instantiate()
+	get_tree().root.add_child(current_minigame)
+	current_minigame.minigame_completed.connect(_on_dialogue_choice_finished.bind(puzzle_id))
+	print("DEBUG: Dialogue Choice minigame should now be visible")
+
+func _on_dialogue_choice_finished(success: bool, puzzle_id: String) -> void:
+	print("DEBUG: Dialogue Choice minigame finished. Success: ", success, ", Puzzle: ", puzzle_id)
+	if success:
+		Dialogic.VAR.minigames_completed += 1
+	minigame_completed.emit(puzzle_id, success)
+	current_minigame = null
 
 func _on_minigame_finished(success: bool, score: int, puzzle_id: String) -> void:
 	print("DEBUG: Minigame finished. Success: ", success, ", Score: ", score, ", Puzzle: ", puzzle_id)

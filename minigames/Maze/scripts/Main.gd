@@ -4,25 +4,26 @@ signal game_finished(success: bool, score: int)
 
 # Maze configuration - using preset map dimensions
 const CELL_SIZE = 32  # Larger cells for better visibility
-var maze_width: int = 31
-var maze_height: int = 23
+var maze_width: int = 25
+var maze_height: int = 15
 
 # Cell types
 enum Cell { WALL, FLOOR }
 
 # Game state
 var maze: Array = []
-var questions: Array = []
-var current_question_index: int = 0
+var question: Dictionary = {}  # Single fill-in-the-blank question
+var correct_answers: Array = []  # 2 correct answers for the blanks
+var wrong_answers: Array = []   # Wrong answer options
+var answers_collected: int = 0
 var score: int = 0
 var health: int = 3
 var game_active: bool = false
-var answers_collected: int = 0
-var current_map_index: int = -1  # -1 = random, 0-2 = specific map
 
 # Preset map data
 var start_pos: Vector2i = Vector2i(1, 1)
-var answer_spots: Array = []  # Dedicated spots for correct answers
+var correct_spots: Array = []  # 2 spots for correct answers
+var wrong_spots: Array = []     # Spots for wrong answers
 
 # Scenes
 var collectible_scene = preload("res://minigames/Maze/scenes/Collectible.tscn")
@@ -38,35 +39,30 @@ func _ready():
 	var fade_tween = create_tween()
 	fade_tween.tween_property(self, "modulate:a", 1.0, 0.15)
 
-	# Default questions for testing
-	questions = [
-		{"question": "2 + 2 = ?", "correct": "4", "wrong": ["3", "5", "6"]},
-		{
-			"question": "Capital of France?",
-			"correct": "Paris",
-			"wrong": ["London", "Berlin", "Rome"]
-		},
-		{
-			"question": "Largest planet?",
-			"correct": "Jupiter",
-			"wrong": ["Mars", "Saturn", "Earth"]
-		},
-		{"question": "H2O is?", "correct": "Water", "wrong": ["Air", "Fire", "Salt"]},
-		{"question": "7 x 8 = ?", "correct": "56", "wrong": ["54", "58", "48"]}
-	]
+	# Default question for testing
+	question = {
+		"text": "Who is the person who creates the message in the communication process?",
+		"options": [
+			{"letter": "A", "text": "Sender", "correct": true},
+			{"letter": "B", "text": "Receiver", "correct": false},
+			{"letter": "C", "text": "Listener", "correct": false},
+			{"letter": "D", "text": "Decoder", "correct": false},
+			{"letter": "E", "text": "Creates", "correct": false},
+			{"letter": "F", "text": "Receives", "correct": false},
+			{"letter": "G", "text": "Sends", "correct": false},
+			{"letter": "H", "text": "Interprets", "correct": false}
+		]
+	}
 	_start_game()
 
 func configure_puzzle(config: Dictionary):
-	if config.has("questions"):
-		questions = config.questions
-	if config.has("map_index"):
-		current_map_index = config.map_index
+	if config.has("question"):
+		question = config.question
 
 func _start_game():
 	game_active = true
 	score = 0
 	health = 3
-	current_question_index = 0
 	answers_collected = 0
 
 	_load_preset_map()
@@ -76,25 +72,21 @@ func _start_game():
 	_update_ui()
 
 func _load_preset_map():
-	# Select map based on index or random if -1
-	var map_data: Array
-	if current_map_index >= 0:
-		map_data = PresetMaps.get_map(current_map_index)
-	else:
-		map_data = PresetMaps.get_random_map()
-
+	var map_data: Array = PresetMaps.get_map()
 	var parsed = PresetMaps.parse_map(map_data)
 
 	maze = parsed.maze
 	start_pos = parsed.start
-	answer_spots = parsed.answer_spots
+	correct_spots = parsed.correct_spots
+	wrong_spots = parsed.wrong_spots
 	maze_width = parsed.width
 	maze_height = parsed.height
 
 	# Debug output
-	print("Loaded preset map ", current_map_index, ": ", maze_width, "x", maze_height)
+	print("Loaded maze: ", maze_width, "x", maze_height)
 	print("Start position: ", start_pos)
-	print("Answer spots: ", answer_spots)
+	print("Correct answer spots: ", correct_spots)
+	print("Wrong answer spots: ", wrong_spots)
 
 # ============ MAZE LOADING (Preset Maps) ============
 # Maze generation is now handled by PresetMaps class
@@ -189,107 +181,37 @@ func _place_answers():
 	for child in $CollectibleLayer.get_children():
 		child.queue_free()
 
-	var used_positions: Array = []
-	var correct_positions: Array = []  # Track correct answer positions for path validation
-	var num_questions = min(questions.size(), 5)
-	var positions_with_distance = _get_positions_by_distance_from_start()
+	# Separate options into correct and wrong answers
+	var correct_options = []
+	var wrong_options = []
 
-	# Use the preset answer spots from the map (1-5 markers)
-	# These are hand-designed to be reachable in order
-	for q_index in range(num_questions):
-		var q = questions[q_index]
-		var pos = answer_spots[q_index]
+	for option in question.options:
+		if option.correct:
+			correct_options.append(option)
+		else:
+			wrong_options.append(option)
 
-		# Validate the answer spot exists
-		if pos.x < 0 or pos.y < 0:
-			# Fallback: use distance-based placement if spot not defined
-			push_warning("Answer spot ", q_index + 1, " not defined in map, using fallback")
-			var positions_per_question = max(1, positions_with_distance.size() / (num_questions + 2))
-			var position_index = min((q_index + 1) * positions_per_question, positions_with_distance.size() - 1)
-			pos = positions_with_distance[position_index]["pos"]
+	# Shuffle the spots for randomization
+	var shuffled_correct_spots = correct_spots.duplicate()
+	shuffled_correct_spots.shuffle()
 
-		_spawn_collectible(pos, q.correct, q_index, true)
-		used_positions.append(pos)
-		correct_positions.append(pos)
-		print("DEBUG: Placed Q", q_index + 1, " correct answer at preset spot ", pos)
+	var shuffled_wrong_spots = wrong_spots.duplicate()
+	shuffled_wrong_spots.shuffle()
 
-	# Calculate paths between consecutive correct answers (start -> Q1 -> Q2 -> etc.)
-	# Also include a safety buffer zone around the path
-	var path_positions: Array = []  # All positions on the required path
-	var buffer_zone: Array = []  # Positions adjacent to the path (2-cell buffer)
-	var prev_pos = start_pos
-	
-	for correct_pos in correct_positions:
-		var path = _find_path(prev_pos, correct_pos)
-		if path.is_empty():
-			push_error("No path found from ", prev_pos, " to ", correct_pos)
-			continue
-			
-		for p in path:
-			if not path_positions.has(p):
-				path_positions.append(p)
-			
-			# Add buffer zone: all adjacent cells (2-cell radius for safety)
-			var directions = [
-				Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1),
-				Vector2i(1, 1), Vector2i(-1, -1), Vector2i(1, -1), Vector2i(-1, 1),
-				Vector2i(2, 0), Vector2i(-2, 0), Vector2i(0, 2), Vector2i(0, -2)
-			]
-			for dir in directions:
-				var buffer_pos = p + dir
-				if buffer_pos.x >= 0 and buffer_pos.x < maze_width and buffer_pos.y >= 0 and buffer_pos.y < maze_height:
-					if not buffer_zone.has(buffer_pos) and not path_positions.has(buffer_pos):
-						buffer_zone.append(buffer_pos)
-		
-		prev_pos = correct_pos
+	# Place 2 correct answers randomly in the 2 correct spots
+	for i in range(min(correct_options.size(), shuffled_correct_spots.size())):
+		var pos = shuffled_correct_spots[i]
+		var option = correct_options[i]
+		_spawn_collectible(pos, option.letter, i, true)
+		print("DEBUG: Placed correct answer '", option.letter, "' (", option.text, ") at ", pos)
 
-	# Collect floor positions for wrong answers, strictly avoiding the critical path AND buffer zone
-	var floor_positions: Array = []
-
-	for entry in positions_with_distance:
-		var pos = entry["pos"]
-
-		# Skip if already used (correct answer)
-		if used_positions.has(pos):
-			continue
-
-		# Skip start area (larger buffer)
-		if pos.x <= 3 and pos.y <= 3:
-			continue
-
-		# Skip positions ON the required path between correct answers
-		if path_positions.has(pos):
-			continue
-		
-		# Skip positions in the buffer zone around the path
-		if buffer_zone.has(pos):
-			continue
-
-		# Skip positions too close to correct answers (3-cell radius for safety)
-		var too_close = false
-		for used_pos in used_positions:
-			var dist = abs(pos.x - used_pos.x) + abs(pos.y - used_pos.y)
-			if dist <= 3:  # Manhattan distance <= 3
-				too_close = true
-				break
-
-		if not too_close:
-			floor_positions.append(pos)
-
-	# Shuffle and place wrong answers
-	floor_positions.shuffle()
-	var floor_index = 0
-
-	for q_index in range(num_questions):
-		var q = questions[q_index]
-		# Place 2 wrong answers per question
-		for i in range(min(2, q.wrong.size())):
-			if floor_index < floor_positions.size():
-				var pos = floor_positions[floor_index]
-				_spawn_collectible(pos, q.wrong[i], q_index, false)
-				used_positions.append(pos)
-				floor_index += 1
-				print("DEBUG: Placed Q", q_index + 1, " wrong answer at ", pos)
+	# Place wrong answers randomly in the wrong spots
+	var num_wrong_to_place = min(wrong_options.size(), shuffled_wrong_spots.size())
+	for i in range(num_wrong_to_place):
+		var pos = shuffled_wrong_spots[i]
+		var option = wrong_options[i]
+		_spawn_collectible(pos, option.letter, -1, false)
+		print("DEBUG: Placed wrong answer '", option.letter, "' (", option.text, ") at ", pos)
 
 # Get all floor positions sorted by distance from start (BFS)
 func _get_positions_by_distance_from_start() -> Array:
@@ -348,36 +270,33 @@ func _setup_player():
 
 # ============ GAME LOGIC ============
 
-func _on_answer_collected(collectible: Node, _answer_text: String, question_index: int, is_correct: bool):
+func _on_answer_collected(collectible: Node, answer_text: String, _question_index: int, is_correct: bool):
 	if not game_active:
 		return
 
-	# Check if this is the answer for the CURRENT question
-	if question_index == current_question_index and is_correct:
-		# Correct answer for current question! Remove it.
+	if is_correct:
+		# Correct answer collected!
 		collectible.confirm_collect()
 		score += 100
 		answers_collected += 1
-		current_question_index += 1
 		_flash_screen(Color(0.2, 0.8, 0.2, 0.3))
-		_show_feedback("Correct!", Color(0.2, 0.8, 0.2))
+		_show_feedback("Correct! '" + answer_text + "'", Color(0.2, 0.8, 0.2))
 
-		if current_question_index >= questions.size():
-			# All questions answered!
+		# Count how many correct answers exist
+		var total_correct = 0
+		for option in question.options:
+			if option.correct:
+				total_correct += 1
+
+		# Check if all correct answers are collected
+		if answers_collected >= total_correct:
 			_end_game(true)
-	elif question_index != current_question_index and is_correct:
-		# Correct answer but WRONG order - DON'T remove, just warn
-		collectible.wrong_order_feedback()
-		health -= 1
-		_flash_screen(Color(0.8, 0.6, 0.2, 0.4))
-		_show_feedback("Wrong order! Get Q" + str(current_question_index + 1) + " first!", Color(0.8, 0.6, 0.2))
-		_check_game_over()
 	else:
 		# Wrong answer - remove it as penalty
 		collectible.reject_collect()
 		health -= 1
 		_flash_screen(Color(0.8, 0.2, 0.2, 0.4))
-		_show_feedback("Wrong!", Color(0.8, 0.2, 0.2))
+		_show_feedback("Wrong! '" + answer_text + "'", Color(0.8, 0.2, 0.2))
 		_check_game_over()
 
 	_update_ui()
@@ -421,18 +340,19 @@ func _update_ui():
 	_update_question_queue()
 
 func _update_question_queue():
-	var queue_text = ""
-	for i in range(questions.size()):
-		var q = questions[i]
-		var prefix = ""
-		if i < current_question_index:
-			prefix = "[✓] "  # Completed
-		elif i == current_question_index:
-			prefix = "→ "  # Current
-		else:
-			prefix = "   "  # Upcoming
+	var queue_text = "Question:\n" + question.text + "\n\n"
 
-		queue_text += prefix + str(i + 1) + ". " + q.question + "\n"
+	# List all options with letters
+	for option in question.options:
+		queue_text += option.letter + ". " + option.text + "\n"
+
+	# Count total correct answers dynamically
+	var total_correct = 0
+	for option in question.options:
+		if option.correct:
+			total_correct += 1
+
+	queue_text += "\nCollected: " + str(answers_collected) + "/" + str(total_correct)
 
 	$UILayer/QuestionQueue.text = queue_text
 

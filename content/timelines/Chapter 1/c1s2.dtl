@@ -2,7 +2,7 @@
 set {chapter1_score} = 0
 set {c1s2_repair_tried} = false
 set {c1s2_teacher_tried} = false
-Conrad: The time is now 5\:30. Today's classes are over. Instead of going home, Conrad and Mark stay in the classroom to talk.
+The time is now 5\:30. Today's classes are over. Instead of going home, Conrad and Mark stay in the classroom to talk.
 join Conrad (half) left
 join Mark (Mark_half) right
 Conrad: Finally, classes are over. Dude, let's go find that Janitor!

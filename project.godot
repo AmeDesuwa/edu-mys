@@ -32,6 +32,7 @@ SettingsManager="*res://autoload/settings_manager.gd"
 PauseManager="*res://autoload/pause_manager.gd"
 CurriculumQuestions="*res://autoload/curriculum_questions.gd"
 EvidenceManager="*res://autoload/evidence_manager.gd"
+EvidenceButtonManager="*res://autoload/evidence_button_manager.gd"
 
 [dialogic]
 
@@ -53,18 +54,16 @@ directories/dch_directory={
 "Ryan": "res://content/characters/Ryan.dch",
 "Victor": "res://content/characters/Victor.dch",
 "character": "res://content/characters/character.dch",
-"characters/Alice": "res://content/characters/Alice.dch",
-"characters/Ria": "res://content/characters/Ria.dch",
 "example character": "res://content/characters/example character.dch"
 }
 directories/dtl_directory={
-"Chapter 2/c2s0": "res://content/timelines/Chapter 2/c2s0.dtl",
-"Chapter 2/c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
-"Chapter 2/c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
-"Chapter 2/c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
-"Chapter 2/c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
-"Chapter 2/c2s5": "res://content/timelines/Chapter 2/c2s5.dtl",
-"Chapter 2/c2s6": "res://content/timelines/Chapter 2/c2s6.dtl",
+"Chapter 2/c2s0": "res://content/timelines/Chapter 3/Chapter 2/c2s0.dtl",
+"Chapter 2/c2s1": "res://content/timelines/Chapter 3/Chapter 2/c2s1.dtl",
+"Chapter 2/c2s2": "res://content/timelines/Chapter 3/Chapter 2/c2s2.dtl",
+"Chapter 2/c2s3": "res://content/timelines/Chapter 3/Chapter 2/c2s3.dtl",
+"Chapter 2/c2s4": "res://content/timelines/Chapter 3/Chapter 2/c2s4.dtl",
+"Chapter 2/c2s5": "res://content/timelines/Chapter 3/Chapter 2/c2s5.dtl",
+"Chapter 2/c2s6": "res://content/timelines/Chapter 3/Chapter 2/c2s6.dtl",
 "broadcast_s1": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s1.dtl",
 "broadcast_s2": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s2.dtl",
 "broadcast_s3": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s3.dtl",
@@ -75,15 +74,15 @@ directories/dtl_directory={
 "c1s3": "res://content/timelines/Chapter 1/c1s3.dtl",
 "c1s4": "res://content/timelines/Chapter 1/c1s4.dtl",
 "c1s5": "res://content/timelines/Chapter 1/c1s5.dtl",
-"c2s0": "res://content/timelines/Chapter 3/Chapter 2/c2s0.dtl",
-"c2s1": "res://content/timelines/Chapter 3/Chapter 2/c2s1.dtl",
-"c2s2": "res://content/timelines/Chapter 3/Chapter 2/c2s2.dtl",
+"c2s0": "res://content/timelines/Chapter 2/c2s0.dtl",
+"c2s1": "res://content/timelines/Chapter 2/c2s1.dtl",
+"c2s2": "res://content/timelines/Chapter 2/c2s2.dtl",
 "c2s2b_old": "res://content/timelines/Unused/c2s2b_old.dtl",
-"c2s3": "res://content/timelines/Chapter 3/Chapter 2/c2s3.dtl",
-"c2s4": "res://content/timelines/Chapter 3/Chapter 2/c2s4.dtl",
-"c2s5": "res://content/timelines/Chapter 3/Chapter 2/c2s5.dtl",
+"c2s3": "res://content/timelines/Chapter 2/c2s3.dtl",
+"c2s4": "res://content/timelines/Chapter 2/c2s4.dtl",
+"c2s5": "res://content/timelines/Chapter 2/c2s5.dtl",
 "c2s5b_old": "res://content/timelines/Unused/c2s5b_old.dtl",
-"c2s6": "res://content/timelines/Chapter 3/Chapter 2/c2s6.dtl",
+"c2s6": "res://content/timelines/Chapter 2/c2s6.dtl",
 "c2s7_old": "res://content/timelines/Unused/c2s7_old.dtl",
 "c3s0": "res://content/timelines/Chapter 3/c3s0.dtl",
 "c3s1": "res://content/timelines/Chapter 3/c3s1.dtl",
@@ -181,14 +180,11 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-history/simple_history_enabled=true
+history/simple_history_enabled=false
 history/full_history_enabled=false
 history/visited_event_history_enabled=false
 text/autoskip_time_per_event=0.05
 text/autoadvance_fixed_delay=0.5
-choices/hotkey_behaviour=1
-history/save_on_save=false
-history/simple_history_save=true
 
 [display]
 
