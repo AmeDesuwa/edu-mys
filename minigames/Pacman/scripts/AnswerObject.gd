@@ -8,17 +8,21 @@ var is_correct = false
 var direction = Vector2.ZERO
 var change_direction_timer = 0.0
 
+# Floating animation
+var base_panel_y = 0.0
+var float_tween: Tween = null
+
 func _ready():
-	$Label.text = answer_text
-	
-	# All answers look the same - yellow/gold color
-	$ColorRect.color = Color(0.9, 0.8, 0.2)
-	
+	$Panel/Label.text = answer_text
+
 	# Add to group for collision detection
 	$Area2D.add_to_group("answer")
-	
+
 	# Set initial random direction
 	randomize_direction()
+
+	# Start floating animation
+	_start_float_animation()
 
 func _physics_process(delta):
 	# Change direction periodically
@@ -43,3 +47,22 @@ func _physics_process(delta):
 func randomize_direction():
 	var angle = randf() * TAU  # Random angle in radians
 	direction = Vector2(cos(angle), sin(angle)).normalized()
+
+func _start_float_animation():
+	# Subtle floating bob animation for the panel
+	base_panel_y = $Panel.position.y
+	_animate_float_up()
+
+func _animate_float_up():
+	if not is_instance_valid(self):
+		return
+	float_tween = create_tween()
+	float_tween.tween_property($Panel, "position:y", base_panel_y - 3, 0.8).set_ease(Tween.EASE_IN_OUT)
+	float_tween.tween_callback(_animate_float_down)
+
+func _animate_float_down():
+	if not is_instance_valid(self):
+		return
+	float_tween = create_tween()
+	float_tween.tween_property($Panel, "position:y", base_panel_y + 3, 0.8).set_ease(Tween.EASE_IN_OUT)
+	float_tween.tween_callback(_animate_float_up)

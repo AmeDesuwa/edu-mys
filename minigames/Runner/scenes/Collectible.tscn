@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" uid="uid://cs6e1tpqtjl4e" path="res://minigames/Runner/scripts/Collectible.gd" id="1_collectible"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_collectible"]
+size = Vector2(70, 40)
+
+[sub_resource type="LabelSettings" id="LabelSettings_collectible"]
+font_size = 16
+font_color = Color(1, 1, 1, 1)
+outline_size = 3
+outline_color = Color(0.1, 0.4, 0.1, 1)
+
+[node name="Collectible" type="Node2D"]
+script = ExtResource("1_collectible")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Glow" type="Polygon2D" parent="Visual"]
+color = Color(0.2, 0.8, 0.3, 0.3)
+polygon = PackedVector2Array(-42, -27, -42, 27, 42, 27, 42, -27)
+
+[node name="Body" type="Polygon2D" parent="Visual"]
+color = Color(0.15, 0.6, 0.2, 1)
+polygon = PackedVector2Array(-35, -20, -35, 20, 35, 20, 35, -20)
+
+[node name="Highlight" type="Polygon2D" parent="Visual"]
+color = Color(0.3, 0.8, 0.35, 1)
+polygon = PackedVector2Array(-35, -20, -35, -15, 35, -15, 35, -20)
+
+[node name="Checkmark" type="Polygon2D" parent="Visual"]
+position = Vector2(-25, 0)
+color = Color(1, 1, 1, 0.8)
+polygon = PackedVector2Array(-4, 0, -2, 2, 2, -4, 4, -2, -2, 6, -6, 2)
+
+[node name="AnswerLabel" type="Label" parent="."]
+offset_left = -25
+offset_top = -12
+offset_right = 35
+offset_bottom = 12
+text = "Correct"
+label_settings = SubResource("LabelSettings_collectible")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sparkle" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 1, 0.8, 0.8)
+polygon = PackedVector2Array(0, -4, 1, -1, 4, 0, 1, 1, 0, 4, -1, 1, -4, 0, -1, -1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_collectible")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

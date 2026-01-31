@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6s2cw0ki6e8k"]
+
+[ext_resource type="Script" uid="uid://dyj4tfvpy2rrl" path="res://Effects/DialogicEffectsManager.gd" id="1_qdabm"]
+
+[node name="DialogicEffectsManager" type="Node"]
+script = ExtResource("1_qdabm")

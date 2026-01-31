@@ -1,0 +1,11 @@
+Conrad: Testing level up system.
+
+set_variable name="conrad_level" value="2"
+[signal arg="show_level_up"]
+
+Conrad: Did the level up work?
+
+set_variable name="conrad_level" value="10"
+[signal arg="show_level_up"]
+
+Conrad: That was the max level!

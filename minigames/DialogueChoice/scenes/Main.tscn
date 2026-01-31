@@ -1,0 +1,204 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://minigames/DialogueChoice/scenes/Main.gd" id="1_script"]
+[ext_resource type="Theme" path="res://resources/ui/game_theme.tres" id="2_theme"]
+
+[node name="DialogueChoiceMinigame" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.1, 0.2, 1)
+
+[node name="MainContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HeaderContainer" type="HBoxContainer" parent="Control/MainContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TimerLabel" type="Label" parent="Control/MainContainer/VBoxContainer/HeaderContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "03:00"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Control/MainContainer/VBoxContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PromptLabel" type="Label" parent="Control/MainContainer/VBoxContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 32
+text = "Time to use your knowledge!"
+horizontal_alignment = 1
+
+[node name="InstructionPanel" type="PanelContainer" parent="Control/MainContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MainContainer/VBoxContainer/InstructionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainContainer/VBoxContainer/InstructionPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="Control/MainContainer/VBoxContainer/InstructionPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "\"Approach Carefully\""
+horizontal_alignment = 1
+
+[node name="QuestionLabel" type="Label" parent="Control/MainContainer/VBoxContainer/InstructionPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Choose the best polite request for approaching the janitor"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SubInstructionLabel" type="Label" parent="Control/MainContainer/VBoxContainer/InstructionPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Select the best line by saying it through the mic."
+horizontal_alignment = 1
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="Control/MainContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Choice1" type="Button" parent="Control/MainContainer/VBoxContainer/ChoicesContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "\"Excuse me, sir? Sorry to bother your cleaning, but I think I left something under my desk earlier. Mind if I take a quick look?\""
+autowrap_mode = 3
+
+[node name="Choice2" type="Button" parent="Control/MainContainer/VBoxContainer/ChoicesContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "\"Good afternoon, sir. I was hoping you could help me. I'm looking for something I lost in this room—have you come across anything unusual while you were sweeping?\""
+autowrap_mode = 3
+
+[node name="Choice3" type="Button" parent="Control/MainContainer/VBoxContainer/ChoicesContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "\"Hi there! I can move those chairs for you if you need to get into that corner. Actually, I was also looking for a small item I dropped near here. Did you happen to see it?\""
+autowrap_mode = 3
+
+[node name="Choice4" type="Button" parent="Control/MainContainer/VBoxContainer/ChoicesContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "\"Hey, sir. Quick question—did anyone turn in a lost item to you from this classroom today? I'm missing something important and wanted to check with you first.\""
+autowrap_mode = 3
+
+[node name="MicrophonePanel" type="PanelContainer" parent="Control/MainContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MainContainer/VBoxContainer/MicrophonePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="SentenceDisplay" type="RichTextLabel" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Read the highlighted word out loud"
+fit_content = true
+scroll_active = false
+
+[node name="Separator" type="Control" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MicContainer" type="HBoxContainer" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MicIcon" type="Label" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer/VBoxContainer/MicContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "🎤"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Say: [word]"
+horizontal_alignment = 1
+
+[node name="TranscriptionLabel" type="Label" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 20
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="Control/MainContainer/VBoxContainer/MicrophonePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Progress: 0/0"
+horizontal_alignment = 1
+
+[node name="FeedbackLabel" type="Label" parent="Control/MainContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 32
+text = "This isn't the right way to say it, maybe there's something better."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Control/MainContainer/VBoxContainer/ChoicesContainer/Choice1" to="." method="_on_choice_selected" binds= [0]]
+[connection signal="pressed" from="Control/MainContainer/VBoxContainer/ChoicesContainer/Choice2" to="." method="_on_choice_selected" binds= [1]]
+[connection signal="pressed" from="Control/MainContainer/VBoxContainer/ChoicesContainer/Choice3" to="." method="_on_choice_selected" binds= [2]]
+[connection signal="pressed" from="Control/MainContainer/VBoxContainer/ChoicesContainer/Choice4" to="." method="_on_choice_selected" binds= [3]]

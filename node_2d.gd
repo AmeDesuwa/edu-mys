@@ -1,13 +1,26 @@
 extends Node2D
 
+# Flag to indicate if we should load a save instead of starting fresh
+static var load_continue_save := false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("DEBUG: node_2d.gd is running. Starting c1s4.")
-	Dialogic.start("c1s3")
-	pass # Replace with function body.
+	Dialogic.paused = false
 
+	if load_continue_save:
+		# Load the saved game state
+		print("DEBUG: node_2d.gd loading continue save.")
+		load_continue_save = false
+		# Wait for scene to be fully ready, then load save
+		call_deferred("_load_save")
+	else:
+		# Start fresh from Chapter 1 Scene 1
+		print("DEBUG: node_2d.gd starting c1s1.")
+		Dialogic.start("c1s1")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _load_save() -> void:
+	# Wait an extra frame to ensure Dialogic is fully initialized
+	await get_tree().process_frame
+
+	# Dialogic.Save.load() handles starting the timeline from saved state
+	# This will restore the timeline, position, and all game state
+	Dialogic.Save.load("continue_save")
