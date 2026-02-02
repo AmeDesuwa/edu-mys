@@ -17,6 +17,13 @@ var items_per_page: int = 3
 func _ready():
 	update_evidence_display()
 
+func _input(event):
+	# Handle Escape key to close evidence panel
+	if visible and event.is_action_pressed("ui_cancel"):
+		hide_evidence_panel()
+		# Consume the input event to prevent pause menu from opening
+		get_viewport().set_input_as_handled()
+
 func show_evidence_panel():
 	visible = true
 	# Get current chapter from Dialogic

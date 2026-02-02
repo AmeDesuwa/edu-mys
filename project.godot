@@ -57,13 +57,6 @@ directories/dch_directory={
 "example character": "res://content/characters/example character.dch"
 }
 directories/dtl_directory={
-"Chapter 2/c2s0": "res://content/timelines/Chapter 3/Chapter 2/c2s0.dtl",
-"Chapter 2/c2s1": "res://content/timelines/Chapter 3/Chapter 2/c2s1.dtl",
-"Chapter 2/c2s2": "res://content/timelines/Chapter 3/Chapter 2/c2s2.dtl",
-"Chapter 2/c2s3": "res://content/timelines/Chapter 3/Chapter 2/c2s3.dtl",
-"Chapter 2/c2s4": "res://content/timelines/Chapter 3/Chapter 2/c2s4.dtl",
-"Chapter 2/c2s5": "res://content/timelines/Chapter 3/Chapter 2/c2s5.dtl",
-"Chapter 2/c2s6": "res://content/timelines/Chapter 3/Chapter 2/c2s6.dtl",
 "broadcast_s1": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s1.dtl",
 "broadcast_s2": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s2.dtl",
 "broadcast_s3": "res://content/timelines/Unused/Broadcasting Room Mystery/broadcast_s3.dtl",

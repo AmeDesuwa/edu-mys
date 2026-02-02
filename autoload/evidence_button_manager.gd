@@ -13,6 +13,9 @@ func _ready() -> void:
 		Dialogic.timeline_started.connect(_on_timeline_started)
 	if Dialogic.timeline_ended.is_connected(_on_timeline_ended) == false:
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
+	
+	# Note: Title card visibility is now handled directly in TitleCardManager
+	# to ensure proper timing and layer management
 
 func _on_timeline_started() -> void:
 	button_enabled = true
@@ -21,6 +24,7 @@ func _on_timeline_started() -> void:
 func _on_timeline_ended() -> void:
 	button_enabled = false
 	hide_evidence_button()
+
 
 func show_evidence_button() -> void:
 	if evidence_button_instance != null and is_instance_valid(evidence_button_instance):

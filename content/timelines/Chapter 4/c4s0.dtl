@@ -1,5 +1,7 @@
 [signal arg="show_title_card 4"]
 [background arg="res://Bg/library_archive.png" fade="2.0"]
+set {current_chapter} = 4
+set {selected_subject} = "English"
 set {chapter4_score} = 0
 A week after the broken sculpture case...
 The library archive is quiet, dusty, and forgotten. Shelves tower in the dim light, packed with decades of records.

@@ -56,6 +56,7 @@ Conrad: Wait. What's that?
 A small note is tucked under the edge of the plaque.
 Conrad picks it up carefully, reading aloud.
 Conrad: "Not everyone deserves to shine."
+[signal arg="unlock_evidence broken_sculpture_note_c3"]
 join Mark (Mark_half) leftmost
 Mark: Conrad! What happened? Is Mia...
 Conrad: Someone destroyed her sculpture deliberately. And left this message.
@@ -77,6 +78,7 @@ Conrad: The sculpture was pushed, not kicked. Someone got close to it.
 Conrad: And... what's this?
 He picks up a small piece of cloth, stained with various colors.
 Conrad: Paint-stained fabric. Someone dropped this.
+[signal arg="unlock_evidence paint_cloth_c3"]
 Mark: A clue already?
 Conrad: The beginning of one.
 join "Diwata Laya" (Half) center

@@ -48,6 +48,7 @@ leave "Diwata Laya"
 Mark moves past Ryan and searches behind the dusty equipment.
 Mark pulls out a faded blue gym bag and unzips it.
 Mark: Twenty thousand pesos. It's all here.
+[signal arg="unlock_evidence recovered_money_c2"]
 Desperation floods Ryan's voice.
 Ryan: I wasn't stealing it! I was going to return it!
 Conrad: Then why take it at all?

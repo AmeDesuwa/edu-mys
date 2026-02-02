@@ -1,5 +1,7 @@
 [signal arg="show_title_card 5"]
 [background arg="res://Bg/classroom.png" fade="2.0"]
+set {current_chapter} = 5
+set {selected_subject} = "English"
 set {chapter5_score} = 0
 Two weeks after the journal incident...
 Conrad sits at his desk, the four B.C. cards spread before him like pieces of a puzzle.

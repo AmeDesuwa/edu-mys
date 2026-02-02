@@ -25,6 +25,7 @@ Ria's voice breaks.
 Ria: A threat.
 She reaches into her pocket and pulls out a folded piece of paper.
 Ria: It said... "I know what you did with last year's fund. Resign or I'll expose you."
+[signal arg="unlock_evidence threatening_note_c2"]
 Mark: Someone was threatening you? Why didn't you tell anyone?
 Tears begin to form in Ria's eyes.
 Ria: I was scared! I thought if I told someone, it would make me look guilty.

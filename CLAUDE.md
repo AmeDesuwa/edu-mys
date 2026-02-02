@@ -61,15 +61,37 @@ Dialogic.paused = false
 
 Minigames are triggered from timelines via `[signal arg="start_minigame puzzle_id"]`.
 
-`MinigameManager` handles various minigame types:
+`MinigameManager` (`autoload/minigame_manager.gd`) handles various minigame types:
 - **Fill-in-the-blank** (`minigames/Drag/`) - Drag-and-drop word completion
 - **Runner** - Answer questions while running
 - **Pacman** - Collect correct answers while avoiding enemies
 - **Platformer** - Collect items while platforming
-- **Maze** - Navigate maze while answering questions
+- **Maze** - Navigate maze while answering questions (see [MAZE_MINIGAME_DOCUMENTATION.md](MAZE_MINIGAME_DOCUMENTATION.md))
 - **Pronunciation** - Speech recognition minigame
 - **Math** - Math problem solving
 - **Dialogue Choice** (IN DEVELOPMENT) - Select and speak correct dialogue options with voice recognition
+
+#### Curriculum-Based Minigames
+
+Minigames can use the curriculum question system by using the format: `curriculum:type`
+
+```
+[signal arg="start_minigame curriculum:runner"]
+[signal arg="start_minigame curriculum:pacman"]
+[signal arg="start_minigame curriculum:maze"]
+```
+
+This requires two Dialogic variables to be set (usually at chapter start):
+- `{current_chapter}` - Chapter number (1-5)
+- `{selected_subject}` - Subject name (e.g., "English", "General Mathematics")
+
+The curriculum system (`autoload/curriculum_questions.gd`) maps chapters to quarters:
+- Chapters 1-2 → Q1 (First Quarter)
+- Chapter 3 → Q2 (Second Quarter)
+- Chapter 4 → Q3 (Third Quarter)
+- Chapter 5 → Q4 (Fourth Quarter)
+
+See [CURRICULUM_SYSTEM.md](CURRICULUM_SYSTEM.md) for full details on adding curriculum questions.
 
 #### Dialogue Choice Minigame (IN DEVELOPMENT - Vosk Integration)
 
@@ -156,6 +178,25 @@ Conrad: I should remember this...
 - Timeline naming: `c1s1` = Chapter 1 Scene 1, `c1s2b` = Chapter 1 Scene 2 branch
 - `assets/evidence/` - Evidence placeholder images (see README.md in folder)
 
+#### Chapter Initialization Pattern
+
+**CRITICAL:** Every chapter intro file (`c1s1.dtl`, `c2s0.dtl`, etc.) MUST initialize these variables at the start:
+
+```
+[signal arg="show_title_card N"]
+[background arg="..."]
+set {current_chapter} = N
+set {selected_subject} = "English"
+set {chapterN_score} = 0
+```
+
+This ensures:
+- Curriculum minigames work correctly
+- Evidence system knows which chapter to display
+- Testing individual chapters in Dialogic works without going through new game flow
+
+**Why this matters:** When testing chapters directly in Dialogic, these variables aren't set by the main menu flow, causing curriculum minigames to freeze. Always initialize them at chapter start.
+
 ### Multiple Choice with Retry
 
 For choices where wrong answers should loop back:
@@ -175,3 +216,48 @@ Character: Question text?
 - Variables: `set {var} = value`, `set {var} += 10`, `set {var} -= 5`
 - Jumps within timeline: `jump label_name`
 - Jumps to other timeline: `jump timeline_name/`
+
+## Important Patterns & Bug Fixes
+
+### Minigame Error Handling
+
+`MinigameManager` must emit the `minigame_completed` signal even on failure, otherwise Dialogic remains paused forever:
+
+```gdscript
+func _start_curriculum_minigame(minigame_type: String) -> void:
+	var config = CurriculumQuestions.get_config(minigame_type)
+	if config.is_empty():
+		push_error("No curriculum config for: " + minigame_type)
+		# CRITICAL: Emit completion signal to unpause Dialogic
+		minigame_completed.emit("curriculum_" + minigame_type, false)
+		return
+```
+
+### Evidence Panel Input Handling
+
+The evidence panel consumes the Escape key to prevent the pause menu from opening while evidence is displayed:
+
+```gdscript
+func _input(event):
+	if visible and event.is_action_pressed("ui_cancel"):
+		hide_evidence_panel()
+		get_viewport().set_input_as_handled()  # Prevents pause menu
+```
+
+### Testing Individual Chapters
+
+To test a chapter directly in Dialogic without starting a new game:
+1. Open the chapter's intro timeline (e.g., `c2s0.dtl`)
+2. Ensure `current_chapter` and `selected_subject` are set at the top
+3. Press "Play Timeline" in Dialogic editor
+
+Without these variables, curriculum minigames will fail and freeze the game.
+
+## Recent Changes (2026-02-02)
+
+- Added evidence system to Chapter 2 (5 evidence items)
+- Fixed curriculum minigame freeze when config fails
+- Added Escape key handling to evidence panel
+- Set "English" as default subject for all chapters
+- Fixed Dialogic addon typo (`.ts1n` → `.tscn`)
+- Standardized chapter initialization across all chapters

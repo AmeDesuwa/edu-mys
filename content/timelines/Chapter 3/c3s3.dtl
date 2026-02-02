@@ -26,6 +26,7 @@ Conrad: True. We need something more concrete.
 Conrad continues searching, then pauses.
 Conrad: What's this?
 He pulls out a worn sketchbook, its cover marked with Victor's name.
+[signal arg="unlock_evidence victor_sketchbook_c3"]
 Conrad flips through the pages.
 The first half is filled with technical studies: anatomy, perspective, shading techniques.
 Then the tone changes.
@@ -40,6 +41,7 @@ Conrad continues through the sketchbook and finds a loose receipt tucked between
 Conrad: Hello. What's this?
 He examines the receipt.
 Conrad: Art supply store. Dated yesterday. Time stamp: 8:47 PM.
+[signal arg="unlock_evidence art_store_receipt_c3"]
 Mark: That's late. Why would he need supplies so urgently?
 Conrad: The store is near the school. If he was there at 8:47, he could easily have come here afterward.
 Mark: His alibi was that he was home all night. This proves he was out.
@@ -64,6 +66,7 @@ Conrad examines the paint cloth more carefully.
 Conrad: Wait. There's something here. A small tag.
 He holds it up to the light.
 Conrad: Student art supplies are labeled for inventory. This tag has a number.
+[signal arg="unlock_evidence inventory_tag_cloth_c3"]
 Mark: And if we can match that number to Victor's assigned supplies...
 Conrad: Then we have physical evidence placing his materials at the crime scene.
 Conrad: Let's check the inventory log. Ms. Reyes keeps records of everything.
