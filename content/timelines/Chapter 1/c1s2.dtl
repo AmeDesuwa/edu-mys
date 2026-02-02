@@ -10,7 +10,7 @@ Mark: I can't man, mom told me to go home as soon as possible. My mom and I got 
 Conrad: Alright, fine. We can just talk through messages just in case I need you for something. You better respond as soon as you can.
 leave Mark [animation="Instant Out"]
 leave Conrad [animation="Instant Out"]
-[background arg="res://Bg/faculty room door.png" fade="0.0"]
+[background arg="res://Bg/storage room front door.png" fade="0.0"]
 ...
 Conrad immediately went to the classroom
 his chest tightening with every step. When he reached the door, he froze.
