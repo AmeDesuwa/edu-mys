@@ -3,22 +3,22 @@ The art room feels different now. Quieter. Heavy with the weight of what happene
 join Conrad (half) leftmost
 join Mark (Mark_half) left
 Conrad and Mark stand near the door, watching the scene unfold.
-join "Ms Reyes" (half) center
-Ms. Reyes stands near her desk, her expression a mix of disappointment and sadness.
+join "Ms Santos" (half) center
+Ms. Santos stands near her desk, her expression a mix of disappointment and sadness.
 join Victor (half) right
 Victor sits on a stool, shoulders hunched, unable to meet anyone's eyes.
-"Ms Reyes": Victor. I've always believed in your talent.
-"Ms Reyes": But talent without empathy is just... technique. Empty movements.
+"Ms Santos": Victor. I've always believed in your talent.
+"Ms Santos": But talent without empathy is just... technique. Empty movements.
 Victor: I know. I understand that now.
-"Ms Reyes": The principal has decided on your consequences.
-"Ms Reyes": You'll be suspended from the art program for the rest of the semester.
+"Ms Santos": The principal has decided on your consequences.
+"Ms Santos": You'll be suspended from the art program for the rest of the semester.
 Victor winces but doesn't protest.
-"Ms Reyes": And you'll help organize next year's Art Week. Setting up displays. Supporting other students.
-"Ms Reyes": Learning that art is about community, not competition.
+"Ms Santos": And you'll help organize next year's Art Week. Setting up displays. Supporting other students.
+"Ms Santos": Learning that art is about community, not competition.
 Victor nods slowly.
 Victor: That's... that's fair. More than fair.
 leave Victor
-leave "Ms Reyes"
+leave "Ms Santos"
 [wait time="0.5"]
 join Mia (half) right
 Mia enters the room quietly. Her eyes are still red, but her expression is steady.

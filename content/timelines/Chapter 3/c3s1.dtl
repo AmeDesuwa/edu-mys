@@ -7,10 +7,9 @@ Mark: Man, after the exam sabotage and the missing fund... it's nice to have som
 Conrad: "Normal" is relative. But yes, this is refreshing.
 Mark: Two cases solved. You're getting quite the reputation, you know.
 Conrad: I'm just following the evidence. Anyone could do it.
-Mark: Not anyone has a mysterious spirit guide helping them.
-Conrad shoots Mark a warning look.
-Conrad: Keep your voice down.
-Mark: Relax, no one's listening. They're all too busy with the art.
+Mark: Come on, don't be modest. You've got instincts most people don't have.
+Conrad: I just pay attention to details.
+Mark: If you say so.
 Mark gestures at the colorful displays surrounding them.
 Mark: Speaking of which - have you seen Mia's sculpture? The one that won regionals?
 Conrad: "The Reader"? I've heard it's the centerpiece of the exhibit.
@@ -26,9 +25,10 @@ The murmurs aren't of admiration. They're of shock.
 join Conrad (half) left
 join Mark (Mark_half) right
 Mark: What's going on? Why does everyone look so...
-A student rushes past, face pale.
-Student: Someone destroyed Mia's sculpture! It's completely smashed!
+join Ben (Ben_half) center
+Ben: Someone destroyed Mia's sculpture! It's completely smashed!
 Conrad: What?
+leave Ben
 Conrad pushes through the crowd, his detective instincts taking over.
 leave Conrad
 leave Mark

@@ -69,21 +69,21 @@ Conrad: Student art supplies are labeled for inventory. This tag has a number.
 [signal arg="unlock_evidence inventory_tag_cloth_c3"]
 Mark: And if we can match that number to Victor's assigned supplies...
 Conrad: Then we have physical evidence placing his materials at the crime scene.
-Conrad: Let's check the inventory log. Ms. Reyes keeps records of everything.
+Conrad: Let's check the inventory log. Ms. Santos keeps records of everything.
 leave Conrad
 leave Mark
 [background arg="res://Bg/art_room.png" fade="0.5"]
 join Conrad (half) left
-join "Ms Reyes" (half) right
-"Ms Reyes": An inventory number? Yes, we track all school-provided supplies.
-"Ms Reyes": Let me check the log.
+join "Ms Santos" (half) right
+"Ms Santos": An inventory number? Yes, we track all school-provided supplies.
+"Ms Santos": Let me check the log.
 She pulls out a thick binder and flips through pages.
-"Ms Reyes": The number you mentioned... that corresponds to supplies assigned to cabinet 14.
+"Ms Santos": The number you mentioned... that corresponds to supplies assigned to cabinet 14.
 Conrad: Whose cabinet is that?
 "Ms Reyes" looks up, her face troubled.
-"Ms Reyes": Victor Lim.
-Conrad: Thank you, Ms. Reyes.
-leave "Ms Reyes"
+"Ms Santos": Victor Lim.
+Conrad: Thank you, Ms. Santos.
+leave "Ms Santos"
 join Mark (Mark_half) right
 Mark: So we have it. The cloth at the scene came from Victor's supplies.
 label evidence_choice
