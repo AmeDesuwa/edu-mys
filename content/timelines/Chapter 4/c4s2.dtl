@@ -20,7 +20,7 @@ join "Diwata Laya" (Half) center
 "Diwata Laya": [i][color=#9999ff]Someone who has learned about teaching, but not yet about compassion.[/color][/i]
 [signal arg="laya_end"]
 leave "Diwata Laya"
-Conrad: Laya's right. This feels like someone trying to imitate moral teaching but missing the point.
+Conrad: This feels like someone trying to imitate moral teaching but missing the point.
 Mark: Like they read a book about psychology and decided to play therapist?
 Conrad: Exactly.
 Conrad: We need to find the source. Who has access to this much information about students?

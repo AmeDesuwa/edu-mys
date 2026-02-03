@@ -17,6 +17,15 @@
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
+"full": {
+"export_overrides": {
+"image": "\"res://Sprites/Mia_full.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.8,
+"scene": "res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
+},
 "half": {
 "export_overrides": {
 "image": "\"res://Sprites/Mia_half.png\""

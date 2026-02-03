@@ -139,6 +139,7 @@ Conrad: She also admitted to being in the faculty room when Ms. Santos was gone.
 Mark: Just like Ryan was in the hallway at the same time.
 Conrad: Two people with motive. Two people with opportunity.
 Conrad: The timeline is getting complicated.
+[signal arg="unlock_evidence witness_timeline_c2"]
 Mark: So who do we focus on?
 label suspect_choice
 Conrad: Based on what we've learned, who should we focus on?

@@ -70,7 +70,96 @@ Victor: But now I just feel empty.
 Victor: Destroying her art didn't make mine better. It just made me... this.
 He looks up at Conrad, tears streaming down his face.
 Victor: I'm sorry. I'm so sorry.
-Conrad: You need to tell Ms. Reyes. And Mia.
+Conrad: Tell me exactly what happened that night.
+Victor: I... okay.
+[wait time="1.0"]
+leave --All--
+[background arg="res://Bg/black.png" fade="1.0"]
+[wait time="1.0"]
+[background arg="res://Bg/art_room.png" fade="2.0"]
+The evening before Art Week...
+The art room is empty except for one student, working under the dim glow of a desk lamp.
+join Victor (half) center [animation="Fade In" length="1.0" wait="true"]
+Victor sits hunched over a sculpture, his hands moving with mechanical precision.
+Victor: Twenty-three hours. That's how long this took.
+He leans back, examining his work - a geometric abstract piece, technically flawless.
+Victor: Every angle calculated. Every proportion perfect.
+update Victor (half) left [move_time="0.3"]
+He picks up his phone, scrolling through photos.
+Victor: And Mia spent... what? A few weeks on hers?
+update Victor (half) center [move_time="0.3"]
+Victor's expression darkens as he stares at a photo of "The Reader."
+Victor: "Emotionally transcendent." That's what the judges said.
+Victor: They didn't even look at mine. One glance and they moved on.
+update Victor (half) right [move_time="0.3"]
+His hands clench into fists.
+Victor: Dad was right. Second place is first loser.
+Victor: "Why can't you be more like your sister? She's a doctor now."
+Victor: "Art is a waste of time unless you're the best."
+update Victor (half) center [move_time="0.3"]
+Victor's voice cracks.
+Victor: I've tried so hard, Dad. I've given everything.
+Victor: But it's never enough. I'm never enough.
+He stares at his reflection in the darkened window.
+Victor: At school, I'm invisible. At home, I'm a disappointment.
+Victor: The only time anyone notices me is when I fail.
+A tear slides down his cheek. He wipes it away angrily.
+Victor: Tomorrow is Art Week. Everyone will gather around Mia's sculpture.
+Victor: They'll take photos. They'll applaud. They'll call her a genius.
+Victor: And I'll stand next to my perfect, soulless piece... alone.
+update Victor (half) left [move_time="0.3"]
+Victor's eyes drift to "The Reader" visible through the window, illuminated by moonlight in the courtyard.
+Victor: Unless...
+He shakes his head violently.
+Victor: No. I can't. That's insane.
+update Victor (half) center [move_time="0.3"]
+But his gaze keeps returning to the window.
+Victor: If it's gone... people would have to look at something else.
+Victor: They'd have to look at... me.
+He stands abruptly, knocking over his chair.
+Victor: Just once. I want someone to see my work first.
+Victor: Is that so wrong?
+leave Victor [animation="Fade Out" length="0.8"]
+[background arg="res://Bg/courtyard_night.png" fade="2.0"]
+The courtyard lies quiet under a pale moon.
+Student artwork stands arranged on pedestals, waiting for tomorrow's opening.
+[wait time="1.0"]
+In the center, "The Reader" catches the moonlight - a student reading under a tree, carved in clay with loving hands.
+A plaque reads: "The Reader - by Mia Santos. Regional Art Competition Winner."
+[wait time="1.5"]
+A shadow moves between the displays.
+join Victor (half) center
+Victor approaches the sculpture, breathing unsteadily.
+His hands tremble as he reaches toward the clay figure.
+[wait time="0.5"]
+Victor: Mia... I'm sorry.
+Victor: But no one will ever see me if you're in the way.
+Victor's hands press against the sculpture.
+A pause. A shaky breath.
+Victor: Forgive me.
+Then - a push.
+[wait time="0.5"]
+leave Victor
+The crash echoes through the empty courtyard.
+Clay and plaster scatter across the ground. The Reader lies in pieces.
+[wait time="1.0"]
+join Victor (half) center
+Victor stumbles backward, staring at what he's done.
+Victor: What... what have I done?
+Victor: This won't bring them to me. This won't make Dad proud.
+Victor: I've just... destroyed something beautiful.
+He turns and flees into the darkness.
+Something small falls from his pocket, landing silently among the debris.
+leave Victor
+[wait time="1.5"]
+The courtyard returns to silence.
+The broken sculpture lies alone, waiting to be discovered.
+[wait time="1.0"]
+[background arg="res://Bg/courtyard.png" fade="2.0"]
+join Conrad (half) left
+join Victor (half) right
+join Mark (Mark_half) leftmost
+Conrad: You need to tell Ms. Santos. And Mia.
 Victor: I know.
 Conrad: This isn't going to go away. There will be consequences.
 Victor: I know that too.

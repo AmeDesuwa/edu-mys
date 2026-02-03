@@ -1,5 +1,7 @@
 [signal arg="show_title_card 2"]
 [background arg="res://Bg/council_room.png" fade="2.0"]
+set {current_chapter} = 2
+set {selected_subject} = "English"
 set {chapter2_score} = 0
 A few days before the incident...
 The late afternoon sun filters through the Student Council room windows, casting long shadows across the desks.

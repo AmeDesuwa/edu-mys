@@ -1867,6 +1867,8 @@ func _start_curriculum_minigame(minigame_type: String) -> void:
 	var config = CurriculumQuestions.get_config(minigame_type)
 	if config.is_empty():
 		push_error("No curriculum config for: " + minigame_type)
+		# Emit completion signal with failure to unpause Dialogic
+		minigame_completed.emit("curriculum_" + minigame_type, false)
 		return
 
 	var puzzle_id = "curriculum_" + minigame_type
@@ -1906,6 +1908,8 @@ func _start_curriculum_minigame(minigame_type: String) -> void:
 			current_minigame.game_finished.connect(_on_minigame_finished.bind(puzzle_id))
 		_:
 			push_error("Unknown curriculum minigame type: " + minigame_type)
+			# Emit completion signal with failure to unpause Dialogic
+			minigame_completed.emit("curriculum_" + minigame_type, false)
 			return
 
 	print("DEBUG: Curriculum minigame started: ", minigame_type)

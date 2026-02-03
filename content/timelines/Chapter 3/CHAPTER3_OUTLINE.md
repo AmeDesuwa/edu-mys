@@ -18,7 +18,7 @@ Art Week at school. The courtyard displays student sculptures and artwork.
 ### New Characters (Need portraits)
 - **Mia** - The sculptor whose work was destroyed. Talented, humble, recently won the regional art competition
 - **Victor** - Fellow art student, technically skilled but always second place to Mia. Bitter about never being recognized
-- **Ms. Reyes** - Art teacher, adviser for Art Week
+- **Ms. Santos** - Art teacher, adviser for Art Week
 
 ### Background Characters (mentioned but no portrait needed)
 - **Art club members** - Witnesses
@@ -66,12 +66,12 @@ Conrad and Mark investigate:
 - Examine the scene: broken sculpture, note, something dropped (a paint-stained cloth)
 - Interview Mia: Learn about her recent competition win, the sculpture's meaning (made it for her late grandfather who encouraged her art)
 - Interview Victor: He's defensive, mentions he was at home, dismissive of Mia's "overrated" work
-- Interview Ms. Reyes: Reveals tension between Victor and Mia, mentions Victor's sculpture was passed over for the exhibit
+- Interview Ms. Santos: Reveals tension between Victor and Mia, mentions Victor's sculpture was passed over for the exhibit
 
 **Laya appears:** Senses strong jealousy imprinted on the note. Guides Conrad.
 
 **Player choice:** Who to focus investigation on?
-- Ms. Reyes (wrong - no motive)
+- Ms. Santos (wrong - no motive)
 - An outsider vandal (wrong - note suggests personal knowledge)
 - Victor (correct - motive and knowledge)
 
@@ -115,7 +115,7 @@ Conrad confronts Victor with the evidence:
 **Background:** art_room.png
 
 Victor faces consequences:
-- Ms. Reyes is disappointed but understanding
+- Ms. Santos is disappointed but understanding
 - Victor will help restore what he can and do community service
 - He apologizes to Mia
 
@@ -161,7 +161,7 @@ Signed: B.C.
 ### Character Portraits
 - Mia (half) - Artistic-looking student, kind expression
 - Victor (half) - Intense, brooding, technically precise look
-- Ms. Reyes (half) - Art teacher, creative/casual appearance
+- Ms. Santos (half) - Art teacher, creative/casual appearance
 
 ### Simplification Options
 If assets are difficult:

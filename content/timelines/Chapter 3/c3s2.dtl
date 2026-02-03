@@ -2,35 +2,35 @@
 set {c3s2_reyes_tried} = false
 set {c3s2_outsider_tried} = false
 The art room is filled with half-finished canvases and clay-dusted tables.
-Ms. Reyes, the art teacher, sorts through supplies with trembling hands.
+Ms. Santos, the art teacher, sorts through supplies with trembling hands.
 join Conrad (half) left
-join "Ms Reyes" (half) right
-"Ms Reyes": This is devastating. Art Week was supposed to celebrate our students' creativity.
-"Ms Reyes": Now all anyone will remember is the destruction.
-Conrad: Ms. Reyes, I'm trying to find out who did this. Can you help me understand the situation?
+join "Ms Santos" (half) right
+"Ms Santos": This is devastating. Art Week was supposed to celebrate our students' creativity.
+"Ms Santos": Now all anyone will remember is the destruction.
+Conrad: Ms. Santos, I'm trying to find out who did this. Can you help me understand the situation?
 "Ms Reyes" sets down the brushes she was holding.
-"Ms Reyes": I'll tell you what I know. Ask me anything.
+"Ms Santos": I'll tell you what I know. Ask me anything.
 Conrad: Tell me about Mia's sculpture. Why was it the centerpiece?
-"Ms Reyes": Because it was extraordinary. Mia poured her heart into that piece.
-"Ms Reyes": She won the regional competition last month. The judges called it "emotionally transcendent."
-"Ms Reyes": For a high school student to create something so moving... it's rare.
+"Ms Santos": Because it was extraordinary. Mia poured her heart into that piece.
+"Ms Santos": She won the regional competition last month. The judges called it "emotionally transcendent."
+"Ms Santos": For a high school student to create something so moving... it's rare.
 Conrad: Did anyone have a problem with Mia winning?
 "Ms Reyes" hesitates, glancing toward the door.
-"Ms Reyes": Art is competitive. There's always... tension when one student excels.
+"Ms Santos": Art is competitive. There's always... tension when one student excels.
 Conrad: Anyone specific?
-"Ms Reyes": Victor Lim. He's incredibly talented. Technically, he might even be better than Mia.
-"Ms Reyes": But his work lacks... soul. It's precise but cold.
-"Ms Reyes": He entered the same competition. Didn't even place.
+"Ms Santos": Victor Lim. He's incredibly talented. Technically, he might even be better than Mia.
+"Ms Santos": But his work lacks... soul. It's precise but cold.
+"Ms Santos": He entered the same competition. Didn't even place.
 Conrad: How did he take it?
-"Ms Reyes": He didn't say much. But I've seen him staring at Mia's sculpture.
-"Ms Reyes": Not with admiration. With something darker.
+"Ms Santos": He didn't say much. But I've seen him staring at Mia's sculpture.
+"Ms Santos": Not with admiration. With something darker.
 Conrad: Where can I find Victor?
-"Ms Reyes": He should be in the courtyard, setting up his display. He insisted on being part of Art Week despite... well.
+"Ms Santos": He should be in the courtyard, setting up his display. He insisted on being part of Art Week despite... well.
 Conrad: Despite what?
-"Ms Reyes": His sculpture wasn't selected for the main exhibit. The committee felt it was technically impressive but lacked emotional resonance.
-"Ms Reyes": He took it personally.
-Conrad: Thank you, Ms. Reyes. This helps.
-leave "Ms Reyes"
+"Ms Santos": His sculpture wasn't selected for the main exhibit. The committee felt it was technically impressive but lacked emotional resonance.
+"Ms Santos": He took it personally.
+Conrad: Thank you, Ms. Santos. This helps.
+leave "Ms Santos"
 join Mark (Mark_half) right
 Mark: So we have a jealous rival who got rejected from the exhibit?
 Conrad: Motive and opportunity. But we need more than that.
@@ -130,11 +130,11 @@ leave Mia
 join Mark (Mark_half) right
 label suspect_choice
 Conrad: Based on what we've learned, who should we focus on?
-- Ms. Reyes might be covering for a student she favors. [if {c3s2_reyes_tried} == false]
+- Ms. Santos might be covering for a student she favors. [if {c3s2_reyes_tried} == false]
 	set {c3s2_reyes_tried} = true
 	[signal arg="wrong_choice"]
 	set {chapter3_score} -= 5
-	Conrad: No. Ms. Reyes was genuinely distressed about the damage.
+	Conrad: No. Ms. Santos was genuinely distressed about the damage.
 	Conrad: She has no motive to destroy her own student's work. And she pointed us toward Victor herself.
 	Conrad: If she wanted to protect him, she wouldn't have mentioned his resentment.
 	jump suspect_choice

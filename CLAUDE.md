@@ -74,7 +74,7 @@ Minigames are triggered from timelines via `[signal arg="start_minigame puzzle_i
 - **Runner** - Answer questions while running
 - **Pacman** - Collect correct answers while avoiding enemies
 - **Platformer** - Collect items while platforming
-- **Maze** - Navigate maze while answering questions
+- **Maze** - Navigate maze while answering questions (see [MAZE_MINIGAME_DOCUMENTATION.md](MAZE_MINIGAME_DOCUMENTATION.md))
 - **Pronunciation** - Speech recognition minigame
 - **Math** - Math problem solving
 - **Dialogue Choice** - Select and speak correct dialogue options with Vosk voice recognition
@@ -116,6 +116,28 @@ Located at `minigames/Drag/scenes/FillInTheBlank.tscn`.
     "choices": ["aristotle", "shannon", "schramm", "linear", "shared", "public", "individual", "passive"]
 }
 ```
+
+#### Curriculum-Based Minigames
+
+Minigames can use the curriculum question system by using the format: `curriculum:type`
+
+```
+[signal arg="start_minigame curriculum:runner"]
+[signal arg="start_minigame curriculum:pacman"]
+[signal arg="start_minigame curriculum:maze"]
+```
+
+This requires two Dialogic variables to be set (usually at chapter start):
+- `{current_chapter}` - Chapter number (1-5)
+- `{selected_subject}` - Subject name (e.g., "English", "General Mathematics")
+
+The curriculum system (`autoload/curriculum_questions.gd`) maps chapters to quarters:
+- Chapters 1-2 → Q1 (First Quarter)
+- Chapter 3 → Q2 (Second Quarter)
+- Chapter 4 → Q3 (Third Quarter)
+- Chapter 5 → Q4 (Fourth Quarter)
+
+See [CURRICULUM_SYSTEM.md](CURRICULUM_SYSTEM.md) for full details on adding curriculum questions.
 
 #### Dialogue Choice Minigame (IN DEVELOPMENT - Vosk Integration)
 
@@ -474,21 +496,6 @@ python dtl_to_txt_converter.py "content/timelines/Chapter 2/c2s3.dtl"
 
 **Output Format:**
 ```
-================================================================================
-DIALOGUE TRANSCRIPT: c2s3
-Source: c2s3.dtl
-================================================================================
-
-[SCENE: COUNCIL_ROOM]
-
-[Conrad enters]
-[Ria enters]
-
-Conrad: We need to talk about what happened.
-
-[EVIDENCE UNLOCKED: threat_note_c2]
-[MINIGAME: dialogue_choice_ria_note]
-```
 
 ### Multiple Choice with Retry
 
@@ -550,3 +557,47 @@ Character: Question text?
 - Error: "Invalid access to property or key 'offset' on a base object of type 'Node2D'"
 - Changed to use `.position` property which is correct for Node2D
 - Camera now follows player smoothly without errors
+## Important Patterns & Bug Fixes
+
+### Minigame Error Handling
+
+`MinigameManager` must emit the `minigame_completed` signal even on failure, otherwise Dialogic remains paused forever:
+
+```gdscript
+func _start_curriculum_minigame(minigame_type: String) -> void:
+	var config = CurriculumQuestions.get_config(minigame_type)
+	if config.is_empty():
+		push_error("No curriculum config for: " + minigame_type)
+		# CRITICAL: Emit completion signal to unpause Dialogic
+		minigame_completed.emit("curriculum_" + minigame_type, false)
+		return
+```
+
+### Evidence Panel Input Handling
+
+The evidence panel consumes the Escape key to prevent the pause menu from opening while evidence is displayed:
+
+```gdscript
+func _input(event):
+	if visible and event.is_action_pressed("ui_cancel"):
+		hide_evidence_panel()
+		get_viewport().set_input_as_handled()  # Prevents pause menu
+```
+
+### Testing Individual Chapters
+
+To test a chapter directly in Dialogic without starting a new game:
+1. Open the chapter's intro timeline (e.g., `c2s0.dtl`)
+2. Ensure `current_chapter` and `selected_subject` are set at the top
+3. Press "Play Timeline" in Dialogic editor
+
+Without these variables, curriculum minigames will fail and freeze the game.
+
+## Recent Changes (2026-02-02)
+
+- Added evidence system to Chapter 2 (5 evidence items)
+- Fixed curriculum minigame freeze when config fails
+- Added Escape key handling to evidence panel
+- Set "English" as default subject for all chapters
+- Fixed Dialogic addon typo (`.ts1n` → `.tscn`)
+- Standardized chapter initialization across all chapters

@@ -24,6 +24,12 @@ func _on_dialogic_signal(argument: String):
 		_handle_evidence_unlock(evidence_id)
 		return
 
+	# Handle evidence reset
+	if argument == "reset_evidence":
+		EvidenceManager.reset_evidence()
+		print("Evidence reset")
+		return
+
 	# Handle level up check after all minigames complete
 	if argument == "check_level_up":
 		_handle_check_level_up()

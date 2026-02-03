@@ -10,6 +10,7 @@ Mark: The Student Council fund is missing. Twenty thousand pesos. Gone.
 Conrad: The outreach fund? For students who need supplies?
 Mark: That's the one. Ria discovered it this morning when she went to prepare the distribution list.
 Mark: The lockbox was empty. Not a single peso left.
+[signal arg="unlock_evidence empty_lockbox_c2"]
 Conrad: That's a lot of money. When did this happen?
 Mark: Sometime yesterday evening, after classes. The principal already called an emergency meeting.
 Conrad: Who had access to the lockbox?

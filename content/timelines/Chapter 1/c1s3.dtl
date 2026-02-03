@@ -15,7 +15,9 @@ Principal: It was already cleaned up earlier, here take a look. I took a photo o
 leave --All--
 [background arg="res://Pics/Exam_ruined.png" fade="0.3"]
 "Conrad (Thinking)": Hmmm...... the water seems to be a bit too much from only a natural leak. The amount of water looks more like from a pipe instead of a leak.
+[signal arg="unlock_evidence exam_papers_c1"]
 [background arg="res://Pics/Ac_leak.png" fade="0.3"]
+[signal arg="unlock_evidence cut_tube_c1"]
 label Deduction
 What's wrong with this picture?
 - The airconditioning unit looks old so it was only natural that it leaked | [if {c1s3_old_ac_tried} == false]
@@ -69,6 +71,7 @@ leave --All--
 [background arg="res://Pics/Wifi_Logs.png" fade="0.2"]
 Principal: Interesting. Two devices connected to the "Faculty_Wifi" network yesterday evening.
 Principal: One connected at 8\:00 PM, device name "Galaxy_A52". The other at 9\:00 PM, device name "Redmi_Note_10".
+[signal arg="unlock_evidence wifi_logs_c1"]
 Conrad: Galaxy A52 and Redmi Note 10... Those are specific models.
 Conrad: Exactly. It's a significant addition to my clues.
 [signal arg="unlock_evidence wifi_logs_c1"]
